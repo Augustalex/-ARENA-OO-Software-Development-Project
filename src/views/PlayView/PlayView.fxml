@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.PlayView.PlayViewController"
+            stylesheets="/views/main.css" fx:id="playViewWindow">
+    <left>
+        <VBox fx:id="gameList" id="gameList">
+            <Button styleClass="gameButton" text="Othello" fx:id="othelloGameButton" />
+            <Button styleClass="gameButton" text="4 in row" fx:id="fourInRowGameButton" />
+            <Button styleClass="gameButton" text="Chess" fx:id="chessGameButton" />
+            <Button styleClass="gameButton" text="Checkers" fx:id="checkersGameButton" />
+            <Button styleClass="gameButton" text="CS:GO" fx:id="csGoGameButton" />
+        </VBox>
+    </left>
+    <right>
+        <StackPane fx:id="gameInformationContainer" id="gameInformationContainer">
+            <Button text="PLAY MATCH" fx:id="playMatchButton" />
+        </StackPane>
+    </right>
+</BorderPane>

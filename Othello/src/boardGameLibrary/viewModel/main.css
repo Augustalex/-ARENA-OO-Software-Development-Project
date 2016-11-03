@@ -1,0 +1,166 @@
+/* Combobox properties. */
+
+ComboBox{
+    -fx-background-color: rgba(255, 62, 52, 0.61);
+}
+
+BorderPane#mainViewWindow{
+    -fx-background-color: linear-gradient(rgb(33, 108, 51), rgb(17, 77, 26));
+    -fx-background-image: url("../../tests/img/wormhole.gif");
+    -fx-background-position: center;
+    -fx-background-size: 100% 100%;
+}
+
+
+/* Main Title text. */
+
+Label#mainTitle{
+    -fx-font-size: 62;
+    -fx-font-family: 'Helvetica Neue', monospace;
+    -fx-text-alignment: center;
+}
+
+Label#subTitle{
+    -fx-font-size: 32;
+    -fx-font-family: 'Helvetica Neue', monospace;
+    -fx-text-alignment: center;
+    -fx-font-style: italic;
+}
+
+/* Generic properties for text. */
+
+.titleBar{
+    /*-fx-background-color: linear-gradient(rgb(48, 173, 74), rgb(18, 97, 27));*/
+    -fx-text-alignment: center;
+    -fx-column-halignment: center;
+    -fx-padding: 0.5em;
+    -fx-font-family: 'Helvetica Neue', monospace;
+}
+
+.titleBar > Label{
+    -fx-text-fill: white;
+}
+
+VBox#mainMenuButtonContainer{
+    -fx-alignment: top-center;
+    -fx-padding: 3em;
+}
+
+/* Properties for buttons in application. */
+
+Button {
+    -fx-font-size: 2em;
+    -fx-font-family: 'Helvetica Neue', monospace;
+    -fx-background-color: transparent;
+    -fx-padding: 1em 2em;
+    -fx-border-insets: 10, 10, 10, 10;
+    -fx-background-insets: 10, 10, 10, 10;
+    -fx-text-fill: white;
+}
+
+/* Light up effect for buttons when you hover over. */
+
+.button:hover {
+    -fx-background-color: linear-gradient(rgb(46, 163, 70), rgb(25, 136, 38));
+}
+
+/* Gameboard */
+
+Cell#gameBoardCell{
+    -fx-border-color: black;
+}
+
+BorderPane#gameViewWindow{
+    -fx-background-color: black;
+}
+
+BorderPane#gameViewWindow Label{
+    -fx-text-fill: white;
+}
+
+HBox#gameBoardContainer {
+    -fx-alignment: CENTER;
+    -fx-min-height: 0;
+    -fx-min-width: 0;
+}
+
+BorderPane#gameTitle{
+    -fx-pref-height: 30;
+    -fx-font-size: 2em;
+    -fx-padding: 2em;
+}
+
+BorderPane#gameViewStatusBar{
+    -fx-pref-height: 150;
+
+}
+
+#statsContainer{
+    -fx-alignment: center;
+    -fx-padding: 1em 0;
+
+}
+
+#scoreStatsPane{
+    -fx-alignment: center;
+}
+
+.playerStatsLabel{
+    -fx-font-size: 2em;
+    -fx-text-fill: blue;
+    -fx-text-alignment: center;
+}
+
+
+/*          NEW GAME VIEW       */
+
+BorderPane#newGameWindow{
+    -fx-background-image: url("../../tests/img/andromeda.gif");
+    -fx-background-size: 100% 100%;
+    -fx-background-position: bottom;
+}
+
+PlayerSelectionRow{
+    -fx-alignment: center;
+    -fx-spacing: 3em;
+    -fx-padding: 1em;
+}
+
+TextFlow.newGameHeader{
+    -fx-text-alignment: center;
+    -fx-font-size: 2.6em;
+    -fx-font-family: 'Helvetica Neue', monospace;
+    -fx-padding: 1em;
+}
+
+TextFlow > Label{
+    -fx-text-fill: white;
+}
+
+#numberOfPlayersSelection{
+    -fx-alignment: center;
+}
+
+#numberOfPlayersSelectionBox{
+    -fx-background-color: white;
+    -fx-font-size: 2em;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+/*      SETTINGS VIEW       */
+
+#settingsViewWindow{
+    -fx-background-image: url("../../resources/img/blackHole.gif");
+    -fx-background-size: 100% 100%;
+}
+
+.centerAlignBox{
+    -fx-alignment: center;
+}
+
+#profilesList{
+
+}
+.profileListButton {
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            stylesheets="/boardGameLibrary/viewModel/main.css" id="profileSettingsWindow">
+    <top>
+        <TextFlow styleClass="titleBar" textAlignment="CENTER">
+            <Label fx:id="windowTitle" id="windowTitle" text="Profile settings"/>
+        </TextFlow>
+    </top>
+    <center>
+        <VBox>
+            <HBox>
+                <Label text="Name: " id="profileSettingsNameLabel" fx:id="profileSettingsNameLabel" />
+                <TextField id="profileSettingsNameField" fx:id="profileSettingsNameField" />
+            </HBox>
+            <HBox>
+                <Label text="Color: " id="profileSettingsColorLabel" fx:id="profileSettingsColorLabel" />
+                <ColorPicker id="profileSettingsColorPicker" fx:id="profileSettingsColorPicker" />
+            </HBox>
+            <Button text="Done" fx:id="profileSettingsDone" id="profileSettingsDone" />
+        </VBox>
+    </center>
+    <bottom>
+
+    </bottom>
+</BorderPane>

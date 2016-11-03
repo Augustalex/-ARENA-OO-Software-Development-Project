@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        stylesheets="/boardGameLibrary/viewModel/main.css" id="gameViewWindow">
+    <top>
+        <BorderPane id="gameTitle">
+            <center>
+                <Label fx:id="playerNameHolder" />
+            </center>
+        </BorderPane>
+    </top>
+    <center>
+        <HBox fx:id="gameBoardContainer" id="gameBoardContainer" >
+        </HBox>
+    </center>
+    <bottom>
+        <HBox fx:id="statsContainer" id="statsContainer">
+
+        </HBox>
+    </bottom>
+</BorderPane>

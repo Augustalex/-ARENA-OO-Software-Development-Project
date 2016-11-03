@@ -1,0 +1,5 @@
+#contentView{
+    -fx-pref-width: 800px;
+    -fx-pref-height: 800px;
+    -fx-background-color: green;
+}
