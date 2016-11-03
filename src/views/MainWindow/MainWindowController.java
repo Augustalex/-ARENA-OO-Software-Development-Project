@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import tests.RunMatch;
 
 import java.io.IOException;
@@ -27,8 +29,20 @@ public class MainWindowController implements Initializable{
     @FXML
     private Button watchButton;
 
+    @FXML
+    private StackPane advertBottom;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        playButton.setOnAction(e -> {
+            try{
+                contentView.getChildren().setAll(loadFXML("PlayView/PlayView.fxml"));
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
 
     }
 
