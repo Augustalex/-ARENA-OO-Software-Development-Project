@@ -11,7 +11,6 @@ public class OthelloGameInformation extends GameInformation{
 
     public OthelloGameInformation() {
         super(OthelloGameInformation.name, OthelloGameInformation.description, OthelloGameInformation.imageURL);
-
     }
 
 }

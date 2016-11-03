@@ -12,7 +12,7 @@ public class GameInformation {
 
     public GameInformation setGameName(String gameName){
         this.gameName = gameName;
-        return this; // vad ska den returnera
+        return this;
     }
 
     public GameInformation setGameDescription(String gameDescription){
