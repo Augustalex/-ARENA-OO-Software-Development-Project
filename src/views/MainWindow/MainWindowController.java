@@ -37,6 +37,18 @@ public class MainWindowController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ViewDimensionBinder.bindOneToOneDimension(
+                contentView.minWidthProperty(),
+                contentView.maxWidthProperty(),
+                mainWindow.widthProperty()
+        );
+
+        ViewDimensionBinder.bindOneToOneDimension(
+                contentView.minHeightProperty(),
+                contentView.maxHeightProperty(),
+                mainWindow.heightProperty().multiply(0.9)
+        );
+
         bindTabViewDimensions(tabView, mainWindow);
         bindButtonDimensions(tabView);
 
@@ -77,6 +89,8 @@ public class MainWindowController implements Initializable{
                     button.maxHeightProperty(),
                     tabView.heightProperty()
             );
+
+            System.out.println("Bound button " + button.getText());
             ViewDimensionBinder.bindOneToOneDimension(
                     button.minWidthProperty(),
                     button.maxWidthProperty(),
