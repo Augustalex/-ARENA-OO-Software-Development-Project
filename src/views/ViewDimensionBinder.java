@@ -30,7 +30,7 @@ public class ViewDimensionBinder {
         }
     }
 
-    public static void bindTwoToOneDimensions(Region binder, ReadOnlyDoubleProperty bindTo){
+    public static void bindTwoToOneDimensions(Region binder, DoubleExpression bindTo){
         bindOneToOneDimension(binder.minWidthProperty(), binder.maxWidthProperty(), bindTo);
         bindOneToOneDimension(binder.minHeightProperty(), binder.maxHeightProperty(), bindTo);
     }
@@ -43,7 +43,7 @@ public class ViewDimensionBinder {
         maxDimension.bind(bindTo);
     }
 
-    public static void bindWidthToPercentageOfContainer(Region region, double widthInPercentage, Pane container){
+    public static void bindWidthToPercentageOfContainer(Region region, double widthInPercentage, Region container){
         ViewDimensionBinder.bindOneToOneDimension(
                 region.minWidthProperty(),
                 region.maxWidthProperty(),
@@ -51,7 +51,7 @@ public class ViewDimensionBinder {
         );
     }
 
-    public static void bindHeightToPercentageOfContainer(Region region, double heightInPercentage, Pane container){
+    public static void bindHeightToPercentageOfContainer(Region region, double heightInPercentage, Region container){
         ViewDimensionBinder.bindOneToOneDimension(
                 region.minHeightProperty(),
                 region.maxHeightProperty(),

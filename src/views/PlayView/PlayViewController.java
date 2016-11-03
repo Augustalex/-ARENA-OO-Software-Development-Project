@@ -4,13 +4,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.stage.Window;
 import model.GameInformation;
 import model.OthelloGameInformation;
-import tests.RunMatch;
+import views.AdvertSpot.AdvertHideButton;
+import views.AdvertSpot.AdvertSpot;
 import views.GameInformationView.GameInformationViewController;
 import views.ViewDimensionBinder;
 
@@ -30,13 +33,13 @@ public class PlayViewController implements Initializable{
     private StackPane gameInformationContainer;
 
     @FXML
-    private StackPane advertBottom;
-
-    @FXML
     private Button othelloGameButton;
 
     @FXML
     private VBox gameList;
+
+    @FXML
+    private AdvertSpot advertBottom;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,23 +48,47 @@ public class PlayViewController implements Initializable{
         ViewDimensionBinder.bindWidthToPercentageOfContainer(gameList, 0.1, playViewWindow);
         bindListButtons(gameList);
 
+        setGameListButtonActions();
 
-        advertBottom.prefWidthProperty().bind(playViewWindow.widthProperty());
-        advertBottom.prefHeightProperty().bind(playViewWindow.heightProperty().multiply(0.2));
-        advertBottom.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+        setupAdSpot(advertBottom);
+        advertBottom.placeAd(new Background(new BackgroundImage(
+                new Image("/coke.jpg"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(100, 100, true, true, true, false)
+        )));
 
+        advertBottom.toFront();
+
+        AdvertHideButton hideButton = new AdvertHideButton();
+        hideButton.stylize();
+        hideButton.place(advertBottom);
+        hideButton.setHideOnAction();
+    }
+
+    private void setupAdSpot(AdvertSpot advert){
+        ViewDimensionBinder.bindHeightToPercentageOfContainer(advert, 0.2, playViewWindow);
+        ViewDimensionBinder.bindWidthToPercentageOfContainer(advert, 1, playViewWindow);
+    }
+
+    private void setGameListButtonActions(){
         othelloGameButton.setOnAction(e -> {
-            try {
-                Pane pane = loadGameInformationView(new OthelloGameInformation());
-                System.out.println(pane);
-                ViewDimensionBinder.fixedBindTo(pane, gameInformationContainer);
-                gameInformationContainer.getChildren().setAll(pane);
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            try{
+                fillGameInformationViewWithNewView(
+                        loadGameInformationView(new OthelloGameInformation()),
+                        gameInformationContainer
+                );
             }
-
+            catch(IOException ex){
+                ex.printStackTrace();
+            }
         });
+    }
 
+    private void fillGameInformationViewWithNewView(Pane newInformationView, Pane container){
+        ViewDimensionBinder.fixedBindTo(newInformationView, container);
+        container.getChildren().setAll(newInformationView);
     }
 
     private Pane loadGameInformationView(GameInformation gameInformation) throws IOException {
