@@ -46,13 +46,14 @@ public class PlayViewController implements Initializable{
 
         othelloGameButton.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView.fxml"));
+            loader.setRoot(gameInformationContainer);
+
             loader.setControllerFactory(c -> {
                 GameInformation othelloInformation = new OthelloGameInformation();
                 return new GameInformationViewController(othelloInformation);
             });
             try {
-                Parent parent = loader.load();
-                gameInformationContainer.getChildren().setAll(parent);
+                loader.load();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
