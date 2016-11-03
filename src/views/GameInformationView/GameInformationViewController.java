@@ -35,16 +35,6 @@ public class GameInformationViewController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView.fxml"));
-        loader.setControllerFactory(c -> {
-            return new GameInformationViewController(gameInformation);
-        });
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 }
