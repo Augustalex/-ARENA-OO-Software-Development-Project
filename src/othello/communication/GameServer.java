@@ -29,11 +29,11 @@ public class GameServer {
     }
 
     public boolean canConnect(Player player){
-
+        return false;
     }
 
     public Delivery<GameRequest> requestConnection(Player player){
-
+        return null;
     }
 
 
