@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.PlayView.PlayViewController"
             stylesheets="/views/main.css" fx:id="playViewWindow">
     <left>
@@ -20,4 +21,9 @@
             <Button text="PLAY MATCH" fx:id="playMatchButton" />
         </StackPane>
     </right>
+    <bottom>
+        <StackPane fx:id="advertBottom" id="advertBottom">
+
+        </StackPane>
+    </bottom>
 </BorderPane>

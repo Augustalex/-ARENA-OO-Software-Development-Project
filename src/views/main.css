@@ -3,3 +3,28 @@
     -fx-pref-height: 800px;
     -fx-background-color: green;
 }
+
+HBox#tabView Button{
+    -fx-background-color: #152029;
+    -fx-pref-height: 50px;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 0 0;
+
+}
+
+HBox#tabView Button:hover{
+    -fx-background-color: #354e5d;
+    -fx-pref-height: 50px;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 0 0;
+
+}
+
+StackPane#advertBottom{
+    -fx-background-image: url("../coke.jpg");
+    -fx-background-size: 100% 100%;
+
+
+}
