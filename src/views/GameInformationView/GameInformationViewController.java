@@ -37,7 +37,6 @@ public class GameInformationViewController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         gameName.setText(gameInformation.getGameName());
         gameDescription.setText(gameInformation.getGameDescription());
         gameImage.setImage(new Image(gameInformation.getImageURL()));
