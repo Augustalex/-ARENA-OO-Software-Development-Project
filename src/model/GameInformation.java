@@ -24,4 +24,16 @@ public class GameInformation {
         this.imageURL = imageURL;
         return this;
     }
+
+    public String getGameName(){
+        return gameName;
+    }
+
+    public String getGameDescription(){
+        return gameDescription;
+    }
+
+    public String getImageURL(){
+        return imageURL;
+    }
 }
