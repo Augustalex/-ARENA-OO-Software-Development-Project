@@ -29,9 +29,6 @@ public class PlayViewController implements Initializable{
     private StackPane gameInformationContainer;
 
     @FXML
-    private Button playMatchButton;
-
-    @FXML
     private StackPane advertBottom;
 
     @FXML
@@ -59,9 +56,5 @@ public class PlayViewController implements Initializable{
             }
         });
 
-        playMatchButton.setOnAction(e -> {
-
-            RunMatch.runMatch(gameInformationContainer);
-        });
     }
 }

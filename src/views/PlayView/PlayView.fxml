@@ -18,7 +18,6 @@
     </left>
     <right>
         <StackPane fx:id="gameInformationContainer" id="gameInformationContainer">
-            <Button text="PLAY MATCH" fx:id="playMatchButton" />
         </StackPane>
     </right>
     <bottom>
