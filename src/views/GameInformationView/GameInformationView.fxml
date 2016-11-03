@@ -5,22 +5,15 @@
 <?import javafx.scene.text.*?>
 
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Shape?>
+<?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.GameInformationView.GameInformationViewController"
-            stylesheets="/views/main.css">
-    <center>
-        <BorderPane id="innerWorkings">
-            <left>
-                <ImageView fx:id="gameImage" styleClass="gameImage" />
-                <Text fx:id="gameDescription" styleClass="textDescription"/>
-            </left>
-            <right>
-                <Label fx:id="gameName" styleClass="gameName"/>
-            </right>
-            <center>
-                <StackPane fx:id="gameInformationContainer" id="gameInformationContainer">
-                    <Button text="PLAY MATCH" fx:id="playMatchButton" />
-                </StackPane>
-            </center>
-        </BorderPane>
-    </center>
+            stylesheets="/views/main.css" fx:id="gameInformationContainer">
+    <left>
+        <Rectangle fx:id="gameImage" styleClass="gameImage" />
+        <!--<Text fx:id="gameDescription" styleClass="textDescription"/>-->
+    </left>
+    <right>
+        <Label fx:id="gameName" styleClass="gameName"/>
+    </right>
 </BorderPane>

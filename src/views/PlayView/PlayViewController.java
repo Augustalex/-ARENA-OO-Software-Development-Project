@@ -12,6 +12,7 @@ import model.GameInformation;
 import model.OthelloGameInformation;
 import tests.RunMatch;
 import views.GameInformationView.GameInformationViewController;
+import views.ViewDimensionBinder;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,8 +35,14 @@ public class PlayViewController implements Initializable{
     @FXML
     private Button othelloGameButton;
 
+    @FXML
+    private VBox gameList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        bindListDimensions(gameList, 0.1, playViewWindow);
+        bindListButtons(gameList);
 
         advertBottom.prefWidthProperty().bind(playViewWindow.widthProperty());
         advertBottom.prefHeightProperty().bind(playViewWindow.heightProperty().multiply(0.2));
@@ -56,5 +63,23 @@ public class PlayViewController implements Initializable{
             }
         });
 
+    }
+
+    private void bindListDimensions(Pane list, double listWidthPercentage, Pane container){
+        ViewDimensionBinder.bindOneToOneDimension(
+                list.minWidthProperty(),
+                list.maxWidthProperty(),
+                container.widthProperty().multiply(listWidthPercentage)
+        );
+    }
+
+    private void bindListButtons(Pane list){
+        for(Button button : list.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new)){
+            ViewDimensionBinder.bindOneToOneDimension(
+                    button.minWidthProperty(),
+                    button.maxWidthProperty(),
+                    list.widthProperty()
+            );
+        }
     }
 }

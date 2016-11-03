@@ -1,19 +1,16 @@
 package views.GameInformationView;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import model.GameInformation;
-import tests.RunMatch;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,19 +22,16 @@ public class GameInformationViewController implements Initializable{
     GameInformation gameInformation;
 
     @FXML
-    private StackPane gameInformationContainer;
-
-    @FXML
-    private Button playMatchButton;
-
-    @FXML
-    private ImageView gameImage;
+    private Rectangle gameImage;
 
     @FXML
     private Label gameName;
 
     @FXML
     private Text gameDescription;
+
+    @FXML
+    private BorderPane gameInformationContainer;
 
     public GameInformationViewController(GameInformation gameInformation){
         this.gameInformation = gameInformation;
@@ -47,14 +41,19 @@ public class GameInformationViewController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         gameName.setText(gameInformation.getGameName());
-        gameDescription.setText(gameInformation.getGameDescription());
-        gameImage.setImage(new Image(gameInformation.getImageURL()));
+//        gameDescription.setText(gameInformation.getGameDescription());
 
-        playMatchButton.setOnAction(e -> {
+        System.out.println(gameInformation.getImageURL());
 
-            RunMatch.runMatch(gameInformationContainer);
-        });
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select file:");
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
 
+        gameImage.setFill(new ImagePattern(new Image(gameInformation.getImageURL())));
+        gameImage.widthProperty().bind(gameInformationContainer.widthProperty().multiply(0.5));
+        gameImage.heightProperty().bind(gameInformationContainer.widthProperty().multiply(0.5));
     }
 
 }

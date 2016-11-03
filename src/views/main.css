@@ -1,9 +1,9 @@
 #contentView{
-    -fx-background-color: green;
+    -fx-background-color: #001;
 }
 
 HBox#tabView{
-    -fx-background-color: darkcyan;
+    -fx-background-color: #112;
 }
 
 HBox#tabView Button{
@@ -16,16 +16,18 @@ HBox#tabView Button{
 
 HBox#tabView Button:hover{
     -fx-background-color: #354e5d;
-    -fx-pref-height: 50px;
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
 
 }
 
+#gameList{
+    -fx-background-color: #0f171d;
+}
+
 .gameButton{
     -fx-background-color: #152029;
-    -fx-fit-to-height: true;
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
@@ -33,8 +35,7 @@ HBox#tabView Button:hover{
 
 .gameButton:hover{
     -fx-background-color: #354e5d;
-    -fx-pref-height: 50px;
-    -fx-font-family: "Century Gothic";
+    -fx-font-family: "Century gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
 
@@ -48,7 +49,7 @@ StackPane#advertBottom{
 .gameImage{
     -fx-pref-height: 100px;
     -fx-pref-width: 100px;
-
+    -fx-background-color: red;
 }
 
 .gameName{
