@@ -1,19 +1,13 @@
 #contentView{
-    -fx-pref-width: 800px;
-    -fx-pref-height: 800px;
     -fx-background-color: green;
 }
 
 HBox#tabView{
-    -fx-min-height: 50px;
-    -fx-max-height: 50px;
-    -fx-column-halignment: center;
-    -fx-pref-columns: 3;
+    -fx-background-color: darkcyan;
 }
 
 HBox#tabView Button{
     -fx-background-color: #152029;
-    -fx-fit-to-height: true;
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
