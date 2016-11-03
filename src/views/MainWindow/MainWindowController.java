@@ -1,11 +1,13 @@
 package views.MainWindow;
 
+import boardGameLibrary.viewModel.ViewDimensionBinder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -13,10 +15,14 @@ import tests.RunMatch;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MainWindowController implements Initializable{
 
+    @FXML
+    private BorderPane mainWindow;
     @FXML
     private Pane contentView;
 
@@ -31,6 +37,10 @@ public class MainWindowController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bindTabViewDimensions(tabView, mainWindow);
+        bindButtonDimensions(tabView);
+
+
         playButton.setOnAction(e -> {
             try{
                 contentView.getChildren().setAll(loadFXML("PlayView/PlayView.fxml"));
@@ -44,5 +54,34 @@ public class MainWindowController implements Initializable{
 
     public Parent loadFXML(String fxmlViewPath) throws IOException {
         return FXMLLoader.load(getClass().getResource("/views/" + fxmlViewPath));
+    }
+
+    private void bindTabViewDimensions(Pane tabView, Pane container){
+        ViewDimensionBinder.bindOneToOneDimension(
+                tabView.minWidthProperty(),
+                tabView.maxWidthProperty(),
+                container.widthProperty()
+        );
+
+        ViewDimensionBinder.bindOneToOneDimension(
+                tabView.minHeightProperty(),
+                tabView.maxHeightProperty(),
+                container.heightProperty().multiply(0.1)
+        );
+    }
+
+    private void bindButtonDimensions(Pane tabView){
+        for(Button button : tabView.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new)){
+            ViewDimensionBinder.bindOneToOneDimension(
+                    button.minHeightProperty(),
+                    button.maxHeightProperty(),
+                    tabView.heightProperty()
+            );
+            ViewDimensionBinder.bindOneToOneDimension(
+                    button.minWidthProperty(),
+                    button.maxWidthProperty(),
+                    tabView.widthProperty().multiply(0.25)
+            );
+        }
     }
 }

@@ -1,5 +1,6 @@
 package boardGameLibrary.viewModel;
 
+import javafx.beans.binding.DoubleExpression;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.layout.Region;
@@ -31,7 +32,7 @@ public class ViewDimensionBinder {
         bindOneToOneDimension(binder.minHeightProperty(), binder.maxHeightProperty(), bindTo);
     }
 
-    public static void bindOneToOneDimension(DoubleProperty minDimension, DoubleProperty maxDimension, ReadOnlyDoubleProperty bindTo){
+    public static void bindOneToOneDimension(DoubleProperty minDimension, DoubleProperty maxDimension, DoubleExpression bindTo){
         minDimension.unbind();
         minDimension.bind(bindTo);
 

@@ -4,9 +4,16 @@
     -fx-background-color: green;
 }
 
+HBox#tabView{
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-column-halignment: center;
+    -fx-pref-columns: 3;
+}
+
 HBox#tabView Button{
     -fx-background-color: #152029;
-    -fx-pref-height: 50px;
+    -fx-fit-to-height: true;
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
@@ -25,6 +32,4 @@ HBox#tabView Button:hover{
 StackPane#advertBottom{
     -fx-background-image: url("../coke.jpg");
     -fx-background-size: 100% 100%;
-
-
 }
