@@ -23,14 +23,15 @@ public class PlayViewController implements Initializable{
     private Button playMatchButton;
 
     @FXML
-    private StackPane advertButtom;
+    private StackPane advertBottom;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        advertButtom.prefWidthProperty().bind(playViewWindow.widthProperty());
-        advertButtom.prefHeightProperty().bind(playViewWindow.heightProperty().multiply(0.2));
-        advertButtom.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+        advertBottom.prefWidthProperty().bind(playViewWindow.widthProperty());
+        advertBottom.prefHeightProperty().bind(playViewWindow.heightProperty().multiply(0.2));
+        advertBottom.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+
         playMatchButton.setOnAction(e -> {
             RunMatch.runMatch(playViewWindow);
         });

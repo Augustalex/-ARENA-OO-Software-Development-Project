@@ -29,9 +29,6 @@ public class MainWindowController implements Initializable{
     @FXML
     private Button watchButton;
 
-    @FXML
-    private StackPane advertBottom;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         playButton.setOnAction(e -> {
@@ -43,10 +40,9 @@ public class MainWindowController implements Initializable{
             }
         });
 
-
     }
 
     public Parent loadFXML(String fxmlViewPath) throws IOException {
-        return FXMLLoader.load(getClass().getResource("/Views/" + fxmlViewPath));
+        return FXMLLoader.load(getClass().getResource("/views/" + fxmlViewPath));
     }
 }
