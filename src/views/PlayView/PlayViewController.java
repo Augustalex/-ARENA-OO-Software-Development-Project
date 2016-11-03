@@ -1,19 +1,17 @@
 package views.PlayView;
 
+import advertisement.Ad;
+import advertisement.adPlacer.AdPlacer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.stage.Window;
 import model.GameInformation;
 import model.OthelloGameInformation;
-import views.AdvertSpot.AdvertHideButton;
-import views.AdvertSpot.AdvertSpot;
+import advertisement.AdvertSpot.AdvertHideButton;
+import advertisement.AdvertSpot.AdvertSpot;
 import views.GameInformationView.GameInformationViewController;
 import views.ViewDimensionBinder;
 
@@ -39,7 +37,7 @@ public class PlayViewController implements Initializable{
     private VBox gameList;
 
     @FXML
-    private AdvertSpot advertBottom;
+    private StackPane advertBottom;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,24 +49,39 @@ public class PlayViewController implements Initializable{
         setGameListButtonActions();
 
         setupAdSpot(advertBottom);
-        advertBottom.placeAd(new Background(new BackgroundImage(
-                new Image("/coke.jpg"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(100, 100, true, true, true, false)
-        )));
-
         advertBottom.toFront();
 
-        AdvertHideButton hideButton = new AdvertHideButton();
-        hideButton.stylize();
-        hideButton.place(advertBottom);
-        hideButton.setHideOnAction();
+        Ad ad = new Ad("/coke.jpg");
+        ad.setAsWideAdvert();
+
+        Ad ad2 = new Ad("/adImages/koolaid.gif");
+        ad2.setAsWideAdvert();
+
+        Ad ad3 = new Ad("/adImages/nintendo.gif");
+        ad3.setAsWideAdvert();
+
+        Ad ad4 = new Ad("/adImages/gameboy.gif");
+        ad4.setAsWideAdvert();
+
+        Ad ad5 = new Ad("/adImages/caprisun.gif");
+        ad5.setAsWideAdvert();
+
+        Ad ad6 = new Ad("/adImages/kawasaki.gif");
+        ad6.setAsWideAdvert();
+
+        AdPlacer adPlacer = new AdPlacer(advertBottom);
+        adPlacer.getAdsQueue().add(ad);
+        adPlacer.getAdsQueue().add(ad2);
+        adPlacer.getAdsQueue().add(ad3);
+        adPlacer.getAdsQueue().add(ad6);
+        adPlacer.getAdsQueue().add(ad4);
+        adPlacer.getAdsQueue().add(ad5);
+
+        adPlacer.loopAds(2500);
     }
 
-    private void setupAdSpot(AdvertSpot advert){
-        ViewDimensionBinder.bindHeightToPercentageOfContainer(advert, 0.2, playViewWindow);
+    private void setupAdSpot(StackPane advert){
+        ViewDimensionBinder.bindHeightToPercentageOfContainer(advert, 0.35, playViewWindow);
         ViewDimensionBinder.bindWidthToPercentageOfContainer(advert, 1, playViewWindow);
     }
 

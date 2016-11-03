@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import views.AdvertSpot.*?>
+<?import advertisement.AdvertSpot.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.PlayView.PlayViewController"
             stylesheets="/views/main.css" fx:id="playViewSuperWindow">
     <BorderPane fx:id="playViewWindow">
@@ -22,6 +22,6 @@
             </StackPane>
         </right>
     </BorderPane>
-    <AdvertSpot fx:id="advertBottom" id="advertBottom">
-    </AdvertSpot>
+    <StackPane fx:id="advertBottom" id="advertBottom">
+    </StackPane>
 </StackPane>

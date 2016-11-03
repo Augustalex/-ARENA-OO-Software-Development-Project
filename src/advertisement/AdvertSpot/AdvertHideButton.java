@@ -1,5 +1,6 @@
-package views.AdvertSpot;
+package advertisement.AdvertSpot;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -26,15 +27,17 @@ public class AdvertHideButton extends StackPane {
         this.toFront();
 
         System.out.println("Placed the button " + this);
-        advertSpot.add(this);
+        advertSpot.getInnerPane().getChildren().add(this);
         ViewDimensionBinder.fixedBindTo(this, advertSpot.getInnerPane());
 
+        this.hideButton.setId("hideAdButton");
+        this.setPadding(new Insets(0, 10, 10, 10));
         this.advertSpot = advertSpot;
     }
 
     public void stylize(){
         this.hideButton.setBackground(new Background(new BackgroundImage(
-                new Image("/xButton.png"),
+                new Image("/xButtonWhite.png"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
