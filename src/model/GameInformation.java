@@ -15,6 +15,11 @@ public class GameInformation {
         return this;
     }
 
+    /**
+     * Sets a description for the game.
+     * @param gameDescription
+     * @return GameInformation object
+     */
     public GameInformation setGameDescription(String gameDescription){
         this.gameDescription = gameDescription;
         return this;
