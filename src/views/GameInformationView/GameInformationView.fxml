@@ -8,10 +8,14 @@
 <?import javafx.scene.shape.Shape?>
 <?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.GameInformationView.GameInformationViewController"
-            stylesheets="/views/main.css" fx:id="gameInformationContainer">
+            stylesheets="/views/main.css" fx:id="gameInformationWindow" id="gameInformationWindow">
     <left>
-        <Rectangle fx:id="gameImage" styleClass="gameImage" />
-        <!--<Text fx:id="gameDescription" styleClass="textDescription"/>-->
+        <FlowPane>
+            <Rectangle fx:id="gameImage" styleClass="gameImage" />
+            <TextFlow>
+                <Text fx:id="gameDescription" styleClass="textDescription"/>
+            </TextFlow>
+        </FlowPane>
     </left>
     <right>
         <Label fx:id="gameName" styleClass="gameName"/>

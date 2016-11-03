@@ -56,3 +56,9 @@ StackPane#advertBottom{
     -fx-font-size:12em;
     -fx-text-fill: white;
 }
+
+.textDescription{
+    -fx-text-fill: white;
+    -fx-fill: white;
+    -fx-font-size: 2em;
+}

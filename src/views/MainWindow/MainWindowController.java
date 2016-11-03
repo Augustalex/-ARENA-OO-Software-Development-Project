@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+import javax.swing.text.View;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,21 +33,12 @@ public class MainWindowController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ViewDimensionBinder.bindOneToOneDimension(
-                contentView.minWidthProperty(),
-                contentView.maxWidthProperty(),
-                mainWindow.widthProperty()
-        );
 
-        ViewDimensionBinder.bindOneToOneDimension(
-                contentView.minHeightProperty(),
-                contentView.maxHeightProperty(),
-                mainWindow.heightProperty().multiply(0.9)
-        );
+        ViewDimensionBinder.bindWidthToPercentageOfContainer(contentView, 1, mainWindow);
+        ViewDimensionBinder.bindHeightToPercentageOfContainer(contentView, 0.9, mainWindow);
 
         bindTabViewDimensions(tabView, mainWindow);
         bindButtonDimensions(tabView);
-
 
         playButton.setOnAction(e -> {
             try{
@@ -64,33 +56,14 @@ public class MainWindowController implements Initializable{
     }
 
     private void bindTabViewDimensions(Pane tabView, Pane container){
-        ViewDimensionBinder.bindOneToOneDimension(
-                tabView.minWidthProperty(),
-                tabView.maxWidthProperty(),
-                container.widthProperty()
-        );
-
-        ViewDimensionBinder.bindOneToOneDimension(
-                tabView.minHeightProperty(),
-                tabView.maxHeightProperty(),
-                container.heightProperty().multiply(0.1)
-        );
+        ViewDimensionBinder.bindWidthToPercentageOfContainer(tabView, 1, container);
+        ViewDimensionBinder.bindHeightToPercentageOfContainer(tabView, 0.1, container);
     }
 
     private void bindButtonDimensions(Pane tabView){
         for(Button button : tabView.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new)){
-            ViewDimensionBinder.bindOneToOneDimension(
-                    button.minHeightProperty(),
-                    button.maxHeightProperty(),
-                    tabView.heightProperty()
-            );
-
-            System.out.println("Bound button " + button.getText());
-            ViewDimensionBinder.bindOneToOneDimension(
-                    button.minWidthProperty(),
-                    button.maxWidthProperty(),
-                    tabView.widthProperty().multiply(0.25)
-            );
+            ViewDimensionBinder.bindHeightToPercentageOfContainer(button, 1, tabView);
+            ViewDimensionBinder.bindWidthToPercentageOfContainer(button, 0.25, tabView);
         }
     }
 }

@@ -3,6 +3,9 @@ package views;
 import javafx.beans.binding.DoubleExpression;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 
 /**
@@ -38,6 +41,22 @@ public class ViewDimensionBinder {
 
         maxDimension.unbind();
         maxDimension.bind(bindTo);
+    }
+
+    public static void bindWidthToPercentageOfContainer(Region region, double widthInPercentage, Pane container){
+        ViewDimensionBinder.bindOneToOneDimension(
+                region.minWidthProperty(),
+                region.maxWidthProperty(),
+                container.widthProperty().multiply(widthInPercentage)
+        );
+    }
+
+    public static void bindHeightToPercentageOfContainer(Region region, double heightInPercentage, Pane container){
+        ViewDimensionBinder.bindOneToOneDimension(
+                region.minHeightProperty(),
+                region.maxHeightProperty(),
+                container.heightProperty().multiply(heightInPercentage)
+        );
     }
 
     public static void bindDimensionsWidthPadding(Region binder, Region bindTo, Margin margin){

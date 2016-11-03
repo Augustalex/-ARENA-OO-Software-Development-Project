@@ -41,45 +41,40 @@ public class PlayViewController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        bindListDimensions(gameList, 0.1, playViewWindow);
+        ViewDimensionBinder.bindWidthToPercentageOfContainer(gameInformationContainer, 0.9, playViewWindow);
+        ViewDimensionBinder.bindWidthToPercentageOfContainer(gameList, 0.1, playViewWindow);
         bindListButtons(gameList);
+
 
         advertBottom.prefWidthProperty().bind(playViewWindow.widthProperty());
         advertBottom.prefHeightProperty().bind(playViewWindow.heightProperty().multiply(0.2));
         advertBottom.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 
         othelloGameButton.setOnAction(e -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView/GameInformationView.fxml"));
-
-            loader.setControllerFactory(c -> {
-                GameInformation othelloInformation = new OthelloGameInformation();
-                return new GameInformationViewController(othelloInformation);
-            });
             try {
-                Parent parent = loader.load();
-                gameInformationContainer.getChildren().setAll(parent);
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                Pane pane = loadGameInformationView(new OthelloGameInformation());
+                System.out.println(pane);
+                ViewDimensionBinder.fixedBindTo(pane, gameInformationContainer);
+                gameInformationContainer.getChildren().setAll(pane);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
+
         });
 
     }
 
-    private void bindListDimensions(Pane list, double listWidthPercentage, Pane container){
-        ViewDimensionBinder.bindOneToOneDimension(
-                list.minWidthProperty(),
-                list.maxWidthProperty(),
-                container.widthProperty().multiply(listWidthPercentage)
-        );
+    private Pane loadGameInformationView(GameInformation gameInformation) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView/GameInformationView.fxml"));
+
+        loader.setControllerFactory(c -> new GameInformationViewController(gameInformation));
+
+        return loader.load();
     }
 
     private void bindListButtons(Pane list){
-        for(Button button : list.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new)){
-            ViewDimensionBinder.bindOneToOneDimension(
-                    button.minWidthProperty(),
-                    button.maxWidthProperty(),
-                    list.widthProperty()
-            );
-        }
+        for(Button button : list.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new))
+            ViewDimensionBinder.bindWidthToPercentageOfContainer(button, 1, list);
     }
+
 }
