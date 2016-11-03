@@ -56,7 +56,6 @@ public class PlayViewController implements Initializable{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
         });
 
         playMatchButton.setOnAction(e -> {
