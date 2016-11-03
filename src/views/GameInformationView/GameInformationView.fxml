@@ -16,6 +16,11 @@
             <right>
                 <Label fx:id="gameName" styleClass="gameName"/>
             </right>
+            <center>
+                <StackPane fx:id="gameInformationContainer" id="gameInformationContainer">
+                    <Button text="PLAY MATCH" fx:id="playMatchButton" />
+                </StackPane>
+            </center>
         </BorderPane>
     </center>
 </BorderPane>
