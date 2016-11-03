@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        stylesheets="/boardGameLibrary/viewModel/main.css" id="mainViewWindow">
+    <top>
+        <VBox>
+            <TextFlow styleClass="titleBar">
+                <Label fx:id="mainTitle" id="mainTitle" text="OTHELLO"/>
+            </TextFlow>
+            <TextFlow styleClass="titleBar">
+                <Label id="subTitle" fx:id="subTitle" />
+            </TextFlow>
+        </VBox>
+    </top>
+    <center>
+            <VBox id="mainMenuButtonContainer" fx:id="buttonContainer">
+                <Button text="NEW GAME" fx:id="newGameButton"/>
+                <Button text="SETTINGS" fx:id="settingsButton" />
+            </VBox>
+    </center>
+    <bottom>
+        <TextFlow styleClass="titleBar" fx:id="bottom">
+            <Label fx:id="creatorName" id="creatorName" text="Created by: Jacob Berqvist, Björn Andersson and August Alexandersson."/>
+        </TextFlow>
+    </bottom>
+</BorderPane>

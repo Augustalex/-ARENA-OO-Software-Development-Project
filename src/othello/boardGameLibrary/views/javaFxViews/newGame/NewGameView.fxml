@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        stylesheets="/boardGameLibrary/viewModel/main.css" id="newGameWindow">
+    <top>
+        <TextFlow styleClass="titleBar" textAlignment="CENTER">
+            <Label fx:id="windowTitle" id="windowTitle" text="Create a new Game"/>
+        </TextFlow>
+    </top>
+    <center>
+        <VBox alignment="CENTER" fx:id="newGameContainer">
+            <TextFlow styleClass="newGameHeader">
+                <Label id="newGamePrompt" text="Pick your players:" />
+            </TextFlow>
+        </VBox>
+    </center>
+    <bottom>
+        <Button text="Create new game" fx:id="createNewGameButton"/>
+        <Button text="Go back" fx:id="back" />
+    </bottom>
+</BorderPane>
