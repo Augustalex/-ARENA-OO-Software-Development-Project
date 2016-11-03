@@ -45,15 +45,15 @@ public class PlayViewController implements Initializable{
         advertBottom.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 
         othelloGameButton.setOnAction(e -> {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView.fxml"));
-            loader.setRoot(gameInformationContainer);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView/GameInformationView.fxml"));
 
             loader.setControllerFactory(c -> {
                 GameInformation othelloInformation = new OthelloGameInformation();
                 return new GameInformationViewController(othelloInformation);
             });
             try {
-                loader.load();
+                Parent parent = loader.load();
+                gameInformationContainer.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

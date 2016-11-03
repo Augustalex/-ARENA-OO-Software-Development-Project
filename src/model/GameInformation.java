@@ -8,7 +8,11 @@ public class GameInformation {
     String imageURL;
     String gameDescription;
 
-    public GameInformation(String gameName, String gameDescription, String imageURL){}
+    public GameInformation(String gameName, String gameDescription, String imageURL){
+        this.setGameName(gameName);
+        this.setGameDescription(gameDescription);
+        this.setImageURL(imageURL);
+    }
 
     public GameInformation setGameName(String gameName){
         this.gameName = gameName;

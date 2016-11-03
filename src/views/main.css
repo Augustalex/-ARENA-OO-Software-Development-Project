@@ -44,3 +44,14 @@ StackPane#advertBottom{
     -fx-background-image: url("../coke.jpg");
     -fx-background-size: 100% 100%;
 }
+
+.gameImage{
+    -fx-pref-height: 100px;
+    -fx-pref-width: 100px;
+
+}
+
+.gameName{
+    -fx-font-size:12em;
+    -fx-text-fill: white;
+}

@@ -41,7 +41,6 @@ public class GameInformationViewController implements Initializable{
         gameDescription.setText(gameInformation.getGameDescription());
         gameImage.setImage(new Image(gameInformation.getImageURL()));
 
-
     }
 
 }
