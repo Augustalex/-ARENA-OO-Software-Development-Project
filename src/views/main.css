@@ -52,8 +52,9 @@ StackPane#playViewSuperWindow{
 }
 
 .gameName{
-    -fx-font-size:12em;
+    -fx-font-size:4em;
     -fx-text-fill: white;
+    -fx-alignment: center;
 }
 
 .textDescription{
