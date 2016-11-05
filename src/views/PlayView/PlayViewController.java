@@ -6,12 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import model.GameInformation;
 import model.OthelloGameInformation;
-import advertisement.AdvertSpot.AdvertHideButton;
-import advertisement.AdvertSpot.AdvertSpot;
 import views.GameInformationView.GameInformationViewController;
 import views.ViewDimensionBinder;
 
@@ -88,7 +85,7 @@ public class PlayViewController implements Initializable{
     private void setGameListButtonActions(){
         othelloGameButton.setOnAction(e -> {
             try{
-                fillGameInformationViewWithNewView(
+                setGameInformationView(
                         loadGameInformationView(new OthelloGameInformation()),
                         gameInformationContainer
                 );
@@ -99,7 +96,7 @@ public class PlayViewController implements Initializable{
         });
     }
 
-    private void fillGameInformationViewWithNewView(Pane newInformationView, Pane container){
+    private void setGameInformationView(Pane newInformationView, Pane container){
         ViewDimensionBinder.fixedBindTo(newInformationView, container);
         container.getChildren().setAll(newInformationView);
     }
