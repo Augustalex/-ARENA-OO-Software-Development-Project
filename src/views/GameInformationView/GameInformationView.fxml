@@ -18,6 +18,9 @@
         </FlowPane>
     </left>
     <right>
-        <Label fx:id="gameName" styleClass="gameName"/>
+        <VBox>
+            <Label fx:id="gameName" styleClass="gameName"/>
+            <Button styleClass="gameButton" text="Play" fx:id="playGameButton" />
+        </VBox>
     </right>
 </BorderPane>
