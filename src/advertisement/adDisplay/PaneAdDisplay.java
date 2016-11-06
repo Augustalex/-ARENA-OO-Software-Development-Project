@@ -32,7 +32,6 @@ public abstract class PaneAdDisplay extends BorderPane implements AdDisplay{
      * Closes loop (will work even if loop is not active).
      */
     public void closeLoop(){
-        System.out.println("Closing loop");
         this.adSpot.getLoopCancelProperty().set(true);
     }
 
