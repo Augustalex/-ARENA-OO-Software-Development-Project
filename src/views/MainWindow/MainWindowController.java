@@ -1,5 +1,6 @@
 package views.MainWindow;
 
+import views.FXMLViewController;
 import views.ViewDimensionBinder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainWindowController implements Initializable{
+public class MainWindowController extends FXMLViewController{
 
+    private FXMLViewController currentContentController = null;
     @FXML
     private BorderPane mainWindow;
     @FXML
@@ -42,7 +44,12 @@ public class MainWindowController implements Initializable{
 
         playButton.setOnAction(e -> {
             try{
-                contentView.getChildren().setAll(loadFXML("PlayView/PlayView.fxml"));
+                closeCurrentContentController();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
+                Parent parent = loader.load();
+                this.currentContentController = loader.getController();
+                contentView.getChildren().setAll(parent);
             }
             catch(Exception ex){
                 ex.printStackTrace();
@@ -51,8 +58,9 @@ public class MainWindowController implements Initializable{
 
     }
 
-    public Parent loadFXML(String fxmlViewPath) throws IOException {
-        return FXMLLoader.load(getClass().getResource("/views/" + fxmlViewPath));
+    @Override
+    public void closeView() {
+        closeCurrentContentController();
     }
 
     private void bindTabViewDimensions(Pane tabView, Pane container){
@@ -65,5 +73,10 @@ public class MainWindowController implements Initializable{
             ViewDimensionBinder.bindHeightToPercentageOfContainer(button, 1, tabView);
             ViewDimensionBinder.bindWidthToPercentageOfContainer(button, 0.25, tabView);
         }
+    }
+
+    private void closeCurrentContentController(){
+        if(this.currentContentController != null)
+            this.currentContentController.closeView();
     }
 }

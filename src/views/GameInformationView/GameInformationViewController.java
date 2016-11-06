@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import model.GameInformation;
 import model.OthelloGameInformation;
+import views.FXMLViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +26,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Simon on 03/11/2016.
  */
-public class GameInformationViewController implements Initializable{
+public class GameInformationViewController extends FXMLViewController{
 
     GameInformation gameInformation;
 
@@ -59,5 +60,10 @@ public class GameInformationViewController implements Initializable{
         playGameButton.setOnAction(e -> {
             GameLauncher.launchGame(gameInformation);
         });
+    }
+
+    @Override
+    public void closeView() {
+
     }
 }

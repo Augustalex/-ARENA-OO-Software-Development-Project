@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import advertisement.AdvertSpot.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.PlayView.PlayViewController"
             stylesheets="/views/main.css" fx:id="playViewSuperWindow">
     <BorderPane fx:id="playViewWindow">

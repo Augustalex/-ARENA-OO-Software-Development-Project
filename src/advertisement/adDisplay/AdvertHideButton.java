@@ -1,4 +1,4 @@
-package advertisement.AdvertSpot;
+package advertisement.adDisplay;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,14 +14,14 @@ import views.ViewDimensionBinder;
 public class AdvertHideButton extends StackPane {
 
     private Button hideButton = new Button();
-    private AdvertSpot advertSpot = null;
+    private FxAdDisplay advertSpot = null;
 
     public AdvertHideButton(){
         this.setAlignment(Pos.TOP_RIGHT);
         this.getChildren().add(hideButton);
     }
 
-    public void place(AdvertSpot advertSpot){
+    public void place(FxAdDisplay advertSpot){
 
         ViewDimensionBinder.bindTwoToOneDimensions(this, advertSpot.widthProperty().multiply(0.1));
         this.toFront();

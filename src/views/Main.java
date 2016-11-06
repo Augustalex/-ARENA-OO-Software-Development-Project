@@ -1,6 +1,7 @@
 package views;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("MainWindow/MainWindowView.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow/MainWindowView.fxml"));
+        Parent parent = loader.load();
+        FXMLViewController controller = loader.getController();
+
         primaryStage.setTitle("ARENA");
-        primaryStage.setScene(new Scene(root, 1200, 900));
+        primaryStage.setScene(new Scene(parent, 1200, 900));
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(e -> controller.closeView());
     }
 
 
@@ -21,3 +28,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+K
