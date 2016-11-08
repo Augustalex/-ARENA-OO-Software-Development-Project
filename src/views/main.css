@@ -62,3 +62,9 @@ StackPane#playViewSuperWindow{
     -fx-fill: white;
     -fx-font-size: 2em;
 }
+
+.playGameButton{
+    -fx-background-color: #FF09C1;
+    -fx-font-family: "Comic Sans";
+    -fx-text-fill: white;
+}

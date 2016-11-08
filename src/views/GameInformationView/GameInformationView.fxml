@@ -20,7 +20,7 @@
     <right>
         <VBox>
             <Label fx:id="gameName" styleClass="gameName"/>
-            <Button styleClass="gameButton" text="Play" fx:id="playGameButton" />
+            <Button styleClass="playGameButton" text="Play" fx:id="playGameButton" />
         </VBox>
     </right>
 </BorderPane>

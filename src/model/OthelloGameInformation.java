@@ -9,7 +9,7 @@ import gameLauncher.GameLauncher;
 public class OthelloGameInformation extends GameInformation{
 
     static final String name = "Othello";
-    static final String description = "Also know as Reversi. \nTwo players face eachother in a match to death. \nWinner gets glory and fame.";
+    static final String description = "Also known as Reversi. \nTwo players face eachother in a match to death. \nWinner gets glory and fame.";
     static final String imageURL = "/othello_image.jpg";
 
     public OthelloGameInformation() {
