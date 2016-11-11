@@ -1,16 +1,15 @@
 package views.TournamentInformationView;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import views.FXMLViewController;
+import views.DimensionBinder;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -21,7 +20,10 @@ public class TournamentInformationViewController extends FXMLViewController {
     private FXMLViewController currentContentController = null;
 
     @FXML
-    private VBox tourInfo;
+    public BorderPane tournamentInformationContent;
+
+    @FXML
+    private VBox tournamentInfo;
 
     @FXML
     private Label activeGamesLabel;
@@ -37,6 +39,9 @@ public class TournamentInformationViewController extends FXMLViewController {
 
         viewTournamentList();
 
+        DimensionBinder.bindWidthToPercentageOfContainer(
+                tournamentsList, 0.8, tournamentInfo
+        );
     }
 
     public void viewTournamentList(){

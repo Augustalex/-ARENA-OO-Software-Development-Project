@@ -4,9 +4,8 @@ import advertisement.ad.Ad;
 import advertisement.adDisplay.exceptions.AdImageNotSet;
 import advertisement.adSpot.AdSpot;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import views.ViewDimensionBinder;
+import views.DimensionBinder;
 
 /**
  * Created by August on 2016-11-05.
@@ -42,14 +41,14 @@ public class FxAdDisplay extends PaneAdDisplay {
 
         this.adImageHolder.fitHeightProperty().bind(this.heightProperty());
 
-        ViewDimensionBinder.bindOneToOneDimension(
+        DimensionBinder.bindOneToOneDimension(
                 this.getInnerPane().minHeightProperty(),
                 this.getInnerPane().maxHeightProperty(),
                 this.heightProperty()
         );
 
         //Bind AdPane (the holder of the adverts) to the width of the image.
-        ViewDimensionBinder.bindOneToOneDimension(
+        DimensionBinder.bindOneToOneDimension(
                 this.getInnerPane().minWidthProperty(),
                 this.getInnerPane().maxWidthProperty(),
                 this.adImageHolder.getImage().widthProperty().multiply(this.heightProperty().divide(this.adImageHolder.getImage().heightProperty()))

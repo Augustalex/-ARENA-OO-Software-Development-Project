@@ -12,10 +12,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import model.GameInformation;
+import gameInformation.GameInformation;
 import views.FXMLViewController;
-import views.TournamentInformationView.TournamentInformationViewController;
-import views.ViewDimensionBinder;
+import views.DimensionBinder;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,8 +25,7 @@ import java.util.ResourceBundle;
  */
 public class GameInformationViewController extends FXMLViewController{
 
-    GameInformation gameInformation;
-
+    private GameInformation gameInformation;
 
     @FXML
     private Rectangle gameImage;
@@ -39,10 +37,10 @@ public class GameInformationViewController extends FXMLViewController{
     private Text gameDescription;
 
     @FXML
-    private ScrollPane gameInformationSPane;
+    private ScrollPane gameInformationContainer;
 
     @FXML
-    private BorderPane gameInformationBPane;
+    private BorderPane gameInformationContent;
 
     @FXML
     private Button playGameButton;
@@ -62,12 +60,16 @@ public class GameInformationViewController extends FXMLViewController{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //ViewDimensionBinder.bindWidthToPercentageOfContainer(tournamentListContainer,0.8,gameInformationWindow);
+        DimensionBinder.bindWidthToPercentageOfContainer(gameInformationContent, 0.95, gameInformationContainer);
+
+
         gameName.setText(gameInformation.getGameName());
         gameDescription.setText(gameInformation.getGameDescription());
+
         gameImage.setFill(new ImagePattern(new Image(gameInformation.getImageURL())));
-        gameImage.widthProperty().bind(gameInformationSPane.widthProperty().multiply(0.2));
-        gameImage.heightProperty().bind(gameInformationSPane.widthProperty().multiply(0.2));
+        gameImage.widthProperty().bind(gameInformationContainer.widthProperty().multiply(0.2));
+        gameImage.heightProperty().bind(gameInformationContainer.widthProperty().multiply(0.2));
+
         playGameButton.setOnAction(e -> {
             GameLauncher.launchGame(gameInformation);
         });

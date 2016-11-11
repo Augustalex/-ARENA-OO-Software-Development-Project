@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import views.ViewDimensionBinder;
+import views.DimensionBinder;
 
 /**
  * A stylized button that will appear on the top right corner of an advert.
@@ -23,12 +23,12 @@ public class AdvertHideButton extends StackPane {
 
     public void place(FxAdDisplay advertSpot){
 
-        ViewDimensionBinder.bindTwoToOneDimensions(this, advertSpot.widthProperty().multiply(0.1));
+        DimensionBinder.bindTwoToOneDimensions(this, advertSpot.widthProperty().multiply(0.1));
         this.toFront();
 
         System.out.println("Placed the button " + this);
         advertSpot.getInnerPane().getChildren().add(this);
-        ViewDimensionBinder.fixedBindTo(this, advertSpot.getInnerPane());
+        DimensionBinder.fixedBindTo(this, advertSpot.getInnerPane());
 
         this.hideButton.setId("hideAdButton");
         this.setPadding(new Insets(0, 10, 10, 10));

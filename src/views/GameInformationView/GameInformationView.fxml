@@ -8,12 +8,11 @@
 <?import javafx.scene.shape.Shape?>
 <?import javafx.scene.shape.Rectangle?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.GameInformationView.GameInformationViewController"
-            stylesheets="/views/main.css" fx:id="gameInformationSPane" id="gameInformationWindow" styleClass="gameInfo">
-    <content>
-        <BorderPane fx:id="gameInformationPane" id="gameInformationBPane" styleClass="gameInfo">
+            stylesheets="/views/main.css" fx:id="gameInformationContainer" id="gameInformationContainer" styleClass="edge-to-edge">
+    <BorderPane fx:id="gameInformationContent" id="gameInformationContent" >
         <left>
             <FlowPane>
-                <Rectangle fx:id="gameImage" styleClass="gameImage" />
+                <Rectangle fx:id="gameImage" styleClass="gameImage"/>
                 <TextFlow>
                     <Text fx:id="gameDescription" styleClass="textDescription"/>
                 </TextFlow>
@@ -22,13 +21,12 @@
         <right>
             <VBox>
                 <Label fx:id="gameName" styleClass="gameName"/>
-                <Button styleClass="playGameButton" text="Play" fx:id="playGameButton" />
+                <Button styleClass="playGameButton" text="Play" fx:id="playGameButton"/>
             </VBox>
         </right>
         <bottom>
             <StackPane fx:id="tournamentListContainer" id="tournamentListContainer">
             </StackPane>
         </bottom>
-        </BorderPane>
-    </content>
+    </BorderPane>
 </ScrollPane>

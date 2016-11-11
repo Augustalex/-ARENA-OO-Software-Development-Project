@@ -3,15 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.TournamentInformationView.TournamentInformationViewController"
-            stylesheets="/views/main.css" fx:id="TournamentInformationWindow" id="TournamentInformationWindow">
+            stylesheets="/views/main.css" fx:id="tournamentInformationContent" id="tournamentInformationContent">
     <center>
-        <VBox fx:id="tourInfo" id="tourInfo">
-            <Label fx:id="activeGamesLabel" id= "activeGamesLabel" styleClass="activeGamesTitle" />
-            <ListView fx:id="tournamentsList" id="tournamentsList" styleClass="gameInfo"/>
+        <VBox fx:id="tournamentInfo" id="tournamentInfo">
+            <Label fx:id="activeGamesLabel" id="activeGamesLabel" />
+            <ListView fx:id="tournamentsList" id="tournamentsList" />
         </VBox>
     </center>
 </BorderPane>

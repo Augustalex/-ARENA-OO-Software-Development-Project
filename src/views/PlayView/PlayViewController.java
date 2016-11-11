@@ -10,14 +10,13 @@ import advertisement.adSpot.AdSpot;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import gameInformation.GameInformation;
 import gameInformation.OthelloGameInformation;
 import views.AdvertiserView;
 import views.FXMLViewController;
 import views.GameInformationView.GameInformationViewController;
-import views.ViewDimensionBinder;
+import views.DimensionBinder;
 
 import java.io.IOException;
 import java.net.URL;
@@ -50,8 +49,8 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        ViewDimensionBinder.bindWidthToPercentageOfContainer(gameInformationContainer, 0.9, playViewWindow);
-        ViewDimensionBinder.bindWidthToPercentageOfContainer(gameList, 0.1, playViewWindow);
+        DimensionBinder.bindWidthToPercentageOfContainer(gameInformationContainer, 0.9, playViewWindow);
+        DimensionBinder.bindWidthToPercentageOfContainer(gameList, 0.1, playViewWindow);
         bindListButtons(gameList);
 
         setGameListButtonActions();
@@ -112,8 +111,8 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     }
 
     private void setupAdSpot(StackPane advert){
-        ViewDimensionBinder.bindHeightToPercentageOfContainer(advert, 0.35, playViewWindow);
-        ViewDimensionBinder.bindWidthToPercentageOfContainer(advert, 1, playViewWindow);
+        DimensionBinder.bindHeightToPercentageOfContainer(advert, 0.35, playViewWindow);
+        DimensionBinder.bindWidthToPercentageOfContainer(advert, 1, playViewWindow);
     }
 
     private void setGameListButtonActions(){
@@ -131,7 +130,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     }
 
     private void setGameInformationView(Region newInformationView, Pane container){
-        ViewDimensionBinder.fixedBindTo(newInformationView, container);
+        DimensionBinder.fixedBindTo(newInformationView, container);
         container.getChildren().setAll(newInformationView);
     }
 
@@ -146,7 +145,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     private void bindListButtons(Pane list){
         for(Button button : list.getChildren().stream()
                 .filter(node -> node instanceof Button).toArray(Button[]::new))
-            ViewDimensionBinder.bindWidthToPercentageOfContainer(button, 1, list);
+            DimensionBinder.bindWidthToPercentageOfContainer(button, 1, list);
     }
 
     @Override

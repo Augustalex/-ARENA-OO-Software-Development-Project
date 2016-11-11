@@ -1,9 +1,18 @@
+/*      ARENA MAIN WINDOW (AND SUBVIEWS)        */
+
+#mainWindowContainer{
+    -fx-focus-color: -fx-control-inner-background ;
+    -fx-faint-focus-color: -fx-control-inner-background ;
+}
+
 #contentView{
-    -fx-background-color: #001;
+    -fx-background-color: linear-gradient(#0f171e, #0b031a);
 }
 
 HBox#tabView{
     -fx-background-color: #112;
+    -fx-border-color: linear-gradient(#152029, #0e3d5e);
+    -fx-border-width: 0 0 3px 0;
 }
 
 HBox#tabView Button{
@@ -11,7 +20,7 @@ HBox#tabView Button{
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
-
+    -fx-background-insets: 0 0 2px 0;
 }
 
 HBox#tabView Button:hover{
@@ -23,26 +32,59 @@ HBox#tabView Button:hover{
 }
 
 #gameList{
-    -fx-background-color: #0f171d;
+    -fx-background-color: #152029;
 }
 
 .gameButton{
-    -fx-background-color: #152029;
-    -fx-font-family: "Century Gothic";
+    -fx-font-size: 1.2em;
+    -fx-background-color: linear-gradient(#152029, #171a29);
+    -fx-font-family: "Arial";
     -fx-text-fill: white;
-    -fx-background-radius: 0 0 0 0;
+    -fx-padding: 20px 0 20px 0;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #000;
 }
 
 .gameButton:hover{
     -fx-background-color: #354e5d;
-    -fx-font-family: "Century Gothic";
-    -fx-text-fill: white;
-    -fx-background-radius: 0 0 0 0;
-
+    -fx-font-family: "Arial";
 }
 
 StackPane#playViewSuperWindow{
     -fx-alignment: bottom-center;
+}
+
+/*      GAME INFORMATION VIEW       */
+
+#gameInformationContainer{
+    -fx-background-color: transparent;
+    -fx-hbar-policy: never;
+    /* -fx-background-color: #0f171d;*/
+}
+
+#gameInformationContainer > .viewport{
+    -fx-background-color: transparent;
+}
+
+/*      SCROLL BAR PROPERTIES           */
+#gameInformationContainer > .scroll-bar{
+    -fx-background-color: transparent;
+}
+
+#gameInformationContainer > .scroll-bar .increment-button, #gameInformationContainer > .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-background-color: transparent;
+    -fx-border: none;
+}
+
+#gameInformationContainer > .scroll-bar .thumb{
+    -fx-background-color: #999;
+    -fx-opacity: 0.3;
+}
+/* ////////////////////////////////// */
+
+#gameInformationContent{
+
 }
 
 .gameImage{
@@ -66,23 +108,32 @@ StackPane#playViewSuperWindow{
 
 .playGameButton{
     -fx-background-color: #FF09C1;
-    -fx-font-family: "Century gothic";
+    -fx-font-family: "Helvetica";
     -fx-text-fill: white;
 }
 
-.activeGamesTitle{
-    -fx-font-size: 3em;
-    -fx-font-family: "Century gothic";
+#tournamentInformationContent{
+    -fx-min-height: 1000px;
+}
+
+#activeGamesLabel{
+    -fx-font-size: 6em;
+    -fx-font-family: "Helvetica";
     -fx-text-fill: white;
 }
 
-.gameInfo{
+#tournamentsList{
     -fx-background-color: #112;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 2px;
 }
 
-.tournamentList{
-    -fx-background-color: #112;
+#tournamentsList > *{
+    -fx-control-inner-background: #042535;
+    -fx-control-inner-background-alt: derive(-fx-control-inner-background, 1%);
+    -fx-text-fill: white;
 }
-#gameInformationWindow{
-    -fx-background-color: black;
+
+#tournamentInfo{
+    -fx-alignment: center;
 }
