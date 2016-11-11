@@ -1,4 +1,4 @@
-package Tournament;
+package tournament;
 
 
 

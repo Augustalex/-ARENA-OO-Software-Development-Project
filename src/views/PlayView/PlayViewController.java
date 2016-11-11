@@ -1,21 +1,16 @@
 package views.PlayView;
 
 import advertisement.ad.*;
-import advertisement.adDisplay.AdDisplay;
 import advertisement.adDisplay.AdDisplayFactory;
 import advertisement.adDisplay.PaneAdDisplay;
-import advertisement.adPlacer.AdRepository;
-import advertisement.adPlacer.AdRepositoryFactory;
-import advertisement.adPlacer.QueueAdRepository;
+import advertisement.adRepository.AdRepository;
+import advertisement.adRepository.AdRepositoryFactory;
 import advertisement.adPreference.AdPreferenceFactory;
 import advertisement.adSpot.AdSpot;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import model.GameInformation;
 import model.OthelloGameInformation;
 import views.AdvertiserView;
@@ -138,7 +133,8 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     }
 
     private Parent loadGameInformationView(GameInformation gameInformation) throws IOException {
-        return loadFXML(
+        return
+                this.loadFXML(
                 "/views/GameInformationView/GameInformationView.fxml",
                 c -> new GameInformationViewController(gameInformation)
         );
