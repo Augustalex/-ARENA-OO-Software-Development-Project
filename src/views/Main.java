@@ -14,6 +14,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();
+
         FXMLViewController controller = loader.getController();
 
         primaryStage.setTitle("ARENA");

@@ -1,7 +1,4 @@
-package model;
-
-import static tests.RunMatch.runMatch;
-import gameLauncher.GameLauncher;
+package gameInformation;
 
 /**
  * Created by Simon on 03/11/2016.

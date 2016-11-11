@@ -49,6 +49,7 @@ public class MainWindowController extends FXMLViewController{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
                 Parent parent = loader.load();
                 this.currentContentController = loader.getController();
+
                 contentView.getChildren().setAll(parent);
             }
             catch(Exception ex){

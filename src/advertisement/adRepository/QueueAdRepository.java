@@ -1,4 +1,4 @@
-package advertisement.adPlacer;
+package advertisement.adRepository;
 
 import advertisement.ad.Ad;
 import advertisement.adPreference.AdPreference;

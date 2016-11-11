@@ -1,4 +1,4 @@
-package advertisement.adPlacer;
+package advertisement.adRepository;
 
 /**
  * Creates a concrete AdRepository and hides it behind the
