@@ -1,4 +1,4 @@
-package tournament;
+package metaInformation;
 
 /**
  * Created by Patric on 2016-11-11.

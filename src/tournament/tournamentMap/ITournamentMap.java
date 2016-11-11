@@ -1,4 +1,7 @@
-package tournament;
+package tournament.tournamentMap;
+
+import users.Player;
+import tournament.match.MatchMembers;
 
 import java.util.ArrayList;
 
@@ -10,5 +13,5 @@ public interface ITournamentMap {
     ArrayList<Player> getPlayerList();
 
     void CreateMap(ArrayList<Player> playerList);
-    ArrayList<MatchPair> getMap();
+    ArrayList<MatchMembers> getMap();
 }

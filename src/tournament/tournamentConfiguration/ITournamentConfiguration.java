@@ -1,4 +1,7 @@
-package tournament;
+package tournament.tournamentConfiguration;
+
+import metaInformation.TournamentMetaInformation;
+import tournament.tournamentStyle.TournamentStyle;
 
 /**
  * Created by Patric on 2016-11-11.

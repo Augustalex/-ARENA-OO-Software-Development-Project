@@ -3,7 +3,7 @@ package gameLauncher;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import model.GameInformation;
+import gameInformation.GameInformation;
 
 import static tests.RunMatch.runMatch;
 
