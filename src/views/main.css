@@ -35,7 +35,7 @@ HBox#tabView Button:hover{
 
 .gameButton:hover{
     -fx-background-color: #354e5d;
-    -fx-font-family: "Century gothic";
+    -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
 
@@ -53,6 +53,7 @@ StackPane#playViewSuperWindow{
 
 .gameName{
     -fx-font-size:4em;
+    -fx-font-family: "Century gothic";
     -fx-text-fill: white;
     -fx-alignment: center;
 }
@@ -65,6 +66,23 @@ StackPane#playViewSuperWindow{
 
 .playGameButton{
     -fx-background-color: #FF09C1;
-    -fx-font-family: "Comic Sans";
+    -fx-font-family: "Century gothic";
     -fx-text-fill: white;
+}
+
+.activeGamesTitle{
+    -fx-font-size: 3em;
+    -fx-font-family: "Century gothic";
+    -fx-text-fill: white;
+}
+
+.gameInfo{
+    -fx-background-color: #112;
+}
+
+.tournamentList{
+    -fx-background-color: #112;
+}
+#gameInformationWindow{
+    -fx-background-color: black;
 }

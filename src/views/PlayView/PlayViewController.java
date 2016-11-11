@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.GameInformation;
@@ -34,6 +35,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
 
     private PaneAdDisplay paneAdDisplay = null;
 
+
     @FXML
     private BorderPane playViewWindow;
 
@@ -51,6 +53,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
 
         ViewDimensionBinder.bindWidthToPercentageOfContainer(gameInformationContainer, 0.9, playViewWindow);
         ViewDimensionBinder.bindWidthToPercentageOfContainer(gameList, 0.1, playViewWindow);
@@ -122,7 +125,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
         othelloGameButton.setOnAction(e -> {
             try{
                 setGameInformationView(
-                        (Pane) loadGameInformationView(new OthelloGameInformation()),
+                        (Region) loadGameInformationView(new OthelloGameInformation()),
                         gameInformationContainer
                 );
             }
@@ -132,7 +135,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
         });
     }
 
-    private void setGameInformationView(Pane newInformationView, Pane container){
+    private void setGameInformationView(Region newInformationView, Pane container){
         ViewDimensionBinder.fixedBindTo(newInformationView, container);
         container.getChildren().setAll(newInformationView);
     }
