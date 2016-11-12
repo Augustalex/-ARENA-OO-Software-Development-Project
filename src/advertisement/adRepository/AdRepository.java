@@ -21,11 +21,9 @@ public interface AdRepository {
     AdSpot newAdSpot(AdPreference preference);
 
     /**
-     * Adds an Ad to the repository.
-     * @param ad
-     * @param preference
+     * Adds an Ad with a AdPreference to the repository.
+     * @param preferredAd
+     * @return
      */
-    AdRepository addAd(Ad ad, AdPreference preference);
-
     AdRepository addPreferredAd(PreferredAd preferredAd);
 }

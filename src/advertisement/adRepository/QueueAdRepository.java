@@ -23,13 +23,6 @@ public class QueueAdRepository implements AdRepository {
     }
 
     @Override
-    public AdRepository addAd(Ad ad, AdPreference preference) {
-        queue.addAd(PreferredAdFactory.newPreferredAd(ad, preference));
-
-        return this;
-    }
-
-    @Override
     public AdRepository addPreferredAd(PreferredAd preferredAd) {
         queue.addAd(preferredAd);
 
