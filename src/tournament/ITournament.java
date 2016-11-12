@@ -7,7 +7,7 @@ import utilities.TimeDate;
 import java.util.ArrayList;
 
 /**
- * Created by Johan on 2016-11-11.
+ * Interface for a Tournament
  */
 public interface ITournament {
     void setJoinedPlayer(Player player);

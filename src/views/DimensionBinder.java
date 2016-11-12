@@ -147,8 +147,8 @@ public class DimensionBinder {
      * (Differs only on a semantic level to the class of {@link DimensionsFactors})
      */
     private static class Margin {
-        public double width;
-        public double height;
+        public final double width;
+        public final double height;
 
         public Margin(double width, double height) {
             this.width = width;
@@ -160,8 +160,8 @@ public class DimensionBinder {
      * Data structure containing two factors, one for width and one for height.
      */
     private static class DimensionsFactors{
-        public double widthFactor;
-        public double heightFactor;
+        public final double widthFactor;
+        public final double heightFactor;
 
         public DimensionsFactors(double widthFactor, double heightFactor){
             this.widthFactor = widthFactor;

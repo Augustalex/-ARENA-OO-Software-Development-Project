@@ -2,10 +2,9 @@ package advertisement.ad;
 
 import advertisement.adPreference.AdPreference;
 import advertisement.adPreference.AdPreferenceFactory;
-import advertisement.adPreference.AdPreferenceSheet;
+import javafx.scene.image.Image;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.ParameterizedType;
 
 /**
  * Creates PreferredAds from a given Ad and AdPreference.
@@ -13,7 +12,10 @@ import java.util.Map;
 public class PreferredAdFactory {
 
     public static PreferredAd newPreferredAd(Ad ad, AdPreference adPreference){
-        return new PreferredImageAd(ad, adPreference);
+        if(PreferredAdFactory.isImageAd(ad))
+            return new PreferredImageAd((Ad<Image>)ad, adPreference);
+        else
+            throw new IllegalArgumentException();
     }
 
     public static PreferredAd newPreferredAd(String imageURL, AdPreference adPreference){
@@ -48,5 +50,12 @@ public class PreferredAdFactory {
                 new ImageAd(imageURL),
                 AdPreferenceFactory.newMainWindowPreference());
 
+    }
+
+    private static boolean isImageAd(Ad ad){
+        ParameterizedType type = (ParameterizedType) ad.getClass().getGenericSuperclass();
+
+        //Check if parameter is of type Image
+        return type.getActualTypeArguments()[0] == Image.class;
     }
 }

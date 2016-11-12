@@ -3,7 +3,8 @@ package advertisement.adQueue;
 import advertisement.ad.Ad;
 
 /**
- * Created by August on 2016-11-04.
+ * A queue interface for Ads.
+ * @param <T>
  */
 public interface AdQueue<T extends Ad> {
 

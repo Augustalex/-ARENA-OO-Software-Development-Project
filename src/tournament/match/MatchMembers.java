@@ -1,7 +1,7 @@
 package tournament.match;
 
 /**
- * Created by Johan on 2016-11-11.
+ * Wrapper for Player members of a Match.
  */
 public class MatchMembers {
 

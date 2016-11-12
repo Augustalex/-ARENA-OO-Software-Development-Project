@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class CollectionsPreferenceQueue implements AdPreferenceQueue {
 
-    private Queue<PreferredAd> queue = new LinkedBlockingQueue<>();
+    private final Queue<PreferredAd> queue = new LinkedBlockingQueue<>();
 
     @Override
     public void addAd(PreferredAd ad) {

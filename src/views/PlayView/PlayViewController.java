@@ -23,7 +23,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by August on 2016-11-02.
+ * View controller for the "Play" view. Sets up the game choices available, and sets
+ * up routing for buttons to their corresponding "GameInformation" views.
+ *
+ * Might also set up Ads for when the view is loaded. (This is because Ads in this view
+ * is not necessarily a permanent design decision).
  */
 public class PlayViewController extends FXMLViewController implements AdvertiserView{
 

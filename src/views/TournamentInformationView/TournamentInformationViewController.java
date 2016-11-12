@@ -13,11 +13,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Simon on 11/11/2016.
+ * The View Controller of the "TournamentInformation" view.
+ *
+ * Formats the tournament list and binds inner elements to surrounding container.
  */
 public class TournamentInformationViewController extends FXMLViewController {
-
-    private FXMLViewController currentContentController = null;
 
     @FXML
     public BorderPane tournamentInformationContent;
@@ -59,11 +59,7 @@ public class TournamentInformationViewController extends FXMLViewController {
 
     @Override
     public void closeView() {
-        closeCurrentContentController();
+
     }
 
-    private void closeCurrentContentController(){
-        if(this.currentContentController != null)
-            this.currentContentController.closeView();
-    }
 }

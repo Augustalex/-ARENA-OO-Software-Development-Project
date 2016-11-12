@@ -1,12 +1,12 @@
 package gameInformation;
 
 /**
- * Created by Simon on 03/11/2016.
+ * Template containing key information about a game.
  */
 public class GameInformation {
-    String gameName;
-    String imageURL;
-    String gameDescription;
+    private String gameName;
+    private String imageURL;
+    private String gameDescription;
 
     public GameInformation(String gameName, String gameDescription, String imageURL){
         this.setGameName(gameName);

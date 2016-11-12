@@ -1,13 +1,14 @@
 package gameInformation;
 
 /**
- * Created by Simon on 03/11/2016.
+ * A predefined GameInformation class with contents regarding
+ * the game "Othello" (also known as "Reversi").
  */
 public class OthelloGameInformation extends GameInformation{
 
-    static final String name = "Othello";
-    static final String description = "Also known as Reversi. \nTwo players face eachother in a match to death. \nWinner gets glory and fame.";
-    static final String imageURL = "/othello_image.jpg";
+    private static final String name = "Othello";
+    private static final String description = "Also known as Reversi. \nTwo players face each other in a match to death. \nWinner gets glory and fame.";
+    private static final String imageURL = "/othello_image.jpg";
 
     public OthelloGameInformation() {
         super(OthelloGameInformation.name, OthelloGameInformation.description, OthelloGameInformation.imageURL);

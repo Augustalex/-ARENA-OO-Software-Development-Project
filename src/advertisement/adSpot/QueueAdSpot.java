@@ -9,18 +9,17 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 import java.util.Arrays;
-import java.util.Timer;
 
 /**
  * Implements AdSpot with an AdQueue.
  */
 public class QueueAdSpot implements AdSpot {
 
-    private ObjectProperty<Ad> currentAd = new SimpleObjectProperty<>(null);
+    private final ObjectProperty<Ad> currentAd = new SimpleObjectProperty<>(null);
 
-    private BooleanProperty cancelLoop = new SimpleBooleanProperty(false);
+    private final BooleanProperty cancelLoop = new SimpleBooleanProperty(false);
 
-    private AdQueue<Ad> queue;
+    private final AdQueue<Ad> queue;
 
     public QueueAdSpot(Ad[] ads){
         this.queue = new AdQueueFactory<>().newAdQueue();
@@ -59,7 +58,7 @@ public class QueueAdSpot implements AdSpot {
     }
 
     @Override
-    public ObjectProperty currentAdProperty() {
+    public ObjectProperty<? extends Ad> currentAdProperty() {
         return this.currentAd;
     }
 

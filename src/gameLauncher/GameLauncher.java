@@ -8,7 +8,8 @@ import gameInformation.GameInformation;
 import static tests.RunMatch.runMatch;
 
 /**
- * Created by Simon on 05/11/2016.
+ * Launches a certain game given information about the
+ * game via the {@link GameInformation} object.
  */
 public class GameLauncher {
 
@@ -16,7 +17,7 @@ public class GameLauncher {
      * Method for launching a game from the ARENA client.
      * A switch case containing all games launches the specific
      * games from their runMatch() method.
-     * A gameInfromation object is sent in to let the launcher know
+     * A gameInformation object is sent in to let the launcher know
      * which game should be launched.
      * The game is displayed in a new window.
      * @param gameInformation

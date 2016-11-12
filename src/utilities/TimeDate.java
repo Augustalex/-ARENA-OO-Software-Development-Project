@@ -1,7 +1,7 @@
 package utilities;
 
 /**
- * Created by Johan on 2016-11-11.
+ * Specifies a specific time and date.
  */
 public class TimeDate {
 

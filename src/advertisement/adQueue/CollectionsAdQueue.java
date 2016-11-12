@@ -11,7 +11,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class CollectionsAdQueue<T extends Ad> implements AdQueue<T> {
 
-    private Queue<T> queue = new LinkedBlockingQueue<T>();
+    private final Queue<T> queue = new LinkedBlockingQueue<>();
 
     @Override
     public void addAd(T ad) {

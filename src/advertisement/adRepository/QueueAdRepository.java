@@ -1,20 +1,18 @@
 package advertisement.adRepository;
 
-import advertisement.ad.Ad;
 import advertisement.adPreference.AdPreference;
 import advertisement.ad.PreferredAd;
 import advertisement.adQueue.AdPreferenceQueue;
 import advertisement.adQueue.AdQueueFactory;
 import advertisement.adSpot.AdSpot;
 import advertisement.adSpot.AdSpotFactory;
-import advertisement.ad.PreferredAdFactory;
 
 /**
  * Implements {@link AdRepository} with a AdPreferenceQueue.
  */
 public class QueueAdRepository implements AdRepository {
 
-    private AdPreferenceQueue queue = new AdQueueFactory<PreferredAd>().newPreferenceQueue();
+    private final AdPreferenceQueue queue = new AdQueueFactory<PreferredAd>().newPreferenceQueue();
 
     @Override
     public AdSpot newAdSpot(AdPreference preference) {

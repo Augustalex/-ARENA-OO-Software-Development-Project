@@ -1,12 +1,9 @@
 package advertisement.adDisplay;
 
 import advertisement.ad.Ad;
-import advertisement.adDisplay.exceptions.CancelOnRougePane;
 import advertisement.adSpot.AdSpot;
-import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  * An abstract class for representing the Interface of concrete
@@ -39,7 +36,7 @@ public abstract class PaneAdDisplay extends BorderPane implements AdDisplay{
      * Displays given ads contents in the PaneAdDisplay.
      * @param ad
      */
-    protected abstract void displayAdContent(Ad ad);
+    protected abstract void displayAdContent(Ad<Image> ad);
 
     @Override
     public AdDisplay setAdSpot(AdSpot adSpot) {
@@ -63,9 +60,7 @@ public abstract class PaneAdDisplay extends BorderPane implements AdDisplay{
      * current Ad of the AdSpot changes.
      */
     protected void listenToCurrentAdChanges(){
-        this.adSpot.currentAdProperty().addListener((observable, oldValue, newValue) -> {
-            displayAdContent(newValue);
-        });
+        this.adSpot.currentAdProperty().addListener((observable, oldValue, newValue) -> displayAdContent(newValue));
     }
 
 }

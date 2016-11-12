@@ -1,15 +1,13 @@
 package advertisement.ad;
 
-import javafx.scene.image.Image;
-
 /**
  * Ad for use in AdSpots and AdDisplays.
  */
-public interface Ad {
+public interface Ad<T> {
 
     /**
      * Returns JavaFX Image object that represents the Ad.
      * @return
      */
-    Image getImage();
+    T getContent();
 }

@@ -1,7 +1,7 @@
 package users;
 
 /**
- * Created by Johan on 2016-11-11.
+ * Represents the User type Player.
  */
 public class Player {
 }

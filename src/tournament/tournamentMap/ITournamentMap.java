@@ -6,12 +6,13 @@ import tournament.match.MatchMembers;
 import java.util.ArrayList;
 
 /**
- * Created by Johan on 2016-11-11.
+ * The tournament map representing the set and order
+ * of matches to be played during a tournament.
  */
 public interface ITournamentMap {
     void setPlayerList(ArrayList<Player> joinedPlayers);
     ArrayList<Player> getPlayerList();
 
-    void CreateMap(ArrayList<Player> playerList);
+    void createMap(ArrayList<Player> playerList);
     ArrayList<MatchMembers> getMap();
 }

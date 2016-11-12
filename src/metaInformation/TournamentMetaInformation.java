@@ -3,7 +3,7 @@ package metaInformation;
 import utilities.TimeDate;
 
 /**
- * Created by Patric on 2016-11-11.
+ * Contains {@link MetaInformation} about a Tournament domain object.
  */
 public class TournamentMetaInformation extends MetaInformation {
     private TimeDate startDate;

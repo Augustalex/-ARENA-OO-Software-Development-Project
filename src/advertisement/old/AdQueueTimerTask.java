@@ -5,11 +5,11 @@ import javafx.application.Platform;
 import java.util.TimerTask;
 
 /**
- * Created by August on 2016-11-03.
+ * A TimerTask for looping images in an AdQueue.
  */
 public class AdQueueTimerTask extends TimerTask {
 
-    private AdPreferenceQueue adPreferenceQueue;
+    private final AdPreferenceQueue adPreferenceQueue;
 
     public AdQueueTimerTask(AdPreferenceQueue adPreferenceQueue){
         this.adPreferenceQueue = adPreferenceQueue;

@@ -1,6 +1,5 @@
 package advertisement.adRepository;
 
-import advertisement.ad.Ad;
 import advertisement.adPreference.AdPreference;
 import advertisement.ad.PreferredAd;
 import advertisement.adSpot.AdSpot;

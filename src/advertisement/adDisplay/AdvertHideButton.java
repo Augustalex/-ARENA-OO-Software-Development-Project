@@ -13,7 +13,7 @@ import views.DimensionBinder;
  */
 public class AdvertHideButton extends StackPane {
 
-    private Button hideButton = new Button();
+    private final Button hideButton = new Button();
     private FxAdDisplay advertSpot = null;
 
     public AdvertHideButton(){

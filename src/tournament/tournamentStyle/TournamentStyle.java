@@ -1,7 +1,10 @@
 package tournament.tournamentStyle;
 
 /**
- * Created by Patric on 2016-11-11.
+ * Defines the type and style of tournament to be played.
+ *
+ * Might describe the way a Tournament Map may be created and
+ * other related aspect to setting up a new Tournament.
  */
 public interface TournamentStyle {
 }

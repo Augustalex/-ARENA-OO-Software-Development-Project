@@ -1,7 +1,8 @@
 package advertisement.adDisplay.exceptions;
 
 /**
- * Created by August on 2016-11-05.
+ * Exception thrown when an ad image is not set on the object
+ * trying to manipulate or get data from it.
  */
 public class AdImageNotSet extends RuntimeException {
 

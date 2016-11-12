@@ -3,19 +3,20 @@ package advertisement.adDisplay;
 import advertisement.ad.Ad;
 import advertisement.adDisplay.exceptions.AdImageNotSet;
 import advertisement.adSpot.AdSpot;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import views.DimensionBinder;
 
 /**
- * Created by August on 2016-11-05.
+ * The view object AdDisplay implemented with JavaFX components.
  */
 public class FxAdDisplay extends PaneAdDisplay {
 
-    private StackPane innerPane = new StackPane();
-    private ImageView adImageHolder = new ImageView();
+    private final StackPane innerPane = new StackPane();
+    private final ImageView adImageHolder = new ImageView();
 
-    private AdvertHideButton hideButton = new AdvertHideButton();
+    private final AdvertHideButton hideButton = new AdvertHideButton();
 
     public FxAdDisplay(AdSpot adSpot){
         super(adSpot);
@@ -78,8 +79,8 @@ public class FxAdDisplay extends PaneAdDisplay {
     }
 
     @Override
-    protected void displayAdContent(Ad ad){
-        this.adImageHolder.setImage(ad.getImage());
+    protected void displayAdContent(Ad<Image> ad){
+        this.adImageHolder.setImage(ad.getContent());
     }
 
     private void activateCloseButton(){

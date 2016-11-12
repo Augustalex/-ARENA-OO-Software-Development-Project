@@ -4,7 +4,7 @@ import metaInformation.TournamentMetaInformation;
 import tournament.tournamentStyle.TournamentStyle;
 
 /**
- * Created by Patric on 2016-11-11.
+ * Implements the Tournament Configuration Interface.
  */
 public class TournamentConfiguration implements ITournamentConfiguration {
     private TournamentStyle tournamentStyle;

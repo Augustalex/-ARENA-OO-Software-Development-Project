@@ -1,11 +1,11 @@
 package advertisement.adPreference;
 
-import java.util.Map;
+import advertisement.preferences.PreferenceSet.PreferenceSet;
 
 /**
  * A preference to where an Ad should be placed within the application.
  */
-public interface AdPreference {
+public interface AdPreference{
 
     /**
      * Compares the current preference with a given other preference
@@ -17,8 +17,9 @@ public interface AdPreference {
     boolean isPreferable(AdPreference otherPreference);
 
     /**
-     * Returns the current objects Map of boolean preferences.
-     * @return
+     * Returns the preference set containing all preferences
+     * related to the ad.
+     * @return a set of preferences.
      */
-    Map<String, Boolean> getPreferenceSheet();
+    PreferenceSet getPreferenceSet();
 }

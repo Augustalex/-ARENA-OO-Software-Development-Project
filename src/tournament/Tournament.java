@@ -10,10 +10,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by Johan on 2016-11-11.
+ * Implements the Tournament interface.
  */
 public class Tournament implements ITournament, Serializable {
-        private ArrayList <Player> joinedPlayers;
+        private final ArrayList<Player> joinedPlayers = new ArrayList<>();
         private ITournamentMap tournamentMap;
         private TimeDate startTime;
 

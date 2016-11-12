@@ -21,11 +21,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Simon on 03/11/2016.
+ * Controller for the GameInformationView.
+ *
+ * Loads game information into the view from the GameInformation object
+ * received as a parameter in the constructor.
  */
 public class GameInformationViewController extends FXMLViewController{
 
-    private GameInformation gameInformation;
+    private final GameInformation gameInformation;
 
     @FXML
     private Rectangle gameImage;
@@ -70,9 +73,7 @@ public class GameInformationViewController extends FXMLViewController{
         gameImage.widthProperty().bind(gameInformationContainer.widthProperty().multiply(0.2));
         gameImage.heightProperty().bind(gameInformationContainer.widthProperty().multiply(0.2));
 
-        playGameButton.setOnAction(e -> {
-            GameLauncher.launchGame(gameInformation);
-        });
+        playGameButton.setOnAction(e -> GameLauncher.launchGame(gameInformation));
 
         try {
             tournamentListContainer.getChildren().setAll(loadTournamentInformationView());

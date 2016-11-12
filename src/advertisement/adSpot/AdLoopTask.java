@@ -7,7 +7,7 @@ import java.util.TimerTask;
  */
 public class AdLoopTask extends TimerTask {
 
-    private AdSpot adspot;
+    private final AdSpot adspot;
 
     public AdLoopTask(AdSpot adSpot){
         this.adspot = adSpot;

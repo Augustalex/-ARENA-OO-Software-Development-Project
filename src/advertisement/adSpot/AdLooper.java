@@ -7,8 +7,8 @@ import java.util.Timer;
  */
 public class AdLooper {
 
-    private Timer timer;
-    private AdSpot adSpot;
+    private final Timer timer;
+    private final AdSpot adSpot;
 
     public AdLooper(AdSpot adSpot){
         this.adSpot = adSpot;

@@ -30,7 +30,7 @@ public abstract class FXMLViewController implements Initializable{
      * @throws IOException
      */
     public Parent loadFXML(String fxmlPath, javafx.util.Callback<java.lang.Class<?>, java.lang.Object> controllerCallback) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameInformationView/GameInformationView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/" + fxmlPath));
 
         loader.setControllerFactory(controllerCallback);
 

@@ -9,13 +9,13 @@ import javafx.scene.image.Image;
  */
 public class PreferredImageAd implements PreferredAd {
 
-    private AdPreference adPreference;
+    private final AdPreference adPreference;
 
-    private Image image;
+    private final Image image;
 
-    public PreferredImageAd(Ad ad, AdPreference adPreference){
+    public PreferredImageAd(Ad<Image> ad, AdPreference adPreference){
         this.adPreference = adPreference;
-        this.image = ad.getImage();
+        this.image = ad.getContent();
     }
 
     /**
@@ -32,7 +32,7 @@ public class PreferredImageAd implements PreferredAd {
      * @return
      */
     @Override
-    public Image getImage() {
+    public Image getContent() {
         return this.image;
     }
 }

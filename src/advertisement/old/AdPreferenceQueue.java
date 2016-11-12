@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class AdPreferenceQueue {
 
-    private Queue<Ad> adsQueue = new LinkedBlockingQueue<>();
+    private final Queue<Ad> adsQueue = new LinkedBlockingQueue<>();
 
     private boolean exitLoop = false;
 

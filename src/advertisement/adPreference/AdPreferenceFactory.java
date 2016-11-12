@@ -17,7 +17,7 @@ public class AdPreferenceFactory {
         Map<String, Boolean> sheet = new HashMap<>();
         sheet.put("PlayView", true);
 
-        return new AdPreferenceSheet(sheet);
+        return new AdPreferenceSet(sheet);
     }
 
     /**
@@ -27,6 +27,6 @@ public class AdPreferenceFactory {
         Map<String, Boolean> sheet = new HashMap<>();
         sheet.put("MainWindow", true);
 
-        return new AdPreferenceSheet(sheet);
+        return new AdPreferenceSet(sheet);
     }
 }
