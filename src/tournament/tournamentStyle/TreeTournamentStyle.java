@@ -5,4 +5,9 @@ package tournament.tournamentStyle;
  * of a Tree Tournament.
  */
 public class TreeTournamentStyle implements TournamentStyle {
+
+    @Override
+    public String toString(){
+        return "Tree Style";
+    }
 }

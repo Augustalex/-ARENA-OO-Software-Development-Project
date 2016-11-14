@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,6 +32,9 @@ public class MainWindowController extends FXMLViewController{
 
     @FXML
     private Button watchButton;
+
+    @FXML
+    private Button createTournamentButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,6 +67,17 @@ public class MainWindowController extends FXMLViewController{
             }
             catch(Exception ex){
                 ex.printStackTrace();
+            }
+        });
+
+        createTournamentButton.setOnAction(e -> {
+            try{
+                closeCurrentContentController();
+                Parent parent = this.loadFXML("configureTournament/ConfigureTournamentView.fxml");
+
+                contentView.getChildren().setAll(parent);
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
     }

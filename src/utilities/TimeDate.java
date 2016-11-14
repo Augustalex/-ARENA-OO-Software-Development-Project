@@ -9,4 +9,9 @@ public class TimeDate {
     public TimeDate(String dateString){
         this.dateString = dateString;
     }
+
+    @Override
+    public String toString(){
+        return this.dateString;
+    }
 }
