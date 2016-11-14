@@ -1,6 +1,7 @@
 package views;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,11 +15,13 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();
+        Platform.setImplicitExit(false);
 
         //Loading controller to enable closing it on exit of application.
         FXMLViewController controller = loader.getController();
 
-        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.initStyle(StageStyle.DECORATED);
+        primaryStage.setFullScreen(false);
         primaryStage.setTitle("ARENA");
         primaryStage.setScene(new Scene(parent, 1600, 1000));
         primaryStage.show();
