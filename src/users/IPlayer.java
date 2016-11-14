@@ -1,20 +1,24 @@
 package users;
 
 import league.League;
+import tournament.ITournament;
 import tournament.Tournament;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the User type IPlayer.
  */
 public interface IPlayer {
 
-    League[] getLeagues();
+    ArrayList<League> getLeagues();
 
-    void addLeague(int playerID);
+    //void addLeague(int playerID);
 
-    void addTournament(Tournament tour);
+    void addTournament(ITournament tour);
 
-    Tournament getAvailibleTournaments(League[] leagues);
+    List<ITournament> getAvailibleTournaments(ArrayList<League> leagues);
 
     //getAvailibleTournaments(Leagues)
     //addTournament(tour1)

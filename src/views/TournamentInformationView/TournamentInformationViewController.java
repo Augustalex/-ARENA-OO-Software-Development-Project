@@ -44,7 +44,7 @@ public class TournamentInformationViewController extends FXMLViewController {
         );
     }
 
-    public void viewTournamentList(){
+    public void viewTournamentList(){ //skickar med ArrayList tournaments
         activeGamesLabel.setText("Active Games");
 
         ObservableList<String> tournaments = tournamentsList.getItems();

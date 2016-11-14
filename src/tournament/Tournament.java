@@ -18,6 +18,7 @@ public class Tournament implements ITournament, Serializable {
         private ITournamentMap tournamentMap;
         private TimeDate startTime;
     private String tournamentName;
+    private int tourID;
 
     @Override
     public void setJoinedPlayer(IPlayer player) {
@@ -47,6 +48,11 @@ public class Tournament implements ITournament, Serializable {
     @Override
     public String getTournamentName(){
         return tournamentName;
+    }
+
+    @Override
+    public int getTournamentID(){
+        return tourID;
     }
 
     @Override
