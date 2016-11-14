@@ -1,7 +1,7 @@
 package tournament.tournamentConfiguration;
 
 import metaInformation.TournamentMetaInformation;
-import tournament.tournamentStyle.TournamentStyle;
+import tournament.tournamentStyle.ITournamentStyle;
 
 /**
  * The configuration of a Tournament not yet created.
@@ -10,10 +10,10 @@ public interface ITournamentConfiguration {
 
     /**
      * Set a Tournament style for the configuration.
-     * @param tournamentStyle
+     * @param ITournamentStyle
      * @return
      */
-    ITournamentConfiguration setTournamentStyle(TournamentStyle tournamentStyle);
+    ITournamentConfiguration setTournamentStyle(ITournamentStyle ITournamentStyle);
 
     /**
      * Set {@link metaInformation.MetaInformation} for the Tournament Configuration.
@@ -28,7 +28,7 @@ public interface ITournamentConfiguration {
      * Might return null if no style is set.
      * @return
      */
-    TournamentStyle getTournamentStyle();
+    ITournamentStyle getITournamentStyle();
 
     /**
      * Retrieve the {@link metaInformation.MetaInformation} set on the Tournament Configuration.
