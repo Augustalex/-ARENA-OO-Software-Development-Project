@@ -1,7 +1,7 @@
 package tournament;
 
 import tournament.tournamentMap.ITournamentMap;
-import users.Player;
+import users.IPlayer;
 import utilities.TimeDate;
 
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Interface for a Tournament
  */
 public interface ITournament {
-    void setJoinedPlayer(Player player);
-    ArrayList<Player> getJoinedPlayers();
+    void setJoinedPlayer(IPlayer player);
+    ArrayList<IPlayer> getJoinedPlayers();
 
     void setTournamentMap(ITournamentMap tournamentMap);
     ITournamentMap getTournamentMap();
@@ -21,5 +21,9 @@ public interface ITournament {
 
     void joinTournament();
 
-    void AddPlayer(Player player);
+    String getTournamentName();
+
+    //void getTournamentInfo();
+
+    void AddPlayer(IPlayer player);
 }

@@ -2,8 +2,9 @@ package tournament;
 
 
 
+import metaInformation.TournamentMetaInformation;
 import tournament.tournamentMap.ITournamentMap;
-import users.Player;
+import users.IPlayer;
 import utilities.TimeDate;
 
 import java.io.Serializable;
@@ -13,17 +14,18 @@ import java.util.ArrayList;
  * Implements the Tournament interface.
  */
 public class Tournament implements ITournament, Serializable {
-        private final ArrayList<Player> joinedPlayers = new ArrayList<>();
+        private final ArrayList<IPlayer> joinedPlayers = new ArrayList<>();
         private ITournamentMap tournamentMap;
         private TimeDate startTime;
+    private String tournamentName;
 
     @Override
-    public void setJoinedPlayer(Player player) {
+    public void setJoinedPlayer(IPlayer player) {
         this.joinedPlayers.add(player);
     }
 
     @Override
-    public ArrayList<Player> getJoinedPlayers() {
+    public ArrayList<IPlayer> getJoinedPlayers() {
         return joinedPlayers;
     }
 
@@ -43,7 +45,12 @@ public class Tournament implements ITournament, Serializable {
     }
 
     @Override
-    public void AddPlayer(Player player) {
+    public String getTournamentName(){
+        return tournamentName;
+    }
+
+    @Override
+    public void AddPlayer(IPlayer player) {
         /*if(this.startTime >= getCurrentTime()) */
         setJoinedPlayer(player);
         // Else do something

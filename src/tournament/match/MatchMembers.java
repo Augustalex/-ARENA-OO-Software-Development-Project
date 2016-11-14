@@ -1,7 +1,7 @@
 package tournament.match;
 
 /**
- * Wrapper for Player members of a Match.
+ * Wrapper for IPlayer members of a Match.
  */
 public class MatchMembers {
 
