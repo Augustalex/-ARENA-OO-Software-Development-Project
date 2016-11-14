@@ -51,7 +51,7 @@ public class Player implements IPlayer {
     @Override
     public void addTournament(ITournament tour) {
 
-        //add tournament
+        joinedTournaments.add(tour);
 
     }
 }
