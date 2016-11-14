@@ -1,8 +1,5 @@
 package tournament.tournamentStyle;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Pre defined Tournament Style representing the Tournament Style
  * of a Tree Tournament.
@@ -55,4 +52,8 @@ public class TreeTournamentStyle implements ITournamentStyle {
 
     }
 
+    @Override
+    public String toString(){
+        return "Tree Style";
+    }
 }

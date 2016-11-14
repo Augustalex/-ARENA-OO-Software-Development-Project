@@ -49,6 +49,8 @@ public class TournamentInformationViewController extends FXMLViewController {
 
         ObservableList<String> tournaments = tournamentsList.getItems();
 
+        //kan göras om till en loop som fyller på alla tournaments
+        //från en array.
         tournaments.add("Coke Tournament");
         tournaments.add("Championship 2016");
         tournaments.add("'Unleash the August");

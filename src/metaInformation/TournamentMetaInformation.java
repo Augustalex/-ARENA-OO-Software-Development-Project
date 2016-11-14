@@ -7,7 +7,7 @@ import utilities.TimeDate;
  */
 public class TournamentMetaInformation extends MetaInformation {
     private TimeDate startDate;
-
+    private String tourName;
     public TimeDate getStartDate(){
         return startDate;
     }

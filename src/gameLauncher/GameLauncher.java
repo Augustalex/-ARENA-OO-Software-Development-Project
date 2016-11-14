@@ -25,6 +25,7 @@ public class GameLauncher {
    public static void launchGame(GameInformation gameInformation){
        StackPane newGamePane = new StackPane();
        Stage stage = new Stage();
+       stage.setFullScreen(true);
        stage.setScene(new Scene(newGamePane));
        stage.setTitle(gameInformation.getGameName());
        stage.show();

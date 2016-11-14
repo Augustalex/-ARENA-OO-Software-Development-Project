@@ -30,4 +30,9 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     public TournamentMetaInformation getMetaInformation() {
         return tournamentMetaInformation;
     }
+
+    @Override
+    public String toString(){
+        return "Name: " + tournamentMetaInformation.getName() + " Description: " + tournamentMetaInformation.getDescription() + " Start time: " + this.tournamentMetaInformation.getStartDate() + " Style: " + tournamentStyle;
+    }
 }

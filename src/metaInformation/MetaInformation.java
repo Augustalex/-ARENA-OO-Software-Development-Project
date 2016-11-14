@@ -2,7 +2,7 @@ package metaInformation;
 
 /**
  * Contains key information about an Object of domain importance.
- * i.e. a Tournament object or a Player object.
+ * i.e. a Tournament object or a IPlayer object.
  *
  * But the actual use is not specified and is purely utilitarian.
  */

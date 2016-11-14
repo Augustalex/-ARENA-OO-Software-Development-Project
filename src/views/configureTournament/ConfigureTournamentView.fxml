@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.configureTournament.ConfigureTournamentViewController"
+            stylesheets="/views/main.css" fx:id="createTournamentContainer" id="createTournamentContainer">
+    <VBox fx:id="createTournamentContent" id="createTournamentContent">
+        <Label text="Create tournament style" styleClass="tournamentLabel"/>
+        <HBox fx:id="tournamentHBox" id="tournamentHBox">
+            <Label text="Name:" styleClass="tournamentLabel"/>
+            <TextField styleClass="tournamentName" fx:id="tournamentName"/>
+        </HBox>
+        <Label text="Description:" styleClass="tournamentLabel"/>
+        <TextArea styleClass="tournamentDesc" fx:id="tournamentDesc"/>
+        <Label text="Date" styleClass="tournamentLabel"/>
+        <TextField fx:id="tournamentDate"/>
+        <Label text="Tournament style:" styleClass="tournamentLabel"/>
+        <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
+        </ComboBox>
+        <Button text="Submit" styleClass="tournamentButton" fx:id="buttonTournamentSubmit"/>
+    </VBox>
+</StackPane>
