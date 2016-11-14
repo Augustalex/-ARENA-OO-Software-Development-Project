@@ -1,6 +1,6 @@
 package tournament.tournamentMap;
 
-import users.Player;
+import users.IPlayer;
 import tournament.match.MatchMembers;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import java.util.ArrayList;
  * of matches to be played during a tournament.
  */
 public interface ITournamentMap {
-    void setPlayerList(ArrayList<Player> joinedPlayers);
-    ArrayList<Player> getPlayerList();
+    void setPlayerList(ArrayList<IPlayer> joinedPlayers);
+    ArrayList<IPlayer> getPlayerList();
 
-    void createMap(ArrayList<Player> playerList);
+    void createMap(ArrayList<IPlayer> playerList);
     ArrayList<MatchMembers> getMap();
 }
