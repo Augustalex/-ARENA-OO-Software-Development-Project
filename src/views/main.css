@@ -140,3 +140,21 @@ StackPane#playViewSuperWindow{
 #tournamentInfo{
     -fx-alignment: center;
 }
+
+/*          CREATE TOURNAMENT VIEW      */
+
+#createTournamentContainer{
+}
+
+#createTournamentContent{
+    -fx-alignment: center;
+    -fx-font-size: 2em;
+}
+
+#createTournamentContent .tournamentLabel{
+    -fx-text-fill: white;
+}
+
+#tournamentHBox{
+    -fx-alignment: center;
+}

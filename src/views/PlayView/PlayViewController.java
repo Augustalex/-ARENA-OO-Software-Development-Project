@@ -84,12 +84,12 @@ public class PlayViewController extends FXMLViewController implements Advertiser
 //        fxAd6.setAsWideAdvert();
 //
 //        AdPreferenceQueue adPreferenceQueue = new AdPreferenceQueue(advertBottom);
-//        adPreferenceQueue.getAdsQueue().add(fxAd);
-//        adPreferenceQueue.getAdsQueue().add(fxAd2);
-//        adPreferenceQueue.getAdsQueue().add(fxAd3);
-//        adPreferenceQueue.getAdsQueue().add(fxAd6);
-//        adPreferenceQueue.getAdsQueue().add(fxAd4);
-//        adPreferenceQueue.getAdsQueue().add(fxAd5);
+//        adPreferenceQueue.getAdsQueue().submit(fxAd);
+//        adPreferenceQueue.getAdsQueue().submit(fxAd2);
+//        adPreferenceQueue.getAdsQueue().submit(fxAd3);
+//        adPreferenceQueue.getAdsQueue().submit(fxAd6);
+//        adPreferenceQueue.getAdsQueue().submit(fxAd4);
+//        adPreferenceQueue.getAdsQueue().submit(fxAd5);
 
 //        adPreferenceQueue.loopAds(2500);
 

@@ -1,10 +1,43 @@
 package tournament.tournamentStyle;
 
 /**
- * Defines the type and style of tournament to be played.
- *
- * Might describe the way a Tournament Map may be created and
- * other related aspect to setting up a new Tournament.
+ * Created by Hameo on 2016-11-14.
  */
-public interface TournamentStyle {
+public class TournamentStyle implements ITournamentStyle {
+
+
+    @Override
+    public void setGroupRound(boolean value) {
+
+    }
+
+    @Override
+    public boolean getGroupRound() {
+        return false;
+    }
+
+    @Override
+    public void setEliminationRound(boolean value) {
+
+    }
+
+    @Override
+    public boolean getEliminationRound() {
+        return false;
+    }
+
+    @Override
+    public ITournamentStyle getTournamentStyle() {
+        return null;
+    }
+
+    /*@Override
+    public void setTournamentStyle(ITournamentStyle tournamentStyle) {
+
+    }*/
+
+    @Override
+    public void createMapPreference() {
+
+    }
 }

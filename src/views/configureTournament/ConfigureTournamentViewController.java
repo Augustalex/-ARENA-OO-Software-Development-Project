@@ -6,16 +6,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import metaInformation.MetaInformation;
 import metaInformation.TournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
-import tournament.tournamentConfiguration.TournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfigurationFactory;
 import tournament.tournamentStyle.TournamentStyle;
 import tournament.tournamentStyle.TreeTournamentStyle;
 import utilities.TimeDate;
+import views.DimensionBinder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +28,10 @@ import java.util.ResourceBundle;
 public class ConfigureTournamentViewController implements Initializable {
 
     @FXML
-    private VBox newTournamentContainer;
+    private StackPane createTournamentContainer;
+
+    @FXML
+    private VBox createTournamentContent;
 
     @FXML
     private HBox tournamentHBox;
@@ -48,10 +53,13 @@ public class ConfigureTournamentViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 1, createTournamentContainer);
+
         buttonTournamentSubmit.setOnAction(e -> {
 
             TournamentStyle style = new TreeTournamentStyle();
-            TimeDate time = new TimeDate();
+            TimeDate time = new TimeDate(tournamentDate.getText());
 
             MetaInformation metaInformation =
                     new TournamentMetaInformation()
@@ -64,6 +72,8 @@ public class ConfigureTournamentViewController implements Initializable {
                     .newTournamentConfiguration()
                     .setTournamentStyle(style)
                     .setMetaInformation((TournamentMetaInformation)metaInformation);
+
+            System.out.println(configuration.toString());
         });
     }
 }

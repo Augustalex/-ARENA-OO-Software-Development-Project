@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.configureTournament.ConfigureTournamentViewController"
-            stylesheets="/views/main.css">
-    <VBox fx:id="newTournamentContainer">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.configureTournament.ConfigureTournamentViewController"
+            stylesheets="/views/main.css" fx:id="createTournamentContainer" id="createTournamentContainer">
+    <VBox fx:id="createTournamentContent" id="createTournamentContent">
         <Label text="Create tournament style" styleClass="tournamentLabel"/>
-        <HBox fx:id="tournamentHbox">
+        <HBox fx:id="tournamentHBox" id="tournamentHBox">
             <Label text="Name:" styleClass="tournamentLabel"/>
             <TextField styleClass="tournamentName" fx:id="tournamentName"/>
         </HBox>
@@ -18,12 +18,7 @@
         <TextField fx:id="tournamentDate"/>
         <Label text="Tournament style:" styleClass="tournamentLabel"/>
         <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
-            <items>
-                <Text text="Tree"/>
-                <Text text="Soil"/>
-                <Text text="Fire"/>
-            </items>
         </ComboBox>
         <Button text="Submit" styleClass="tournamentButton" fx:id="buttonTournamentSubmit"/>
     </VBox>
-</BorderPane>
+</StackPane>
