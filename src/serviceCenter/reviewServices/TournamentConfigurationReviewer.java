@@ -1,4 +1,4 @@
-package serviceCenter.reviewerServices;
+package serviceCenter.reviewServices;
 
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import users.User;
@@ -11,7 +11,7 @@ import users.User;
  *
  * If the object is not approved, the creator will be notified.
  */
-public interface TournamentConfigurationReviewer extends Reviewer {
+public interface TournamentConfigurationReviewer {
 
     void submitForReview(ITournamentConfiguration configuration, User user);
 }

@@ -1,9 +1,7 @@
-package serviceCenter.reviewerServices;
+package serviceCenter.reviewServices;
 
 import users.User;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 

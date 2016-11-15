@@ -38,4 +38,17 @@ public interface ITournamentConfiguration {
      */
     TournamentMetaInformation getMetaInformation();
 
+    /**
+     * Return true if all values are set and valid (in this object).
+     * @return
+     */
+    boolean isValid();
+
+    /**
+     * Submits the tournament configuration.
+     *
+     * The implementation might be to send it for review before creating the tournament.
+     */
+    void submit();
+
 }

@@ -9,6 +9,7 @@ public class TreeTournamentStyle implements ITournamentStyle {
     private final boolean groupRound = false;
     private final boolean eliminationRound = true;
     //private GroupSettings groupSettings;
+
     @Override
     public void setGroupRound(boolean value) {
         // this.leagueRound = value;
@@ -28,12 +29,15 @@ public class TreeTournamentStyle implements ITournamentStyle {
     public boolean getEliminationRound() {
         return this.eliminationRound;
     }
+
     public int getTournamentSize(){
         return this.tournamentSize;
     }
+
     public void setTournamentSize(int value){
         // this.tournamentSize = value;
     }
+
     @Override
     public ITournamentStyle getTournamentStyle() {
         return this;
@@ -48,6 +52,7 @@ public class TreeTournamentStyle implements ITournamentStyle {
     public void createMapPreference() {
 
     }
+
     public void createGroupMap(){
 
     }
