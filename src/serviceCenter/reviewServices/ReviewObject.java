@@ -27,4 +27,9 @@ public class ReviewObject<T> {
     public void disapprove(){
         this.sender.notify("Your submission of: " + reviewObject + " was not approved.");
     }
+
+    @Override
+    public String toString(){
+        return "ReviewObject from " + this.sender.toString() + ": " + this.reviewObject.toString();
+    }
 }

@@ -1,7 +1,7 @@
 package serviceCenter;
 
-import serviceCenter.reviewServices.TournamentConfigurationReviewer;
-import tournament.tournamentConfiguration.ITournamentConfiguration;
+import serviceCenter.reviewServices.OfflineTournamentConfigurationReviewer;
+import serviceCenter.reviewServices.Reviewer;
 
 /**
  * Offline implementation of ServiceCenter. Will offer all Services as
@@ -10,7 +10,7 @@ import tournament.tournamentConfiguration.ITournamentConfiguration;
 public class OfflineServiceCenter extends ServiceCenter {
 
     @Override
-    public TournamentConfigurationReviewer getTournamentConfigurationReviewer() {
-        return null;
+    public Reviewer getTournamentConfigurationReviewer() {
+        return new OfflineTournamentConfigurationReviewer();
     }
 }

@@ -6,13 +6,14 @@ import users.User;
 /**
  * Reviews all incoming retrieve objects and approves them, offline.
  */
-public class OfflineTournamentConfigurationReviewer implements TournamentConfigurationReviewer {
+public class OfflineTournamentConfigurationReviewer implements Reviewer {
 
-    ReviewQueue<ITournamentConfiguration> reviewQueue = new ReviewQueue<>();
+    private ReviewQueue<ITournamentConfiguration> reviewQueue = new ReviewQueue<>();
 
     @Override
     public void submitForReview(ITournamentConfiguration configuration, User user) {
         this.reviewQueue.submit(configuration, user);
-        this.reviewQueue.retrieve();
+        ReviewObject reviewObject = this.reviewQueue.retrieve();
+        System.out.println("APPROVED: " + reviewObject);
     }
 }

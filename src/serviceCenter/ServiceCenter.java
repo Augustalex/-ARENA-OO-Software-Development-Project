@@ -1,7 +1,6 @@
 package serviceCenter;
 
-import serviceCenter.reviewServices.TournamentConfigurationReviewer;
-import tournament.tournamentConfiguration.ITournamentConfiguration;
+import serviceCenter.reviewServices.Reviewer;
 
 /**
  * Interface for global services. Implementations will mostly use some kind
@@ -14,7 +13,7 @@ public abstract class ServiceCenter {
 
     private static ServiceCenter serviceCenter = null;
 
-    static boolean isSet(){
+    public static boolean isSet(){
         return ServiceCenter.serviceCenter != null;
     }
 
@@ -26,6 +25,6 @@ public abstract class ServiceCenter {
         return ServiceCenter.serviceCenter;
     }
 
-    public abstract TournamentConfigurationReviewer getTournamentConfigurationReviewer();
+    public abstract Reviewer getTournamentConfigurationReviewer();
 
 }

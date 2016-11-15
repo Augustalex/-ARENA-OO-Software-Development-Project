@@ -1,7 +1,9 @@
 package tournament.tournamentConfiguration;
 
 import metaInformation.TournamentMetaInformation;
+import serviceCenter.ServiceCenter;
 import tournament.tournamentStyle.ITournamentStyle;
+import users.User;
 
 /**
  * Implements the Tournament Configuration Interface.
@@ -33,12 +35,17 @@ public class TournamentConfiguration implements ITournamentConfiguration {
 
     @Override
     public boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
     public void submit() {
-
+        if(ServiceCenter.isSet())
+            ServiceCenter.getServiceCenter()
+                    .getTournamentConfigurationReviewer()
+                    .submitForReview(this, message -> System.out.println("NOTIFY!"));
+        else
+            System.out.println("ServiceCenter not set!");
     }
 
     @Override

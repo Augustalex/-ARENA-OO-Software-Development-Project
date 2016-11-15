@@ -25,7 +25,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Patric on 2016-11-14.
+ * View controller for the ConfigureTournamentView.
+ *
+ * Validates form data and submits a new ITournamentConfiguration for review on action.
+ *
  */
 public class ConfigureTournamentViewController implements Initializable {
 
@@ -84,12 +87,11 @@ public class ConfigureTournamentViewController implements Initializable {
                         .setName(tournamentName.getText())
                         .setDescription(tournamentDesc.getText());
 
-        ITournamentConfiguration configuration =
+        return(
                 TournamentConfigurationFactory
                         .newTournamentConfiguration()
                         .setTournamentStyle(style)
-                        .setMetaInformation((TournamentMetaInformation)metaInformation);
-
-        return configuration;
+                        .setMetaInformation((TournamentMetaInformation)metaInformation)
+        );
     }
 }
