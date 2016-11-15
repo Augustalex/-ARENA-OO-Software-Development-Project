@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import metaInformation.MetaInformation;
 import metaInformation.TournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
+import tournament.tournamentConfiguration.TournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfigurationFactory;
 import tournament.tournamentStyle.TournamentStyle;
 import tournament.tournamentStyle.TreeTournamentStyle;
@@ -56,24 +57,30 @@ public class ConfigureTournamentViewController implements Initializable {
 
         DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 1, createTournamentContainer);
 
+        ITournamentConfiguration configuration = TournamentConfigurationFactory.newTournamentConfiguration();
+
         buttonTournamentSubmit.setOnAction(e -> {
-
-            TournamentStyle style = new TreeTournamentStyle();
-            TimeDate time = new TimeDate(tournamentDate.getText());
-
-            MetaInformation metaInformation =
-                    new TournamentMetaInformation()
-                    .setStartDate(time)
-                    .setName(tournamentName.getText())
-                    .setDescription(tournamentDesc.getText());
-
-            ITournamentConfiguration configuration =
-                    TournamentConfigurationFactory
-                    .newTournamentConfiguration()
-                    .setTournamentStyle(style)
-                    .setMetaInformation((TournamentMetaInformation)metaInformation);
-
+            if(configuration.isValid())
             System.out.println(configuration.toString());
         });
+    }
+
+    private void fillConfigurationWithFormData(ITournamentConfiguration tournamentConfiguration){
+
+        TournamentStyle style;
+        TimeDate time = new TimeDate(tournamentDate.getText());
+
+        MetaInformation metaInformation =
+                new TournamentMetaInformation()
+                        .setStartDate(time)
+                        .setName(tournamentName.getText())
+                        .setDescription(tournamentDesc.getText());
+
+        ITournamentConfiguration configuration =
+                TournamentConfigurationFactory
+                        .newTournamentConfiguration()
+                        .setTournamentStyle(style)
+                        .setMetaInformation((TournamentMetaInformation)metaInformation);
+
     }
 }

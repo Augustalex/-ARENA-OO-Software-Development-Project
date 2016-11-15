@@ -10,10 +10,22 @@ import tournament.tournamentConfiguration.ITournamentConfiguration;
  *
  * The preferred way of managing
  */
-public interface ServiceCenter {
+public abstract class ServiceCenter {
 
-    void submitTournamentConfiguration(ITournamentConfiguration tournamentConfiguration);
+    private static ServiceCenter serviceCenter = null;
 
-    TournamentConfigurationReviewer getTournamentConfigurationReviewer();
+    static boolean isSet(){
+        return ServiceCenter.serviceCenter != null;
+    }
+
+    public static void setApplicationServiceCenter(ServiceCenter serviceCenter){
+        ServiceCenter.serviceCenter = serviceCenter;
+    }
+
+    public static ServiceCenter getServiceCenter(){
+        return ServiceCenter.serviceCenter;
+    }
+
+    public abstract TournamentConfigurationReviewer getTournamentConfigurationReviewer();
 
 }
