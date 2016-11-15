@@ -36,6 +36,9 @@ public class MainWindowController extends FXMLViewController{
     @FXML
     private Button createTournamentButton;
 
+    @FXML
+    private Button handleTournamentButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -78,6 +81,16 @@ public class MainWindowController extends FXMLViewController{
                 contentView.getChildren().setAll(parent);
             } catch (IOException e1) {
                 e1.printStackTrace();
+            }
+        });
+
+        handleTournamentButton.setOnAction(e->{
+            try{
+                closeCurrentContentController();
+                Parent parent = this.loadFXML("handleTournamentStyle/HandleTournamentStyle.fxml");
+                contentView.getChildren().setAll(parent);
+            }catch(IOException ex){
+                ex.printStackTrace();
             }
         });
     }

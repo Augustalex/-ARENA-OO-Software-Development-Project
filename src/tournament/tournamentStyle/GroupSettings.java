@@ -4,11 +4,6 @@ package tournament.tournamentStyle;
  * Created by Hameo on 2016-11-14.
  */
 public class GroupSettings {
-    private boolean groupRound;
-
-
-
-
     private int groupsAmount;
     private int rounds;
     private int maxWinners; // The amount that qualifies to continue the elimationround.

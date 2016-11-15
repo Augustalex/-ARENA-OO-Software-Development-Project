@@ -15,6 +15,7 @@
             <Button fx:id="playButton" text="PLAY" />
             <Button fx:id="watchButton" text="WATCH" />
             <Button fx:id="createTournamentButton" text="CREATE TOURNAMENT" />
+            <Button fx:id="handleTournamentButton" text="HANDLE TOURNAMENT STYLE"/>
         </HBox>
     </top>
     <bottom>

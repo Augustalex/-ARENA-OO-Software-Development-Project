@@ -14,11 +14,13 @@ public interface ITournamentStyle {
     String getTournamentStyleDescription();
     GroupSettings getGroupSettings();
     EliminationSettings getEliminationSettings();
+    int getTournamentSize();
 
     void setTournamentStyleName(String name);
     void setTournamentStyleDescription(String description);
-    void setGroupSettings(GroupSettings groupSettings);
-    void setEliminationSettings(EliminationSettings eliminationSettings);
+    void setGroupSettings();
+    void setEliminationSettings();
+    void setTournamentSize(int size);
 
     //void setGroupRound(boolean value);
     //boolean getGroupRound();
