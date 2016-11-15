@@ -9,12 +9,16 @@
     <VBox fx:id="createTournamentContent" id="createTournamentContent">
         <Label text="Create tournament style" styleClass="tournamentLabel" id="header"/>
         <HBox fx:id="tournamentHBox" id="tournamentHBox">
-            <Label text="Name:" styleClass="tournamentLabel"/>
+            <Label text="Name " styleClass="tournamentLabel"/>
             <TextField styleClass="tournamentName, tournamentTextBoxes" fx:id="tournamentName"/>
         </HBox>
-        <Label text="Description:" styleClass="tournamentLabel"/>
-        <TextArea styleClass="tournamentDesc, tournamentTextBoxes" fx:id="tournamentDesc" />
-        <Label text="Date" styleClass="tournamentLabel"/>
+        <HBox>
+            <Label text="Description" styleClass="tournamentLabel"/>
+        </HBox>
+        <TextArea styleClass="tournamentDesc, tournamentTextBoxes" fx:id="tournamentDesc" id="tournamentDesc" />
+        <HBox>
+            <Label text="Date" styleClass="tournamentLabel"/>
+        </HBox>
         <TextField fx:id="tournamentDate" styleClass="tournamentTextBoxes"/>
         <Label text="Tournament style:" styleClass="tournamentLabel"/>
         <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">

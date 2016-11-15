@@ -61,8 +61,6 @@ public class ConfigureTournamentViewController implements Initializable {
 
         DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 0.6, createTournamentContainer);
 
-
-
         buttonTournamentSubmit.setOnAction(e -> {
             ITournamentConfiguration configuration = this.newConfigurationFromFormData();
             if(configuration.isValid())

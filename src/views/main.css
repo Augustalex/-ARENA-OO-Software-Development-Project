@@ -149,11 +149,11 @@ StackPane#playViewSuperWindow{
 #createTournamentContent{
     -fx-alignment: center;
     -fx-font-size: 2em;
+    -fx-font-family: "Century Gothic";
 }
 
 #createTournamentContent .tournamentLabel{
     -fx-text-fill: #354e5d;
-    -fx-font-family: "Century Gothic";
 }
 
 #tournamentHBox{
@@ -161,9 +161,22 @@ StackPane#playViewSuperWindow{
 }
 
 #header{
-    -fx-font-size:3em;
+    -fx-font-size: 2.5em;
 }
 
 .tournamentTextBoxes{
+    -fx-background-color: #354e5d;
+}
 
+.tournamentTextBoxes .content{
+    -fx-background-color: #354e5d;
+}
+
+#tournamentDesc{
+    -fx-pref-row-count: 5;
+}
+
+.tournamentButton{
+    -fx-background-color: #FF09C1;
+    -fx-text-fill: white;
 }
