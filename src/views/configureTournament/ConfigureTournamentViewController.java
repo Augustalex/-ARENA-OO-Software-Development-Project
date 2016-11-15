@@ -60,15 +60,22 @@ public class ConfigureTournamentViewController implements Initializable {
 
 
 
-        ITournamentConfiguration configuration = TournamentConfigurationFactory.newTournamentConfiguration();
-
         buttonTournamentSubmit.setOnAction(e -> {
+            ITournamentConfiguration configuration = this.newConfigurationFromFormData();
             if(configuration.isValid())
-            System.out.println(configuration.toString());
+                configuration.submit();
+            else
+                System.out.println("All fields are not filled in correctly!");
         });
     }
 
-    private void fillConfigurationWithFormData(ITournamentConfiguration tournamentConfiguration){
+    /**
+     * Takes all input from the view objects and puts the in a new TournamentConfiguration object.
+     *
+     * This object is not guaranteed to be valid, and some fields may be empty.
+     * @return a new ITournamentConfiguration
+     */
+    private ITournamentConfiguration newConfigurationFromFormData(){
 
         ITournamentStyle style = TournamentStyleFactory.newTournamentStyle();
         TimeDate time = new TimeDate(tournamentDate.getText());
@@ -85,5 +92,6 @@ public class ConfigureTournamentViewController implements Initializable {
                         .setTournamentStyle(style)
                         .setMetaInformation((TournamentMetaInformation)metaInformation);
 
+        return configuration;
     }
 }
