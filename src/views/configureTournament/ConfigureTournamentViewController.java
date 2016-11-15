@@ -56,7 +56,9 @@ public class ConfigureTournamentViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 1, createTournamentContainer);
+        DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 0.6, createTournamentContainer);
+
+
 
         ITournamentConfiguration configuration = TournamentConfigurationFactory.newTournamentConfiguration();
 

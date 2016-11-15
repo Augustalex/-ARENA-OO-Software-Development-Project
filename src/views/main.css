@@ -152,9 +152,18 @@ StackPane#playViewSuperWindow{
 }
 
 #createTournamentContent .tournamentLabel{
-    -fx-text-fill: white;
+    -fx-text-fill: #354e5d;
+    -fx-font-family: "Century Gothic";
 }
 
 #tournamentHBox{
     -fx-alignment: center;
+}
+
+#header{
+    -fx-font-size:3em;
+}
+
+.tournamentTextBoxes{
+
 }
