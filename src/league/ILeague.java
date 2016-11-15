@@ -2,6 +2,7 @@ package league;
 
 import tournament.ITournament;
 import tournament.Tournament;
+import users.IPlayer;
 import users.Player;
 
 import java.util.List;
@@ -17,9 +18,13 @@ public interface ILeague {
 
     List<ITournament> getTournamentsInLeague();
 
-    void addTournamentToLeague(Tournament tournament);
+    void addTournamentToLeague(ITournament tournament);
 
-    void addPlayerToLeague(Player player);
+    void addPlayerToLeague(IPlayer player);
 
-    List<Player> getPlayersInLeague();
+    List<IPlayer> getPlayersInLeague();
+
+    void printTournamentIDs();
+
+    void printTournamentNames();
 }

@@ -10,8 +10,8 @@
             stylesheets="/views/main.css" fx:id="tournamentInformationContent" id="tournamentInformationContent">
     <center>
         <VBox fx:id="tournamentInfo" id="tournamentInfo">
-            <Label fx:id="activeGamesLabel" id="activeGamesLabel" />
-            <ListView fx:id="tournamentsList" id="tournamentsList" />
+            <Label fx:id="activeTournamentsLabel" id="activeTournamentsLabel" />
+            <ListView fx:id="tournamentsList" id="tournamentsList" onMouseClicked="#handleMouseClick" />
         </VBox>
     </center>
 </BorderPane>

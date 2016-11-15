@@ -2,6 +2,7 @@ package league;
 
 import tournament.ITournament;
 import tournament.Tournament;
+import users.IPlayer;
 import users.Player;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.List;
 public class League implements ILeague{
     private String leagueName;
     private int leagueID;
-    private ArrayList<Player> playersInLeague = new ArrayList<>();
+    private ArrayList<IPlayer> playersInLeague = new ArrayList<>();
     private ArrayList<ITournament> tournamentsInLeague = new ArrayList<>();
 
     public League(String name, int id){
@@ -37,12 +38,14 @@ public class League implements ILeague{
         return tournamentsInLeague;
     }
 
+    @Override
     public void printTournamentNames(){
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
             System.out.println("Name of tournaments: " + tournamentsInLeague.get(i).getTournamentName());
         }
     }
 
+    @Override
     public void printTournamentIDs(){
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
             System.out.println("ID's of tournaments: " + tournamentsInLeague.get(i).getTournamentID());
@@ -50,18 +53,18 @@ public class League implements ILeague{
     }
 
     @Override
-    public void addTournamentToLeague(Tournament tournament){
+    public void addTournamentToLeague(ITournament tournament){
         tournamentsInLeague.add(tournament);
     }
 
     @Override
-    public void addPlayerToLeague(Player player) {
+    public void addPlayerToLeague(IPlayer player) {
         playersInLeague.add(player);
     }
 
 
     @Override
-    public List<Player> getPlayersInLeague() {
+    public List<IPlayer> getPlayersInLeague() {
         return playersInLeague;
     }
 }
