@@ -11,7 +11,9 @@
     <center>
         <VBox fx:id="tournamentInfo" id="tournamentInfo">
             <Label fx:id="activeTournamentsLabel" id="activeTournamentsLabel" />
-            <ListView fx:id="tournamentsList" id="tournamentsList" onMouseClicked="#handleMouseClick" />
+            <!--<ListView fx:id="tournamentsList" id="tournamentsList" onMouseClicked="#handleMouseClick" />-->
+            <VBox fx:id="tournamentsList" id="tournamentsList">
+            </VBox>
         </VBox>
     </center>
 </BorderPane>

@@ -51,6 +51,11 @@ public class Tournament implements ITournament, Serializable {
     }
 
     @Override
+    public void setTournamentName(String name){
+        this.tournamentName = name;
+    }
+
+    @Override
     public int getTournamentID(){
         return tourID;
     }

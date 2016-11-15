@@ -150,16 +150,40 @@ StackPane#playViewSuperWindow{
 /*  "-alt" is a command for alternating between all concerned tags.
     "derive" is a color function for deriving a color from a percentage
     of another color. The percentage is mostly regarding brightness of color. */
-#tournamentsList > *{
+/*#tournamentsList > *{
     -fx-control-inner-background: #042535;
     -fx-control-inner-background-alt: derive(-fx-control-inner-background, 1%);
     -fx-text-fill: white;
+}*/
+
+#tournamentsList{
+
+    -fx-pref-width: 400px;
 }
 
 #tournamentInfo{
     -fx-alignment: center;
 }
 
+#tournamentApplyBox{
+    -fx-padding: 0.2em -0.8em 0.2em 1em;
+    -fx-font-size: 2em;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: black;
+}
+
+#tournamentApplyLabelBox > Label{
+    -fx-text-fill: white;
+}
+
+#tournamentApplyButtonBox{
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+#tournamentApplyButtonBox > Button{
+    -fx-font-size: 0.7em;
+}
 /*          CREATE TOURNAMENT VIEW      */
 
 #createTournamentContainer{

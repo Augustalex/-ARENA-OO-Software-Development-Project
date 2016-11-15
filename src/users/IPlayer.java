@@ -19,7 +19,7 @@ public interface IPlayer extends User{
 
     //void addTournament(ITournament tour);
 
-    List<ITournament> getAvailibleTournaments(ArrayList<ILeague> leagues);
+    List<ITournament> getAvailibleTournaments();
 
     //void bindTournamentToPlayer(ITournament tournament, IPlayer player);
 

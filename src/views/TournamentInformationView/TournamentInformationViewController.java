@@ -1,5 +1,6 @@
 package views.TournamentInformationView;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -7,9 +8,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import league.ILeague;
+import session.Session;
 import tournament.ITournament;
 import tournament.Tournament;
 import users.IPlayer;
+import users.Player;
 import views.FXMLViewController;
 import views.DimensionBinder;
 
@@ -26,6 +30,8 @@ import java.util.ResourceBundle;
 public class TournamentInformationViewController extends FXMLViewController {
 
     List<ITournament> tournaments;
+    IPlayer player;
+    Session session = new Session();
 
     @FXML
     public BorderPane tournamentInformationContent;
@@ -37,47 +43,38 @@ public class TournamentInformationViewController extends FXMLViewController {
     private Label activeTournamentsLabel;
 
     @FXML
-    private ListView tournamentsList;
+    private VBox tournamentsList;
 
-    @FXML
+    /*@FXML
     public void handleMouseClick(MouseEvent arg0){
         System.out.println("clicked on: " + tournamentsList.getSelectionModel().getSelectedItem());
-        new ApplyForTournamentDialog(tournaments.);
-    }
+        new ApplyForTournamentDialog(session, tournamentsList.getSelectionModel().getSelectedItem());
+    }*/
 
-    public TournamentInformationViewController(IPlayer player){
-
+    public TournamentInformationViewController(){
+        this.player = session.getPlayer();
+        //tournaments = player.getAvailibleTournaments();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        initializeTourList(player);
-        viewTournamentList();
+        viewTournamentList(player.getAvailibleTournaments());
 
         DimensionBinder.bindWidthToPercentageOfContainer(
                 tournamentsList, 0.8, tournamentInfo
         );
     }
 
-    private List<ITournament> initializeTourList(IPlayer player){
-         tournaments = player.getAvailibleTournaments(player.getLeagues());
-        return tournaments;
-    }
+    public void viewTournamentList(List<ITournament> tournaments){
+        activeTournamentsLabel.setText("Available Tournaments");
 
-    public void viewTournamentList(){ //skickar med ArrayList tournaments
-        activeTournamentsLabel.setText("Active Tournaments");
+        TournamentApplyBox[] applyBoxes = tournaments.stream()
+                .map(tournament -> new TournamentApplyBox(tournament, this.session.getAppliedTournaments()))
+                .toArray(TournamentApplyBox[]::new);
 
-        tournaments = tournamentsList.getItems();
+        tournamentsList.getChildren().setAll(applyBoxes);
 
-        //kan göras om till en loop som fyller på alla tournaments
-        //från en array.
-//        tournaments.add("Coke Tournament");
-//        tournaments.add("Championship 2016");
-
-
-        tournamentsList.setItems(tournaments);
-        tournamentsList.setPrefWidth(10);
     }
 
     @Override

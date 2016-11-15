@@ -23,6 +23,8 @@ public interface ITournament {
 
     String getTournamentName();
 
+    void setTournamentName(String name);
+
     int getTournamentID();
 
     //void getTournamentInfo();
