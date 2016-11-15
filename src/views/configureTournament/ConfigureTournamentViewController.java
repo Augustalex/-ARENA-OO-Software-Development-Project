@@ -16,7 +16,6 @@ import tournament.tournamentConfiguration.ITournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfigurationFactory;
 import tournament.tournamentStyle.TournamentStyle;
-import tournament.tournamentStyle.TreeTournamentStyle;
 import utilities.TimeDate;
 import views.DimensionBinder;
 
