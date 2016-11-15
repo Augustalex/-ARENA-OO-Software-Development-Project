@@ -23,6 +23,8 @@ public interface ITournament {
 
     String getTournamentName();
 
+    int getTournamentID();
+
     //void getTournamentInfo();
 
     void AddPlayer(IPlayer player);

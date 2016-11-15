@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
  */
 public class TournamentInformationViewController extends FXMLViewController {
 
+    ObservableList<String> tournaments;
+
     @FXML
     public BorderPane tournamentInformationContent;
 
@@ -44,16 +46,16 @@ public class TournamentInformationViewController extends FXMLViewController {
         );
     }
 
-    public void viewTournamentList(){
+    public void viewTournamentList(){ //skickar med ArrayList tournaments
         activeGamesLabel.setText("Active Games");
 
-        ObservableList<String> tournaments = tournamentsList.getItems();
+        tournaments = tournamentsList.getItems();
 
         //kan göras om till en loop som fyller på alla tournaments
         //från en array.
-        tournaments.add("Coke Tournament");
-        tournaments.add("Championship 2016");
-        tournaments.add("'Unleash the August");
+//        tournaments.add("Coke Tournament");
+//        tournaments.add("Championship 2016");
+//        tournaments.add("'Unleash the August");
 
         tournamentsList.setItems(tournaments);
         tournamentsList.setPrefWidth(10);
