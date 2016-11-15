@@ -15,7 +15,9 @@ import metaInformation.TournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfigurationFactory;
+import tournament.tournamentStyle.ITournamentStyle;
 import tournament.tournamentStyle.TournamentStyle;
+import tournament.tournamentStyle.TournamentStyleFactory;
 import utilities.TimeDate;
 import views.DimensionBinder;
 
@@ -66,7 +68,7 @@ public class ConfigureTournamentViewController implements Initializable {
 
     private void fillConfigurationWithFormData(ITournamentConfiguration tournamentConfiguration){
 
-        TournamentStyle style;
+        ITournamentStyle style = TournamentStyleFactory.newTournamentStyle();
         TimeDate time = new TimeDate(tournamentDate.getText());
 
         MetaInformation metaInformation =
