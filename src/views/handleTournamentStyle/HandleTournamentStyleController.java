@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import tournament.ITournament;
 import tournament.tournamentStyle.ITournamentStyle;
+import tournament.tournamentStyle.TournamentStyle;
 import tournament.tournamentStyle.TournamentStyleFactory;
 
 import java.net.URL;
@@ -79,8 +80,9 @@ public class HandleTournamentStyleController implements Initializable{
             showWarningDialog();
             tournamentStyle = null;
         }
-        if(tournamentStyle != null){
+        if(tournamentStyle != null) {
             System.out.println("TournamentStyle is created");
+            TournamentStyleFactory.setTournamentStyle(tournamentStyle);
         }
     }
 
