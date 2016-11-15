@@ -176,6 +176,11 @@ StackPane#playViewSuperWindow{
     -fx-pref-row-count: 5;
 }
 
+#tournamentSelectStyle{
+    -fx-padding: 2em;
+    -fx-alignment: center;
+}
+
 .tournamentButton{
     -fx-background-color: #FF09C1;
     -fx-text-fill: white;

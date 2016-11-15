@@ -20,9 +20,11 @@
             <Label text="Date" styleClass="tournamentLabel"/>
         </HBox>
         <TextField fx:id="tournamentDate" styleClass="tournamentTextBoxes"/>
-        <Label text="Tournament style:" styleClass="tournamentLabel"/>
-        <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
-        </ComboBox>
+        <HBox id="tournamentSelectStyle">
+            <Label text="Tournament style: " styleClass="tournamentLabel"/>
+            <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
+            </ComboBox>
+        </HBox>
         <Button text="Submit" styleClass="tournamentButton" fx:id="buttonTournamentSubmit"/>
     </VBox>
 </StackPane>

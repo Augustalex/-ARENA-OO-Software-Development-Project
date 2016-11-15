@@ -30,7 +30,11 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(parent, 1600, 1000));
         primaryStage.show();
 
-        primaryStage.setOnCloseRequest(e -> controller.closeView());
+        primaryStage.setOnCloseRequest(e -> {
+            controller.closeView();
+            primaryStage.close();
+            Platform.exit();
+        });
     }
 
     private void setupServiceCenter() {
