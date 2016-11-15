@@ -7,15 +7,15 @@
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.configureTournament.ConfigureTournamentViewController"
             stylesheets="/views/main.css" fx:id="createTournamentContainer" id="createTournamentContainer">
     <VBox fx:id="createTournamentContent" id="createTournamentContent">
-        <Label text="Create tournament style" styleClass="tournamentLabel"/>
+        <Label text="Create tournament style" styleClass="tournamentLabel" id="header"/>
         <HBox fx:id="tournamentHBox" id="tournamentHBox">
             <Label text="Name:" styleClass="tournamentLabel"/>
-            <TextField styleClass="tournamentName" fx:id="tournamentName"/>
+            <TextField styleClass="tournamentName, tournamentTextBoxes" fx:id="tournamentName"/>
         </HBox>
         <Label text="Description:" styleClass="tournamentLabel"/>
-        <TextArea styleClass="tournamentDesc" fx:id="tournamentDesc"/>
+        <TextArea styleClass="tournamentDesc, tournamentTextBoxes" fx:id="tournamentDesc" />
         <Label text="Date" styleClass="tournamentLabel"/>
-        <TextField fx:id="tournamentDate"/>
+        <TextField fx:id="tournamentDate" styleClass="tournamentTextBoxes"/>
         <Label text="Tournament style:" styleClass="tournamentLabel"/>
         <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
         </ComboBox>
