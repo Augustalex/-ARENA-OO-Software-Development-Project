@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import tournament.ITournament;
 import tournament.tournamentStyle.ITournamentStyle;
-import tournament.tournamentStyle.TournamentStyle;
 import tournament.tournamentStyle.TournamentStyleFactory;
 
 import java.net.URL;
@@ -82,7 +80,7 @@ public class HandleTournamentStyleController implements Initializable{
         }
         if(tournamentStyle != null) {
             System.out.println("TournamentStyle is created");
-            TournamentStyleFactory.setTournamentStyle(tournamentStyle);
+            TournamentStyleFactory.addTournamentStyle(tournamentStyle);
         }
     }
 

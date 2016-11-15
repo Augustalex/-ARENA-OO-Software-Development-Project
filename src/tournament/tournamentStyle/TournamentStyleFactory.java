@@ -3,19 +3,21 @@ package tournament.tournamentStyle;
 import tournament.ITournament;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * Created by Johan on 2016-11-15.
+ * Creates a TournamentStyle or returns all available Tournament styles in the application.
  */
 public class TournamentStyleFactory {
-    private static ArrayList<ITournamentStyle> styles = new ArrayList<>();
+    private static List<ITournamentStyle> styles = new ArrayList<>();
 
-    public static ITournamentStyle setTournamentStyle(ITournamentStyle tournamentStyle){
+    public static void addTournamentStyle(ITournamentStyle tournamentStyle){
         styles.add(tournamentStyle);
     }
 
-    public static ITournamentStyle getTournamentStyle(int index){
-        return styles.get(index);
+    public static List<ITournamentStyle> getTournamentStyles(){
+        return styles.stream().collect(Collectors.toList());
     }
 
     public static ITournamentStyle newTournamentStyle(){

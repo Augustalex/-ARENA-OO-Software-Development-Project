@@ -62,11 +62,12 @@ public class TournamentStyle implements ITournamentStyle {
 
     @Override
     public String toString(){
-        return("Name: " + this.name
+        return this.name;
+        /*return("Name: " + this.name
                 + "\n Description: " + this.description
                 + "\n Size: " + this.size
                 + "\n Group Settings: " + groupSettings.getGroupAmount()
                 + ", " + groupSettings.getRounds() + ", " + groupSettings.getMaxWinners()
-                + " Elimination Settings: " + eliminationSettings.getBestOf());
+                + " Elimination Settings: " + eliminationSettings.getBestOf());*/
     }
 }

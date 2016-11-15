@@ -87,6 +87,19 @@ StackPane#playViewSuperWindow{
 
 }
 
+#gameInformationLeft{
+    -fx-alignment: top-center;
+
+}
+
+#gameInformationRight{
+    -fx-alignment: top-center;
+}
+
+#gameInformationDescriptionFlow{
+    -fx-text-alignment: center;
+}
+
 .gameImage{
     -fx-pref-height: 100px;
     -fx-pref-width: 100px;
@@ -106,10 +119,16 @@ StackPane#playViewSuperWindow{
     -fx-font-size: 2em;
 }
 
-.playGameButton{
+.pinkButton {
     -fx-background-color: #FF09C1;
     -fx-font-family: "Helvetica";
     -fx-text-fill: white;
+    -fx-font-size: 3em;
+}
+
+.pinkButton:hover{
+    -fx-background-color: #ff79df;
+    -fx-font-family: "Helvetica";
 }
 
 #tournamentInformationContent{
@@ -166,6 +185,8 @@ StackPane#playViewSuperWindow{
 
 .tournamentTextBoxes{
     -fx-background-color: #354e5d;
+    -fx-text-fill: white;
+    -fx-font-family: "Lucida Console"
 }
 
 .tournamentTextBoxes .content{
@@ -181,7 +202,6 @@ StackPane#playViewSuperWindow{
     -fx-alignment: center;
 }
 
-.tournamentButton{
-    -fx-background-color: #FF09C1;
-    -fx-text-fill: white;
+.tournamentConfigurationSubmitButton{
+    -fx-font-size: 0.8em;
 }

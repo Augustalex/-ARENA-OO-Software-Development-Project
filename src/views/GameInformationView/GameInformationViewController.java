@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -37,13 +38,19 @@ public class GameInformationViewController extends FXMLViewController{
     private Label gameName;
 
     @FXML
-    private Text gameDescription;
+    private Label gameDescription;
 
     @FXML
     private ScrollPane gameInformationContainer;
 
     @FXML
     private BorderPane gameInformationContent;
+
+    @FXML
+    private VBox gameInformationLeft;
+
+    @FXML
+    private VBox gameInformationRight;
 
     @FXML
     private Button playGameButton;
@@ -63,8 +70,14 @@ public class GameInformationViewController extends FXMLViewController{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        DimensionBinder.bindWidthToPercentageOfContainer(gameInformationContent, 0.95, gameInformationContainer);
+        DimensionBinder.bindWidthToPercentageOfContainer(gameInformationContent, 1, gameInformationContainer);
 
+        DimensionBinder.bindWidthToPercentageOfContainer(gameInformationLeft, 0.7, gameInformationContent);
+        DimensionBinder.bindWidthToPercentageOfContainer(gameInformationRight, 0.3, gameInformationContent);
+
+        DimensionBinder.bindWidthToPercentageOfContainer(gameDescription, 0.6, gameInformationLeft);
+
+        DimensionBinder.bindWidthToPercentageOfContainer(playGameButton, 0.4, gameInformationRight);
 
         gameName.setText(gameInformation.getGameName());
         gameDescription.setText(gameInformation.getGameDescription());

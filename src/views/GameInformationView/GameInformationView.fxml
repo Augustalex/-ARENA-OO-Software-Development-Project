@@ -11,17 +11,17 @@
             stylesheets="/views/main.css" fx:id="gameInformationContainer" id="gameInformationContainer" styleClass="edge-to-edge">
     <BorderPane fx:id="gameInformationContent" id="gameInformationContent" >
         <left>
-            <FlowPane>
+            <VBox fx:id="gameInformationLeft" id="gameInformationLeft">
                 <Rectangle fx:id="gameImage" styleClass="gameImage"/>
-                <TextFlow>
-                    <Text fx:id="gameDescription" styleClass="textDescription"/>
+                <TextFlow id="gameInformationDescriptionFlow">
+                    <Label fx:id="gameDescription" styleClass="textDescription"/>
                 </TextFlow>
-            </FlowPane>
+            </VBox>
         </left>
         <right>
-            <VBox>
+            <VBox fx:id="gameInformationRight" id="gameInformationRight">
                 <Label fx:id="gameName" styleClass="gameName"/>
-                <Button styleClass="playGameButton" text="Play" fx:id="playGameButton"/>
+                <Button styleClass="pinkButton" text="Play" fx:id="playGameButton"/>
             </VBox>
         </right>
         <bottom>

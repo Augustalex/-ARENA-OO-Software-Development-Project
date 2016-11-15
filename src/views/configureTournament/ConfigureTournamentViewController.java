@@ -1,5 +1,7 @@
 package views.configureTournament;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -42,7 +44,7 @@ public class ConfigureTournamentViewController implements Initializable {
     private HBox tournamentHBox;
 
     @FXML
-    private ComboBox tournamentComboBox;
+    private ComboBox<ITournamentStyle> tournamentComboBox;
 
     @FXML
     private TextField tournamentName;
@@ -58,6 +60,9 @@ public class ConfigureTournamentViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        ObservableList<ITournamentStyle> styles = FXCollections.observableArrayList(TournamentStyleFactory.getTournamentStyles());
+        tournamentComboBox.getItems().setAll(styles);
 
         DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 0.6, createTournamentContainer);
 
@@ -78,7 +83,6 @@ public class ConfigureTournamentViewController implements Initializable {
      */
     private ITournamentConfiguration newConfigurationFromFormData(){
 
-        ITournamentStyle style = TournamentStyleFactory.newTournamentStyle();
         TimeDate time = new TimeDate(tournamentDate.getText());
 
         MetaInformation metaInformation =
@@ -90,7 +94,7 @@ public class ConfigureTournamentViewController implements Initializable {
         return(
                 TournamentConfigurationFactory
                         .newTournamentConfiguration()
-                        .setTournamentStyle(style)
+                        .setTournamentStyle(tournamentComboBox.getValue())
                         .setMetaInformation((TournamentMetaInformation)metaInformation)
         );
     }

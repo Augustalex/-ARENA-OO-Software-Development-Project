@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import serviceCenter.OfflineServiceCenter;
 import serviceCenter.ServiceCenter;
+import tournament.tournamentStyle.TournamentStyle;
 
 public class Main extends Application {
 

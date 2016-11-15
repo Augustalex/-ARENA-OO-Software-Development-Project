@@ -29,6 +29,6 @@ public interface ITournamentStyle {
 
 
     //ITournamentStyle getTournamentStyle();
-    // void setTournamentStyle(ITournamentStyle tournamentStyle);
+    // void addTournamentStyle(ITournamentStyle tournamentStyle);
     //void createMapPreference();
 }
