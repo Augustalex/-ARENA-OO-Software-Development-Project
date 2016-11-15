@@ -1,4 +1,4 @@
-package serviceCenter.reviewerServices;
+package serviceCenter.reviewServices;
 
 import users.User;
 

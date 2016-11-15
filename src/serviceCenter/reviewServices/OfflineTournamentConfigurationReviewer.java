@@ -1,7 +1,6 @@
-package serviceCenter.reviewerServices;
+package serviceCenter.reviewServices;
 
 import tournament.tournamentConfiguration.ITournamentConfiguration;
-import tournament.tournamentConfiguration.TournamentConfiguration;
 import users.User;
 
 /**

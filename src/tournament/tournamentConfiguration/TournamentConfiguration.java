@@ -7,12 +7,12 @@ import tournament.tournamentStyle.ITournamentStyle;
  * Implements the Tournament Configuration Interface.
  */
 public class TournamentConfiguration implements ITournamentConfiguration {
-    private ITournamentStyle ITournamentStyle;
+    private ITournamentStyle tournamentStyle;
     private TournamentMetaInformation tournamentMetaInformation;
 
     @Override
     public ITournamentConfiguration setTournamentStyle(ITournamentStyle ITournamentStyle) {
-        this.ITournamentStyle = ITournamentStyle;
+        this.tournamentStyle = ITournamentStyle;
         return this;
     }
 
@@ -23,7 +23,7 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     }
 
     public ITournamentStyle getITournamentStyle() {
-        return ITournamentStyle;
+        return this.tournamentStyle;
     }
 
     @Override
@@ -32,7 +32,17 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     }
 
     @Override
+    public boolean isValid() {
+        return false;
+    }
+
+    @Override
+    public void submit() {
+
+    }
+
+    @Override
     public String toString(){
-        return "Name: " + tournamentMetaInformation.getName() + " Description: " + tournamentMetaInformation.getDescription() + " Start time: " + this.tournamentMetaInformation.getStartDate() + " Style: " + tournamentStyle;
+        return "Name: " + tournamentMetaInformation.getName() + " Description: " + tournamentMetaInformation.getDescription() + " Start time: " + this.tournamentMetaInformation.getStartDate() + " Style: " + this.tournamentStyle;
     }
 }

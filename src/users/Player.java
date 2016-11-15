@@ -36,7 +36,7 @@ public class Player implements IPlayer {
 
     }
 
-    private void tournamentHandler(){
+    public void tournamentHandler(){
 
         availibleTournaments = getAvailibleTournaments(getLeagues());
         for(int i = 0; i < leagues.size(); i++){

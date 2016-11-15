@@ -4,40 +4,49 @@ package tournament.tournamentStyle;
  * Created by Hameo on 2016-11-14.
  */
 public class TournamentStyle implements ITournamentStyle {
+    private String name;
+    private String description;
+    private GroupSettings groupSettings;
+    private EliminationSettings eliminationSettings;
 
 
     @Override
-    public void setGroupRound(boolean value) {
-
+    public String getTournamentStyleName() {
+        return name;
     }
 
     @Override
-    public boolean getGroupRound() {
-        return false;
+    public void setTournamentStyleName(String name) {
+        this.name = name;
     }
 
     @Override
-    public void setEliminationRound(boolean value) {
-
+    public String getTournamentStyleDescription() {
+        return description;
     }
 
     @Override
-    public boolean getEliminationRound() {
-        return false;
+    public void setTournamentStyleDescription(String description) {
+        this.description = description;
     }
 
     @Override
-    public ITournamentStyle getTournamentStyle() {
-        return null;
+    public GroupSettings getGroupSettings() {
+        return groupSettings;
     }
 
-    /*@Override
-    public void setTournamentStyle(ITournamentStyle tournamentStyle) {
-
-    }*/
+    @Override
+    public void setGroupSettings(GroupSettings groupSettings) {
+        this.groupSettings = groupSettings;
+    }
 
     @Override
-    public void createMapPreference() {
+    public EliminationSettings getEliminationSettings() {
+        return eliminationSettings;
+    }
 
+    @Override
+    public void setEliminationSettings(EliminationSettings eliminationSettings) {
+        this.eliminationSettings = eliminationSettings;
     }
 }
