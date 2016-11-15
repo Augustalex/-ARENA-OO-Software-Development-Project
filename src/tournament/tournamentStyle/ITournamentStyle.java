@@ -10,13 +10,23 @@ import tournament.Tournament;
  */
 public interface ITournamentStyle {
 
-    void setGroupRound(boolean value);
-    boolean getGroupRound();
-    void setEliminationRound(boolean value);
-    boolean getEliminationRound();
+    String getTournamentStyleName();
+    String getTournamentStyleDescription();
+    GroupSettings getGroupSettings();
+    EliminationSettings getEliminationSettings();
+
+    void setTournamentStyleName(String name);
+    void setTournamentStyleDescription(String description);
+    void setGroupSettings(GroupSettings groupSettings);
+    void setEliminationSettings(EliminationSettings eliminationSettings);
+
+    //void setGroupRound(boolean value);
+    //boolean getGroupRound();
+    //void setEliminationRound(boolean value);
+    //boolean getEliminationRound();
 
 
-    ITournamentStyle getTournamentStyle();
+    //ITournamentStyle getTournamentStyle();
     // void setTournamentStyle(ITournamentStyle tournamentStyle);
-    void createMapPreference();
+    //void createMapPreference();
 }

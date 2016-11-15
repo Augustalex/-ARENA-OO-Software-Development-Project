@@ -4,28 +4,29 @@ package tournament.tournamentStyle;
  * Created by Hameo on 2016-11-14.
  */
 public class GroupSettings {
+    private boolean groupRound;
 
-    private int groupAmount;
+
+
+
+    private int groupsAmount;
     private int rounds;
-    private int maxPromoters; // The amount that qualifies to continue the elimationround.
+    private int maxWinners; // The amount that qualifies to continue the elimationround.
 
     public void setGroupAmount(int input){
-        this.groupAmount = input;
+        this.groupsAmount = input;
     }
-    public int getGroupAmount(){
-        return this.groupAmount;
-    }
+    public int getGroupAmount(){return this.groupsAmount;}
 
-    public void setMaxGames(int input){
-        this.rounds = input;
-    }
-    public int getMaxGames(){
+    public void setRounds(int input){this.rounds = input;}
+    public int getRounds(){
         return this.rounds;
     }
-    public void setMaxPromoters(int value){
-        this.maxPromoters = value;
+
+    public void setMaxWinners(int value){
+        this.maxWinners = value;
     }
-    public int getMaxPromoters(){
-        return this.maxPromoters;
+    public int getMaxWinners(){
+        return this.maxWinners;
     }
 }
