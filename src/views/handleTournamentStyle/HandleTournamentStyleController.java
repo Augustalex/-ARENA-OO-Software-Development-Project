@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import tournament.ITournament;
 import tournament.tournamentStyle.ITournamentStyle;
@@ -19,7 +21,7 @@ import java.util.ResourceBundle;
 public class HandleTournamentStyleController implements Initializable{
     ITournamentStyle tournamentStyle;
     @FXML
-    private GridPane TournamentStyleWindow;
+    private VBox TournamentStyleWindow;
 
     @FXML
     private TextField name;
