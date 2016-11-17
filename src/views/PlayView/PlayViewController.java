@@ -106,11 +106,10 @@ public class PlayViewController extends FXMLViewController implements Advertiser
         AdSpot adSpot = adRepository.newAdSpot(AdPreferenceFactory.newPlayViewPreference());
 
         this.paneAdDisplay = (PaneAdDisplay) AdDisplayFactory
-                .newPaneAdDisplay(adSpot)
+                .newPaneAdDisplay(adSpot, this.advertBottom)
                 .setAsWideAd();
 
-        this.advertBottom.getChildren().add(this.paneAdDisplay);
-
+        this.paneAdDisplay.showAd();
         this.paneAdDisplay.startAdLoop(2000);
     }
 

@@ -73,6 +73,9 @@ public class TournamentInformationViewController extends FXMLViewController {
                 .map(tournament -> new TournamentApplyBox(tournament, this.session.getAppliedTournaments()))
                 .toArray(TournamentApplyBox[]::new);
 
+        for (TournamentApplyBox applyBox : applyBoxes) {
+            DimensionBinder.bindWidthToPercentageOfContainer(applyBox, 1, tournamentsList);
+        }
         tournamentsList.getChildren().setAll(applyBoxes);
 
     }

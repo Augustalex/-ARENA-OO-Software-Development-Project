@@ -5,6 +5,7 @@ import advertisement.adDisplay.exceptions.AdImageNotSet;
 import advertisement.adSpot.AdSpot;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import views.DimensionBinder;
 
@@ -18,8 +19,8 @@ public class FxAdDisplay extends PaneAdDisplay {
 
     private final AdvertHideButton hideButton = new AdvertHideButton();
 
-    public FxAdDisplay(AdSpot adSpot){
-        super(adSpot);
+    public FxAdDisplay(AdSpot adSpot, Pane container){
+        super(adSpot, container);
 
         this.setCenter(this.innerPane);
         this.innerPane.getChildren().add(adImageHolder);
