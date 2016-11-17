@@ -1,5 +1,6 @@
 package serviceCenter.reviewServices;
 
+import communication.receiver.Receiver;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import users.User;
 
@@ -8,6 +9,11 @@ import users.User;
  * approve/disapprove.
  */
 public interface Reviewer {
+
+    /**
+     * A service that reviews TournamentConfiguration objects.
+     */
+    static final Reviewer tournamentConfigurationReviewer = new OfflineTournamentConfigurationReviewer();
 
     void submitForReview(ITournamentConfiguration configuration, User user);
 }
