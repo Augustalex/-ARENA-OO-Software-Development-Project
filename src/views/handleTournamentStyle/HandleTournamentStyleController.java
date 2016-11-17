@@ -85,8 +85,8 @@ public class HandleTournamentStyleController implements Initializable{
             tournamentStyle = null;
         }
         if(tournamentStyle != null) {
-            confirmationText.setText("TournamentStyle is created");
-            TournamentStyleFactory.setTournamentStyle(tournamentStyle);
+            confirmationText.setText("Tournament Style is created");
+            TournamentStyleFactory.addTournamentStyle(tournamentStyle);
         }
     }
 
