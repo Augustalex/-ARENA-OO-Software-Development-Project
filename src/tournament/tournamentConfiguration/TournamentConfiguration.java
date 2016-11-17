@@ -1,7 +1,6 @@
 package tournament.tournamentConfiguration;
 
 import metaInformation.TournamentMetaInformation;
-import serviceCenter.ServiceCenter;
 import serviceCenter.reviewServices.Reviewer;
 import tournament.tournamentStyle.ITournamentStyle;
 import users.User;
