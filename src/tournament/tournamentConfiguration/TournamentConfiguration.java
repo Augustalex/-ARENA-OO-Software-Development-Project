@@ -1,7 +1,7 @@
 package tournament.tournamentConfiguration;
 
 import metaInformation.TournamentMetaInformation;
-import serviceCenter.ServiceCenter;
+import serviceCenter.reviewServices.Reviewer;
 import tournament.tournamentStyle.ITournamentStyle;
 import users.User;
 
@@ -40,12 +40,8 @@ public class TournamentConfiguration implements ITournamentConfiguration {
 
     @Override
     public void submit() {
-        if(ServiceCenter.isSet())
-            ServiceCenter.getServiceCenter()
-                    .getTournamentConfigurationReviewer()
-                    .submitForReview(this, message -> System.out.println("NOTIFY!"));
-        else
-            System.out.println("ServiceCenter not set!");
+        Reviewer.tournamentConfigurationReviewer
+                .submitForReview(this, message -> System.out.println("NOTIFY!"));
     }
 
     @Override

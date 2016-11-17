@@ -7,16 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import serviceCenter.OfflineServiceCenter;
-import serviceCenter.ServiceCenter;
 import tournament.tournamentStyle.TournamentStyle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        this.setupServiceCenter();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();
@@ -37,12 +33,6 @@ public class Main extends Application {
             Platform.exit();
         });
     }
-
-    private void setupServiceCenter() {
-        ServiceCenter serviceCenter = new OfflineServiceCenter();
-        ServiceCenter.setApplicationServiceCenter(serviceCenter);
-    }
-
 
     public static void main(String[] args) {
         launch(args);
