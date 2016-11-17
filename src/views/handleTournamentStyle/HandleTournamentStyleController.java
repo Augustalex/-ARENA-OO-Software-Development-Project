@@ -93,17 +93,51 @@ public class HandleTournamentStyleController implements Initializable{
     }
 
     private boolean testTournamentStyle(ITournamentStyle tournamentStyle) {
+        boolean result = false;
         if(tournamentStyle.getGroupSettings() != null){
-            if(tournamentStyle.getTournamentSize()%tournamentStyle.getGroupSettings().getGroupAmount() != 0)
-                return false;
+            result = groupSettingTest();
+            if(result != true)
+                return result;
         }
         if(tournamentStyle.getEliminationSettings() != null) {
-            if (tournamentStyle.getEliminationSettings().getBestOf() % 2 == 0)
-                return false;
+            result= eliminationBestOf();
+            if(result != true)
+                return result;
+        }
+        if(result) return result;
+        else {
+            System.out.println("No choice is picked");
+            return result;
+        }
+    }
+
+    private boolean equalGroupSize(){
+        if (tournamentStyle.getTournamentSize() % tournamentStyle.getGroupSettings().getGroupAmount() != 0) {
+            System.out.println("Tournamentsize and groupamount is not giving equal groupsize");
+            return false;
         }
         return true;
     }
-
+    private boolean eliminationBestOf(){
+        if (tournamentStyle.getEliminationSettings().getBestOf() % 2 == 0) {
+            System.out.println("best of is uneven");
+            return false;
+        }
+        return true;
+    }
+    private boolean groupWinnerNotHigherThenSize(){
+        if(tournamentStyle.getTournamentSize()/ tournamentStyle.getGroupSettings().getGroupAmount() < tournamentStyle.getGroupSettings().getMaxWinners()) {
+            System.out.println("The maxwinners is more then participants in group");
+            return false;
+        }
+        return true;
+    }
+    private boolean groupSettingTest(){
+        if(groupWinnerNotHigherThenSize() && equalGroupSize()){
+            return true;
+        }
+        else return false;
+    }
     private void showWarningDialog(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Input Error!");
