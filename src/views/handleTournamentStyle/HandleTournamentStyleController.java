@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import tournament.ITournament;
 import tournament.tournamentStyle.ITournamentStyle;
+import tournament.tournamentStyle.TournamentStyle;
 import tournament.tournamentStyle.TournamentStyleFactory;
 
 import java.net.URL;
@@ -48,6 +51,9 @@ public class HandleTournamentStyleController implements Initializable{
     @FXML
     private Button submit;
 
+    @FXML
+    private Text confirmationText;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         submit.setOnAction(e->constructTournamentStyle());
@@ -79,8 +85,8 @@ public class HandleTournamentStyleController implements Initializable{
             tournamentStyle = null;
         }
         if(tournamentStyle != null) {
-            System.out.println("TournamentStyle is created");
-            TournamentStyleFactory.addTournamentStyle(tournamentStyle);
+            confirmationText.setText("TournamentStyle is created");
+            TournamentStyleFactory.setTournamentStyle(tournamentStyle);
         }
     }
 

@@ -66,4 +66,6 @@
     </Label>
 
     <Button text="Submit" textFill="black" fx:id="submit" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+
+    <Text text="" fill="white" fx:id="confirmationText" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
 </GridPane>
