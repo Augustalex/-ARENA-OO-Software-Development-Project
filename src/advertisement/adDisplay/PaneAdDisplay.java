@@ -2,8 +2,11 @@ package advertisement.adDisplay;
 
 import advertisement.ad.Ad;
 import advertisement.adSpot.AdSpot;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 /**
  * An abstract class for representing the Interface of concrete
@@ -12,9 +15,13 @@ import javafx.scene.layout.BorderPane;
 public abstract class PaneAdDisplay extends BorderPane implements AdDisplay{
 
     protected AdSpot adSpot;
+    private Pane container;
 
-    public PaneAdDisplay(AdSpot adSpot){
+    public PaneAdDisplay(AdSpot adSpot, Pane container){
+        this.container = container;
         this.setAdSpot(adSpot);
+
+        this.setId("testAd");
     }
 
     /**
@@ -47,12 +54,13 @@ public abstract class PaneAdDisplay extends BorderPane implements AdDisplay{
 
     @Override
     public void hideAd() {
-        this.setVisible(false);
+        this.container.getChildren().remove(this);
+        this.setMouseTransparent(true);
     }
 
     @Override
     public void showAd() {
-        this.setVisible(true);
+        this.container.getChildren().add(this);
     }
 
     /**

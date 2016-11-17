@@ -1,6 +1,7 @@
 package advertisement.adDisplay;
 
 import advertisement.adSpot.AdSpot;
+import javafx.scene.layout.Pane;
 
 /**
  * Creates a new AdDisplay object from a concrete class and
@@ -8,8 +9,8 @@ import advertisement.adSpot.AdSpot;
  */
 public class AdDisplayFactory {
 
-    public static AdDisplay newAdDisplay(AdSpot adSpot){
-        return new FxAdDisplay(adSpot);
+    public static AdDisplay newAdDisplay(AdSpot adSpot, Pane container){
+        return new FxAdDisplay(adSpot, container);
     }
 
     /**
@@ -18,7 +19,7 @@ public class AdDisplayFactory {
      * JavaFX Panes.
      * @return
      */
-    public static PaneAdDisplay newPaneAdDisplay(AdSpot adSpot){
-        return new FxAdDisplay(adSpot);
+    public static PaneAdDisplay newPaneAdDisplay(AdSpot adSpot, Pane container){
+        return new FxAdDisplay(adSpot, container);
     }
 }

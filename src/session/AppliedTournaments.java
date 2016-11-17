@@ -17,6 +17,7 @@ public class AppliedTournaments {
     //public void getTournaments()
 
     public void applyToTournament(ITournament tour){
+        System.out.println("Applied to tournament.");
         tournaments.add(tour);
     }
 
