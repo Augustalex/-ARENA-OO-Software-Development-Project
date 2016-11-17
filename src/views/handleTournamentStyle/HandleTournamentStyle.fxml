@@ -6,66 +6,63 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Button?>
-<GridPane fx:controller="views.handleTournamentStyle.HandleTournamentStyleController" xmlns:fx="http://javafx.com/fxml"
-          fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.Pane?>
+<VBox fx:controller="views.handleTournamentStyle.HandleTournamentStyleController" xmlns:fx="http://javafx.com/fxml"
+      fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
 
-    <Text text="Tournament Style" fill="white" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Text text="Tournament Style" fill="white"/>
 
-    <Label text="Style name: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
-        <graphic>
-            <TextField fx:id="name" minWidth="75"/>
-        </graphic>
-    </Label>
+    <VBox>
+            <Text text="Name of Tournament" fill='white'></Text>
+            <TextField fx:id="name" minWidth="75" maxWidth="130"/>
+    </VBox>
 
-    <Label text="Size: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3">
-        <graphic>
-            <TextField fx:id="size" minWidth="30"/>
-        </graphic>
-    </Label>
+    <VBox>
+            <Text text="SizeOfTournament" fill='white'></Text>
+            <TextField fx:id="size" minWidth="30" maxWidth="130"/>
+    </VBox>
 
-    <Label text="Groups" textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4">
-        <graphic>
+    <VBox>
+            <Text text="Group choices" fill='white'></Text>
             <CheckBox fx:id="groupsChoice"/>
-        </graphic>
-    </Label>
+    </VBox>
 
-    <Label text="Number of groups: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5">
-        <graphic>
-            <TextField fx:id="noOfGroups" minWidth="30"/>
-        </graphic>
-    </Label>
+    <VBox>
+            <Text text="Amount of groupps" fill='white'></Text>
+            <TextField fx:id="noOfGroups" minWidth="30" maxWidth="130"/>
+    </VBox>
 
-    <Label text="Rounds: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6">
-        <graphic>
-            <TextField fx:id="rounds" minWidth="30"/>
-        </graphic>
-    </Label>
+    <VBox>
+            <Text text="Amount of rounds" fill='white'></Text>
+            <TextField fx:id="rounds" minWidth="30" maxWidth="130"/>
+    </VBox>
 
-    <Label text="Group winners: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="7">
-        <graphic>
-            <TextField fx:id="groupWinners" minWidth="30"/>
-        </graphic>
-    </Label>
+    <VBox>
+            <Text text="Amount of winners in a group" fill='white'></Text>
+            <TextField fx:id="groupWinners" minWidth="30" maxWidth="130"/>
+    </VBox>
 
-    <Label text="Elimination: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="8">
-        <graphic>
+    <VBox>
+            <Text text="Elimination" fill='white'></Text>
             <CheckBox fx:id="eliminationChoice"/>
-        </graphic>
-    </Label>
+    </VBox>
 
-    <Label text="Elimination best of games: " textFill="white" contentDisplay="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="9">
-        <graphic>
-            <TextField fx:id="bestOfGames" minWidth="30"/>
-        </graphic>
-    </Label>
+    <VBox >
+            <Text text="Best of games" fill='white'></Text>
+            <TextField fx:id="bestOfGames" minWidth="30" maxWidth="130"/>
+    </VBox>
 
-    <Label text="description:" textFill="white" textAlignment="RIGHT" contentDisplay="BOTTOM" GridPane.columnIndex="0" GridPane.rowIndex="10">
-        <graphic>
-            <TextArea fx:id="description" minWidth="100" maxHeight="250"/>
-        </graphic>
-    </Label>
+    <VBox>
 
-    <Button text="Submit" textFill="black" fx:id="submit" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+            <Text text="Description" fill='white'></Text>
+            <TextArea fx:id="description" minWidth="100" maxHeight="250" maxWidth="500"/>
 
-    <Text text="" fill="white" fx:id="confirmationText" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
-</GridPane>
+    </VBox>
+
+    <Button text="Submit" textFill="black" fx:id="submit" />
+
+    <Text text="" fill="white" fx:id="confirmationText" />
+</VBox>
