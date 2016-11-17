@@ -58,7 +58,7 @@
     <VBox>
 
             <Text text="Description" fill='white'></Text>
-            <TextArea fx:id="description" minWidth="100" maxHeight="250" maxWidth="500"/>
+            <TextArea fx:id="description" minWidth="100" maxHeight="250" maxWidth="500" wrapText="true"/>
 
     </VBox>
 
