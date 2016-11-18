@@ -64,4 +64,9 @@ public class Player implements IPlayer{
         System.out.println("Notifiaction");
     }
 
+    @Override
+    public String getName() {
+        return playerName;
+    }
+
 }

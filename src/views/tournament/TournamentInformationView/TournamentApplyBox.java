@@ -4,9 +4,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import session.AppliedTournaments;
+import session.*;
 import tournament.ITournament;
 import views.DimensionBinder;
+
+import static session.Session.getSession;
 
 /**
  * Created by Simon on 15/11/2016.
@@ -28,7 +30,7 @@ public class TournamentApplyBox extends HBox {
         DimensionBinder.bindWidthToPercentageOfContainer(right, 0.5, this);
 
         //Add apply button
-        Label label = new Label(tournament.getTournamentMetaInformation().getTourName());
+        Label label = new Label(tournament.getTournamentMetaInformation().getName());
         Button applyButton = new Button("Apply");
 
         //add all elements
@@ -50,8 +52,9 @@ public class TournamentApplyBox extends HBox {
 
         //Set action event handler
         applyButton.setOnAction(e -> {
-            //System.out.println("CLICKED MF!");
+            System.out.println("Applied for tournament!");
             appliedTournaments.applyToTournament(tournament);
+            tournament.applyPlayer(Session.getSession().getPlayer());
         });
     }
 }

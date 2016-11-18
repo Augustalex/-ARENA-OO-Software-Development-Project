@@ -41,14 +41,14 @@ public class League implements ILeague{
     @Override
     public void printTournamentNames(){
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
-            System.out.println("Name of tournaments: " + tournamentsInLeague.get(i).getTournamentMetaInformation().getTourName());
+            System.out.println("Name of tournaments: " + tournamentsInLeague.get(i).getTournamentMetaInformation().getName());
         }
     }
 
     @Override
     public void printTournamentIDs(){
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
-            System.out.println("ID's of tournaments: " + tournamentsInLeague.get(i).getTournamentID());
+            //System.out.println("ID's of tournaments: " + tournamentsInLeague.get(i).getTournamentID());
         }
     }
 

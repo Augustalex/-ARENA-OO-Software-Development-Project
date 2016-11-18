@@ -7,4 +7,6 @@ public interface IUser {
 
     void notify(String message);
 
+    String getName();
+
 }

@@ -4,19 +4,16 @@ package tournament;
 
 import metaInformation.TournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
-import tournament.tournamentConfiguration.TournamentConfiguration;
-import tournament.tournamentMap.ITournamentMap;
 import users.IPlayer;
-import utilities.TimeDate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Implements the Tournament interface.
  */
 public class Tournament implements ITournament, Serializable {
 
+    AppliedPlayersList appliedPlayers = new AppliedPlayersList();
     private ITournamentConfiguration configuration;
 
     public Tournament(ITournamentConfiguration configuration){
@@ -26,6 +23,16 @@ public class Tournament implements ITournament, Serializable {
     @Override
     public TournamentMetaInformation getTournamentMetaInformation() {
         return this.configuration.getMetaInformation();
+    }
+
+    @Override
+    public void applyPlayer(IPlayer player) {
+        appliedPlayers.applyPlayerToList(player);
+    }
+
+    @Override
+    public AppliedPlayersList getAppliedPlayerList() {
+        return appliedPlayers;
     }
 
 }
