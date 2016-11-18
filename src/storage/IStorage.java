@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by August on 2016-11-18.
+ * Interface for Storage
  */
 public interface IStorage {
 
@@ -15,4 +15,5 @@ public interface IStorage {
     void dump();
 
     void restore();
+    //TODO Se över method namnen, de beskriver inte riktigt va de gör
 }

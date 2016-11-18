@@ -3,7 +3,6 @@ package tournament.tournamentConfiguration;
 import metaInformation.TournamentMetaInformation;
 import serviceCenter.reviewServices.Reviewer;
 import tournament.tournamentStyle.ITournamentStyle;
-import users.User;
 
 /**
  * Implements the Tournament Configuration Interface.

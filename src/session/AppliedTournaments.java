@@ -5,7 +5,7 @@ import tournament.ITournament;
 import java.util.ArrayList;
 
 /**
- * Created by Simon on 15/11/2016.
+ * The tournaments a user have applied to
  */
 public class AppliedTournaments {
     ArrayList<ITournament> tournaments = new ArrayList<>();

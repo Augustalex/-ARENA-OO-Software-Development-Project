@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by August on 2016-11-18.
+ * Implements interface IStorage
  */
 public class Storage implements IStorage {
     private Map<Class, Object> map = new HashMap<>();

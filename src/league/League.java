@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Simon on 14/11/2016.
+ * Implements the league interface
  */
 public class League implements ILeague{
     private String leagueName;

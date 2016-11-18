@@ -1,8 +1,7 @@
 package serviceCenter.reviewServices;
 
-import communication.receiver.Receiver;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
-import users.User;
+import users.IUser;
 
 /**
  * Contains ReviewObject which operators can collect and
@@ -15,5 +14,5 @@ public interface Reviewer<T> {
      */
     static final Reviewer<ITournamentConfiguration> tournamentConfigurationReviewer = new OfflineTournamentConfigurationReviewer();
 
-    void submitForReview(T configuration, User user);
+    void submitForReview(T configuration, IUser IUser);
 }

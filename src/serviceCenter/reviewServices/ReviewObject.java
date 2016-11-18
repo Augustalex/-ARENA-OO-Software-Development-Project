@@ -1,26 +1,26 @@
 package serviceCenter.reviewServices;
 
-import users.User;
+import users.IUser;
 
 /**
- * Contains an object that is up for a retrieve, as well as the User
+ * Contains an object that is up for a retrieve, as well as the IUser
  * who submitted the object.
  */
 public class ReviewObject<T> {
 
     private T reviewObject;
-    private User sender;
+    private IUser sender;
 
-    public ReviewObject(T reviewObject, User user){
+    public ReviewObject(T reviewObject, IUser IUser){
         this.reviewObject = reviewObject;
-        this.sender = user;
+        this.sender = IUser;
     }
 
     public T getReviewObject(){
         return this.reviewObject;
     }
 
-    public User getSender(){
+    public IUser getSender(){
         return this.sender;
     }
 

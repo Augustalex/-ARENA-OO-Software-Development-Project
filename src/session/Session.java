@@ -1,17 +1,12 @@
 package session;
 
-import tournament.ITournament;
-import tournament.Tournament;
 import users.IPlayer;
 import users.Player;
-import users.User;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * A session contains a logged in User and information related to that
+ * A session contains a logged in IUser and information related to that
  * user. Additional information may be stored for the current session
  * such as error logs etc.
  *
