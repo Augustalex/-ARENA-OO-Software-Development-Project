@@ -1,11 +1,12 @@
 package tournament.tournamentStyle;
 
 /**
- * Created by Hameo on 2016-11-14.
+ * Defines the settings for a tournaments group settings
  */
+
 public class GroupSettings {
     private int groupsAmount;
-    private int rounds;
+    private int rounds;     // amount of matches in group play.
     private int maxWinners; // The amount that qualifies to continue the elimationround.
 
     public void setGroupAmount(int input){

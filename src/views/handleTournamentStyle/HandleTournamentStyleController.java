@@ -16,7 +16,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Johan on 2016-11-15.
+ * View controller for the Operators "Handle tournamentStyle" view. Sets up the TournamentStyle settings choices available, and sets
+ * up routing for buttons to their corresponding "TournamentStyle" views.
+ *
+ * Extended ERROR handling for invalid input data needs to be fixed.
  */
 public class HandleTournamentStyleController implements Initializable{
     ITournamentStyle tournamentStyle;

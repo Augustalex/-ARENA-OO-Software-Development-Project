@@ -1,7 +1,8 @@
 package tournament.tournamentStyle;
 
+
 /**
- * Created by Hameo on 2016-11-15.
+ * Defines the settings for a tournaments Elimination settings
  */
 public class EliminationSettings {
     private int bestOf;
