@@ -3,6 +3,7 @@ package tournament;
 
 
 import metaInformation.TournamentMetaInformation;
+import tournament.tournamentConfiguration.ITournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfiguration;
 import tournament.tournamentMap.ITournamentMap;
 import users.IPlayer;
@@ -16,10 +17,10 @@ import java.util.ArrayList;
  */
 public class Tournament implements ITournament, Serializable {
 
-    private TournamentConfiguration configuration;
+    private ITournamentConfiguration configuration;
 
-    public Tournament(TournamentConfiguration configuration){
-
+    public Tournament(ITournamentConfiguration configuration){
+        this.configuration = configuration;
     }
 
     @Override
