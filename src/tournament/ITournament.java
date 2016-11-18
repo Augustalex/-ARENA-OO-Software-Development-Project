@@ -1,7 +1,7 @@
 package tournament;
 
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
-import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
+import users.IPlayer;
 
 /**
  * Interface for a Tournament
@@ -9,5 +9,9 @@ import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 public interface ITournament {
 
     ITournamentMetaInformation getTournamentMetaInformation();
+
+    void applyPlayer(IPlayer player);
+
+    AppliedPlayersList getAppliedPlayerList();
 
 }
