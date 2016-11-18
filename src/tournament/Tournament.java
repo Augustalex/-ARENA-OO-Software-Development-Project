@@ -2,9 +2,12 @@ package tournament;
 
 
 
+import league.ILeague;
+import league.League;
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import users.IPlayer;
+import users.Player;
 
 import java.io.Serializable;
 
@@ -19,6 +22,7 @@ public class Tournament implements ITournament, Serializable {
     public Tournament(ITournamentConfiguration configuration){
         this.configuration = configuration;
     }
+
 
     @Override
     public ITournamentMetaInformation getTournamentMetaInformation() {

@@ -3,6 +3,7 @@ package users;
 import league.ILeague;
 import league.League;
 import tournament.ITournament;
+import tournament.TournamentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,28 +15,23 @@ import java.util.stream.Collectors;
 public class Player implements IPlayer{
 
     private ArrayList<ILeague> leagues = new ArrayList<>();
-    //private List<ITournament> availibleTournaments;
     private String playerName;
 
-    public Player(String name){
-        this.playerName = name;
 
-        ILeague league = new League("League1", 10);
-        //ITournament tour = TournamentFactory.newTournament();
-        //tour.setTournamentName("August Unleashed");
+    public Player(){
 
+    }
+    public static IPlayer newMockPlayer(){
 
-        //ITournament tour2 = TournamentFactory.newTournament();
-        //tour2.setTournamentName("Simon Unleashed");
+        IPlayer player = new Player().createMockPlayerAugust();
+        ILeague league = new League("mock league", 1);
 
 
-        //ITournament tour3 = TournamentFactory.newTournament();
-        //tour3.setTournamentName("Carlos Unleashed");
-
-        //league.addTournamentToLeague(tour);
-        //league.addTournamentToLeague(tour2);
-        //league.addTournamentToLeague(tour3);
-        leagues.add(league);
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("August unleashed"));
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock());
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Gideon Unleashed"));
+        player.getLeagues().add(league);
+        return player;
     }
 
     @Override
@@ -44,9 +40,11 @@ public class Player implements IPlayer{
     }
 
     public IPlayer createMockPlayerAugust(){
-        IPlayer player = new Player("August");
+        IPlayer player = new Player();
+        player.setName("August");
         return player;
     }
+
 
     @Override
     public List<ITournament> getAvailibleTournaments(){
@@ -64,5 +62,11 @@ public class Player implements IPlayer{
     public String getName() {
         return playerName;
     }
+
+    @Override
+    public void setName(String name){
+        this.playerName = name;
+    }
+
 
 }
