@@ -77,12 +77,14 @@ public class HandleTournamentStyleController implements Initializable{
         if(eliminationChoice.isSelected()) {
             tournamentStyle.setEliminationSettings();
             tournamentStyle.getEliminationSettings().setBestOf(Integer.parseInt(bestOfGames.getText()));
+            //TODO Se över fel som sker när user inte matar in all data Fråga Björn.
         }
         if(groupsChoice.isSelected()) {
             tournamentStyle.setGroupSettings();
             tournamentStyle.getGroupSettings().setGroupAmount(Integer.parseInt(noOfGroups.getText()));
             tournamentStyle.getGroupSettings().setMaxWinners(Integer.parseInt(groupWinners.getText()));
             tournamentStyle.getGroupSettings().setRounds(Integer.parseInt(rounds.getText()));
+            //TODO Se över fel som sker när user inte matar in all data Fråga Björn.
         }
         System.out.print(tournamentStyle.toString());
         if(!testTournamentStyle(tournamentStyle)){
@@ -94,7 +96,6 @@ public class HandleTournamentStyleController implements Initializable{
             TournamentStyleFactory.addTournamentStyle(tournamentStyle);
         }
     }
-
     private boolean testTournamentStyle(ITournamentStyle tournamentStyle) {
         boolean result = false;
         if(tournamentStyle.getGroupSettings() != null){
@@ -140,7 +141,10 @@ public class HandleTournamentStyleController implements Initializable{
             return true;
         }
         else return false;
+
     }
+    //TODO fixa felhanteringen för felaktig indata inte helt korrekt Fråga Björn
+    //TODO Ge notering till användarn vad denne har gjort för fel.Fråga Björn
     private void showWarningDialog(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Input Error!");
