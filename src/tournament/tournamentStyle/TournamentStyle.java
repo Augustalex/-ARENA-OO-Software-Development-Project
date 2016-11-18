@@ -1,7 +1,7 @@
 package tournament.tournamentStyle;
 
 /**
- * Created by Hameo on 2016-11-14.
+ * Implements the TournamentStyle interface.
  */
 public class TournamentStyle implements ITournamentStyle {
     private String name;
