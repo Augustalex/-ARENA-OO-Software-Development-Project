@@ -16,4 +16,5 @@ public class OfflineTournamentConfigurationReviewer implements Reviewer<ITournam
         ReviewObject reviewObject = this.reviewQueue.retrieve();
         System.out.println("APPROVED: " + reviewObject);
     }
+
 }
