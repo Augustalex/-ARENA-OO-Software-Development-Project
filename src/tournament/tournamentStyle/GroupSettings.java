@@ -7,9 +7,10 @@ import java.io.Serializable;
  */
 
 public class GroupSettings implements Serializable{
-    private int groupsAmount;
-    private int rounds;     // amount of matches in group play.
-    private int maxWinners; // The amount that qualifies to continue the elimationround.
+    private int groupsAmount; // The amount of groups in a tournament
+    private int rounds;     // The amount of matches in a group play.
+    private int maxWinners; // The amount that qualifies to continue the group rounds
+
 
     public void setGroupAmount(int input){
         this.groupsAmount = input;

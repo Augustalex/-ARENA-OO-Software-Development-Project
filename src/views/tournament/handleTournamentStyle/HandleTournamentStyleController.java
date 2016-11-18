@@ -65,6 +65,10 @@ public class HandleTournamentStyleController implements Initializable{
         return tournamentStyle;
     }
 
+    /**
+     * constructTournamentStyle
+     * Adds all the data from  the view to the class.
+     */
     private void constructTournamentStyle(){
         tournamentStyle = TournamentStyleFactory.newTournamentStyle();
         tournamentStyle.setTournamentStyleName(name.getText());
@@ -92,6 +96,13 @@ public class HandleTournamentStyleController implements Initializable{
             TournamentStyleFactory.addTournamentStyle(tournamentStyle);
         }
     }
+
+    /**
+     * tesTournamentStyle
+     * Tests if the styles passes all the tests.
+     * @param tournamentStyle
+     * @return
+     */
     private boolean testTournamentStyle(ITournamentStyle tournamentStyle) {
         boolean result = false;
         if(tournamentStyle.getGroupSettings() != null){
@@ -111,6 +122,10 @@ public class HandleTournamentStyleController implements Initializable{
         }
     }
 
+    /**
+     * EqualGroupSize checks if the groupsize is even if not return false
+     * @return
+     */
     private boolean equalGroupSize(){
         if (tournamentStyle.getTournamentSize() % tournamentStyle.getGroupSettings().getGroupAmount() != 0) {
             System.out.println("Tournamentsize and groupamount is not giving equal groupsize");
@@ -118,6 +133,11 @@ public class HandleTournamentStyleController implements Initializable{
         }
         return true;
     }
+
+    /**
+     * EliminationBestOF checks if the bestOf is not an even number.
+     * @return
+     */
     private boolean eliminationBestOf(){
         if (tournamentStyle.getEliminationSettings().getBestOf() % 2 == 0) {
             System.out.println("best of is uneven");
@@ -125,6 +145,12 @@ public class HandleTournamentStyleController implements Initializable{
         }
         return true;
     }
+
+    /**
+     * groupWinnerNotHigherThenSize tests to see that there is not more continuers(winners) in a group then the size of the group.
+     * Based on the TournamentSize divided with the groupAmount is not less then the amount of maxWinners(continuers)
+     * @return
+     */
     private boolean groupWinnerNotHigherThenSize(){
         if(tournamentStyle.getTournamentSize()/ tournamentStyle.getGroupSettings().getGroupAmount() < tournamentStyle.getGroupSettings().getMaxWinners()) {
             System.out.println("The maxwinners is more then participants in group");
@@ -132,6 +158,11 @@ public class HandleTournamentStyleController implements Initializable{
         }
         return true;
     }
+
+    /**
+     * groupSettingTest test if all the other grouptest succeds.
+     * @return
+     */
     private boolean groupSettingTest(){
         if(groupWinnerNotHigherThenSize() && equalGroupSize()){
             return true;
