@@ -45,14 +45,14 @@ public class TournamentStyleFactory implements Serializable {
         TournamentStyle tournament = new TournamentStyle();
         tournament.setTournamentStyleName("TestTournament");
         tournament.setTournamentSize(64);
-        tournament.setGroupSettings();
-        GroupSettings groupSettings = tournament.getGroupSettings();
-        groupSettings.setGroupAmount(4);
-        groupSettings.setMaxWinners(3);
-        groupSettings.setRounds(3);
-        tournament.setEliminationSettings();
-        EliminationSettings eliminationSettings = tournament.getEliminationSettings();
-        eliminationSettings.setBestOf(3);
+
+        tournament.initateGroupSettings();
+        tournament.getGroupSettings().setGroupAmount(4);
+        tournament.getGroupSettings().setMaxWinners(3);
+        tournament.getGroupSettings().setRounds(3);
+
+        tournament.initateEliminationSettings();
+        tournament.getEliminationSettings().setBestOf(3);
 
         return tournament;
     }

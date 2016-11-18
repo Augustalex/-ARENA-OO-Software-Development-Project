@@ -75,12 +75,12 @@ public class HandleTournamentStyleController implements Initializable{
         tournamentStyle.setTournamentStyleDescription(description.getText());
         tournamentStyle.setTournamentSize(Integer.parseInt(size.getText()));
         if(eliminationChoice.isSelected()) {
-            tournamentStyle.setEliminationSettings();
+            tournamentStyle.initateEliminationSettings();
             tournamentStyle.getEliminationSettings().setBestOf(Integer.parseInt(bestOfGames.getText()));
             //TODO Se över fel som sker när user inte matar in all data Fråga Björn.
         }
         if(groupsChoice.isSelected()) {
-            tournamentStyle.setGroupSettings();
+            tournamentStyle.initateGroupSettings();
             tournamentStyle.getGroupSettings().setGroupAmount(Integer.parseInt(noOfGroups.getText()));
             tournamentStyle.getGroupSettings().setMaxWinners(Integer.parseInt(groupWinners.getText()));
             tournamentStyle.getGroupSettings().setRounds(Integer.parseInt(rounds.getText()));
