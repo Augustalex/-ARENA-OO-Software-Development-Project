@@ -11,19 +11,9 @@ import java.util.stream.Collectors;
 public class TournamentConfigurationFactory implements Serializable {
 
     /**
-     * Creates a new empty or "blank" Tournament Configuration.
+     * Returns a new tournament configuration that is void of settings.
      * @return
      */
-    private static List<ITournamentConfiguration> configuration = new ArrayList<>();
-
-    public static void addTournamentConfiguration(ITournamentConfiguration tournamentStyle){
-        configuration.add(tournamentStyle);
-    }
-
-    public static List<ITournamentConfiguration> getTournamentConfigurations(){
-        return configuration.stream().collect(Collectors.toList());
-    }
-
     public static ITournamentConfiguration newTournamentConfiguration(){
         return new TournamentConfiguration();
     }

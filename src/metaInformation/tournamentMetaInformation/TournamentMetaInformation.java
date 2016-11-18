@@ -1,5 +1,6 @@
-package metaInformation;
+package metaInformation.tournamentMetaInformation;
 
+import metaInformation.MetaInformation;
 import utilities.TimeDate;
 
 /**
@@ -14,6 +15,5 @@ public class TournamentMetaInformation extends MetaInformation {
     }
 
     public TournamentMetaInformation setStartDate(TimeDate timeDate){ startDate = timeDate; return this; }
-
 
 }
