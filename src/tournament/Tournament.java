@@ -17,7 +17,7 @@ public class Tournament implements ITournament, Serializable {
         private final ArrayList<IPlayer> joinedPlayers = new ArrayList<>();
         private ITournamentMap tournamentMap;
         private TimeDate startTime;
-    private String tournamentName;
+    private TournamentMetaInformation tournamentName;
     private int tourID;
 
     @Override
@@ -47,12 +47,12 @@ public class Tournament implements ITournament, Serializable {
 
     @Override
     public String getTournamentName(){
-        return tournamentName;
+        return tournamentName.getTourName();
     }
 
     @Override
     public void setTournamentName(String name){
-        this.tournamentName = name;
+        this.tournamentName.setTourName(name);
     }
 
     @Override

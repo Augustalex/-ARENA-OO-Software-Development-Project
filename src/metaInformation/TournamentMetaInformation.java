@@ -13,4 +13,12 @@ public class TournamentMetaInformation extends MetaInformation {
     }
 
     public TournamentMetaInformation setStartDate(TimeDate timeDate){ startDate = timeDate; return this; }
+
+    public String getTourName(){
+        return tourName;
+    }
+
+    public void setTourName(String name){
+        this.tourName = name;
+    }
 }

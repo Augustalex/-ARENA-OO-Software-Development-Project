@@ -1,5 +1,6 @@
 package tournament;
 
+import metaInformation.TournamentMetaInformation;
 import tournament.tournamentMap.ITournamentMap;
 import users.IPlayer;
 import utilities.TimeDate;
