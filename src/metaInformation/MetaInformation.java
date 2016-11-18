@@ -6,7 +6,7 @@ package metaInformation;
  *
  * But the actual use is not specified and is purely utilitarian.
  */
-public abstract class MetaInformation {
+public class MetaInformation {
     private String name;
     private String description;
 

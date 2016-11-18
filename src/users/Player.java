@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class Player implements IPlayer{
 
     private ArrayList<ILeague> leagues = new ArrayList<>();
-    private List<ITournament> availibleTournaments;
+    //private List<ITournament> availibleTournaments;
     private String playerName;
 
     public Player(String name){
