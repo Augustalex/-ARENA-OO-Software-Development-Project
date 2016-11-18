@@ -1,6 +1,6 @@
 package tournament;
 
-import metaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import users.IPlayer;
 
 /**
@@ -8,7 +8,7 @@ import users.IPlayer;
  */
 public interface ITournament {
 
-    TournamentMetaInformation getTournamentMetaInformation();
+    ITournamentMetaInformation getTournamentMetaInformation();
 
     void applyPlayer(IPlayer player);
 

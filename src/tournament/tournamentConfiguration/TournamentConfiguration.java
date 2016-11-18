@@ -3,6 +3,7 @@ package tournament.tournamentConfiguration;
 import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import serviceCenter.reviewServices.Reviewer;
 import tournament.tournamentStyle.ITournamentStyle;
+import users.IUser;
 
 /**
  * Implements the Tournament Configuration Interface.
@@ -40,7 +41,7 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     @Override
     public void submit() {
         Reviewer.tournamentConfigurationReviewer
-                .submitForReview(this, message -> System.out.println("NOTIFY!"));
+                .submitForReview(this, IUser.newMockUser());
     }
 
     @Override

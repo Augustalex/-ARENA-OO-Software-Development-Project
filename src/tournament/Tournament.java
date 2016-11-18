@@ -2,7 +2,7 @@ package tournament;
 
 
 
-import metaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import users.IPlayer;
 
@@ -21,8 +21,8 @@ public class Tournament implements ITournament, Serializable {
     }
 
     @Override
-    public TournamentMetaInformation getTournamentMetaInformation() {
-        return this.configuration.getMetaInformation();
+    public ITournamentMetaInformation getTournamentMetaInformation() {
+        return (ITournamentMetaInformation) this.configuration.getMetaInformation();
     }
 
     @Override
