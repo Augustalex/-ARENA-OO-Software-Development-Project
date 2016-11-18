@@ -40,7 +40,9 @@ public class TournamentStyleFactory implements Serializable {
     public static ITournamentStyle newTournamentStyle(){
         return new TournamentStyle();
     }
-
+    /**
+     * newMockTournamentStyle creates a test default style.
+     */
     public static ITournamentStyle newMockTournamentStyle(){
         TournamentStyle tournament = new TournamentStyle();
         tournament.setTournamentStyleName("TestTournament");
