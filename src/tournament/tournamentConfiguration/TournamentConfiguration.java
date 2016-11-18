@@ -1,6 +1,6 @@
 package tournament.tournamentConfiguration;
 
-import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import serviceCenter.reviewServices.Reviewer;
 import tournament.tournamentStyle.ITournamentStyle;
 import users.IUser;
@@ -10,7 +10,7 @@ import users.IUser;
  */
 public class TournamentConfiguration implements ITournamentConfiguration {
     private ITournamentStyle tournamentStyle;
-    private TournamentMetaInformation tournamentMetaInformation;
+    private ITournamentMetaInformation tournamentMetaInformation;
 
     @Override
     public ITournamentConfiguration setTournamentStyle(ITournamentStyle ITournamentStyle) {
@@ -19,7 +19,7 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     }
 
     @Override
-    public ITournamentConfiguration setMetaInformation(TournamentMetaInformation tournamentMetaInformation) {
+    public ITournamentConfiguration setMetaInformation(ITournamentMetaInformation tournamentMetaInformation) {
         this.tournamentMetaInformation = tournamentMetaInformation;
         return this;
     }
@@ -29,7 +29,7 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     }
 
     @Override
-    public TournamentMetaInformation getMetaInformation() {
+    public ITournamentMetaInformation getMetaInformation() {
         return tournamentMetaInformation;
     }
 

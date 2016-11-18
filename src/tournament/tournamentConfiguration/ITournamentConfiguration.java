@@ -1,7 +1,7 @@
 package tournament.tournamentConfiguration;
 
 import metaInformation.MetaInformation;
-import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import tournament.tournamentStyle.ITournamentStyle;
 
 import java.io.Serializable;
@@ -23,7 +23,7 @@ public interface ITournamentConfiguration extends Serializable{
      * @param tournamentMetaInformation
      * @return
      */
-    ITournamentConfiguration setMetaInformation(TournamentMetaInformation tournamentMetaInformation);
+    ITournamentConfiguration setMetaInformation(ITournamentMetaInformation tournamentMetaInformation);
 
     /**
      * Retrieve the set style of the Tournament Configuration.
@@ -39,7 +39,7 @@ public interface ITournamentConfiguration extends Serializable{
      * Might return null if nothing is set already.
      * @return
      */
-    TournamentMetaInformation getMetaInformation();
+    ITournamentMetaInformation getMetaInformation();
 
     /**
      * Return true if all values are set and valid (in this object).

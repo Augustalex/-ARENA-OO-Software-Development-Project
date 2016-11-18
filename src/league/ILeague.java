@@ -16,7 +16,7 @@ public interface ILeague {
 
     int getLeagueID();
 
-    List<ITournament> getTournamentsInLeague();
+    List<ITournament> getTournaments();
 
     void addTournamentToLeague(ITournament tournament);
 

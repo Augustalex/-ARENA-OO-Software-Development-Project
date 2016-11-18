@@ -33,7 +33,7 @@ public class League implements ILeague{
     }
 
     @Override
-    public List<ITournament> getTournamentsInLeague() {
+    public List<ITournament> getTournaments() {
         printTournamentNames();
         return tournamentsInLeague;
     }

@@ -3,12 +3,9 @@ package users;
 import league.ILeague;
 import league.League;
 import tournament.ITournament;
-import tournament.Tournament;
-import tournament.TournamentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
@@ -54,7 +51,7 @@ public class Player implements IPlayer{
     @Override
     public List<ITournament> getAvailibleTournaments(){
         return leagues.stream()
-                .flatMap(l -> l.getTournamentsInLeague().stream())
+                .flatMap(l -> l.getTournaments().stream())
                 .collect(Collectors.toList());
     }
 

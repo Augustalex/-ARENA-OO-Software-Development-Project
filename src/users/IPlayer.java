@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IPlayer extends IUser {
 
-    ArrayList<ILeague> getLeagues();
+    List<ILeague> getLeagues();
 
     List<ITournament> getAvailibleTournaments();
 

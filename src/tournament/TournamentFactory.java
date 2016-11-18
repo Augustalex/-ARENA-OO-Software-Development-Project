@@ -7,7 +7,7 @@ import tournament.tournamentConfiguration.ITournamentConfiguration;
  */
 public class TournamentFactory {
 
-    /**
+    /**)
      * Creates a new Tournament given no arguments. The tournament configuration and other
      * attributes is thus not set.
      * @return

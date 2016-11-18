@@ -12,8 +12,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import metaInformation.MetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
+import tournament.tournamentConfiguration.TournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfigurationFactory;
 import tournament.tournamentStyle.ITournamentStyle;
 import tournament.tournamentStyle.TournamentStyleFactory;
@@ -82,17 +84,17 @@ public class ConfigureTournamentViewController implements Initializable {
 
         TimeDate time = new TimeDate(tournamentDate.getText());
 
-        MetaInformation metaInformation =
-                new TournamentMetaInformation()
-                        .setStartDate(time)
-                        .setName(tournamentName.getText())
-                        .setDescription(tournamentDesc.getText());
+        TournamentMetaInformation metaInformation =
+                (TournamentMetaInformation) new TournamentMetaInformation()
+                       .setStartDate(time)
+                       .setName(tournamentName.getText())
+                       .setDescription(tournamentDesc.getText());
 
         return(
                 TournamentConfigurationFactory
                         .newTournamentConfiguration()
                         .setTournamentStyle(tournamentComboBox.getValue())
-                        .setMetaInformation((TournamentMetaInformation)metaInformation)
+                        .setMetaInformation((ITournamentMetaInformation) metaInformation)
         );
     }
 }

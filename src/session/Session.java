@@ -13,12 +13,12 @@ import java.io.Serializable;
  * On log out or exit the Session may be stored on persistent storage
  * to later be reloaded into a new session once the user logs in again.
  */
-public class Session implements Serializable{
+public class Session implements Serializable, ISession{
 
     private static final Session session = new Session();
 
-    IPlayer player = new Player(null).createMockPlayerAugust();
-    AppliedTournaments appliedTournaments;
+    private IPlayer player = new Player(null).createMockPlayerAugust();
+    private AppliedTournaments appliedTournaments;
 
     public Session(){
         this.appliedTournaments = new AppliedTournaments();
@@ -32,15 +32,12 @@ public class Session implements Serializable{
         this.player = player;
     }
 
+    @Override
     public IPlayer getPlayer(){
         return player;
     }
 
-   /* public void bindTournamentToPlayer(ITournament tournament, IPlayer player){
-        tournament.AddPlayer(player);
-        appliedTournaments.applyToTournament(tournament);
-    }*/
-
+    @Override
     public AppliedTournaments getAppliedTournaments() {
         return appliedTournaments;
     }
