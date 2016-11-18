@@ -1,17 +1,15 @@
 package users;
 
 import league.ILeague;
-import league.League;
 import tournament.ITournament;
-import tournament.Tournament;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents the User type IPlayer.
+ * Represents the IUser type IPlayer.
  */
-public interface IPlayer extends User{
+public interface IPlayer extends IUser {
 
     ArrayList<ILeague> getLeagues();
 

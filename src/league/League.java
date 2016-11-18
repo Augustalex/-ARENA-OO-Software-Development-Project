@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Simon on 14/11/2016.
+ * Implements the league interface
  */
 public class League implements ILeague{
     private String leagueName;
@@ -41,7 +41,7 @@ public class League implements ILeague{
     @Override
     public void printTournamentNames(){
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
-            System.out.println("Name of tournaments: " + tournamentsInLeague.get(i).getTournamentName());
+            System.out.println("Name of tournaments: " + tournamentsInLeague.get(i).getTournamentMetaInformation().getTourName());
         }
     }
 

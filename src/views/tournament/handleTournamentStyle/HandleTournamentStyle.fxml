@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.Pane?>
-<VBox fx:controller="views.handleTournamentStyle.HandleTournamentStyleController" xmlns:fx="http://javafx.com/fxml"
+<VBox fx:controller="views.tournament.handleTournamentStyle.HandleTournamentStyleController" xmlns:fx="http://javafx.com/fxml"
       fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
 
     <Text text="Tournament Style" fill="white"/>

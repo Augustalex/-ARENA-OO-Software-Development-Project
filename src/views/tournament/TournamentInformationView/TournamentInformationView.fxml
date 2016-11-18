@@ -6,7 +6,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.TournamentInformationView.TournamentInformationViewController"
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.TournamentInformationView.TournamentInformationViewController"
             stylesheets="/views/main.css" fx:id="tournamentInformationContent" id="tournamentInformationContent">
     <center>
         <VBox fx:id="tournamentInfo" id="tournamentInfo">

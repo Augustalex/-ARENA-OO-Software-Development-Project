@@ -8,7 +8,7 @@ import users.Player;
 import java.util.List;
 
 /**
- * Created by Simon on 14/11/2016.
+ * Interface for League
  */
 public interface ILeague {
 

@@ -1,15 +1,11 @@
-package views.handleTournamentStyle;
+package views.tournament.handleTournamentStyle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import tournament.ITournament;
 import tournament.tournamentStyle.ITournamentStyle;
-import tournament.tournamentStyle.TournamentStyle;
 import tournament.tournamentStyle.TournamentStyleFactory;
 
 import java.net.URL;

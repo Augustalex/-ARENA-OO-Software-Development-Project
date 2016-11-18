@@ -25,15 +25,15 @@ public class Player implements IPlayer{
 
         ILeague league = new League("League1", 10);
         ITournament tour = TournamentFactory.newTournament();
-        tour.setTournamentName("August Unleashed");
+        //tour.setTournamentName("August Unleashed");
 
 
         ITournament tour2 = TournamentFactory.newTournament();
-        tour2.setTournamentName("Simon Unleashed");
+        //tour2.setTournamentName("Simon Unleashed");
 
 
         ITournament tour3 = TournamentFactory.newTournament();
-        tour3.setTournamentName("Carlos Unleashed");
+        //tour3.setTournamentName("Carlos Unleashed");
 
         league.addTournamentToLeague(tour);
         league.addTournamentToLeague(tour2);

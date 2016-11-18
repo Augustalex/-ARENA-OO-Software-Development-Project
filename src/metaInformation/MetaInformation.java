@@ -6,9 +6,16 @@ package metaInformation;
  *
  * But the actual use is not specified and is purely utilitarian.
  */
-public class MetaInformation {
+public abstract class MetaInformation {
+    private long id;
     private String name;
     private String description;
+
+    private static long nextId = 0;
+
+    public MetaInformation(){
+        this.id = MetaInformation.nextId++;
+    }
 
     /**
      * Set the object description of the object represented in this class.
@@ -44,5 +51,13 @@ public class MetaInformation {
      */
      public String getName(){
          return name;
+     }
+
+    /**
+     * Unique identifier for a tournament.
+     * @return
+     */
+     public long getID(){
+         return this.id;
      }
 }
