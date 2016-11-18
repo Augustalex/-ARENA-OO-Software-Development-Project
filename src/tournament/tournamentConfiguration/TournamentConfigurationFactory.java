@@ -11,36 +11,10 @@ import java.util.stream.Collectors;
 public class TournamentConfigurationFactory implements Serializable {
 
     /**
-     * Creates a new empty or "blank" Tournament Configuration.
-     * @return
-     */
-    private static List<ITournamentConfiguration> configuration = new ArrayList<>();
-
-    /**
-     * Add a Tournament Configuration to the static array list of Tournament Configurations.
-     * @param tournamentStyle
-     */
-    public static void addTournamentConfiguration(ITournamentConfiguration tournamentStyle){
-        configuration.add(tournamentStyle);
-    }
-
-    /**
-     * Retrieve list of tournament configurations.
-     * @return
-     */
-    public static List<ITournamentConfiguration> getTournamentConfigurations(){
-        return configuration.stream().collect(Collectors.toList());
-    }
-
-    /**
      * Returns a new tournament configuration that is void of settings.
      * @return
      */
     public static ITournamentConfiguration newTournamentConfiguration(){
-        ITournamentConfiguration tournamentConfiguration = new TournamentConfiguration();
-
-        TournamentConfigurationFactory.addTournamentConfiguration(tournamentConfiguration);
-
-        return tournamentConfiguration;
+        return new TournamentConfiguration();
     }
 }
