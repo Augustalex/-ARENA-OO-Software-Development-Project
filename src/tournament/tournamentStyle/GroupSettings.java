@@ -1,10 +1,12 @@
 package tournament.tournamentStyle;
 
+import java.io.Serializable;
+
 /**
  * Defines the settings for a tournaments group settings
  */
 
-public class GroupSettings {
+public class GroupSettings implements Serializable{
     private int groupsAmount;
     private int rounds;     // amount of matches in group play.
     private int maxWinners; // The amount that qualifies to continue the elimationround.

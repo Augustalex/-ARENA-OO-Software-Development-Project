@@ -3,10 +3,12 @@ package tournament.tournamentConfiguration;
 import metaInformation.TournamentMetaInformation;
 import tournament.tournamentStyle.ITournamentStyle;
 
+import java.io.Serializable;
+
 /**
  * The configuration of a Tournament not yet created.
  */
-public interface ITournamentConfiguration {
+public interface ITournamentConfiguration extends Serializable{
 
     /**
      * Set a Tournament style for the configuration.
