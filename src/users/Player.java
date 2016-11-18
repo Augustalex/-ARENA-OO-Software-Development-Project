@@ -56,7 +56,6 @@ public class Player implements IPlayer{
         return leagues.stream()
                 .flatMap(l -> l.getTournamentsInLeague().stream())
                 .collect(Collectors.toList());
-
     }
 
     @Override
