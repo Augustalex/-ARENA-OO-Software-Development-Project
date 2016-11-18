@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import metaInformation.MetaInformation;
-import metaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import tournament.tournamentConfiguration.TournamentConfigurationFactory;
 import tournament.tournamentStyle.ITournamentStyle;

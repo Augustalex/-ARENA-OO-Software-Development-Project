@@ -1,12 +1,15 @@
 package tournament.tournamentConfiguration;
 
-import metaInformation.TournamentMetaInformation;
+import metaInformation.MetaInformation;
+import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import tournament.tournamentStyle.ITournamentStyle;
+
+import java.io.Serializable;
 
 /**
  * The configuration of a Tournament not yet created.
  */
-public interface ITournamentConfiguration {
+public interface ITournamentConfiguration extends Serializable{
 
     /**
      * Set a Tournament style for the configuration.
@@ -16,7 +19,7 @@ public interface ITournamentConfiguration {
     ITournamentConfiguration setTournamentStyle(ITournamentStyle ITournamentStyle);
 
     /**
-     * Set {@link metaInformation.MetaInformation} for the Tournament Configuration.
+     * Set {@link MetaInformation} for the Tournament Configuration.
      * @param tournamentMetaInformation
      * @return
      */
@@ -31,7 +34,7 @@ public interface ITournamentConfiguration {
     ITournamentStyle getITournamentStyle();
 
     /**
-     * Retrieve the {@link metaInformation.MetaInformation} set on the Tournament Configuration.
+     * Retrieve the {@link MetaInformation} set on the Tournament Configuration.
      *
      * Might return null if nothing is set already.
      * @return

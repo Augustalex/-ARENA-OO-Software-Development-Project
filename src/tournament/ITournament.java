@@ -1,12 +1,13 @@
 package tournament;
 
-import metaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 
 /**
  * Interface for a Tournament
  */
 public interface ITournament {
 
-    TournamentMetaInformation getTournamentMetaInformation();
+    ITournamentMetaInformation getTournamentMetaInformation();
 
 }
