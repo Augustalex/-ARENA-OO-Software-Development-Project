@@ -1,5 +1,8 @@
 package tournament.tournamentConfiguration;
 
+import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
+import tournament.tournamentStyle.TournamentStyleFactory;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,5 +19,15 @@ public class TournamentConfigurationFactory implements Serializable {
      */
     public static ITournamentConfiguration newTournamentConfiguration(){
         return new TournamentConfiguration();
+    }
+
+    public static ITournamentConfiguration newConfigurationMock(){
+        return new TournamentConfiguration()
+                .setMetaInformation(
+                        (TournamentMetaInformation) new TournamentMetaInformation()
+                        .setName("BajsTurnering2000")
+                        .setDescription("Turnering 2000")
+                )
+                .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());
     }
 }
