@@ -1,6 +1,6 @@
 package tournament.tournamentConfiguration;
 
-import metaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import serviceCenter.reviewServices.Reviewer;
 import tournament.tournamentStyle.ITournamentStyle;
 

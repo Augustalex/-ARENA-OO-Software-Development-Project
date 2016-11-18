@@ -6,7 +6,7 @@ package metaInformation;
  *
  * But the actual use is not specified and is purely utilitarian.
  */
-public abstract class MetaInformation {
+public abstract class MetaInformation implements IMetaInformationSetter {
     private long id;
     private String name;
     private String description;

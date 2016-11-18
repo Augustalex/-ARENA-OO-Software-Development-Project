@@ -2,15 +2,10 @@ package tournament;
 
 
 
-import metaInformation.TournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
-import tournament.tournamentConfiguration.TournamentConfiguration;
-import tournament.tournamentMap.ITournamentMap;
-import users.IPlayer;
-import utilities.TimeDate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Implements the Tournament interface.
@@ -24,8 +19,8 @@ public class Tournament implements ITournament, Serializable {
     }
 
     @Override
-    public TournamentMetaInformation getTournamentMetaInformation() {
-        return this.configuration.getMetaInformation();
+    public ITournamentMetaInformation getTournamentMetaInformation() {
+        return (ITournamentMetaInformation) this.configuration.getMetaInformation();
     }
 
 }

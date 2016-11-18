@@ -16,15 +16,31 @@ public class TournamentConfigurationFactory implements Serializable {
      */
     private static List<ITournamentConfiguration> configuration = new ArrayList<>();
 
+    /**
+     * Add a Tournament Configuration to the static array list of Tournament Configurations.
+     * @param tournamentStyle
+     */
     public static void addTournamentConfiguration(ITournamentConfiguration tournamentStyle){
         configuration.add(tournamentStyle);
     }
 
+    /**
+     * Retrieve list of tournament configurations.
+     * @return
+     */
     public static List<ITournamentConfiguration> getTournamentConfigurations(){
         return configuration.stream().collect(Collectors.toList());
     }
 
+    /**
+     * Returns a new tournament configuration that is void of settings.
+     * @return
+     */
     public static ITournamentConfiguration newTournamentConfiguration(){
-        return new TournamentConfiguration();
+        ITournamentConfiguration tournamentConfiguration = new TournamentConfiguration();
+
+        TournamentConfigurationFactory.addTournamentConfiguration(tournamentConfiguration);
+
+        return tournamentConfiguration;
     }
 }
