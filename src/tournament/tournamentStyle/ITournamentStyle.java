@@ -20,8 +20,8 @@ public interface ITournamentStyle extends Serializable{
 
     void setTournamentStyleName(String name);
     void setTournamentStyleDescription(String description);
-    void setGroupSettings();
-    void setEliminationSettings();
+    void initateGroupSettings();
+    void initateEliminationSettings();
     void setTournamentSize(int size);
 
     //void setGroupRound(boolean value);

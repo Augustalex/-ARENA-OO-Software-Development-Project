@@ -46,7 +46,7 @@ public class TournamentStyle implements ITournamentStyle {
     }
 
     @Override
-    public void setGroupSettings() {
+    public void initateGroupSettings() {
         this.groupSettings = new GroupSettings();
     }
 
@@ -56,7 +56,7 @@ public class TournamentStyle implements ITournamentStyle {
     }
 
     @Override
-    public void setEliminationSettings() {
+    public void initateEliminationSettings() {
         this.eliminationSettings = new EliminationSettings();
     }
 
