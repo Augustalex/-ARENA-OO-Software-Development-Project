@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
- * Created by Simon on 14/11/2016.
+ * Implements interface IPlayer
  */
 public class Player implements IPlayer{
 
