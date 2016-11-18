@@ -31,4 +31,15 @@ public class TournamentConfigurationFactory implements Serializable {
                 )
                 .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());
     }
+
+    public static ITournamentConfiguration newConfigurationMock(String tournamentName){
+        return new TournamentConfiguration()
+                .setMetaInformation(
+                        (ITournamentMetaInformation) new TournamentMetaInformation()
+                                .setName(tournamentName + "2000")
+                                .setDescription(tournamentName)
+                )
+                .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());
+    }
+
 }
