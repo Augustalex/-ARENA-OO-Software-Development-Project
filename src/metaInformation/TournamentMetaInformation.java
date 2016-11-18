@@ -6,8 +6,9 @@ import utilities.TimeDate;
  * Contains {@link MetaInformation} about a Tournament domain object.
  */
 public class TournamentMetaInformation extends MetaInformation {
+
     private TimeDate startDate;
-    private String tourName;
+
     public TimeDate getStartDate(){
         return startDate;
     }

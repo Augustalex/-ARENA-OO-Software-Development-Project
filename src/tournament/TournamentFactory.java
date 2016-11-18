@@ -11,6 +11,7 @@ public class TournamentFactory {
      * @return
      */
     public static ITournament newTournament(){
-        return new Tournament();
+        ITournament tournament = new Tournament();
+
     }
 }

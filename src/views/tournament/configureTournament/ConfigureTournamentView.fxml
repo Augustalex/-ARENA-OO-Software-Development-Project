@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.configureTournament.ConfigureTournamentViewController"
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.configureTournament.ConfigureTournamentViewController"
             stylesheets="/views/main.css" fx:id="createTournamentContainer" id="createTournamentContainer">
     <VBox fx:id="createTournamentContent" id="createTournamentContent">
         <Label text="Create Tournament" styleClass="tournamentLabel" id="header"/>

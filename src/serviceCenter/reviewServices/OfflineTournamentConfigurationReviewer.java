@@ -6,7 +6,7 @@ import users.User;
 /**
  * Reviews all incoming retrieve objects and approves them, offline.
  */
-public class OfflineTournamentConfigurationReviewer implements Reviewer {
+public class OfflineTournamentConfigurationReviewer implements Reviewer<ITournamentConfiguration> {
 
     private ReviewQueue<ITournamentConfiguration> reviewQueue = new ReviewQueue<>();
 

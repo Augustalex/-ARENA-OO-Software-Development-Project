@@ -1,24 +1,16 @@
-package views.TournamentInformationView;
+package views.tournament.TournamentInformationView;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import league.ILeague;
 import session.Session;
 import tournament.ITournament;
-import tournament.Tournament;
 import users.IPlayer;
-import users.Player;
 import views.FXMLViewController;
 import views.DimensionBinder;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 

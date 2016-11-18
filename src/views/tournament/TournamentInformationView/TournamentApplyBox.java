@@ -1,14 +1,11 @@
-package views.TournamentInformationView;
+package views.tournament.TournamentInformationView;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import session.AppliedTournaments;
-import session.Session;
 import tournament.ITournament;
-import tournament.Tournament;
 import views.DimensionBinder;
 
 /**
@@ -31,7 +28,7 @@ public class TournamentApplyBox extends HBox {
         DimensionBinder.bindWidthToPercentageOfContainer(right, 0.5, this);
 
         //Add apply button
-        Label label = new Label(tournament.getTournamentName());
+        Label label = new Label(tournament.getTournamentMetaInformation().getTourName());
         Button applyButton = new Button("Apply");
 
         //add all elements
