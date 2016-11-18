@@ -20,6 +20,10 @@ public class Storage implements IStorage {
         this.map.put(clazz, object);
     }
 
+    @Override
+    public Object get(Class clazz) {
+        return map.get(clazz);
+    }
 
     @Override
     public void dump() {

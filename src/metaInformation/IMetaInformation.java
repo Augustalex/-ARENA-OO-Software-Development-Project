@@ -12,16 +12,16 @@ public interface IMetaInformation {
      *
      * @return
      */
-    public String getName();
+    String getName();
     /**
      * Retrieve the object description.
      * @return
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Unique identifier for a tournament.
      * @return
      */
-    public long getID();
+    long getID();
 }

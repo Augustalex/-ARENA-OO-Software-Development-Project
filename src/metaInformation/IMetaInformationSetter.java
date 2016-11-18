@@ -11,7 +11,7 @@ public interface IMetaInformationSetter extends IMetaInformation {
      * @param name
      * @return
      */
-    public MetaInformation setName(String name);
+    IMetaInformationSetter setName(String name);
 
     /**
      * Set the object description of the object represented in this class.
@@ -19,6 +19,6 @@ public interface IMetaInformationSetter extends IMetaInformation {
      * @param description
      * @return
      */
-    public MetaInformation setDescription(String description);
+    IMetaInformationSetter setDescription(String description);
 
 }
