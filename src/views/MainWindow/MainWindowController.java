@@ -76,7 +76,7 @@ public class MainWindowController extends FXMLViewController{
         createTournamentButton.setOnAction(e -> {
             try{
                 closeCurrentContentController();
-                Parent parent = this.loadFXML("configureTournament/ConfigureTournamentView.fxml");
+                Parent parent = this.loadFXML("tournament/configureTournament/ConfigureTournamentView.fxml");
 
                 contentView.getChildren().setAll(parent);
             } catch (IOException e1) {
@@ -87,7 +87,7 @@ public class MainWindowController extends FXMLViewController{
         handleTournamentButton.setOnAction(e->{
             try{
                 closeCurrentContentController();
-                Parent parent = this.loadFXML("handleTournamentStyle/HandleTournamentStyle.fxml");
+                Parent parent = this.loadFXML("tournament/handleTournamentStyle/HandleTournamentStyle.fxml");
                 contentView.getChildren().setAll(parent);
             }catch(IOException ex){
                 ex.printStackTrace();

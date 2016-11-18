@@ -64,7 +64,7 @@ public class GameInformationViewController extends FXMLViewController{
 
     private Parent loadTournamentInformationView() throws IOException {
         return loadFXML(
-                "TournamentInformationView/TournamentInformationView.fxml"
+                "tournament/TournamentInformationView/TournamentInformationView.fxml"
         );
     }
     @Override
