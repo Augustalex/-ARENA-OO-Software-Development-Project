@@ -40,7 +40,8 @@ public class TournamentStyleFactory implements Serializable {
     public static ITournamentStyle newTournamentStyle(){
         return new TournamentStyle();
     }
-    public static ITournamentStyle getPreDefinedStyle(){
+
+    public static ITournamentStyle newMockTournamentStyle(){
         TournamentStyle tournament = new TournamentStyle();
         tournament.setTournamentStyleName("TestTournament");
         tournament.setTournamentSize(64);
@@ -52,6 +53,7 @@ public class TournamentStyleFactory implements Serializable {
         tournament.setEliminationSettings();
         EliminationSettings eliminationSettings = tournament.getEliminationSettings();
         eliminationSettings.setBestOf(3);
+
         return tournament;
     }
 }
