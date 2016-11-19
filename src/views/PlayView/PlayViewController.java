@@ -156,7 +156,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     private Parent loadGameInformationView(GameInformation gameInformation) throws IOException {
         return
                 this.loadFXML(
-                "/GameInformationView/GameInformationView.fxml",
+                "GameInformationView/GameInformationView.fxml",
                 c -> new GameInformationViewController(gameInformation)
         );
     }

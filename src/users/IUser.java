@@ -16,11 +16,13 @@ public interface IUser {
             public String getName() {
                 return "August";
             }
+
         };
     }
 
     void notify(String message);
 
     String getName();
+
 
 }

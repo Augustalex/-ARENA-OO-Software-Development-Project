@@ -15,4 +15,6 @@ public interface IPlayer extends IUser {
 
     List<ITournament> getAvailibleTournaments();
 
+    void setName(String name);
+
 }

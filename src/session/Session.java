@@ -17,7 +17,7 @@ public class Session implements Serializable, ISession{
 
     private static final Session session = new Session();
 
-    private IPlayer player = new Player(null).createMockPlayerAugust();
+    private IPlayer player;
     private AppliedTournaments appliedTournaments;
 
     public Session(){
@@ -41,4 +41,5 @@ public class Session implements Serializable, ISession{
     public AppliedTournaments getAppliedTournaments() {
         return appliedTournaments;
     }
+
 }

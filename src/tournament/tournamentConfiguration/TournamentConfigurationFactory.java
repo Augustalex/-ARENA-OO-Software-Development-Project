@@ -3,6 +3,7 @@ package tournament.tournamentConfiguration;
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import tournament.tournamentStyle.TournamentStyleFactory;
+import utilities.TimeDate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class TournamentConfigurationFactory implements Serializable {
         return new TournamentConfiguration();
     }
 
-    public static ITournamentConfiguration newConfigurationMock(){
+  /*  public static ITournamentConfiguration newConfigurationMock(){
         return new TournamentConfiguration()
                 .setMetaInformation(
                         (ITournamentMetaInformation) new TournamentMetaInformation()
@@ -30,15 +31,19 @@ public class TournamentConfigurationFactory implements Serializable {
                         .setDescription("Turnering 2000")
                 )
                 .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());
-    }
+    }*/
 
     public static ITournamentConfiguration newConfigurationMock(String tournamentName){
-        return new TournamentConfiguration()
-                .setMetaInformation(
-                        (ITournamentMetaInformation) new TournamentMetaInformation()
-                                .setName(tournamentName + "2000")
-                                .setDescription(tournamentName)
-                )
+
+        TournamentConfiguration tournamentConfiguration = new TournamentConfiguration();
+        TournamentMetaInformation tournamentMetaInformation = new TournamentMetaInformation();
+        tournamentMetaInformation
+                .setStartDate(new TimeDate("Bajs"))
+                .setName(tournamentName + "2000")
+                .setDescription(tournamentName);
+
+        return tournamentConfiguration
+                .setMetaInformation((ITournamentMetaInformation) tournamentMetaInformation)
                 .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());
     }
 
