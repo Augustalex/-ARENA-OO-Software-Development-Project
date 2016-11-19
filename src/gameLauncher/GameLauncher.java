@@ -1,9 +1,11 @@
 package gameLauncher;
 
+import games.ticTacToe.TicTacToe;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import gameInformation.GameInformation;
+import tests.RunMatch;
 
 import static tests.RunMatch.runMatch;
 
@@ -32,8 +34,10 @@ public class GameLauncher {
 
        switch(gameInformation.getGameName().toLowerCase()){
            case "othello":
-               runMatch(newGamePane);
+               RunMatch.runMatch(newGamePane);
                break;
+           case "tic tac toe":case "tictactoe":
+               new TicTacToe().start(newGamePane);
            default:
 
                break;

@@ -4,7 +4,9 @@ import metaInformation.IMetaInformation;
 import utilities.TimeDate;
 
 /**
- * Created by August on 2016-11-18.
+ * Meta information about the domain object "Tournament".
+ *
+ * Contains basic meta information such as name, description and start date.
  */
 public interface ITournamentMetaInformation extends IMetaInformation {
 

@@ -7,6 +7,7 @@ import advertisement.adRepository.AdRepository;
 import advertisement.adRepository.AdRepositoryFactory;
 import advertisement.adPreference.AdPreferenceFactory;
 import advertisement.adSpot.AdSpot;
+import gameInformation.TicTacToeGameInformation;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -42,6 +43,9 @@ public class PlayViewController extends FXMLViewController implements Advertiser
 
     @FXML
     private Button othelloGameButton;
+
+    @FXML
+    private Button ticTacToeButton;
 
     @FXML
     private VBox gameList;
@@ -123,6 +127,18 @@ public class PlayViewController extends FXMLViewController implements Advertiser
             try{
                 setGameInformationView(
                         (Region) loadGameInformationView(new OthelloGameInformation()),
+                        gameInformationContainer
+                );
+            }
+            catch(IOException ex){
+                ex.printStackTrace();
+            }
+        });
+
+        ticTacToeButton.setOnAction(e -> {
+            try{
+                setGameInformationView(
+                        (Region) loadGameInformationView(new TicTacToeGameInformation()),
                         gameInformationContainer
                 );
             }
