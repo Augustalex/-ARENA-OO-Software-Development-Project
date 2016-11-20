@@ -20,7 +20,7 @@ public class Session implements Serializable, ISession{
     private IPlayer player;
     private AppliedTournaments appliedTournaments;
 
-    public Session(){
+    private Session(){
         this.appliedTournaments = new AppliedTournaments();
     }
 

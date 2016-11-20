@@ -1,15 +1,21 @@
 package views.tournament.TournamentInformationView;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import session.AppliedTournaments;
 import session.Session;
 import tournament.ITournament;
+import tournament.Tournament;
 import users.IPlayer;
 import views.FXMLViewController;
 import views.DimensionBinder;
+import views.tournament.tournamentApplyBox.TournamentApplyBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -21,9 +27,7 @@ import java.util.ResourceBundle;
  */
 public class TournamentInformationViewController extends FXMLViewController {
 
-    List<ITournament> tournaments;
-    IPlayer player;
-    Session session = new Session();
+    private Session session = Session.getSession();
 
     @FXML
     public BorderPane tournamentInformationContent;
@@ -37,39 +41,41 @@ public class TournamentInformationViewController extends FXMLViewController {
     @FXML
     private VBox tournamentsList;
 
-    /*@FXML
-    public void handleMouseClick(MouseEvent arg0){
-        System.out.println("clicked on: " + tournamentsList.getSelectionModel().getSelectedItem());
-        new ApplyForTournamentDialog(session, tournamentsList.getSelectionModel().getSelectedItem());
-    }*/
-
-    public TournamentInformationViewController(){
-        this.player = session.getPlayer();
-        //tournaments = player.getAvailibleTournaments();
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        viewTournamentList(player.getAvailibleTournaments());
+        List<ITournament> tournaments = this.session.getPlayer().getAvailibleTournaments();
+        viewTournamentList(tournaments);
 
         DimensionBinder.bindWidthToPercentageOfContainer(
                 tournamentsList, 0.8, tournamentInfo
         );
     }
 
-    public void viewTournamentList(List<ITournament> tournaments){
+    private void viewTournamentList(List<ITournament> tournaments){
         activeTournamentsLabel.setText("Available Tournaments");
 
-        TournamentApplyBox[] applyBoxes = tournaments.stream()
-                .map(tournament -> new TournamentApplyBox(tournament, this.session.getAppliedTournaments()))
-                .toArray(TournamentApplyBox[]::new);
+        for(ITournament tournament : tournaments)
+            addApplyBoxIntoList(tournament, this.session.getAppliedTournaments());
+    }
 
-        for (TournamentApplyBox applyBox : applyBoxes) {
-            DimensionBinder.bindWidthToPercentageOfContainer(applyBox, 1, tournamentsList);
+    private void addApplyBoxIntoList(ITournament tournament, AppliedTournaments appliedTournaments){
+        try {
+            Region applyBoxPane = loadNewTournamentApplyBox(tournament, appliedTournaments);
+            DimensionBinder.bindWidthToPercentageOfContainer(applyBoxPane, 0.95, tournamentsList);
+            tournamentsList.getChildren().add(applyBoxPane);
+            System.out.println("Added " + applyBoxPane + " to list.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        tournamentsList.getChildren().setAll(applyBoxes);
+    }
 
+    private Region loadNewTournamentApplyBox(ITournament tournament, AppliedTournaments appliedTournaments) throws IOException {
+        return (Region) this.loadFXML(
+                getClass().getResource(
+                        "../tournamentApplyBox/TournamentApplyBox.fxml"),
+                c -> new TournamentApplyBox(tournament, appliedTournaments)
+        );
     }
 
     @Override

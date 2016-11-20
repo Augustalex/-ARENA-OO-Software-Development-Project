@@ -18,7 +18,7 @@ public class TournamentFactory {
     }
 
     public static ITournament newTournamentMock(){
-        return new Tournament(TournamentConfigurationFactory.newConfigurationMock("Bajs"));
+        return new Tournament(TournamentConfigurationFactory.newConfigurationMock("HB Tournament "));
     }
 
     public static ITournament newTournamentMock(String name){

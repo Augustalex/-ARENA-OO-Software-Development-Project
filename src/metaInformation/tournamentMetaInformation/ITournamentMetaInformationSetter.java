@@ -6,7 +6,7 @@ import utilities.TimeDate;
 /**
  * Interface for setting tournament meta information.
  */
-public interface ITournamentMetaInformationSetter extends ITournamentMetaInformation{
+public interface ITournamentMetaInformationSetter extends ITournamentMetaInformation, IMetaInformationSetter{
 
     /**
      * Sets start date of Tournament.

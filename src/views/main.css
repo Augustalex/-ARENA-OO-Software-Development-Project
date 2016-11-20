@@ -135,7 +135,9 @@ StackPane#playViewSuperWindow{
     -fx-min-height: 1000px;
 }
 
-#activeGamesLabel{
+/*  Tournaments List        */
+
+#activeTournamentsLabel{
     -fx-font-size: 6em;
     -fx-font-family: "Helvetica";
     -fx-text-fill: white;
@@ -147,18 +149,11 @@ StackPane#playViewSuperWindow{
     -fx-border-width: 2px;
 }
 
-/*  "-alt" is a command for alternating between all concerned tags.
-    "derive" is a color function for deriving a color from a percentage
-    of another color. The percentage is mostly regarding brightness of color. */
-/*#tournamentsList > *{
-    -fx-control-inner-background: #042535;
-    -fx-control-inner-background-alt: derive(-fx-control-inner-background, 1%);
-    -fx-text-fill: white;
-}*/
-
 #tournamentsList{
-
-    -fx-pref-width: 400px;
+    -fx-padding: 0.2em 0 0.2em;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: black;
+    -fx-alignment: center;
 }
 
 #tournamentInfo{
@@ -166,27 +161,21 @@ StackPane#playViewSuperWindow{
 }
 
 #tournamentApplyBox{
-    -fx-padding: 0.2em -0.8em 0.2em 1em;
     -fx-font-size: 2em;
-    -fx-border-width: 0 0 2px 0;
-    -fx-border-color: black;
 }
 
-#tournamentApplyLabelBox > Label{
+#tournamentApplyLabel{
     -fx-text-fill: white;
 }
 
-#tournamentApplyButtonBox{
-    -fx-alignment: center;
-    -fx-text-alignment: center;
-}
-
-#tournamentApplyButtonBox > Button{
+#tournamentApplyButton{
     -fx-font-size: 0.7em;
 }
+
 /*          CREATE TOURNAMENT VIEW      */
 
 #createTournamentContainer{
+
 }
 
 #createTournamentContent{
@@ -197,6 +186,7 @@ StackPane#playViewSuperWindow{
 
 #createTournamentContent .tournamentLabel{
     -fx-text-fill: #354e5d;
+
 }
 
 #tournamentHBox{

@@ -1,6 +1,7 @@
 package tournament.tournamentConfiguration;
 
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
+import metaInformation.tournamentMetaInformation.ITournamentMetaInformationSetter;
 import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import tournament.tournamentStyle.TournamentStyleFactory;
 import utilities.TimeDate;
@@ -36,14 +37,14 @@ public class TournamentConfigurationFactory implements Serializable {
     public static ITournamentConfiguration newConfigurationMock(String tournamentName){
 
         TournamentConfiguration tournamentConfiguration = new TournamentConfiguration();
-        TournamentMetaInformation tournamentMetaInformation = new TournamentMetaInformation();
+        ITournamentMetaInformationSetter tournamentMetaInformation = new TournamentMetaInformation();
         tournamentMetaInformation
-                .setStartDate(new TimeDate("Bajs"))
-                .setName(tournamentName + "2000")
+                .setStartDate(new TimeDate("ASAP"))
+                .setName(tournamentName)
                 .setDescription(tournamentName);
 
         return tournamentConfiguration
-                .setMetaInformation((ITournamentMetaInformation) tournamentMetaInformation)
+                .setMetaInformation(tournamentMetaInformation)
                 .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());
     }
 
