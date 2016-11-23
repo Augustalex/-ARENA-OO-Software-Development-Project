@@ -1,13 +1,11 @@
-package gameLauncher;
+package games.gameLauncher;
 
-import games.ticTacToe.TicTacToe;
+import games.preInstalledGames.ticTacToe.TicTacToe;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import gameInformation.GameInformation;
+import games.gameInformation.GameInformation;
 import tests.RunMatch;
-
-import static tests.RunMatch.runMatch;
 
 /**
  * Launches a certain game given information about the
@@ -19,7 +17,7 @@ public class GameLauncher {
      * Method for launching a game from the ARENA client.
      * A switch case containing all games launches the specific
      * games from their runMatch() method.
-     * A gameInformation object is sent in to let the launcher know
+     * A gameLibrary.gameInformation object is sent in to let the launcher know
      * which game should be launched.
      * The game is displayed in a new window.
      * @param gameInformation

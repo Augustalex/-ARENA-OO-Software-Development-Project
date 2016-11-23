@@ -1,8 +1,7 @@
-package gameLibrary;
+package games.game;
 
-import gameInformation.GameInformation;
-import gameLibrary.game.Game;
-import gameLibrary.game.IGame;
+import games.gameInformation.GameInformation;
+import games.gameServer.GameServer;
 
 /**
  * Creates a new Game object from an installed games Package path.

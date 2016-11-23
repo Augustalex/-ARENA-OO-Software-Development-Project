@@ -1,4 +1,4 @@
-package gameInformation;
+package games.gameInformation;
 
 /**
  * A predefined GameInformation class with contents regarding

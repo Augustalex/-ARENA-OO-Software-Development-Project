@@ -1,4 +1,4 @@
-package gameInformation;
+package games.gameInformation;
 
 /**
  * Template containing key information about a game.
@@ -37,7 +37,7 @@ public class GameInformation {
     /**
      * Method for setting a image URL to a game.
      * @param imageURL
-     * @return this.gameInformation object
+     * @return this.gameLibrary.gameInformation object
      */
     public GameInformation setImageURL(String imageURL){
         this.imageURL = imageURL;

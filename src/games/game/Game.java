@@ -1,7 +1,7 @@
-package gameLibrary.game;
+package games.game;
 
-import gameInformation.GameInformation;
-import gameLibrary.GameServer;
+import games.gameInformation.GameInformation;
+import games.gameServer.GameServer;
 
 /**
  * Concrete implementation of {@link IGame}.

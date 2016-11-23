@@ -1,4 +1,4 @@
-package gameLibrary;
+package games.gameServer;
 
 import IPInformation.IPInformation;
 import javafx.beans.property.ObjectProperty;

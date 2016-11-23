@@ -1,6 +1,6 @@
-package gameLibrary;
+package games.gameManager;
 
-import gameLibrary.game.IGame;
+import games.game.IGame;
 
 /**
  * Stores and manage games.

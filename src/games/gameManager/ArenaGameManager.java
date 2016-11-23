@@ -1,6 +1,7 @@
-package gameLibrary;
+package games.gameManager;
 
-import gameLibrary.game.IGame;
+import games.game.GameFactory;
+import games.game.IGame;
 
 import java.util.HashMap;
 import java.util.Map;

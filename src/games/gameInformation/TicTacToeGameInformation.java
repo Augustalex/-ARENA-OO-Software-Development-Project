@@ -1,4 +1,4 @@
-package gameInformation;
+package games.gameInformation;
 
 /**
  * Created by August on 2016-11-18.

@@ -1,6 +1,6 @@
 package views.GameInformationView;
 
-import gameLauncher.GameLauncher;
+import games.gameLauncher.GameLauncher;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -12,8 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import gameInformation.GameInformation;
+import games.gameInformation.GameInformation;
 import views.FXMLViewController;
 import views.DimensionBinder;
 
