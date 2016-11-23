@@ -26,7 +26,6 @@ public class Player implements IPlayer{
         IPlayer player = new Player().createMockPlayerAugust();
         ILeague league = new League("mock league", 1);
 
-
         league.addTournamentToLeague(TournamentFactory.newTournamentMock("Coca Cola Tournament"));
         league.addTournamentToLeague(TournamentFactory.newTournamentMock());
         league.addTournamentToLeague(TournamentFactory.newTournamentMock("Ostbågar Tournament"));

@@ -141,11 +141,11 @@ public class TicTacToe {
         // Check game status
         if (isWon(whoseTurn)) {
           lblStatus.setText(whoseTurn + " won! The game is over");
-          whoseTurn = ' '; // Game is over
+          whoseTurn = ' '; // IGame is over
         }
         else if (isFull()) {
           lblStatus.setText("Draw! The game is over");
-          whoseTurn = ' '; // Game is over
+          whoseTurn = ' '; // IGame is over
         }
         else {
           // Change the turn

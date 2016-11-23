@@ -1,5 +1,3 @@
-package views;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +7,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import session.Session;
 import users.Player;
+import views.FXMLViewController;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow/MainWindowView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();
         Platform.setImplicitExit(false);
 

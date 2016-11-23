@@ -73,7 +73,7 @@ public class TournamentInformationViewController extends FXMLViewController {
     private Region loadNewTournamentApplyBox(ITournament tournament, AppliedTournaments appliedTournaments) throws IOException {
         return (Region) this.loadFXML(
                 getClass().getResource(
-                        "../tournamentApplyBox/TournamentApplyBox.fxml"),
+                        "/views/tournament/tournamentApplyBox/TournamentApplyBox.fxml"),
                 c -> new TournamentApplyBox(tournament, appliedTournaments)
         );
     }
