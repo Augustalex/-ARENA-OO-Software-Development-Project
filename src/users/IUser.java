@@ -20,8 +20,16 @@ public interface IUser {
         };
     }
 
+    /**
+     * Method for notifying the user.
+     * @param message
+     */
     void notify(String message);
 
+    /**
+     * Method for getting the name of the user.
+     * @return String name
+     */
     String getName();
 
 

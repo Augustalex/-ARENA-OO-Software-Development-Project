@@ -10,8 +10,17 @@ import users.IPlayer;
  */
 public interface ISession {
 
+    /**
+     * Method for getting the player object linked to the current session.
+     * @return IPlayer player
+     */
     IPlayer getPlayer();
 
+    /**
+     * Method for getting the applied tournaments for the player
+     * linked to this session.
+     * @return AppliedTournaments
+     */
     AppliedTournaments getAppliedTournaments();
 
 }
