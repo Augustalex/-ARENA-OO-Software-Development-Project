@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
 <BorderPane fx:controller="views.spectateMatch.spectateLobby.HandleSpectateLobbyController" xmlns:fx="http://javafx.com/fxml"
             fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
     <top>
@@ -20,8 +21,12 @@
 
 
                 <Label fx:id="test" textFill="cornflowerblue"> </Label>
-                <HBox fx:id="tableViewBox" maxWidth="1000" maxHeight="400">
-                <TableView fx:id ="tabletest"></TableView>
+                <HBox fx:id="tableViewBox" maxWidth="1000" maxHeight="400" >
+                <TableView fx:id ="tabletest" ></TableView>
                 </HBox>
     </center>
+    <bottom>
+        <Button fx:id="gameButton"></Button>
+    </bottom>
+
 </BorderPane>

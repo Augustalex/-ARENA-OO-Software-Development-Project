@@ -30,6 +30,8 @@ public class HandleSpectateLobbyController implements Initializable{
 
     @FXML
     private TableView tabletest;
+    @FXML
+    private Button gameButton;
     ObservableList observableList = FXCollections.observableArrayList(
             new Person("ProLeague", "BestOfFiveUltimate", "Yoda Vs Vader"),
             new Person("Isabella", "Johnson", "isabella.johnson@example.com"),
@@ -43,8 +45,10 @@ public class HandleSpectateLobbyController implements Initializable{
     }
 
     private void configureView(){
-        test.setText("Hello world");
-        setTableView();
+        gameButton.setOnAction(event -> {
+            test.setText("Hello world");
+            setTableView();
+        });
         //setListView();
     }
     public void setTableView(){
@@ -59,7 +63,9 @@ public class HandleSpectateLobbyController implements Initializable{
         matchGamesCol.setMinWidth(200);
         matchGamesCol.setCellValueFactory( new PropertyValueFactory<Person, String>("email"));
         tabletest.setItems(observableList);
+        tabletest.getColumns().clear();
         tabletest.getColumns().addAll(leagueNameCol, tournamentNameCol, matchGamesCol);
+        tabletest.setEditable(false);
     }
     public static class Person {
 
