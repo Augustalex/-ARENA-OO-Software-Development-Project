@@ -18,7 +18,7 @@ public class AvailibleMatchList implements Serializable{
 
     public void viewAvailibeMatches(){
         for(int i = 0; i < availibleMatches.size(); i++){
-            System.out.println(availibleMatches.get(i).getGameInformation().getGameName());
+            //System.out.println(availibleMatches.get(i).getMatchName());
         }
     }
 }
