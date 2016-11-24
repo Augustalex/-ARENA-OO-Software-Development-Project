@@ -56,10 +56,10 @@ public class MainWindowController extends FXMLViewController{
     /**
      * Setups loading of content by the buttons of the TabView.
      */
-    private void setupTabViewRouting(){
+    private void setupTabViewRouting() {
 
         playButton.setOnAction(e -> {
-            try{
+            try {
                 closeCurrentContentController();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
@@ -67,14 +67,13 @@ public class MainWindowController extends FXMLViewController{
                 this.currentContentController = loader.getController();
 
                 contentView.getChildren().setAll(parent);
-            }
-            catch(Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
 
         createTournamentButton.setOnAction(e -> {
-            try{
+            try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("tournament/configureTournament/ConfigureTournamentView.fxml");
 
@@ -84,12 +83,21 @@ public class MainWindowController extends FXMLViewController{
             }
         });
 
-        handleTournamentButton.setOnAction(e->{
-            try{
+        handleTournamentButton.setOnAction(e -> {
+            try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("tournament/handleTournamentStyle/HandleTournamentStyle.fxml");
                 contentView.getChildren().setAll(parent);
-            }catch(IOException ex){
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        watchButton.setOnAction(e -> {
+            try {
+                closeCurrentContentController();
+                Parent parent = this.loadFXML("spectateMatch/spectateLobby/SpectateLobbyView.fxml");
+                contentView.getChildren().setAll(parent);
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
