@@ -7,21 +7,33 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TableView?>
-<BorderPane fx:controller="views.spectateMatch.spectateLobby.HandleSpectateLobbyController" xmlns:fx="http://javafx.com/fxml"
-            fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
-    <top>
-        <BorderPane>
-            <center>
-                <Text fx:id="spectatorText" text="Spectator view" fill="white"/>
-            </center>
-        </BorderPane>
-    </top>
-    <center>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableRow?>
+<?import javafx.scene.control.TableColumn?>
+<VBox fx:controller="views.spectateMatch.spectateLobby.HandleSpectateLobbyController" xmlns:fx="http://javafx.com/fxml"
+      fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
+            <HBox maxHeight="50">
+                <HBox prefWidth="200"></HBox>
+                <Text fx:id="spectatorText" text="Spectator view" fill="white" textAlignment="CENTER"/>
+            </HBox>
 
 
-                <Label fx:id="test" textFill="cornflowerblue"> </Label>
-                <HBox fx:id="tableViewBox" maxWidth="400" maxHeight="400">
-                <TableView fx:id ="tabletest"></TableView>
-                </HBox>
-    </center>
-</BorderPane>
+            <HBox>
+                <VBox prefWidth="300">
+                    <Button fx:id="othello" text="Othello" textFill="aqua"></Button>
+                    <Button fx:id="ticTacToe" text="TicTacToe" textFill="aqua"></Button>
+                    <Button text="Pacman" textFill="forestgreen"></Button>
+                </VBox>
+                <TableView fx:id ="tabletest" visible="false">
+                    <columns>
+                        <TableColumn prefWidth="200" text="LeagueName." fx:id="leagueCol" />
+                        <TableColumn prefWidth="200" text="TournamentName." fx:id="tourNameCol" />
+                        <TableColumn prefWidth="200" text="Number of Matches" fx:id="nrMatchesCol" />
+                    </columns>
+                </TableView>
+                <Label fx:id="placeHolder" text="YOU MADE IT" textFill="crimson" visible="false" wrapText="true"></Label>
+            </HBox>
+        <Button fx:id="gameButton"></Button>
+
+
+</VBox>
