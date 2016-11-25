@@ -1,7 +1,10 @@
 package tournament;
 
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
+import tournament.match.IMatch;
 import users.IPlayer;
+
+import java.util.List;
 
 /**
  * Interface for a Tournament
@@ -27,5 +30,12 @@ public interface ITournament {
      * @return AppliedPlayersList
      */
     AppliedPlayersList getAppliedPlayerList();
+
+    /**
+     * Method for getting a list of matches
+     * in the tournament
+     * @return matchesList
+     */
+    List<IMatch> getMatches();
 
 }
