@@ -1,25 +1,45 @@
 package advertisement.adPreference;
 
 import advertisement.preferences.PreferenceSet.PreferenceSet;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
- * A preference to where an Ad should be placed within the application.
+ * Created by August on 2016-11-24.
  */
-public interface AdPreference{
+public class AdPreference implements IAdPreference {
 
-    /**
-     * Compares the current preference with a given other preference
-     * to tell whether the current preference contains all options of the
-     * given preference.
-     * @param otherPreference
-     * @return
-     */
-    boolean isPreferable(AdPreference otherPreference);
+    private String preferenceId;
+    private int timeLimit;
+    private boolean closable;
 
-    /**
-     * Returns the preference set containing all preferences
-     * related to the ad.
-     * @return a set of preferences.
-     */
-    PreferenceSet getPreferenceSet();
+    public AdPreference(String preferenceId, int timeLimit, boolean closable){
+        this.preferenceId = preferenceId;
+        this.timeLimit = timeLimit;
+        this.closable = closable;
+    }
+
+    @Override
+    public boolean isPreferable(IAdPreference otherPreference) {
+        return otherPreference.getPreferenceId().equals(this.preferenceId);
+    }
+
+    @Override
+    public PreferenceSet getPreferenceSet() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getPreferenceId() {
+        return this.preferenceId;
+    }
+
+    @Override
+    public int getTimeLimit(){
+        return this.timeLimit;
+    }
+
+    @Override
+    public boolean isClosable(){
+        return this.closable;
+    }
 }

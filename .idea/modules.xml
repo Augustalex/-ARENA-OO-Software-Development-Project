@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OOMU Iteration 1 Prototype.iml" filepath="$PROJECT_DIR$/OOMU Iteration 1 Prototype.iml" />
       <module fileurl="file://$PROJECT_DIR$/Othello/Othello.iml" filepath="$PROJECT_DIR$/Othello/Othello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ReST/ReST.iml" filepath="$PROJECT_DIR$/ReST/ReST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UsersService/UsersService.iml" filepath="$PROJECT_DIR$/UsersService/UsersService.iml" />
     </modules>
   </component>
 </project>

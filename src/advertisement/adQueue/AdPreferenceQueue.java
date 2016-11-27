@@ -1,21 +1,21 @@
 package advertisement.adQueue;
 
 import advertisement.ad.Ad;
-import advertisement.adPreference.AdPreference;
-import advertisement.ad.PreferredAd;
+import advertisement.ad.IPreferredAd;
+import advertisement.adPreference.IAdPreference;
 
 /**
  * Extension of AdQueue with the option of comparing matchable
  * AdPreferences to pertain all preferred ads.
  */
-public interface AdPreferenceQueue extends AdQueue<PreferredAd>{
+public interface AdPreferenceQueue extends AdQueue<IPreferredAd>{
 
     /**
      * Returns all ads that is preferable in relation to
-     * the given {@link AdPreference}.
+     * the given {@link IAdPreference}.
      * @param preference
      * @return
      */
-    Ad[] getPreferredAds(AdPreference preference);
+    Ad[] getPreferredAds(IAdPreference preference);
 
 }

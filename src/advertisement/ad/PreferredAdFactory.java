@@ -1,36 +1,36 @@
 package advertisement.ad;
 
-import advertisement.adPreference.AdPreference;
+import advertisement.adPreference.IAdPreference;
 import advertisement.adPreference.AdPreferenceFactory;
 import javafx.scene.image.Image;
 
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Creates PreferredAds from a given Ad and AdPreference.
+ * Creates PreferredAds from a given Ad and IAdPreference.
  */
 public class PreferredAdFactory {
 
-    public static PreferredAd newPreferredAd(Ad ad, AdPreference adPreference){
+    public static IPreferredAd newPreferredAd(Ad ad, IAdPreference adPreference){
         if(PreferredAdFactory.isImageAd(ad))
             return new PreferredImageAd((Ad<Image>)ad, adPreference);
         else
             throw new IllegalArgumentException();
     }
 
-    public static PreferredAd newPreferredAd(String imageURL, AdPreference adPreference){
+    public static IPreferredAd newPreferredAd(String imageURL, IAdPreference adPreference){
         return new PreferredImageAd(new ImageAd(imageURL), adPreference);
     }
 
     /**
-     * Returns a PreferredAd with preference to be displayed
+     * Returns a IPreferredAd with preference to be displayed
      * in the PlayView.
      *
      * Mainly used for testing purposes.
      * @param imageURL
      * @return
      */
-    public static PreferredAd newPlayerViewPreferredAd(String imageURL){
+    public static IPreferredAd newPlayerViewPreferredAd(String imageURL){
         return new PreferredImageAd(
                 new ImageAd(imageURL),
                 AdPreferenceFactory.newPlayViewPreference()
@@ -38,14 +38,14 @@ public class PreferredAdFactory {
     }
 
     /**
-     * Returns a PreferredAd with preference to be displayed
+     * Returns a IPreferredAd with preference to be displayed
      * in the MainWindow.
      *
      * Mainly used for testing purposes.
      * @param imageURL
      * @return
      */
-    public static PreferredAd newMainWindowPreferredAd(String imageURL){
+    public static IPreferredAd newMainWindowPreferredAd(String imageURL){
         return new PreferredImageAd(
                 new ImageAd(imageURL),
                 AdPreferenceFactory.newMainWindowPreference());

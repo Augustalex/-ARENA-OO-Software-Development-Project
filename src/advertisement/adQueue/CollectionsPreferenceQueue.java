@@ -1,8 +1,8 @@
 package advertisement.adQueue;
 
 import advertisement.ad.Ad;
-import advertisement.adPreference.AdPreference;
-import advertisement.ad.PreferredAd;
+import advertisement.ad.IPreferredAd;
+import advertisement.adPreference.IAdPreference;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -13,20 +13,20 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class CollectionsPreferenceQueue implements AdPreferenceQueue {
 
-    private final Queue<PreferredAd> queue = new LinkedBlockingQueue<>();
+    private final Queue<IPreferredAd> queue = new LinkedBlockingQueue<>();
 
     @Override
-    public void addAd(PreferredAd ad) {
+    public void addAd(IPreferredAd ad) {
         queue.add(ad);
     }
 
     @Override
-    public void removeAd(PreferredAd ad) {
+    public void removeAd(IPreferredAd ad) {
         queue.remove(ad);
     }
 
     @Override
-    public PreferredAd dequeue() {
+    public IPreferredAd dequeue() {
         return queue.poll();
     }
 
@@ -36,7 +36,7 @@ public class CollectionsPreferenceQueue implements AdPreferenceQueue {
     }
 
     @Override
-    public Ad[] getPreferredAds(AdPreference preference) {
+    public Ad[] getPreferredAds(IAdPreference preference) {
         return queue.parallelStream()
                 .filter(ad -> ad.getAdPreference().isPreferable(preference))
                 .toArray(Ad[]::new);

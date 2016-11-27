@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="UsersService:jar">
+    <output-path>C:/Services/UsersService</output-path>
+    <root id="archive" name="UsersService.jar">
+      <element id="module-output" name="UsersService" />
+      <element id="module-output" name="ReST" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/gson-2.8.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
