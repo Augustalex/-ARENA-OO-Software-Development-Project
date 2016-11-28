@@ -16,8 +16,18 @@ public interface ILeague {
 
     int getLeagueID();
 
+    /**
+     * Method for getting a list of the tournaments in
+     * the current league.
+     * @return List<ITournament> tournaments
+     */
     List<ITournament> getTournaments();
 
+    /**
+     * Method for adding a tournament to the current
+     * league.
+     * @param tournament
+     */
     void addTournamentToLeague(ITournament tournament);
 
     void addPlayerToLeague(IPlayer player);
@@ -26,5 +36,9 @@ public interface ILeague {
 
     void printTournamentIDs();
 
+    /**
+     * Method for pritning out the names of the tournaments
+     * in the league.
+     */
     void printTournamentNames();
 }
