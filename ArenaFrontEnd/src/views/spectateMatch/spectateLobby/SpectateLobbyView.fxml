@@ -31,6 +31,14 @@
                         <TableColumn prefWidth="200" text="Number of Matches" fx:id="nrMatchesCol" />
                     </columns>
                 </TableView>
+                <HBox prefWidth="100"></HBox>
+                <TableView fx:id ="tournamentMatchTable" visible="false">
+                    <columns>
+                        <TableColumn prefWidth="200" text="TournamentName." fx:id="tournamentNameCol" />
+                        <TableColumn prefWidth="200" text="Match" fx:id="matchCol" />
+                        <TableColumn prefWidth="200" text="CurrentScore" fx:id="curScoreCol" />
+                    </columns>
+                </TableView>
                 <Label fx:id="placeHolder" text="YOU MADE IT" textFill="crimson" visible="false" wrapText="true"></Label>
             </HBox>
         <Button fx:id="gameButton"></Button>

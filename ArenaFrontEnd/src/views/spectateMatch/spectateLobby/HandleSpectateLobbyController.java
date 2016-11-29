@@ -10,11 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Paint;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.function.DoubleToIntFunction;
 
 
 /**
@@ -28,25 +27,43 @@ public class HandleSpectateLobbyController implements Initializable{
     @FXML
     private TableView tabletest;
     @FXML
+    private TableColumn leagueCol;
+    @FXML
+    private TableColumn tourNameCol;
+    @FXML
+    private TableColumn nrMatchesCol;
+
+    @FXML
+    private TableView tournamentMatchTable;
+    @FXML
+    private TableColumn tournamentNameCol;
+    @FXML
+    private TableColumn matchCol;
+    @FXML
+    private TableColumn curScoreCol;
+    @FXML
     private Button gameButton;
     @FXML
     private Button othello;
     @FXML
     private Button ticTacToe;
     @FXML
-    private TableColumn leagueCol;
-    @FXML
-    private TableColumn tourNameCol;
-    @FXML
-    private TableColumn nrMatchesCol;
-    @FXML
     private Label placeHolder;
+
+    private static ArrayList<Match> mockGameList(){
+        ArrayList<Match> test = new ArrayList<>();
+        for( int i = 0; i < 4; i++) {
+            Match match = new Match("Yoda", "hej +" +i);
+            test.add(match);
+        }
+        return test;
+    }
     ObservableList observableList = FXCollections.observableArrayList(
-            new Person("ProLeague", "BestOfFiveUltimate", "Yoda Vs Vader"),
-            new Person("Isabella", "Johnson", "isabella.johnson@example.com"),
-            new Person("Ethan", "Williams", "ethan.williams@example.com"),
-            new Person("Emma", "Jones", "emma.jones@example.com"),
-            new Person("Michael", "Brown", "michael.brown@example.com")
+            new LeagueSettings("ProLeague", "BestOfFiveUltimate", "Yoda Vs Vader"),
+            new LeagueSettings("Isabella", "Johnson", "isabella.johnson@example.com"),
+            new LeagueSettings("Ethan", "Williams", "ethan.williams@example.com"),
+            new LeagueSettings("Emma", "Jones", "emma.jones@example.com"),
+            new LeagueSettings("Michael", "Brown", "michael.brown@example.com")
     );
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,17 +76,19 @@ public class HandleSpectateLobbyController implements Initializable{
         });
         othello.setOnAction(event ->{
             placeHolder.setVisible(false);
+            tournamentMatchTable.setVisible(false);
             ObservableList data = FXCollections.observableArrayList(
-                    new Person("ProLeague","UltimateShowdown","7 Matches"),
-                    new Person("ProLeague", "UltimateLosers", "4 Matches")
+                    new LeagueSettings("ProLeague","UltimateShowdown","7 Matches"),
+                    new LeagueSettings("ProLeague", "UltimateLosers", "4 Matches")
             );
             setTableView(data);
         });
         ticTacToe.setOnAction(event -> {
             placeHolder.setVisible(false);
+            tournamentMatchTable.setVisible(false);
             ObservableList data = FXCollections.observableArrayList(
-                    new Person("ProLeague", "Dancing","2 Matches"),
-                    new Person("JediMaster", "JediTour", "4 Matches")
+                    new LeagueSettings("ProLeague", "Dancing","2 Matches"),
+                    new LeagueSettings("JediMaster", "JediTour", "4 Matches")
             );
             setTableView(data);
         });
@@ -90,68 +109,103 @@ public class HandleSpectateLobbyController implements Initializable{
                         // clicking on text part
                         row = (TableRow) node.getParent();
                     }
-                    Person person = (Person) row.getItem(); // Typecast för att få fram objektet
-                    placeHolder.setVisible(true);
+                    LeagueSettings league = (LeagueSettings) row.getItem(); // Typecast för att få fram objektet
                     if (row.getIndex() % 2 ==  0) {
-                        placeHolder.setTextFill(Paint.valueOf("blue"));
-                        placeHolder.setText(person.getEmail()); // Byter namn på labeln till en cell rad höhöhö
+                        ObservableList match = FXCollections.observableArrayList(
+                                new LeagueSettings(league.getLeagueName(), "Timon vs Pumba","300"),
+                                new LeagueSettings(league.getLeagueName(), "Luke vs Leia", "4")
+                        );
+                        setTableViewMatch(match);
                     }
                     else{
-                        placeHolder.setTextFill(Paint.valueOf("crimson"));
-                        placeHolder.setText(person.getEmail());
-
+                        ObservableList match = FXCollections.observableArrayList(
+                                new LeagueSettings(league.getLeagueName(), "Tarzan vs Jane","25"),
+                                new LeagueSettings(league.getLeagueName(), "USA Vs Russia", "1")
+                        );
+                        setTableViewMatch(match);
                     }
                 }
             }
         });
         //setListView();
     }
-    // Nedan är ifrån Oracle Doc skall bort /Björn
     private void setTableView(ObservableList hardCode){
         tabletest.setVisible(true);
-        leagueCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
-        tourNameCol.setCellValueFactory( new PropertyValueFactory<Person, String>("lastName"));
-        nrMatchesCol.setCellValueFactory( new PropertyValueFactory<Person, String>("email"));
+        leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
+        tourNameCol.setCellValueFactory( new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
+        nrMatchesCol.setCellValueFactory( new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
         tabletest.setItems(hardCode);
         tabletest.getColumns().clear();
         tabletest.getColumns().addAll(leagueCol, tourNameCol, nrMatchesCol);
     }
+    private void setTableViewMatch(ObservableList match){
+        tournamentMatchTable.setVisible(true);
+        tournamentNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
+        matchCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
+        curScoreCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
+        tournamentMatchTable.setItems(match);
+        tournamentMatchTable.getColumns().clear();
+        tournamentMatchTable.getColumns().addAll(tournamentNameCol,matchCol,curScoreCol);
+    }
+    // Nedan är ifrån Oracle Doc skall bort /Björn
+    public static class LeagueSettings {
 
+        private SimpleStringProperty leagueName;
+        private SimpleStringProperty tournamentName;
+        private SimpleStringProperty tournamentMatches;
+        private ArrayList<Match> match = new ArrayList();
 
-    public static class Person {
-
-        private final SimpleStringProperty firstName;
-        private final SimpleStringProperty lastName;
-        private final SimpleStringProperty email;
-
-        private Person(String fName, String lName, String email) {
-            this.firstName = new SimpleStringProperty(fName);
-            this.lastName = new SimpleStringProperty(lName);
-            this.email = new SimpleStringProperty(email);
+        private LeagueSettings(String fName, String lName, String tournamentMatches){
+            this.leagueName = new SimpleStringProperty(fName);
+            this.tournamentName = new SimpleStringProperty(lName);
+            this.tournamentMatches = new SimpleStringProperty(tournamentMatches);
+            this.match = mockGameList();
         }
 
-        public String getFirstName() {
-            return firstName.get();
+        public String getLeagueName() {
+            return leagueName.get();
         }
 
-        public void setFirstName(String fName) {
-            firstName.set(fName);
+        public void setLeagueName(String fName) {
+            leagueName.set(fName);
         }
 
-        public String getLastName() {
-            return lastName.get();
+        public String getTournamentName() {
+            return tournamentName.get();
         }
 
-        public void setLastName(String fName) {
-            lastName.set(fName);
+        public void setTournamentName(String fName) {
+            tournamentName.set(fName);
         }
 
-        public String getEmail() {
-            return email.get();
+        public String getTournamentMatches() {
+            return tournamentMatches.get();
         }
 
-        public void setEmail(String fName) {
-            email.set(fName);
+        public void setTournamentMatches(String fName) {tournamentMatches.set(fName);}
+
+    }
+
+    private static class Match {
+        private final SimpleStringProperty player;
+        private final SimpleStringProperty score;
+        private Match(String player, String score){
+            this.player = new SimpleStringProperty(player);
+            this.score = new SimpleStringProperty(score);
+        }
+
+        private String getScore() {
+            return this.score.get();
+        }
+        private void setScore(String score){
+            this.score.set(score);
+        }
+
+        private String getPlayer(){
+            return this.player.get();
+        }
+        private void setPlayer(String player){
+            this.player.set(player);
         }
     }
 }
