@@ -1,3 +1,5 @@
+package usersService;
+
 import rest.ReST;
 import rest.ReSTContainer;
 

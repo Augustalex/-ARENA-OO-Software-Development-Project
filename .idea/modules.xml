@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/CompressionUtils/CompressionUtils.iml" filepath="$PROJECT_DIR$/CompressionUtils/CompressionUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/GameStream/GameStream.iml" filepath="$PROJECT_DIR$/GameStream/GameStream.iml" />
       <module fileurl="file://$PROJECT_DIR$/IndexedService/IndexedService.iml" filepath="$PROJECT_DIR$/IndexedService/IndexedService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IndexedUsersService/IndexedUsersService.iml" filepath="$PROJECT_DIR$/IndexedUsersService/IndexedUsersService.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiveStreamer/LiveStreamer.iml" filepath="$PROJECT_DIR$/LiveStreamer/LiveStreamer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Othello/Othello.iml" filepath="$PROJECT_DIR$/Othello/Othello.iml" />
       <module fileurl="file://$PROJECT_DIR$/ReST/ReST.iml" filepath="$PROJECT_DIR$/ReST/ReST.iml" />

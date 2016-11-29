@@ -1,3 +1,5 @@
+package usersService;
+
 /**
  * Created by August on 2016-11-26.
  */
