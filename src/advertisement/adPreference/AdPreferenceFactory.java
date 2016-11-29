@@ -1,19 +1,23 @@
 package advertisement.adPreference;
 
+import advertisement.preferences.Preference.Preference;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
- * Creates AdPreference objects from concrete Classes,
- * and hides it behind the Interface {@link AdPreference}.
+ * Creates IAdPreference objects from concrete Classes,
+ * and hides it behind the Interface {@link IAdPreference}.
  */
 public class AdPreferenceFactory {
 
     /**
-     * Returns an AdPreference that prefers the PlayView.
+     * Returns an IAdPreference that prefers the PlayView.
      * @return
      */
-    public static AdPreference newPlayViewPreference(){
+    public static IAdPreference newPlayViewPreference(){
         Map<String, Boolean> sheet = new HashMap<>();
         sheet.put("PlayView", true);
 
@@ -21,12 +25,16 @@ public class AdPreferenceFactory {
     }
 
     /**
-     * Returns an AdPreference that prefers the MainWindow.
+     * Returns an IAdPreference that prefers the MainWindow.
      */
-    public static AdPreference newMainWindowPreference(){
+    public static IAdPreference newMainWindowPreference(){
         Map<String, Boolean> sheet = new HashMap<>();
         sheet.put("MainWindow", true);
 
         return new AdPreferenceSet(sheet);
+    }
+
+    public static IAdPreference newAdPreference(String preferenceId, int timeLimit, boolean closeable){
+        return new AdPreference(preferenceId, timeLimit, closeable);
     }
 }

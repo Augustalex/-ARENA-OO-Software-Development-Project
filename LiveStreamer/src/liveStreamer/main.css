@@ -1,0 +1,11 @@
+#screen{
+    -fx-background-color: tomato;
+
+}
+
+#label{
+    -fx-background-color: black;
+    -fx-font-size: 10em;
+    -fx-pref-width: 800px;
+    -fx-text-fill: white;
+}

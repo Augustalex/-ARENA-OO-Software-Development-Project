@@ -1,0 +1,23 @@
+[
+{
+	uri: "/users",
+	host: "193.10.169.19:1339",
+	name: "Users",
+	description: "Best users service in the world.",
+	version: "1.0"
+},
+{
+	uri: "/leagues",
+	host: "193.10.169.19",
+	name: "Leagues",
+	description: "Best leagues service in the world.",
+	version: "1.0"
+},
+{
+	uri: "/mamas/your",
+	host: "193.10.169.19",
+	name: "YourMama",
+	description: "Your mama",
+	version: "1.0"
+}
+]

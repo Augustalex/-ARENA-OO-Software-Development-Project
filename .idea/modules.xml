@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CompressionUtils/CompressionUtils.iml" filepath="$PROJECT_DIR$/CompressionUtils/CompressionUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LiveStreamer/LiveStreamer.iml" filepath="$PROJECT_DIR$/LiveStreamer/LiveStreamer.iml" />
       <module fileurl="file://$PROJECT_DIR$/OOMU Iteration 1 Prototype.iml" filepath="$PROJECT_DIR$/OOMU Iteration 1 Prototype.iml" />
       <module fileurl="file://$PROJECT_DIR$/Othello/Othello.iml" filepath="$PROJECT_DIR$/Othello/Othello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ReST/ReST.iml" filepath="$PROJECT_DIR$/ReST/ReST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StreamWatcher/StreamWatcher.iml" filepath="$PROJECT_DIR$/StreamWatcher/StreamWatcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UsersService/UsersService.iml" filepath="$PROJECT_DIR$/UsersService/UsersService.iml" />
     </modules>
   </component>
 </project>

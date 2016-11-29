@@ -1,28 +1,37 @@
 package advertisement.adRepository;
 
-import advertisement.adPreference.AdPreference;
-import advertisement.ad.PreferredAd;
+import advertisement.ad.IPreferredAd;
+import advertisement.adPreference.IAdPreference;
 import advertisement.adSpot.AdSpot;
+import users.advertiser.IAdvertiser;
+
+import java.util.List;
 
 /**
- * Returns AdSpots given a certain AdPreference.
+ * Returns AdSpots given a certain IAdPreference.
  * The returned AdSpot contains all Ads that match
- * the given AdPreference.
+ * the given IAdPreference.
  */
 public interface AdRepository {
 
     /**
      * Returns a new AdSpot containing all PreferredAds that match
-     * the given AdPreference.
+     * the given IAdPreference.
      * @param preference
      * @return
      */
-    AdSpot newAdSpot(AdPreference preference);
+    AdSpot newAdSpot(IAdPreference preference);
 
     /**
-     * Adds an Ad with a AdPreference to the repository.
+     * Adds an Ad with a IAdPreference to the repository.
      * @param preferredAd
      * @return
      */
-    AdRepository addPreferredAd(PreferredAd preferredAd);
+    AdRepository addPreferredAd(IPreferredAd preferredAd);
+
+    List<IPreferredAd> getAdsFromOwner(IAdvertiser owner);
+
+    void addAdPreference(IAdPreference preference);
+
+    List<IAdPreference> getAdPreferences();
 }

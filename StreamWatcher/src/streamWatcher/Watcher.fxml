@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="streamWatcher.WatcherController"
+            stylesheets="/streamWatcher/main.css" fx:id="display">
+    <center>
+        <!--<ImageView fx:id="imageView" />-->
+        <StackPane fx:id="stackPane">
+
+        </StackPane>
+    </center>
+</BorderPane>

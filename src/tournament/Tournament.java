@@ -5,11 +5,13 @@ package tournament;
 import league.ILeague;
 import league.League;
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
+import tournament.match.IMatch;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import users.IPlayer;
 import users.Player;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Implements the Tournament interface.
@@ -37,6 +39,11 @@ public class Tournament implements ITournament, Serializable {
     @Override
     public AppliedPlayersList getAppliedPlayerList() {
         return appliedPlayers;
+    }
+
+    @Override
+    public List<IMatch> getMatches() {
+        throw new UnsupportedOperationException();
     }
 
 }
