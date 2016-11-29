@@ -1,4 +1,4 @@
-package augustsCrazyExperiment.serviceBus;
+/*package augustsCrazyExperiment.serviceBus;
 
 import augustsCrazyExperiment.Cached;
 import com.google.gson.Gson;
@@ -20,6 +20,8 @@ import java.util.stream.Stream;
  * Reads from a locally stored file containing data in JSON format.
  *
  */
+
+/*
 public class OfflineServiceDirectory implements ServiceDirectory{
 
     private static final String filePath = "services.json";
@@ -33,6 +35,7 @@ public class OfflineServiceDirectory implements ServiceDirectory{
      *
      * @return
      */
+/*
     @Override
     public List<Service> getServices() {
         return this.cache.get();
@@ -58,18 +61,21 @@ public class OfflineServiceDirectory implements ServiceDirectory{
      * @return
      * @throws IOException
      */
+    /*
     private List<Service> loadServices() throws IOException {
         byte[] file = Files.readAllBytes(Paths.get(OfflineServiceDirectory.filePath));
         String servicesJSON = new String(file, Charset.defaultCharset());
 
         return Stream.of(new Gson().fromJson(servicesJSON, Service[].class))
                 .collect(Collectors.toList());
+
     }
 
     /**
      * Returns a Java Supplier for updating the local cache (i.e. this.loadServices() ).
      * @return
      */
+    /*
     private Supplier<List<Service>> getServiceListSupplier(){
         return () -> {
             try {
@@ -81,4 +87,4 @@ public class OfflineServiceDirectory implements ServiceDirectory{
         };
     }
 
-}
+}*/
