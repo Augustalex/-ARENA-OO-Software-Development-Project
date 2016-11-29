@@ -49,13 +49,14 @@ public class HandleSpectateLobbyController implements Initializable{
     private Button ticTacToe;
     @FXML
     private Label placeHolder;
-    ArrayList<Match> test = new ArrayList<>();
 
-    private void mockGameList(){
+    private static ArrayList<Match> mockGameList(){
+        ArrayList<Match> test = new ArrayList<>();
         for( int i = 0; i < 4; i++) {
             Match match = new Match("Yoda", "hej +" +i);
             test.add(match);
         }
+        return test;
     }
     ObservableList observableList = FXCollections.observableArrayList(
             new LeagueSettings("ProLeague", "BestOfFiveUltimate", "Yoda Vs Vader"),
@@ -158,6 +159,7 @@ public class HandleSpectateLobbyController implements Initializable{
             this.leagueName = new SimpleStringProperty(fName);
             this.tournamentName = new SimpleStringProperty(lName);
             this.tournamentMatches = new SimpleStringProperty(tournamentMatches);
+            this.match = mockGameList();
         }
 
         public String getLeagueName() {
@@ -181,6 +183,7 @@ public class HandleSpectateLobbyController implements Initializable{
         }
 
         public void setTournamentMatches(String fName) {tournamentMatches.set(fName);}
+
     }
 
     private static class Match {
@@ -189,6 +192,20 @@ public class HandleSpectateLobbyController implements Initializable{
         private Match(String player, String score){
             this.player = new SimpleStringProperty(player);
             this.score = new SimpleStringProperty(score);
+        }
+
+        private String getScore() {
+            return this.score.get();
+        }
+        private void setScore(String score){
+            this.score.set(score);
+        }
+
+        private String getPlayer(){
+            return this.player.get();
+        }
+        private void setPlayer(String player){
+            this.player.set(player);
         }
     }
 }
