@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaFX ARENA">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaFX_ARENA</output-path>
+    <root id="archive" name="OOMU Iteration 1 Prototype.jar">
+      <element id="module-output" name="OOMU Iteration 1 Prototype" />
+      <element id="module-output" name="Othello" />
+    </root>
+  </artifact>
+</component>

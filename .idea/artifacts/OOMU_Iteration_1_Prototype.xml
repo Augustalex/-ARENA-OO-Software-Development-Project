@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="OOMU Iteration 1 Prototype">
+    <output-path>$PROJECT_DIR$/out/artifacts/OOMU_Iteration_1_Prototype</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Main" />
+        <option name="description" value="" />
+        <option name="height" value="620" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="ARENA" />
+        <option name="vendor" value="Tunnan och Moroten" />
+        <option name="version" value="0.2" />
+        <option name="width" value="800" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="OOMU_Iteration_1_Prototype.jar">
+        <element id="module-output" name="OOMU Iteration 1 Prototype" />
+      </element>
+    </root>
+  </artifact>
+</component>

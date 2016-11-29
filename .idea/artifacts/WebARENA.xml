@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebARENA">
+    <output-path>$PROJECT_DIR$/out/artifacts/WebARENA</output-path>
+    <root id="archive" name="WebARENA.war">
+      <element id="artifact" artifact-name="OOMU Iteration 1 Prototype" />
+    </root>
+  </artifact>
+</component>

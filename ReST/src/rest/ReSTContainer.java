@@ -71,8 +71,4 @@ public class ReSTContainer extends HttpServer {
     public InetSocketAddress getAddress() {
         return this.getAddress();
     }
-
-    public ReST getApi(){
-        return this.api;
-    }
 }
