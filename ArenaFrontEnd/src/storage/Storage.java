@@ -3,7 +3,6 @@ package storage;
 import utilities.router.stateRestorer.StateLoader;
 import utilities.router.stateRestorer.StateWriter;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 

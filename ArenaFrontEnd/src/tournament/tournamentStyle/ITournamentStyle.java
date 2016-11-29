@@ -1,7 +1,5 @@
 package tournament.tournamentStyle;
 
-import tournament.Tournament;
-
 import java.io.Serializable;
 
 /**

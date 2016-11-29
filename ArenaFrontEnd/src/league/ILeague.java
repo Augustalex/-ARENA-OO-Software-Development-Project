@@ -1,9 +1,7 @@
 package league;
 
 import tournament.ITournament;
-import tournament.Tournament;
 import users.IPlayer;
-import users.Player;
 
 import java.util.List;
 

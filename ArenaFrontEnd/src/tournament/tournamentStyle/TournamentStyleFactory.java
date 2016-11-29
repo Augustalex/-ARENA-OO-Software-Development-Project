@@ -1,8 +1,5 @@
 package tournament.tournamentStyle;
 
-import tournament.ITournament;
-import tournament.Tournament;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

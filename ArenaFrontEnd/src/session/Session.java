@@ -1,7 +1,6 @@
 package session;
 
 import users.IPlayer;
-import users.Player;
 
 import java.io.Serializable;
 

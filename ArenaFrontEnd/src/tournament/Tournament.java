@@ -2,13 +2,10 @@ package tournament;
 
 
 
-import league.ILeague;
-import league.League;
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import tournament.match.IMatch;
 import tournament.tournamentConfiguration.ITournamentConfiguration;
 import users.IPlayer;
-import users.Player;
 
 import java.io.Serializable;
 import java.util.List;

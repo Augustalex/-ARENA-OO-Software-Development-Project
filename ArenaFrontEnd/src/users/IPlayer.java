@@ -3,7 +3,6 @@ package users;
 import league.ILeague;
 import tournament.ITournament;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

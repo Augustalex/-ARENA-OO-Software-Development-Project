@@ -1,15 +1,11 @@
 package tournament.tournamentConfiguration;
 
-import metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import metaInformation.tournamentMetaInformation.ITournamentMetaInformationSetter;
 import metaInformation.tournamentMetaInformation.TournamentMetaInformation;
 import tournament.tournamentStyle.TournamentStyleFactory;
 import utilities.TimeDate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Creates a TournamentConfiguration given different sets of available arguments.

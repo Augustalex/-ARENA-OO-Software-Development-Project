@@ -3,7 +3,6 @@ package tournament;
 import users.IPlayer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Simon on 18/11/2016.
