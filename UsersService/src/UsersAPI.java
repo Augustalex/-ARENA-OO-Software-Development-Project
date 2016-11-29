@@ -1,10 +1,8 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sun.net.httpserver.HttpExchange;
+import rest.ReST;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.util.Map;
@@ -59,24 +57,12 @@ public class UsersAPI extends ReST {
         for(User user : allUsers)
             usersService.getUserStorage().remove(user.getId());
 
-        sendEmtpyResponse(HttpURLConnection.HTTP_OK, httpExchange);
+        sendEmptyResponse(HttpURLConnection.HTTP_OK, httpExchange);
     }
 
     @Override
     public void onPut(HttpExchange httpExchange) throws Exception {
 
-    }
-
-    private String getStringBodyFromHttpExchange(HttpExchange httpExchange) throws IOException {
-        int contentLength = Integer.parseInt(httpExchange.getRequestHeaders().getFirst("Content-length"));
-
-        InputStreamReader reader = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
-        char[] buffer = new char[contentLength];
-        for(int i = 0; i < contentLength; i++)
-            buffer[i] = (char) reader.read();
-
-        System.out.println("This is the json content: " + String.valueOf(buffer));
-        return String.valueOf(buffer);
     }
 
     private Map<String, String> getStringPairsFromJson(String json){
@@ -90,17 +76,5 @@ public class UsersAPI extends ReST {
 
     private String usersToJson(User[] users){
         return gson.toJson(users);
-    }
-
-    private void sendStringContentResponse(int statusCode, String content, HttpExchange http) throws IOException {
-        http.sendResponseHeaders(statusCode, content.length());
-        OutputStream stream = http.getResponseBody();
-        stream.write(content.getBytes());
-        stream.flush();
-        stream.close();
-    }
-
-    private void sendEmtpyResponse(int statusCode, HttpExchange http) throws IOException {
-        http.sendResponseHeaders(statusCode, 0);
     }
 }

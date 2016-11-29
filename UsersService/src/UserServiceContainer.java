@@ -1,3 +1,6 @@
+import rest.ReST;
+import rest.ReSTContainer;
+
 import java.io.IOException;
 
 /**
@@ -6,9 +9,10 @@ import java.io.IOException;
 public class UserServiceContainer extends ReSTContainer {
 
     public UserServiceContainer() throws IOException {
-        super(new UsersAPI(new UsersService()));
+        super(2000);
 
-        this.createContext("/users", getApi());
+        ReST api = new UsersAPI(new UsersService());
+        this.createContext("/users", api);
     }
 
     public static void main(String[] args){

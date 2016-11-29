@@ -1,8 +1,14 @@
+package rest;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+
 /**
- * Methods for completely handling every ReST API Use Case.
+ * Methods for completely handling every rest.ReST API Use Case.
  */
 public abstract class ReST implements HttpHandler{
 
@@ -40,4 +46,26 @@ public abstract class ReST implements HttpHandler{
 
     public abstract void onPut(HttpExchange httpExchange) throws Exception;
 
+    protected String getStringBodyFromHttpExchange(HttpExchange httpExchange) throws IOException {
+        int contentLength = Integer.parseInt(httpExchange.getRequestHeaders().getFirst("Content-length"));
+
+        InputStreamReader reader = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
+        char[] buffer = new char[contentLength];
+        for(int i = 0; i < contentLength; i++)
+            buffer[i] = (char) reader.read();
+
+        return String.valueOf(buffer);
+    }
+
+    protected void sendStringContentResponse(int statusCode, String content, HttpExchange http) throws IOException {
+        http.sendResponseHeaders(statusCode, content.length());
+        OutputStream stream = http.getResponseBody();
+        stream.write(content.getBytes());
+        stream.flush();
+        stream.close();
+    }
+
+    protected void sendEmptyResponse(int statusCode, HttpExchange http) throws IOException {
+        http.sendResponseHeaders(statusCode, 0);
+    }
 }

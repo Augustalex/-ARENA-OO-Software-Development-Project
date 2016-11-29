@@ -1,16 +1,14 @@
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
+package rest;
 
-import javax.security.auth.callback.Callback;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 import java.util.function.Consumer;
 
 /**
- * Implements the Delivery interface with the use of Java Properties.
+ * Implements the rest.Delivery interface with the use of Java Properties.
  *
- * The actual payload class for the Delivery is not specified and is set
+ * The actual payload class for the rest.Delivery is not specified and is set
  * generically.
  * @param <T>
  */
@@ -29,7 +27,7 @@ public class PropertyDelivery<T> implements Delivery<T> {
     }
 
     /**
-     * Cancels the instance of Delivery.
+     * Cancels the instance of rest.Delivery.
      */
     @Override
     public void cancel() {
@@ -42,7 +40,7 @@ public class PropertyDelivery<T> implements Delivery<T> {
     }
 
     /**
-     * Sets the payload for the instance of Delivery. Activates all listeners.
+     * Sets the payload for the instance of rest.Delivery. Activates all listeners.
      * @param payload
      */
     @Override

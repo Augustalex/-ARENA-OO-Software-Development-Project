@@ -1,5 +1,6 @@
+package rest;
+
 import com.sun.net.httpserver.HttpContext;
-import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
@@ -12,13 +13,10 @@ import java.util.concurrent.Executor;
  */
 public class ReSTContainer extends HttpServer {
 
-    private ReST api;
     private HttpServer server;
 
-    public ReSTContainer(ReST api) throws IOException {
-        this.api = api;
-
-        this.server = HttpServer.create(new InetSocketAddress("0.0.0.0", 1339), 0);
+    public ReSTContainer(int port) throws IOException {
+        this.server = HttpServer.create(new InetSocketAddress("0.0.0.0", port), 0);
         System.out.println(server.getAddress());
         server.setExecutor(null);
 
