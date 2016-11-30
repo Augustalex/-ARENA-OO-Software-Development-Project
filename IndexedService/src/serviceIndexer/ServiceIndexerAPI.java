@@ -2,10 +2,10 @@ package serviceIndexer;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import indexedService.IIndexedService;
-import javafx.beans.property.BooleanProperty;
+import hostProviderService.Host;
+import hostProviderService.HostService;
 import rest.Delivery;
-import rest.ReST;
+import services.IService;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -14,33 +14,45 @@ import java.util.List;
 /**
  * Created by August on 2016-11-29.
  */
-public class ServiceIndexerAPI extends ReST {
+public class ServiceIndexerAPI extends ServiceIndexerAPIBase {
 
     private final Gson gson = new Gson();
 
-    private final IServiceIndexer serviceIndexer;
-
-    public ServiceIndexerAPI(IServiceIndexer service){
-        this.serviceIndexer = service;
+    public ServiceIndexerAPI(IServiceIndexer serviceIndexer) {
+        super(serviceIndexer);
     }
 
+    /**
+     * Sends a list of all host information objects
+     * representing all active service instances connection
+     * details.
+     * @param httpExchange
+     * @throws Exception
+     */
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        IIndexedService[] services = serviceIndexer.getAllServices();
+        List<HostService> services = getServiceIndexer().getAllServicesConnectionDetails();
 
-        String response = gson.toJson(services);
+        HostService[] hostInformation = services.stream().toArray(HostService[]::new);
+
+        String response = gson.toJson(hostInformation);
 
         sendStringContentResponse(HttpURLConnection.HTTP_OK, response, httpExchange);
     }
 
+    /**
+     * Given an integer provided in the post, the ServiceIndexer
+     * will instantiate that number of new services.
+     * @param httpExchange
+     * @throws Exception
+     */
     @Override
     public void onPost(HttpExchange httpExchange) throws Exception {
         String body = getStringBodyFromHttpExchange(httpExchange);
-
+        System.out.println("ServiceIndexer Post body: " + body);
         int numberOfInstances = Integer.parseInt(body);
-        Delivery<Boolean> status = serviceIndexer.scaleUp(numberOfInstances);
 
-        status.onDelivery(wasSuccessful -> {
+        getServiceIndexer().scaleUp(numberOfInstances, wasSuccessful -> {
             try {
                 if (wasSuccessful)
                     sendEmptyResponse(HttpURLConnection.HTTP_OK, httpExchange);
@@ -51,7 +63,6 @@ public class ServiceIndexerAPI extends ReST {
                 System.out.println("Failure to send response.");
             }
         });
-
     }
 
     @Override

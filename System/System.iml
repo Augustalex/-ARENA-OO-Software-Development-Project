@@ -7,19 +7,28 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="HostProviderService" />
+    <orderEntry type="module" module-name="IndexedUsersService" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../libs" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../ReST/src" />
-        </SOURCES>
+        <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/../libs" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../ReST/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
     <orderEntry type="module" module-name="ReST" />
-    <orderEntry type="module" module-name="HostProviderService" />
+    <orderEntry type="module" module-name="ServiceInstantiatorService" />
   </component>
 </module>

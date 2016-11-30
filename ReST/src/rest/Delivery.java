@@ -9,11 +9,11 @@ import java.util.function.Consumer;
  */
 public interface Delivery<T> {
 
-    void onCancel(Runnable callback);
+    Delivery<T> onCancel(Runnable callback);
 
     void cancel();
 
-    void onDelivery(Consumer<T> consumer);
+    Delivery<T> onDelivery(Consumer<T> consumer);
 
     void deliver(T payload);
 }

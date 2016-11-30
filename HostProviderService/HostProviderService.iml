@@ -7,19 +7,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="ReST" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../libs" />
+          <root url="jar://$MODULE_DIR$/../libs/gson-2.8.0.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../ReST/src" />
-        </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$/../libs" recursive="false" />
+        <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="ReST" />
-    <orderEntry type="module" module-name="HostProviderService" />
+    <orderEntry type="module" module-name="UsersService" />
   </component>
 </module>

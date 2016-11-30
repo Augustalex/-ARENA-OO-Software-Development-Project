@@ -22,8 +22,9 @@ public class PropertyDelivery<T> implements Delivery<T> {
     };
 
     @Override
-    public void onCancel(Runnable callback) {
+    public Delivery<T> onCancel(Runnable callback) {
         this.onCancel = callback;
+        return this;
     }
 
     /**
@@ -35,8 +36,9 @@ public class PropertyDelivery<T> implements Delivery<T> {
     }
 
     @Override
-    public void onDelivery(Consumer<T> consumer){
+    public Delivery<T> onDelivery(Consumer<T> consumer){
         this.onDelivery = consumer;
+        return this;
     }
 
     /**

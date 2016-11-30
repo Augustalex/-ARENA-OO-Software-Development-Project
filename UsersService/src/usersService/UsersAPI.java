@@ -24,14 +24,18 @@ public class UsersAPI extends ReST {
 
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        //String response = usersToJson(this.usersService.getAll());
-        String response = "";
+        String response = gson.toJson(this.usersService.getAllUsersAsArray());
+        String output = "";
 
         System.out.println("GET REQUEST!");
-        for(User user : usersService.getAllUsersAsArray())
-            response += "Name: " + user.getName() + "\tAge: " + user.getAge() + "\tID: " + user.getId() + "\r\n";
+        for(User user : usersService.getAllUsersAsArray()) {
+            output += "Name: " + user.getName() + "\tAge: " + user.getAge() + "\tID: " + user.getId() + "\r\n";
+        }
 
+        System.out.println("Found users: ");
+        System.out.println(output);
         sendStringContentResponse(HttpURLConnection.HTTP_OK, response, httpExchange);
+        System.out.println("Sent get request response.");
     }
 
     @Override

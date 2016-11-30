@@ -10,20 +10,11 @@ import java.io.IOException;
  */
 public class UserServiceContainer extends ReSTContainer {
 
-    public UserServiceContainer() throws IOException {
-        super(2000);
+    public UserServiceContainer(int port) throws IOException {
+        super(port);
 
         ReST api = new UsersAPI(new UsersService());
-        this.createContext("/users", api);
+        this.createContext("/", api);
     }
 
-    public static void main(String[] args){
-        try {
-            new UserServiceContainer().start();
-
-            System.out.println("Started service.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

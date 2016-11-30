@@ -2,10 +2,10 @@ package serviceIndexer.index;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import indexedService.IIndexedService;
-import rest.ReST;
+import hostProviderService.Host;
 import serviceIndexer.IServiceIndexer;
-import serviceIndexer.count.ServiceIndexerCountAPI;
+import serviceIndexer.ServiceIndexerAPIBase;
+import services.IService;
 
 import javax.management.ServiceNotFoundException;
 import java.net.HttpURLConnection;
@@ -14,27 +14,30 @@ import java.util.Arrays;
 /**
  * Created by August on 2016-11-29.
  */
-public class ServiceIndexerIndexAPI extends ReST {
+public class ServiceIndexerIndexAPI extends ServiceIndexerAPIBase {
 
     private final Gson gson = new Gson();
-    private final IServiceIndexer serviceIndexer;
 
-    public ServiceIndexerIndexAPI(IServiceIndexer serviceIndexer){
-        this.serviceIndexer = serviceIndexer;
+    public ServiceIndexerIndexAPI(IServiceIndexer serviceIndexer) {
+        super(serviceIndexer);
     }
 
+    /**
+     * Sends a Host object of the connection details for the service
+     * in charge of index provided in the API URI.
+     * @param httpExchange
+     * @throws Exception
+     */
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
         try{
-            String[] uri = httpExchange
-                    .getHttpContext()
-                    .getPath()
-                    .split("/");
 
-            int index = Integer.parseInt(uri[uri.length-1]);
+            int index = getIndexFromHttpURI(httpExchange);
 
-            IIndexedService service = serviceIndexer.getService(index);
+            Host service = getServiceIndexer().getServiceConnectionDetails(index);
             String response = gson.toJson(service);
+
+            sendStringContentResponse(HttpURLConnection.HTTP_OK, response, httpExchange);
         }
         catch(ServiceNotFoundException ex){
             sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
@@ -48,11 +51,20 @@ public class ServiceIndexerIndexAPI extends ReST {
 
     @Override
     public void onDelete(HttpExchange httpExchange) throws Exception {
+        //TODO implement service instance shutdown
         sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
     }
 
     @Override
     public void onPut(HttpExchange httpExchange) throws Exception {
+        //TODO implement restart service instance
         sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
+    }
+
+    private int getIndexFromHttpURI(HttpExchange httpExchange){
+        return Arrays.stream(httpExchange.getHttpContext().getPath()
+                .split("/"))
+                .reduce((first, last) -> last) //return last element in array
+                .map(Integer::parseInt).get();
     }
 }

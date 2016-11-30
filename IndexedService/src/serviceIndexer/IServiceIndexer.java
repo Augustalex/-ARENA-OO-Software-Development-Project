@@ -1,25 +1,27 @@
 package serviceIndexer;
 
-import indexedService.IIndexedService;
-import javafx.beans.property.BooleanProperty;
-import rest.Delivery;
+import hostProviderService.Host;
+import hostProviderService.HostService;
 
 import javax.management.ServiceNotFoundException;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by August on 2016-11-29.
  */
 public interface IServiceIndexer {
 
-    IIndexedService getService(int index) throws ServiceNotFoundException;
+    HostService getServiceConnectionDetails(int index) throws ServiceNotFoundException;
 
-    Delivery<Boolean> scaleUp(int numberOfInstances);
+    void scaleUp(int numberOfInstances, Consumer<Boolean> callback);
 
-    IIndexedService[] getAllServices();
+    List<HostService> getAllServicesConnectionDetails();
 
     int serviceCount();
 
-    IIndexedService newService();
+    int getPartitionCapacity();
+
+    HostService hostNewService() throws HostConnectionFailure;
 
 }

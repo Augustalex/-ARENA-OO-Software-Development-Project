@@ -4,23 +4,23 @@ import com.sun.net.httpserver.HttpExchange;
 import rest.ReST;
 import serviceIndexer.IServiceIndexer;
 import serviceIndexer.ServiceIndexer;
+import serviceIndexer.ServiceIndexerAPIBase;
+import services.IService;
 
 import java.net.HttpURLConnection;
 
 /**
  * Created by August on 2016-11-29.
  */
-public class ServiceIndexerCountAPI extends ReST {
+public class ServiceIndexerCountAPI extends ServiceIndexerAPIBase {
 
-    private final IServiceIndexer serviceIndexer;
-
-    public ServiceIndexerCountAPI(IServiceIndexer serviceIndexer){
-        this.serviceIndexer = serviceIndexer;
+    public ServiceIndexerCountAPI(IServiceIndexer serviceIndexer) {
+        super(serviceIndexer);
     }
 
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        String response = String.valueOf(serviceIndexer.serviceCount());
+        String response = String.valueOf(getServiceIndexer().serviceCount());
         sendStringContentResponse(HttpURLConnection.HTTP_OK, response, httpExchange);
     }
 

@@ -54,21 +54,21 @@ public class ReSTContainer extends HttpServer {
 
     @Override
     public HttpContext createContext(String s) {
-        return this.createContext(s);
+        return server.createContext(s);
     }
 
     @Override
     public void removeContext(String s) throws IllegalArgumentException {
-        this.removeContext(s);
+        server.removeContext(s);
     }
 
     @Override
     public void removeContext(HttpContext httpContext) {
-        this.removeContext(httpContext);
+        server.removeContext(httpContext);
     }
 
     @Override
     public InetSocketAddress getAddress() {
-        return this.getAddress();
+        return server.getAddress();
     }
 }

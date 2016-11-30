@@ -1,11 +1,13 @@
 package rest;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.apache.http.HttpEntity;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * Methods for completely handling every rest.ReST API Use Case.
@@ -13,7 +15,14 @@ import java.io.OutputStream;
 public abstract class ReST implements HttpHandler{
 
     @Override
-    public void handle(HttpExchange httpExchange){
+    public void handle(HttpExchange httpExchange) throws IOException {
+
+        System.out.println("HTTP INCOMING");
+        System.out.println(httpExchange.getRequestMethod());
+    /*    if(methodName.equals("POST"))
+            System.out.println(httpExchange.getRequestMethod() + "\n" + getStringBodyFromHttpExchange(httpExchange));
+        else
+            System.out.println(httpExchange.getRequestMethod());*/
         try {
             switch (httpExchange.getRequestMethod()) {
                 case "GET":
@@ -47,6 +56,8 @@ public abstract class ReST implements HttpHandler{
     public abstract void onPut(HttpExchange httpExchange) throws Exception;
 
     protected String getStringBodyFromHttpExchange(HttpExchange httpExchange) throws IOException {
+        String length = httpExchange.getRequestHeaders().getFirst("Content-length");
+        System.out.println("Length: " + length);
         int contentLength = Integer.parseInt(httpExchange.getRequestHeaders().getFirst("Content-length"));
 
         InputStreamReader reader = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
@@ -55,6 +66,44 @@ public abstract class ReST implements HttpHandler{
             buffer[i] = (char) reader.read();
 
         return String.valueOf(buffer);
+    }
+
+    protected byte[] getByteArrayBodyFromHttpExchange(HttpExchange httpExchange) throws IOException {
+        int contentLength = Integer.parseInt(httpExchange.getRequestHeaders().getFirst("Content-length"));
+
+        byte[] byteArray = new byte[contentLength*4];
+
+
+        try {
+            BufferedReader inputStream = new BufferedReader(new InputStreamReader(httpExchange.getRequestBody()));
+            for (int i = 0; i < contentLength; i++) {
+                int in = inputStream.read();
+                System.out.println("int in: " + in + ", char in: " + (char)in + ", String in: " + String.valueOf(in) + ", String char in: " + String.valueOf((char)in));
+
+                byte[] byteBuffer = ByteBuffer.allocate(4).putInt(in).array();
+                for(byte b : byteBuffer)
+                    byteArray[i++] = b;
+
+                System.out.println("in: " + new String(byteBuffer, Charset.forName("UTF-8")));
+            }
+        }
+        catch(EOFException eof){
+            System.out.println("eof.");
+            System.out.println("Data read: " + new String(byteArray));
+        }
+
+        return byteArray;
+    }
+
+    protected <T> T getObjectFromJsonInHttpExchange(HttpExchange httpExchange, Class<T> objectType){
+        int contentLength = Integer.parseInt(httpExchange.getRequestHeaders().getFirst("Content-length"));
+
+        Reader reader = new InputStreamReader(httpExchange.getRequestBody());
+        T result = new Gson().fromJson(reader, objectType);
+        System.out.println("object: " + result.toString());
+        System.out.println("Type: " + objectType.getName());
+
+        return result;
     }
 
     protected void sendStringContentResponse(int statusCode, String content, HttpExchange http) throws IOException {
