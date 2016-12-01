@@ -1,9 +1,9 @@
 package spectate;
 
-import league.ILeague;
-import session.Session;
-import tournament.ITournament;
-import tournament.match.IMatch;
+import arena.league.ILeague;
+import arena.session.Session;
+import arena.tournament.ITournament;
+import arena.tournament.match.IMatch;
 
 import java.io.Serializable;
 import java.util.ArrayList;

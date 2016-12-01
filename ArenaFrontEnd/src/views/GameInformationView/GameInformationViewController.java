@@ -14,7 +14,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import games.gameInformation.GameInformation;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import arena.games.gameInformation.GameInformation;
