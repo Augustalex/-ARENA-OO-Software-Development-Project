@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TableRow?>
 <?import javafx.scene.control.TableColumn?>
 <VBox fx:controller="views.spectateMatch.spectateLobby.HandleSpectateLobbyController" xmlns:fx="http://javafx.com/fxml"
-      fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
+      fx:id="TournamentStyleWindow" id="TournamentStyleContainer" >
             <HBox maxHeight="50">
                 <HBox prefWidth="200"></HBox>
                 <Text fx:id="spectatorText" text="Spectator view" fill="white" textAlignment="CENTER"/>
@@ -24,7 +24,7 @@
                     <Button fx:id="ticTacToe" text="TicTacToe" textFill="aqua"></Button>
                     <Button text="Pacman" textFill="forestgreen"></Button>
                 </VBox>
-                <TableView fx:id ="tabletest" visible="false">
+                <TableView fx:id ="tableTournaments" visible="false">
                     <columns>
                         <TableColumn prefWidth="200" text="LeagueName." fx:id="leagueCol" />
                         <TableColumn prefWidth="200" text="TournamentName." fx:id="tourNameCol" />
@@ -41,7 +41,4 @@
                 </TableView>
                 <Label fx:id="placeHolder" text="YOU MADE IT" textFill="crimson" visible="false" wrapText="true"></Label>
             </HBox>
-        <Button fx:id="gameButton"></Button>
-
-
 </VBox>
