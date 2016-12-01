@@ -8,6 +8,7 @@ import org.apache.http.entity.ContentType;
 import serviceInitiatorService.ServiceInitiatorContainer;
 
 import java.io.IOException;
+import java.net.Inet4Address;
 
 /**
  * Created by August on 2016-11-30.
@@ -21,8 +22,9 @@ public class Hoster {
 
     public void start() throws IOException {
 
-        String ip = "192.168.0.189";
+        String ip = Inet4Address.getLocalHost().getHostAddress().toString();
 
+        Inet4Address.getLocalHost().getHostAddress();
 
         ServiceInitiatorContainer initiatorContainer_2005 = new ServiceInitiatorContainer(2010);
         initiatorContainer_2005.start();
@@ -44,7 +46,7 @@ public class Hoster {
 
     private void addHost(HostService hostService) throws IOException {
         System.out.println(
-                Request.Post("http://192.168.0.195:2000/")
+                Request.Post("http://10.10.107.76:2000/")
                 .bodyString(new Gson().toJson(hostService), ContentType.APPLICATION_JSON)
                 .execute()
                 .returnResponse().toString()

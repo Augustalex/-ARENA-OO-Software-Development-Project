@@ -28,7 +28,7 @@ public class ReSTContainer extends HttpServer {
     }
 
     public void start()  {
-        //server.createContext("/users", api);
+        //server.createContext("/arena.users", api);
         server.start();
     }
 

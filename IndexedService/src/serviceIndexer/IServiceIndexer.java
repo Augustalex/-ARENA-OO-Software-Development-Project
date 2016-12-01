@@ -24,4 +24,5 @@ public interface IServiceIndexer {
 
     HostService hostNewService() throws HostConnectionFailure;
 
+    int getNextObjectId();
 }

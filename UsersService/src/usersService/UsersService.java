@@ -3,7 +3,7 @@ package usersService;
 import java.util.Map;
 
 /**
- * Stores and manages a record of users.
+ * Stores and manages a record of arena.users.
  */
 public class UsersService {
 

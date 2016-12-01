@@ -1,6 +1,6 @@
 package advertisement.adDisplay;
 
-import advertisement.adSpot.AdSpot;
+import arena.advertisement.advertisement.adSpot.AdSpot;
 import javafx.scene.layout.Pane;
 
 /**

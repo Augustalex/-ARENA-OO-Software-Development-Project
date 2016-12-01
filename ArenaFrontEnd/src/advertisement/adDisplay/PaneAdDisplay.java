@@ -1,9 +1,7 @@
 package advertisement.adDisplay;
 
-import advertisement.ad.Ad;
-import advertisement.adSpot.AdSpot;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import arena.advertisement.advertisement.ad.Ad;
+import arena.advertisement.advertisement.adSpot.AdSpot;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;

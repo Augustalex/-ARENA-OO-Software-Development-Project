@@ -5,8 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import session.Session;
-import users.Player;
+import arena.session.Session;
+import arena.users.Player;
 import views.FXMLViewController;
 
 public class Main extends Application {

@@ -3,9 +3,7 @@ package views.spectateMatch.watchMatch;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import tournament.tournamentStyle.ITournamentStyle;
+import arena.tournament.tournamentStyle.ITournamentStyle;
 
 import java.net.URL;
 import java.util.ResourceBundle;

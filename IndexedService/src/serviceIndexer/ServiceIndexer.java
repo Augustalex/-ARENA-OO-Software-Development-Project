@@ -23,6 +23,8 @@ import java.util.stream.IntStream;
  */
 public class ServiceIndexer implements IServiceIndexer {
 
+    private int nextObjectId = 0;
+
     private Gson gson = new Gson();
 
     private final int partitionCapacity;
@@ -102,6 +104,11 @@ public class ServiceIndexer implements IServiceIndexer {
         }
     }
 
+    @Override
+    public int getNextObjectId(){
+        return this.nextObjectId++;
+    }
+
     private void addService(Delivery<Boolean> status){
         new Thread(() -> {
             int index = serviceCount();
@@ -132,5 +139,6 @@ public class ServiceIndexer implements IServiceIndexer {
     private int getServiceIndex(int lookupIndex){
         return (int)Math.ceil(lookupIndex/partitionCapacity);
     }
+
 
 }

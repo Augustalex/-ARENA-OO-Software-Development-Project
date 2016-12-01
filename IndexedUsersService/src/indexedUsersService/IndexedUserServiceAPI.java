@@ -41,7 +41,7 @@ public class IndexedUserServiceAPI extends ReST {
     }
 
     /**
-     * Get all users as an array of User class.
+     * Get all arena.users as an array of User class.
      * @param httpExchange
      * @throws Exception
      */
@@ -69,10 +69,10 @@ public class IndexedUserServiceAPI extends ReST {
                             System.out.println("response content:");
                             System.out.println(responseContent);
                             users = gson.fromJson(responseContent, User[].class);
-                            System.out.println("Got some users: " + users);
+                            System.out.println("Got some arena.users: " + users);
                         } catch (IOException e) {
                             e.printStackTrace();
-                            System.out.println("Were unable to find any users at " + hostInfo.getURL());
+                            System.out.println("Were unable to find any arena.users at " + hostInfo.getURL());
                             users = new User[]{};
                         }
 
@@ -104,6 +104,27 @@ public class IndexedUserServiceAPI extends ReST {
                         e.printStackTrace();
                     }
                 });
+    }
+
+    /**
+     * Delete all arena.users.
+     * @param httpExchange
+     * @throws Exception
+     */
+    @Override
+    public void onDelete(HttpExchange httpExchange) throws Exception {
+        //TODO implement delete all arena.users.
+        sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
+    }
+
+    /**
+     * Update all arena.users?
+     * @param httpExchange
+     * @throws Exception
+     */
+    @Override
+    public void onPut(HttpExchange httpExchange) throws Exception {
+        sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
     }
 
     private CloseableHttpResponse postNewUser(HttpExchange httpExchange, String serviceInstanceConnectionURL) {
@@ -139,29 +160,9 @@ public class IndexedUserServiceAPI extends ReST {
         return HttpClients.createDefault().execute(post);
     }
 
-    /**
-     * Delete all users.
-     * @param httpExchange
-     * @throws Exception
-     */
-    @Override
-    public void onDelete(HttpExchange httpExchange) throws Exception {
-        //TODO implement delete all users.
-        sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
-    }
-
-    /**
-     * Update all users?
-     * @param httpExchange
-     * @throws Exception
-     */
-    @Override
-    public void onPut(HttpExchange httpExchange) throws Exception {
-        sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
-    }
-
     private int getNextAvailableIndex(){
         synchronized (key) {
+            //TODO implement queues for what service indexes have become available, and pick from that queue before grabbing the "next available" index.
             System.out.println("Got next available index: " + this.nextAvailableIndex);
             return this.nextAvailableIndex++;
         }

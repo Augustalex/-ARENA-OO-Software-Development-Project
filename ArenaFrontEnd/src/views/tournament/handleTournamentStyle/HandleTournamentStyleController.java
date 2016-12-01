@@ -5,8 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import tournament.tournamentStyle.ITournamentStyle;
-import tournament.tournamentStyle.TournamentStyleFactory;
+import arena.tournament.tournamentStyle.ITournamentStyle;
+import arena.tournament.tournamentStyle.TournamentStyleFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -176,9 +176,9 @@ public class HandleTournamentStyleController implements Initializable{
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Input Error!");
         alert.setHeaderText("New tournamentstyle contains errors.");
-        alert.setContentText("Your tournament style is not createt\n" +
+        alert.setContentText("Your arena.tournament style is not createt\n" +
                 "Please check your input and re-submit to create\n" +
-                "the tournament style");
+                "the arena.tournament style");
         alert.showAndWait();
     }
 

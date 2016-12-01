@@ -8,7 +8,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 /**
- * Snapshot from a Board state during a game. A board games state may
+ * Snapshot from a Board state during a game. A board arena.games state may
  * contain a two dimensional container of {@link Pawn}s, in that case
  * the class is not self Serializable. This snapshot however stores only
  * the owner of a cell in a board, and is as such a Serializable class.

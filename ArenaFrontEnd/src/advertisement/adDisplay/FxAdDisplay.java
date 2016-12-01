@@ -1,8 +1,8 @@
 package advertisement.adDisplay;
 
-import advertisement.ad.Ad;
+import arena.advertisement.advertisement.ad.Ad;
 import advertisement.adDisplay.exceptions.AdImageNotSet;
-import advertisement.adSpot.AdSpot;
+import arena.advertisement.advertisement.adSpot.AdSpot;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;

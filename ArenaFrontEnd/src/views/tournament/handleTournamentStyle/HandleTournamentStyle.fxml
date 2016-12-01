@@ -51,7 +51,7 @@
     </VBox>
 
     <VBox >
-            <Text text="Best of games" fill='white'></Text>
+            <Text text="Best of arena.games" fill='white'></Text>
             <TextField fx:id="bestOfGames" minWidth="30" maxWidth="130"/>
     </VBox>
 

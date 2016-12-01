@@ -32,7 +32,7 @@ public class UsersServiceAPI extends ReST {
             output += "Name: " + user.getName() + "\tAge: " + user.getAge() + "\tID: " + user.getId() + "\r\n";
         }
 
-        System.out.println("Found users: ");
+        System.out.println("Found arena.users: ");
         System.out.println(output);
         sendStringContentResponse(HttpURLConnection.HTTP_OK, response, httpExchange);
         System.out.println("Sent get request response.");

@@ -17,7 +17,7 @@ public class IndexedUserServiceContainer extends ReSTContainer {
     public IndexedUserServiceContainer(HostService hostProviderConnectionDetails, int port) throws IOException {
         super(port);
 
-        indexer = new ServiceIndexer(5, hostProviderConnectionDetails);
+        indexer = new ServiceIndexer(2, hostProviderConnectionDetails);
 
         this.createContext("/", new IndexedUserServiceAPI(indexer));
         this.createContext("/id/", new IndexedUserServiceSingleUserAPI(indexer));

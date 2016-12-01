@@ -18,5 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="Othello" />
+    <orderEntry type="module" module-name="Arena" />
   </component>
 </module>

@@ -5,21 +5,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import session.*;
-import tournament.ITournament;
-import views.DimensionBinder;
+import arena.session.*;
+import arena.tournament.ITournament;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * A horizontally aligned box containing a label with the tournament name,
+ * A horizontally aligned box containing a label with the arena.tournament name,
  * as well as a button that when clicked will apply the Session active player
- * to that tournament.
+ * to that arena.tournament.
  *
  * The Session object that this class depends on is accessed statically and
  * is from this class perspective treated as a singleton. If the reality is different
@@ -63,7 +58,7 @@ public class TournamentApplyBox extends BorderPane implements Initializable{
         System.out.println(this.widthProperty().doubleValue());
         //Set action event handler
         button.setOnAction(e -> {
-            System.out.println("Applied for tournament!");
+            System.out.println("Applied for arena.tournament!");
             appliedTournaments.applyToTournament(tournament);
             tournament.applyPlayer(Session.getSession().getPlayer());
         });

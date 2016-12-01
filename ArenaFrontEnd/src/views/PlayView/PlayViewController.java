@@ -1,19 +1,19 @@
 package views.PlayView;
 
-import advertisement.ad.*;
+import arena.advertisement.advertisement.ad.*;
 import advertisement.adDisplay.AdDisplayFactory;
 import advertisement.adDisplay.PaneAdDisplay;
-import advertisement.adRepository.AdRepository;
-import advertisement.adRepository.AdRepositoryFactory;
-import advertisement.adPreference.AdPreferenceFactory;
-import advertisement.adSpot.AdSpot;
-import games.gameInformation.TicTacToeGameInformation;
+import arena.advertisement.advertisement.adRepository.AdRepository;
+import arena.advertisement.advertisement.adRepository.AdRepositoryFactory;
+import arena.advertisement.advertisement.adPreference.AdPreferenceFactory;
+import arena.advertisement.advertisement.adSpot.AdSpot;
+import arena.games.gameInformation.TicTacToeGameInformation;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import games.gameInformation.GameInformation;
-import games.gameInformation.OthelloGameInformation;
+import arena.games.gameInformation.GameInformation;
+import arena.games.gameInformation.OthelloGameInformation;
 import views.AdvertiserView;
 import views.FXMLViewController;
 import views.GameInformationView.GameInformationViewController;
@@ -156,7 +156,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     private Parent loadGameInformationView(GameInformation gameInformation) throws IOException {
         return
                 this.loadFXML(
-                "GameInformationView/GameInformationView.fxml",
+                "/GameInformationView/GameInformationView.fxml",
                 c -> new GameInformationViewController(gameInformation)
         );
     }

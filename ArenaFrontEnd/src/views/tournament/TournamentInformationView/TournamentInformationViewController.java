@@ -1,16 +1,13 @@
 package views.tournament.TournamentInformationView;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import session.AppliedTournaments;
-import session.Session;
-import tournament.ITournament;
-import tournament.Tournament;
-import users.IPlayer;
+import arena.session.AppliedTournaments;
+import arena.session.Session;
+import arena.tournament.ITournament;
 import views.FXMLViewController;
 import views.DimensionBinder;
 import views.tournament.tournamentApplyBox.TournamentApplyBox;
@@ -23,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * The View Controller of the "TournamentInformation" view.
  *
- * Formats the tournament list and binds inner elements to surrounding container.
+ * Formats the arena.tournament list and binds inner elements to surrounding container.
  */
 public class TournamentInformationViewController extends FXMLViewController {
 
