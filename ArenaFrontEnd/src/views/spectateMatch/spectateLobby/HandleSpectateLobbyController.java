@@ -5,12 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import views.FXMLViewController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -25,7 +32,7 @@ import java.util.ResourceBundle;
 public class HandleSpectateLobbyController implements Initializable{
 
     @FXML
-    private TableView tabletest;
+    private TableView tableTournaments;
     @FXML
     private TableColumn leagueCol;
     @FXML
@@ -41,8 +48,6 @@ public class HandleSpectateLobbyController implements Initializable{
     private TableColumn matchCol;
     @FXML
     private TableColumn curScoreCol;
-    @FXML
-    private Button gameButton;
     @FXML
     private Button othello;
     @FXML
@@ -71,9 +76,6 @@ public class HandleSpectateLobbyController implements Initializable{
     }
 
     private void configureView(){
-        gameButton.setOnAction(event -> {
-            setTableView(observableList);
-        });
         othello.setOnAction(event ->{
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
@@ -92,9 +94,9 @@ public class HandleSpectateLobbyController implements Initializable{
             );
             setTableView(data);
         });
-        tabletest.setOnMousePressed(new EventHandler<MouseEvent>() {
+        tableTournaments.setOnMousePressed(new EventHandler<MouseEvent>() {
             /**
-             * Handles the mouseclick onto a row in the tableView.
+             * Handles the mouseclick onto a row in the tableTournamentView.
              * The clicking on a row will trigger another event.
              * @param event
              */
@@ -127,16 +129,52 @@ public class HandleSpectateLobbyController implements Initializable{
                 }
             }
         });
+
+        tournamentMatchTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            /**
+             * Handles the mouseclick onto a row in the tableTournamentLobbyView.
+             * The clicking on a row will trigger another event.
+             * @param event
+             */
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 1) {
+                    Node node = ((Node) event.getTarget()).getParent();
+                    TableRow row;
+                    if (node instanceof TableRow) {
+                        row = (TableRow) node;
+                    } else {
+                        // clicking on text part
+                        row = (TableRow) node.getParent();
+                    }
+
+                    LeagueSettings league = (LeagueSettings) row.getItem();
+                    try {
+                        newView();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
         //setListView();
     }
+    private void newView() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
+        Parent parent = loader.load();
+        stage.setScene(new Scene(parent, 1600, 600));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
     private void setTableView(ObservableList hardCode){
-        tabletest.setVisible(true);
+        tableTournaments.setVisible(true);
         leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
         tourNameCol.setCellValueFactory( new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
         nrMatchesCol.setCellValueFactory( new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
-        tabletest.setItems(hardCode);
-        tabletest.getColumns().clear();
-        tabletest.getColumns().addAll(leagueCol, tourNameCol, nrMatchesCol);
+        tableTournaments.setItems(hardCode);
+        tableTournaments.getColumns().clear();
+        tableTournaments.getColumns().addAll(leagueCol, tourNameCol, nrMatchesCol);
     }
     private void setTableViewMatch(ObservableList match){
         tournamentMatchTable.setVisible(true);
@@ -147,6 +185,7 @@ public class HandleSpectateLobbyController implements Initializable{
         tournamentMatchTable.getColumns().clear();
         tournamentMatchTable.getColumns().addAll(tournamentNameCol,matchCol,curScoreCol);
     }
+
     // Nedan är ifrån Oracle Doc skall bort /Björn
     public static class LeagueSettings {
 
