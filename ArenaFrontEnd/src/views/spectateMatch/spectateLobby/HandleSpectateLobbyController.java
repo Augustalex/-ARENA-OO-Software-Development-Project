@@ -149,8 +149,6 @@ public class HandleSpectateLobbyController implements Initializable{
                     }
 
                     LeagueSettings league = (LeagueSettings) row.getItem();
-                    System.out.print("Hej "+ league.getTournamentMatches());
-                    System.out.println("Hej45");
                     try {
                         newView();
                     } catch (IOException e) {
@@ -162,7 +160,6 @@ public class HandleSpectateLobbyController implements Initializable{
         //setListView();
     }
     private void newView() throws IOException {
-        System.out.print("Hej");
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
         Parent parent = loader.load();
