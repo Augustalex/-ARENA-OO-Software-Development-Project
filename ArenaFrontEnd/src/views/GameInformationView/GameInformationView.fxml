@@ -19,7 +19,7 @@
             </VBox>
         </left>
         <right>
-            <VBox fx:id="gameInformationRight" id="gameInformationRight">
+            <VBox fx:id="gameInformationRight" id="gameInformationRight" spacing="20">
                 <Label fx:id="gameName" styleClass="gameName"/>
                 <Button styleClass="pinkButton" text="Play" fx:id="playGameButton"/>
             </VBox>

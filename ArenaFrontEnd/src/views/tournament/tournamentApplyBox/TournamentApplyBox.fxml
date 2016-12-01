@@ -12,6 +12,10 @@
         </FlowPane>
     </left>
     <right>
-        <Button text="APPLY" fx:id="applyButton" id="tournamentApplyButton"/>
+        <HBox spacing="10">
+            <Button text="APPLY" fx:id="applyButton" id="tournamentApplyButton" styleClass="applyButtons"/>
+            <Button text="LOBBY" fx:id="tourLobbyButton" id="tourLobbyButton" styleClass="applyButtons"/>
+        </HBox>
+
     </right>
 </BorderPane>
