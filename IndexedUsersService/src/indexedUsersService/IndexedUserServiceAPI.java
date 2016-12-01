@@ -2,13 +2,12 @@ package indexedUsersService;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import org.apache.http.Header;
+import hostProviderService.HostService;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.HttpEntityWrapper;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import rest.Delivery;
@@ -17,15 +16,12 @@ import rest.ReST;
 import serviceIndexer.ServiceIndexer;
 import usersService.User;
 
+import javax.management.ServiceNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -93,47 +89,54 @@ public class IndexedUserServiceAPI extends ReST {
      */
     @Override
     public void onPost(HttpExchange httpExchange) throws Exception {
-        int index = getNextAvailableIndex();
-
-        int serviceCount = indexer.serviceCount();
-        int unitCapacity = indexer.getPartitionCapacity();
-
-        if(index >= unitCapacity*serviceCount) {
-            indexer.scaleUp(
-                    1,
-                    wasSuccessful -> {
-                        try {
-                            if(wasSuccessful){
-                                postNewUser(httpExchange, index);
-                            }
-                            else
+        indexer
+                .getServiceConnectionDetails(getNextAvailableIndex())
+                .onDelivery(connectionDetails -> {
+                    try {
+                        if(connectionDetails == null)
                             sendEmptyResponse(HttpURLConnection.HTTP_INTERNAL_ERROR, httpExchange);
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        else {
+                            CloseableHttpResponse response = postNewUser(httpExchange, connectionDetails.getURL());
+                            httpExchange.sendResponseHeaders(response.getStatusLine().getStatusCode(), 0);
                         }
+                    } catch (IOException e) {
+                        System.out.println("Could not send response headers.");
+                        e.printStackTrace();
                     }
-            );
-        }
-        else{
-            postNewUser(httpExchange, index);
-        }
+                });
     }
 
-    private void postNewUser(HttpExchange httpExchange, int index){
+    private CloseableHttpResponse postNewUser(HttpExchange httpExchange, String serviceInstanceConnectionURL) {
+        String body = getBody(httpExchange);
+        CloseableHttpResponse response = null;
+
         try {
-            String serviceInstanceConnectionURL = this.indexer.getServiceConnectionDetails(index).getURL();
-            String body = getStringBodyFromHttpExchange(httpExchange);
-            CloseableHttpClient httpclient = HttpClients.createDefault();
-            HttpPost post = new HttpPost(serviceInstanceConnectionURL);
-            post.setEntity(new ByteArrayEntity(body.getBytes(StandardCharsets.UTF_8)));
-            CloseableHttpResponse response =  httpclient.execute(post);
-
-
-            httpExchange.sendResponseHeaders(response.getStatusLine().getStatusCode(), response.getEntity().getContentLength());
-        } catch (Exception ex) {
-            System.out.println("Could not post to service.");
-            System.out.println(ex.getMessage());
+            response = post(body, serviceInstanceConnectionURL);
+        } catch (IOException e) {
+            System.out.println("Could not send request.");
+            e.printStackTrace();
         }
+
+        return response;
+    }
+
+    private String getBody(HttpExchange httpExchange){
+        String result = "";
+
+        try{
+            result = getStringBodyFromHttpExchange(httpExchange);
+        } catch (IOException e) {
+            System.out.println("Could not retrieve request body.");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    private CloseableHttpResponse post(String body, String url) throws IOException {
+        HttpPost post = new HttpPost(url);
+        post.setEntity(new ByteArrayEntity(body.getBytes(StandardCharsets.UTF_8)));
+        return HttpClients.createDefault().execute(post);
     }
 
     /**
@@ -155,14 +158,6 @@ public class IndexedUserServiceAPI extends ReST {
     @Override
     public void onPut(HttpExchange httpExchange) throws Exception {
         sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
-    }
-
-    private Delivery<String> getResponse(Supplier<String> request){
-        Delivery<String> delivery = new PropertyDelivery<>();
-
-        new Thread(() -> delivery.deliver(request.get())).start();
-
-        return delivery;
     }
 
     private int getNextAvailableIndex(){

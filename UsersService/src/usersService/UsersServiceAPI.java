@@ -12,13 +12,13 @@ import java.util.Map;
 /**
  * Created by August on 2016-11-26.
  */
-public class UsersAPI extends ReST {
+public class UsersServiceAPI extends ReST {
 
     private Gson gson = new Gson();
 
     private UsersService usersService;
 
-    public UsersAPI(UsersService usersService){
+    public UsersServiceAPI(UsersService usersService){
         this.usersService = usersService;
     }
 

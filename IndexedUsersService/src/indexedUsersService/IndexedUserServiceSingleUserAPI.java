@@ -2,18 +2,12 @@ package indexedUsersService;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import hostProviderService.Host;
 import org.apache.http.client.fluent.Request;
-import rest.Delivery;
-import rest.PropertyDelivery;
 import rest.ReST;
 import serviceIndexer.ServiceIndexer;
-import usersService.User;
 
-import javax.management.ServiceNotFoundException;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.util.Arrays;
 
 /**
  * Created by August on 2016-11-29.
@@ -34,30 +28,37 @@ public class IndexedUserServiceSingleUserAPI extends ReST {
      */
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        Delivery<User> result = new PropertyDelivery<>();
+        indexer
+                .getServiceConnectionDetails(getIndexFromHttpURI(httpExchange))
+                .onDelivery(hostService -> {
+                    try{
+                        if(hostService == null)
+                            sendEmptyResponse(HttpURLConnection.HTTP_INTERNAL_ERROR, httpExchange);
+                        else
+                            sendStringContentResponse(
+                                    HttpURLConnection.HTTP_OK,
+                                    getUserDataBytes(hostService.getURL() + httpExchange.getRequestURI().getRawPath()),
+                                    httpExchange
+                            );
+                    } catch (IOException e) {
+                        System.out.println("Could no send response content.");
+                        e.printStackTrace();
+                    }
+                });
+    }
 
-        new Thread(() -> {
-            User user;
-            try {
-                int index = getIndexFromHttpURI(httpExchange);
-                Host serviceInstanceConnectionDetails = indexer.getServiceConnectionDetails(index);
-                user = gson.fromJson(Request.Get(serviceInstanceConnectionDetails.getURL())
-                        .execute()
-                        .returnContent().asString(), User.class);
-            } catch (Exception e) {
-                user = new User("Unknown", -1);
-            }
-            result.deliver(user);
-        }).start();
+    private String getUserDataBytes(String url) {
+        try {
+            return Request.Get(url)
+                    .execute()
+                    .returnContent().asString();
+        } catch (IOException e) {
+            System.out.println("Could not send Request to " + url);
+            e.printStackTrace();
 
-        result.onDelivery(user -> {
-            try {
-                sendStringContentResponse(HttpURLConnection.HTTP_OK, gson.toJson(user), httpExchange);
-            } catch (IOException e) {
-                System.out.println("Unable to send response.");
-                System.out.println(e.getMessage());
-            }
-        });
+            //TODO might need better error handling.. Json problems could become of this.
+            return "";
+        }
     }
 
     @Override
@@ -78,9 +79,13 @@ public class IndexedUserServiceSingleUserAPI extends ReST {
     }
 
     private int getIndexFromHttpURI(HttpExchange httpExchange){
-        return Arrays.stream(httpExchange.getHttpContext().getPath()
+        /*return Arrays.stream(httpExchange.getHttpContext().getPath()
                 .split("/"))
                 .reduce((first, last) -> last) //return last element in array
-                .map(Integer::parseInt).get();
+                .map(Integer::parseInt).get();*/
+        String path = httpExchange.getRequestURI().getRawPath();
+        String[] splitPath = path.split("/");
+
+        return Integer.parseInt(splitPath[splitPath.length-1]);
     }
 }

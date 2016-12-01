@@ -35,22 +35,23 @@ public class SystemManager {
 
     public void startBasicSystems() throws NoAvailableHosts, IOException {
 
-        hostProvider.addHost(new HostService("", new Host("192.168.1.4", 2005), new Host("192.168.1.4", 2006)));
-        hostProvider.addHost(new HostService("", new Host("192.168.1.4", 2007), new Host("192.168.1.4", 2008)));
+        String machineIP = "192.168.0.195";
+        //hostProvider.addHost(new HostService("", new Host(machineIP, 2005), new Host(machineIP, 2006)));
+        //hostProvider.addHost(new HostService("", new Host(machineIP, 2007), new Host(machineIP, 2008)));
 
         ServiceInitiatorContainer initiatorContainer_2005 = new ServiceInitiatorContainer(2006);
         initiatorContainer_2005.start();
         ServiceInitiatorContainer initiatorContainer_2006 = new ServiceInitiatorContainer(2008);
         initiatorContainer_2006.start();
 
-        IndexedUserServiceContainer indexedUserServiceContainer = new IndexedUserServiceContainer(
+                IndexedUserServiceContainer indexedUserServiceContainer = new IndexedUserServiceContainer(
                 new HostService("",
                         new Host(
-                        "192.168.1.4",
+                                machineIP,
                         2000
                         ),
                         new Host(
-                                "192.168.1.4",
+                                machineIP,
                                 2001
                         )
                 ),

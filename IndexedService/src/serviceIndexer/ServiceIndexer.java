@@ -8,7 +8,6 @@ import org.apache.http.entity.ContentType;
 import rest.Delivery;
 import rest.PropertyDelivery;
 
-import javax.management.ServiceNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -42,13 +41,24 @@ public class ServiceIndexer implements IServiceIndexer {
     }
 
     @Override
-    public HostService getServiceConnectionDetails(int lookupIndex) throws ServiceNotFoundException {
-        final int serviceIndex = getServiceIndex(lookupIndex);
+    public Delivery<HostService> getServiceConnectionDetails(int lookupIndex) {
+        Delivery<HostService> serviceDetails = new PropertyDelivery<>();
 
-        if(services.containsKey(serviceIndex))
-            return services.get(serviceIndex);
+        if(lookupIndex >= this.currentCapacity)
+            this.scaleUp(1, wasSuccessful -> {
+                if(wasSuccessful){
+                    System.out.println("Scaled successfully.");
+                    serviceDetails.deliver(services.get(getServiceIndex(lookupIndex)));
+                }
+                else{
+                    System.out.println("Scale up was unsuccessful.");
+                    serviceDetails.deliver(null);
+                }
+            });
         else
-            throw new ServiceNotFoundException();
+            serviceDetails.deliver(services.get(getServiceIndex(lookupIndex)));
+
+        return serviceDetails;
     }
 
     @Override

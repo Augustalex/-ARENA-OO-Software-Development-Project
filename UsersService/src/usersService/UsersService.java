@@ -26,4 +26,8 @@ public class UsersService {
     public User[] getAllUsersAsArray(){
         return getUserStorage().getAll().stream().toArray(User[]::new);
     }
+
+    public User getUser(int id){
+        return this.userStorage.get(id);
+    }
 }

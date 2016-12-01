@@ -17,9 +17,7 @@ public class PropertyDelivery<T> implements Delivery<T> {
     private Runnable onCancel = () -> System.out.println("No callback on Cancel set.");
     private ObjectProperty<T> payload = new SimpleObjectProperty<>(null);
 
-    private Consumer<T> onDelivery = t -> {
-        System.out.println("No consumer set.");
-    };
+    private Consumer<T> onDelivery = null;
 
     @Override
     public Delivery<T> onCancel(Runnable callback) {
@@ -37,7 +35,11 @@ public class PropertyDelivery<T> implements Delivery<T> {
 
     @Override
     public Delivery<T> onDelivery(Consumer<T> consumer){
-        this.onDelivery = consumer;
+        if(this.payload.get() == null)
+            this.onDelivery = consumer;
+        else
+            consumer.accept(this.payload.get());
+
         return this;
     }
 
@@ -47,7 +49,10 @@ public class PropertyDelivery<T> implements Delivery<T> {
      */
     @Override
     public void deliver(T payload) {
-        this.onDelivery.accept(payload);
+        if(this.onDelivery == null)
+            this.payload.set(payload);
+        else
+            this.onDelivery.accept(payload);
     }
 
 }

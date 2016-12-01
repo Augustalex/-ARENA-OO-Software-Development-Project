@@ -1,7 +1,7 @@
 package serviceIndexer;
 
-import hostProviderService.Host;
 import hostProviderService.HostService;
+import rest.Delivery;
 
 import javax.management.ServiceNotFoundException;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  */
 public interface IServiceIndexer {
 
-    HostService getServiceConnectionDetails(int index) throws ServiceNotFoundException;
+    Delivery<HostService> getServiceConnectionDetails(int index) throws ServiceNotFoundException;
 
     void scaleUp(int numberOfInstances, Consumer<Boolean> callback);
 

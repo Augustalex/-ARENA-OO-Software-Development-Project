@@ -3,11 +3,14 @@ package serviceIndexer.index;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import hostProviderService.Host;
+import hostProviderService.HostService;
+import rest.Delivery;
 import serviceIndexer.IServiceIndexer;
 import serviceIndexer.ServiceIndexerAPIBase;
 import services.IService;
 
 import javax.management.ServiceNotFoundException;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.Arrays;
 
@@ -30,18 +33,22 @@ public class ServiceIndexerIndexAPI extends ServiceIndexerAPIBase {
      */
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        try{
-
-            int index = getIndexFromHttpURI(httpExchange);
-
-            Host service = getServiceIndexer().getServiceConnectionDetails(index);
-            String response = gson.toJson(service);
-
-            sendStringContentResponse(HttpURLConnection.HTTP_OK, response, httpExchange);
-        }
-        catch(ServiceNotFoundException ex){
-            sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
-        }
+        getServiceIndexer()
+                .getServiceConnectionDetails(getIndexFromHttpURI(httpExchange))
+                .onDelivery(hostService -> {
+                    try{
+                        if(hostService == null)
+                            sendEmptyResponse(HttpURLConnection.HTTP_INTERNAL_ERROR, httpExchange);
+                        else
+                            sendStringContentResponse(
+                                    HttpURLConnection.HTTP_OK,
+                                    gson.toJson(hostService),
+                                    httpExchange);
+                    } catch (IOException e) {
+                        System.out.println("Could not send response content.");
+                        e.printStackTrace();
+                    }
+                });
     }
 
     @Override

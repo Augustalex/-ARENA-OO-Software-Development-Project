@@ -13,8 +13,9 @@ public class UserServiceContainer extends ReSTContainer {
     public UserServiceContainer(int port) throws IOException {
         super(port);
 
-        ReST api = new UsersAPI(new UsersService());
-        this.createContext("/", api);
+        UsersService service = new UsersService();
+        this.createContext("/", new UsersServiceAPI(service));
+        this.createContext("/id/", new UsersServiceSingleUserAPI(service));
     }
 
 }
