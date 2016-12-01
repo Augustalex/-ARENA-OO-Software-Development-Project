@@ -2,6 +2,7 @@ package views.tournament.extendedTournamentView;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import views.FXMLViewController;
 
 import java.net.URL;
@@ -19,7 +20,7 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     private Label Matches;
 
     @FXML
-    private
+    private VBox MatchList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
