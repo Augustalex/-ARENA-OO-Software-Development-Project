@@ -1,10 +1,16 @@
 package views.tournament.extendedTournamentView;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import views.FXMLViewController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,4 +37,5 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     public void closeView() {
         System.out.println("LOL");
     }
+
 }

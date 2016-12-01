@@ -1,16 +1,22 @@
 package views.tournament.tournamentApplyBox;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import session.*;
 import tournament.ITournament;
 import views.DimensionBinder;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -36,6 +42,9 @@ public class TournamentApplyBox extends BorderPane implements Initializable{
     @FXML
     private Button applyButton;
 
+    @FXML
+    private Button tourLobbyButton;
+
     public TournamentApplyBox(ITournament tournament, AppliedTournaments appliedTournaments){
         this.tournament = tournament;
         this.appliedTournaments = appliedTournaments;
@@ -46,6 +55,7 @@ public class TournamentApplyBox extends BorderPane implements Initializable{
 
         setupApplyLabel(tournamentLabel);
         setupApplyButton(applyButton);
+        setupLobbyButton(tourLobbyButton);
 
        // bindDimensionsOfLeftAndRightPaneSides(leftSide, rightSide);
     }
@@ -63,9 +73,29 @@ public class TournamentApplyBox extends BorderPane implements Initializable{
         System.out.println(this.widthProperty().doubleValue());
         //Set action event handler
         button.setOnAction(e -> {
-            System.out.println("Applied for tournament!");
+            button.setText("Applied");
             appliedTournaments.applyToTournament(tournament);
             tournament.applyPlayer(Session.getSession().getPlayer());
+        });
+    }
+
+    private void newView() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
+        Parent parent = loader.load();
+        stage.setScene(new Scene(parent, 1600, 600));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    public void setupLobbyButton(Button lobbyButton) {
+        lobbyButton.setOnAction(e -> {
+            System.out.println("New window opened!");
+            try {
+                newView();
+            } catch (IOException e1) {
+                System.out.println("---------------Error opening new window!----------------------");
+            }
         });
     }
 }

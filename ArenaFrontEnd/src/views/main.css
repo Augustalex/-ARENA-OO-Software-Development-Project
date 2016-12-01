@@ -131,6 +131,19 @@ StackPane#playViewSuperWindow{
     -fx-font-family: "Helvetica";
 }
 
+.applyButtons {
+       -fx-background-color: #A8A8A8;
+       -fx-font-family: "Helvetica";
+       -fx-font-size: 0.7em;
+}
+
+.applyButtons:hover{
+    -fx-background-color: #818181 ;
+    -fx-font-family: "Helvetica";
+    -fx-text-fill: black;
+    -fx-font-size: 0.7em;
+}
+
 #tournamentInformationContent{
     -fx-min-height: 1000px;
 }

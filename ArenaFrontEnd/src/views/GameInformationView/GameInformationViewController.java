@@ -2,7 +2,9 @@ package views.GameInformationView;
 
 import games.gameLauncher.GameLauncher;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -13,6 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import games.gameInformation.GameInformation;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import views.FXMLViewController;
 import views.DimensionBinder;
 
@@ -66,6 +70,8 @@ public class GameInformationViewController extends FXMLViewController{
                 "tournament/TournamentInformationView/TournamentInformationView.fxml"
         );
     }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

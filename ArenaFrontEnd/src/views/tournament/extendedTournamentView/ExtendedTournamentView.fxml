@@ -28,7 +28,7 @@
         <BorderPane>
             <left>
                 <FlowPane>
-                    <Label text="Tournament Name Here" fx:id="tournamentLabel" id="tournamentApplyLabel"/>
+                    <Label text="Leaderboards" fx:id="leaderboardLabel" id="leaderboardLabel"/>
                 </FlowPane>
             </left>
             <right>
