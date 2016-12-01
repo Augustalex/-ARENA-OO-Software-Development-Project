@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class SpectateTable implements Serializable{
     private Session session = Session.getSession();
 
-    ArrayList<IMatch> availibleMatches = new ArrayList<>();
+    List<IMatch> availibleMatches = new ArrayList<>();
     List<ITournament> availibleTournaments = new ArrayList<>();
     List<ILeague> availibleLeagues = new ArrayList<>();
 
@@ -24,24 +24,34 @@ public class SpectateTable implements Serializable{
 
     }
 
+    public List<IMatch> returnAllPossibleMatches(){
+        availibleLeagues = getLeagues();
+        for (int i = 0; i < availibleLeagues.size(); i++){
+            ILeague tempLeague = availibleLeagues.get(i);
+            availibleTournaments = getTournaments(tempLeague);
+        }
+        for(int j = 0; j < availibleTournaments.size(); j++){
+            ITournament tempTour = availibleTournaments.get(j);
+            availibleMatches = getAvailibleMatches(tempTour);
+        }
+        return availibleMatches;
+
+    }
+
     public List<ILeague> getLeagues(){
-        availibleLeagues = session.getPlayer().getLeagues();
-        return availibleLeagues;
+        return session.getPlayer().getLeagues();
     }
 
     public List<ITournament> getTournaments(ILeague league){
-        availibleTournaments = league.getTournaments();
-        return availibleTournaments;
+       return league.getTournaments();
     }
 
-    public ArrayList<IMatch> getAvailibleMatches(List<ITournament> availibleTournaments){
-        for(int i = 0; i < availibleTournaments.size(); i++){
-            ITournament tempTour = availibleTournaments.get(i);
-            for(int j = 0; j < tempTour.getMatches().size(); j++){
-                IMatch tempMatch = tempTour.getMatches().get(j);
+    public List<IMatch> getAvailibleMatches(ITournament tournament){
+         List<IMatch> matches = new ArrayList<>();
+            for(int j = 0; j < tournament.getMatches().size(); j++){
+                IMatch tempMatch = tournament.getMatches().get(j);
                 availibleMatches.add(tempMatch);
             }
-        }
-        return availibleMatches;
+        return matches;
     }
 }
