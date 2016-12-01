@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.extendedTournamentView.ExtendedTournamentViewController"
+            stylesheets="/views/main.css" fx:id="extendedTournamentView" id="extendedTournamentView">
+    <top>
+        <VBox>
+            <Label fx:id="TournamentName" id="TournamentName"/>
+        </VBox>
+    </top>
+    <center>
+        <FlowPane>
+            <VBox>
+                <Label fx:id="Matches" id="Matches"/>
+                <VBox fx:id="MatchList" id="MatchList"/>
+            </VBox>
+            <VBox>
+                <TextFlow fx:id="GameInfoText" id="GameInfoText">
+                    <Label fx:id="GameInfoLabel" id="GameInfoLabel"/>
+                </TextFlow>
+            </VBox>
+        </FlowPane>
+    </center>
+    <bottom>
+        <BorderPane>
+            <left>
+                <FlowPane>
+                    <Label text="Tournament Name Here" fx:id="tournamentLabel" id="tournamentApplyLabel"/>
+                </FlowPane>
+            </left>
+            <right>
+                <Button text="APPLY" fx:id="applyButton" id="tournamentApplyButton"/>
+            </right>
+        </BorderPane>
+    </bottom>
+
+</BorderPane>
