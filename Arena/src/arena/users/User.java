@@ -2,6 +2,8 @@ package arena.users;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import rest.Delivery;
+import rest.PropertyDelivery;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -24,13 +26,25 @@ public class User implements IUser {
      * Will retrieve a User from the UsersService. If the password don't match
      * the password attached to the entered username, the service will return a
      * "Forbidden" HTTP response and the method will not return a valid object (possibly null).
+     *
+     * In order to not freeze the application and the UI, the method returns a {@link rest.Delivery}
+     * object! A callback may be attached to delivery and will be executed in future when the delivery arrives.
+     *          Confused? Google "Asynchronous programming" to learn more. The object also relates closely to
+     *          other programming concepts such as "Promises" in javascript or "Future" in Java EE.
      * @param username
      * @param password
      * @return
      */
-    public static IUser getUser(String username, String password){
-        //TODO collect User details from the UsersService
-        return createUser("{name:August,id:0}");
+    public static Delivery<IUser> getUser(String username, String password){
+        //TODO collect User details from the UsersService instead of creating a mock
+
+        Delivery<IUser> delivery = new PropertyDelivery<>();
+
+        new Thread(() -> {
+            delivery.deliver(createUser("{name:August,id:0}"));
+        }).start();
+
+        return delivery;
     }
 
     private static IUser createUser(String json){
