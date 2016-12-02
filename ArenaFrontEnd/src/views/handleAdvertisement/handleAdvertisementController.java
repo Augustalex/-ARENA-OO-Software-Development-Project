@@ -59,13 +59,13 @@ public class handleAdvertisementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        inputVBox.setPadding(new Insets(25,0,25,0));
-        preferenceList.setPadding(new Insets(0,0,25,0));
+        inputVBox.setPadding(new Insets(25, 0, 25, 0));
+        preferenceList.setPadding(new Insets(0, 0, 25, 0));
         setPreferenceList();
-        submitAd.setOnAction(e->submitHandler());
+        submitAd.setOnAction(e -> submitHandler());
     }
 
-    private void setPreferenceList(){
+    private void setPreferenceList() {
         preferences = new String[2];
         preferences[0] = "Play View";
         preferences[1] = "Main View";
@@ -80,7 +80,7 @@ public class handleAdvertisementController implements Initializable {
                         + "max 10 seconds and for\n every display your account will be debited $0.5");
 
 
-        for(int i = 0; i < 2; i++){
+        for (int i = 0; i < 2; i++) {
             HBox line = new HBox(20);
             checkboxes[i] = new CheckBox();
             preferenceLabels[i] = new Label(preferences[i], checkboxes[i]);
@@ -88,32 +88,38 @@ public class handleAdvertisementController implements Initializable {
             Text help = new Text("?");
             help.setFont(Font.font("Arial", FontWeight.BOLD, 16));
             help.setFill(Color.WHITE);
-            help.setOnMouseDragOver(e->showHelp(helpInformation[0]));
+            //help.setOnMouseEntered(e->showHelp(helpInformation[0]));
+
+            addTooltip(help, helpInformation[0]);
+
             line.getChildren().addAll(preferenceLabels[i], help);
+
 
             preferenceList.getChildren().add(line);
             preferenceLabels[i].setStyle("-fx-text-fill: white");
         }
     }
 
-    private void submitHandler(){
+    private void addTooltip(Text help, AdSchemeMetaInformation adSchemeMetaInformation) {
+        Tooltip tooltip = new Tooltip(adSchemeMetaInformation.getName()
+                                    + ":\n\n" + adSchemeMetaInformation.getDescription());
+        Tooltip.install(help,tooltip);
+    }
+
+    private void submitHandler() {
         String source = sourceField.getText();
         String amount = amountField.getText();
         String[] selectedPreferences = new String[2];
         String name = adName.getText();
         String description = adDescription.getText();
 
-        for(int i = 0; i < 2; i++){
-            if(checkboxes[i].isSelected())
+        for (int i = 0; i < 2; i++) {
+            if (checkboxes[i].isSelected())
                 selectedPreferences[i] = preferences[i];
         }
         AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description);
         AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
                 AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
         confirmationText.setText("Advertisement added and will be shown in prefered adspot");
-    }
-
-    public void showHelp(AdSchemeMetaInformation information){
-
     }
 }
