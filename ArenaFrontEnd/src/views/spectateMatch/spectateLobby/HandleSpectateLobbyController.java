@@ -2,6 +2,7 @@ package views.spectateMatch.spectateLobby;
 
 import arena.games.game.IGame;
 import arena.games.gameInformation.GameInformation;
+import arena.games.gameManager.ArenaGameManager;
 import arena.league.ILeague;
 import arena.tournament.ITournament;
 import com.sun.org.apache.bcel.internal.generic.RET;
@@ -61,23 +62,23 @@ public class HandleSpectateLobbyController implements Initializable {
     }
 
     private void configureView() {
+        setTableGames();
         tableGames.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                setTableGames(SpectateTable.get().getLeagues());
+                System.out.println("HEJ HEJ");
             }
         });
         othello.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
-            setTableView(SpectateTable.get().getLeagues());
-            setTableGames(SpectateTable.get().getLeagues());
+            setTableView();
         });
 
         ticTacToe.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
-            setTableView(SpectateTable.get().getLeagues());
+            setTableView();
         });
         tableTournaments.setOnMousePressed(new EventHandler<MouseEvent>() {
             /**
@@ -108,14 +109,16 @@ public class HandleSpectateLobbyController implements Initializable {
             }
         });
     }
-    private void setTableGames(List<ILeague> allLeagues){
-        ObservableList<LeagueSettings> tournamentsList = FXCollections.observableArrayList();
+    private void setTableGames(){
+        tableGames.refresh();
+        ObservableList<IGame> gameList = FXCollections.observableArrayList();
 
-        for(ILeague league : allLeagues)
-            for(ITournament tournament : league.getTournaments())
-                tournamentsList.add(new LeagueSettings(league, tournament));
-        gameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ILeague>("league"));
-        tableGames.setItems(tournamentsList);
+        for(ILeague league : SpectateTable.get().getLeagues())
+            if(!gameList.contains(league.getGame()))
+                gameList.add(league.getGame());
+
+        gameCol.setCellValueFactory(new PropertyValueFactory<IGame, String>("gameInformation"));
+        tableGames.setItems(gameList);
         tableGames.getColumns().clear();
         tableGames.getColumns().addAll(gameCol);
     }
@@ -127,12 +130,12 @@ public class HandleSpectateLobbyController implements Initializable {
         stage.show();
     }
 
-    private void setTableView(List<ILeague> allLeagues) {
+    private void setTableView() {
         ObservableList<LeagueSettings> tournamentsList = FXCollections.observableArrayList();
 
-        for(ILeague league : allLeagues)
+        for(ILeague league : SpectateTable.get().getLeagues())
             for(ITournament tournament : league.getTournaments())
-                tournamentsList.add(new LeagueSettings(league, tournament));
+                tournamentsList.add(new LeagueSettings(league, tournament, league.getGame()));
 
         tableTournaments.setVisible(true);
         leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ILeague>("league"));
@@ -146,10 +149,12 @@ public class HandleSpectateLobbyController implements Initializable {
 
         private ITournament tournament;
         private ILeague league;
+        private IGame game;
 
-        public LeagueSettings(ILeague league, ITournament tournament){
+        public LeagueSettings(ILeague league, ITournament tournament, IGame game){
             this.tournament = tournament;
             this.league = league;
+            this.game = game;
         }
 
         public ILeague getLeague(){
@@ -159,13 +164,5 @@ public class HandleSpectateLobbyController implements Initializable {
         public ITournament getTournament() {
             return this.tournament;
         }
-    }
-    public static class Games{
-        private IGame game;
-        private ILeague league;
-        public Games(IGame game, ILeague league){
-            this.game = game;
-        }
-
     }
 }
