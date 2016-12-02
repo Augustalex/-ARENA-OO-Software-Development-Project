@@ -8,7 +8,7 @@
             stylesheets="/views/main.css" fx:id="extendedTournamentView" id="extendedTournamentView">
     <top>
         <VBox>
-            <Label fx:id="TournamentName" id="TournamentName"/>
+            <Label fx:id="TournamentName" id="TournamentName" styleClass="gameName"/>
         </VBox>
     </top>
     <center>

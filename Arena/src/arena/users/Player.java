@@ -1,6 +1,8 @@
 package arena.users;
 
+import arena.games.game.Game;
 import arena.games.game.IGame;
+import arena.games.gameInformation.OthelloGameInformation;
 import arena.league.ILeague;
 import arena.league.League;
 import arena.tournament.ITournament;
@@ -24,8 +26,11 @@ public class Player implements IPlayer{
     }
     public static IPlayer newMockPlayer(){
 
+        IGame mockGame = new Game();
+        mockGame.setGameInformation(new OthelloGameInformation());
         IPlayer player = new Player().createMockPlayerAugust();
         ILeague league = new League("mock arena.league", 1);
+        league.setGame(mockGame);
 
         league.addTournamentToLeague(TournamentFactory.newTournamentMock("Coca Cola Tournament"));
         league.addTournamentToLeague(TournamentFactory.newTournamentMock("HB tournament"));
