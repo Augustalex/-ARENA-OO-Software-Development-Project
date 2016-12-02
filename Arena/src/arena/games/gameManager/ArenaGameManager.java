@@ -39,4 +39,9 @@ public class ArenaGameManager implements GameLibrary, GameInstaller{
         IGame game = this.gameFactory.newGame(gamePackagePath);
         this.addGame(game);
     }
+
+    @Override
+    public IGame getGame(String gameName){
+        return this.games.get(gameName);
+    }
 }

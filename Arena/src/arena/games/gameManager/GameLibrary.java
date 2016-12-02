@@ -8,4 +8,6 @@ import arena.games.game.IGame;
 public interface GameLibrary {
 
     void addGame(IGame game);
+
+    IGame getGame(String gameName);
 }
