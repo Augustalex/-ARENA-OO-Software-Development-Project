@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Arena/Arena.iml" filepath="$PROJECT_DIR$/Arena/Arena.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArenaFrontEnd/ArenaFrontEnd.iml" filepath="$PROJECT_DIR$/ArenaFrontEnd/ArenaFrontEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/CompressionUtils/CompressionUtils.iml" filepath="$PROJECT_DIR$/CompressionUtils/CompressionUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GameService/GameService.iml" filepath="$PROJECT_DIR$/GameService/GameService.iml" />
       <module fileurl="file://$PROJECT_DIR$/GameStream/GameStream.iml" filepath="$PROJECT_DIR$/GameStream/GameStream.iml" />
       <module fileurl="file://$PROJECT_DIR$/HostProviderService/HostProviderService.iml" filepath="$PROJECT_DIR$/HostProviderService/HostProviderService.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hoster/Hoster.iml" filepath="$PROJECT_DIR$/Hoster/Hoster.iml" />

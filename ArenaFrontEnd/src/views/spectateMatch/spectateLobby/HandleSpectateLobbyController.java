@@ -1,5 +1,6 @@
 package views.spectateMatch.spectateLobby;
 
+import arena.league.League;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.FXMLViewController;
+import views.GameInformationView.GameInformationViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +31,7 @@ import java.util.ResourceBundle;
  *
  * Extended ERROR handling for invalid input data needs to be fixed.
  */
-public class HandleSpectateLobbyController implements Initializable{
+public class HandleSpectateLobbyController implements Initializable {
 
     @FXML
     private TableView tableTournaments;
@@ -55,32 +57,17 @@ public class HandleSpectateLobbyController implements Initializable{
     @FXML
     private Label placeHolder;
 
-    private static ArrayList<Match> mockGameList(){
-        ArrayList<Match> test = new ArrayList<>();
-        for( int i = 0; i < 4; i++) {
-            Match match = new Match("Yoda", "hej +" +i);
-            test.add(match);
-        }
-        return test;
-    }
-    ObservableList observableList = FXCollections.observableArrayList(
-            new LeagueSettings("ProLeague", "BestOfFiveUltimate", "Yoda Vs Vader"),
-            new LeagueSettings("Isabella", "Johnson", "isabella.johnson@example.com"),
-            new LeagueSettings("Ethan", "Williams", "ethan.williams@example.com"),
-            new LeagueSettings("Emma", "Jones", "emma.jones@example.com"),
-            new LeagueSettings("Michael", "Brown", "michael.brown@example.com")
-    );
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureView();
     }
 
-    private void configureView(){
-        othello.setOnAction(event ->{
+    private void configureView() {
+        othello.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
             ObservableList data = FXCollections.observableArrayList(
-                    new LeagueSettings("ProLeague","UltimateShowdown","7 Matches"),
+                    new LeagueSettings("ProLeague", "UltimateShowdown", "7 Matches"),
                     new LeagueSettings("ProLeague", "UltimateLosers", "4 Matches")
             );
             setTableView(data);
@@ -89,7 +76,7 @@ public class HandleSpectateLobbyController implements Initializable{
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
             ObservableList data = FXCollections.observableArrayList(
-                    new LeagueSettings("ProLeague", "Dancing","2 Matches"),
+                    new LeagueSettings("ProLeague", "Dancing", "2 Matches"),
                     new LeagueSettings("JediMaster", "JediTour", "4 Matches")
             );
             setTableView(data);
@@ -112,20 +99,12 @@ public class HandleSpectateLobbyController implements Initializable{
                         row = (TableRow) node.getParent();
                     }
                     LeagueSettings league = (LeagueSettings) row.getItem(); // Typecast för att få fram objektet
-                    if (row.getIndex() % 2 ==  0) {
-                        ObservableList match = FXCollections.observableArrayList(
-                                new LeagueSettings(league.getLeagueName(), "Timon vs Pumba","300"),
-                                new LeagueSettings(league.getLeagueName(), "Luke vs Leia", "4")
-                        );
-                        setTableViewMatch(match);
+                    try {
+                        newView();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    else{
-                        ObservableList match = FXCollections.observableArrayList(
-                                new LeagueSettings(league.getLeagueName(), "Tarzan vs Jane","25"),
-                                new LeagueSettings(league.getLeagueName(), "USA Vs Russia", "1")
-                        );
-                        setTableViewMatch(match);
-                    }
+                    //tableViewMatch(league, row);
                 }
             }
         });
@@ -159,31 +138,50 @@ public class HandleSpectateLobbyController implements Initializable{
         });
         //setListView();
     }
+
     private void newView() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
         Parent parent = loader.load();
         stage.setScene(new Scene(parent, 1600, 600));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
-    private void setTableView(ObservableList hardCode){
+
+    private void setTableView(ObservableList hardCode) {
         tableTournaments.setVisible(true);
         leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
-        tourNameCol.setCellValueFactory( new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
-        nrMatchesCol.setCellValueFactory( new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
+        tourNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
+        nrMatchesCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
         tableTournaments.setItems(hardCode);
         tableTournaments.getColumns().clear();
         tableTournaments.getColumns().addAll(leagueCol, tourNameCol, nrMatchesCol);
     }
-    private void setTableViewMatch(ObservableList match){
+
+    private void tableViewMatch(LeagueSettings league, TableRow row) {
+        if (row.getIndex() % 2 == 0) {
+            ObservableList match = FXCollections.observableArrayList(
+                    new LeagueSettings(league.getLeagueName(), "Timon vs Pumba", "300"),
+                    new LeagueSettings(league.getLeagueName(), "Luke vs Leia", "4")
+            );
+            setTableViewMatch(match);
+        } else {
+            ObservableList match = FXCollections.observableArrayList(
+                    new LeagueSettings(league.getLeagueName(), "Tarzan vs Jane", "25"),
+                    new LeagueSettings(league.getLeagueName(), "USA Vs Russia", "1")
+            );
+            setTableViewMatch(match);
+        }
+    }
+
+    private void setTableViewMatch(ObservableList match) {
         tournamentMatchTable.setVisible(true);
         tournamentNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
         matchCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
         curScoreCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
         tournamentMatchTable.setItems(match);
         tournamentMatchTable.getColumns().clear();
-        tournamentMatchTable.getColumns().addAll(tournamentNameCol,matchCol,curScoreCol);
+        tournamentMatchTable.getColumns().addAll(tournamentNameCol, matchCol, curScoreCol);
     }
 
     // Nedan är ifrån Oracle Doc skall bort /Björn
@@ -192,13 +190,11 @@ public class HandleSpectateLobbyController implements Initializable{
         private SimpleStringProperty leagueName;
         private SimpleStringProperty tournamentName;
         private SimpleStringProperty tournamentMatches;
-        private ArrayList<Match> match = new ArrayList();
 
-        private LeagueSettings(String fName, String lName, String tournamentMatches){
+        private LeagueSettings(String fName, String lName, String tournamentMatches) {
             this.leagueName = new SimpleStringProperty(fName);
             this.tournamentName = new SimpleStringProperty(lName);
             this.tournamentMatches = new SimpleStringProperty(tournamentMatches);
-            this.match = mockGameList();
         }
 
         public String getLeagueName() {
@@ -221,30 +217,9 @@ public class HandleSpectateLobbyController implements Initializable{
             return tournamentMatches.get();
         }
 
-        public void setTournamentMatches(String fName) {tournamentMatches.set(fName);}
-
-    }
-
-    private static class Match {
-        private final SimpleStringProperty player;
-        private final SimpleStringProperty score;
-        private Match(String player, String score){
-            this.player = new SimpleStringProperty(player);
-            this.score = new SimpleStringProperty(score);
+        public void setTournamentMatches(String fName) {
+            tournamentMatches.set(fName);
         }
 
-        private String getScore() {
-            return this.score.get();
-        }
-        private void setScore(String score){
-            this.score.set(score);
-        }
-
-        private String getPlayer(){
-            return this.player.get();
-        }
-        private void setPlayer(String player){
-            this.player.set(player);
-        }
     }
 }
