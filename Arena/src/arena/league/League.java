@@ -1,5 +1,6 @@
 package arena.league;
 
+import arena.games.game.IGame;
 import arena.tournament.ITournament;
 import arena.users.IPlayer;
 
@@ -14,6 +15,7 @@ public class League implements ILeague{
     private int leagueID;
     private ArrayList<IPlayer> playersInLeague = new ArrayList<>();
     private ArrayList<ITournament> tournamentsInLeague = new ArrayList<>();
+    private IGame game;
 
     public League(String name, int id){
         this.leagueName = name;
@@ -40,6 +42,11 @@ public class League implements ILeague{
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
             System.out.println("Name of tournaments: " + tournamentsInLeague.get(i).getTournamentMetaInformation().getName());
         }
+    }
+
+    @Override
+    public void setGame(IGame game) {
+        this.game = game;
     }
 
     @Override

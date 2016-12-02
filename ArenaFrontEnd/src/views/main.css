@@ -232,3 +232,9 @@ StackPane#playViewSuperWindow{
 .tournamentConfigurationSubmitButton{
     -fx-font-size: 0.8em;
 }
+
+#extendedTournamentView{
+
+    -fx-background-color: #152029;
+
+}

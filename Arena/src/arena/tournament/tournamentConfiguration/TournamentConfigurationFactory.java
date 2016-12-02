@@ -39,6 +39,7 @@ public class TournamentConfigurationFactory implements Serializable {
                 .setName(tournamentName)
                 .setDescription(tournamentName);
 
+
         return tournamentConfiguration
                 .setMetaInformation(tournamentMetaInformation)
                 .setTournamentStyle(TournamentStyleFactory.newMockTournamentStyle());

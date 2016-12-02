@@ -1,6 +1,7 @@
 package arena.games.game;
 
 import arena.games.gameInformation.GameInformation;
+import arena.games.gameInformation.OthelloGameInformation;
 import arena.games.gameServer.GameServer;
 
 /**
@@ -8,6 +9,10 @@ import arena.games.gameServer.GameServer;
  *
  */
 public class GameFactory {
+
+    static public IGame newMockGame(){
+        return new Game().setGameInformation(new OthelloGameInformation());
+    }
 
     public IGame newGame(String gamePackagePath){
         return new Game()
@@ -26,4 +31,5 @@ public class GameFactory {
 
         return null;
     }
+
 }

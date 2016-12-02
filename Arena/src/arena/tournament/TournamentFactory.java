@@ -1,7 +1,10 @@
 package arena.tournament;
 
+import arena.games.game.IGame;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
 import arena.tournament.tournamentConfiguration.TournamentConfigurationFactory;
+
+import static arena.games.game.GameFactory.newMockGame;
 
 /**
  * Creates a new Tournament given different sets of arguments.
@@ -18,10 +21,13 @@ public class TournamentFactory {
     }
 
     public static ITournament newTournamentMock(){
-        return new Tournament(TournamentConfigurationFactory.newConfigurationMock("HB Tournament "));
+        return new Tournament(TournamentConfigurationFactory.newConfigurationMock("test tournament "));
     }
 
     public static ITournament newTournamentMock(String name){
-        return new Tournament(TournamentConfigurationFactory.newConfigurationMock(name));
+        return new Tournament(TournamentConfigurationFactory
+                .newConfigurationMock(name))
+                .setGame(newMockGame());
     }
+
 }

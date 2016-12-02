@@ -1,5 +1,6 @@
 package arena.metaInformation.tournamentMetaInformation;
 
+import arena.games.game.IGame;
 import arena.metaInformation.MetaInformation;
 import arena.timeDate.TimeDate;
 

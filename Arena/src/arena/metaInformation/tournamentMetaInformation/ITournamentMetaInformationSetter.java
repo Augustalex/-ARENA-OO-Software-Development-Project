@@ -1,5 +1,6 @@
 package arena.metaInformation.tournamentMetaInformation;
 
+import arena.games.game.IGame;
 import arena.metaInformation.IMetaInformationSetter;
 import arena.timeDate.TimeDate;
 
@@ -14,5 +15,6 @@ public interface ITournamentMetaInformationSetter extends ITournamentMetaInforma
      * @return
      */
     ITournamentMetaInformationSetter setStartDate(TimeDate startDate);
+
 
 }

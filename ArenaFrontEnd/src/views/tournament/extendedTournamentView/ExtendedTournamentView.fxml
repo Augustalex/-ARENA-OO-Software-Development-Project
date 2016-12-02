@@ -32,7 +32,7 @@
                 </FlowPane>
             </left>
             <right>
-                <Button text="APPLY" fx:id="applyButton" id="tournamentApplyButton"/>
+                <Button text="" fx:id="applyButton" id="tournamentApplyButton"/>
             </right>
         </BorderPane>
     </bottom>

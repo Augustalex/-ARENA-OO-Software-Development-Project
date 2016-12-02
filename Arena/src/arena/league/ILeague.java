@@ -1,5 +1,6 @@
 package arena.league;
 
+import arena.games.game.IGame;
 import arena.tournament.ITournament;
 import arena.users.IPlayer;
 
@@ -39,4 +40,6 @@ public interface ILeague {
      * in the arena.league.
      */
     void printTournamentNames();
+
+    void setGame(IGame game);
 }

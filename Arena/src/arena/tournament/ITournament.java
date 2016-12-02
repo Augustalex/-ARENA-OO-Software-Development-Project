@@ -1,5 +1,7 @@
 package arena.tournament;
 
+import arena.games.game.IGame;
+import arena.games.gameInformation.GameInformation;
 import arena.metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import arena.tournament.match.IMatch;
 import arena.users.IPlayer;
@@ -37,5 +39,9 @@ public interface ITournament {
      * @return matchesList
      */
     List<IMatch> getMatches();
+
+    ITournament setGame(IGame game);
+
+    GameInformation getGameInfomation();
 
 }

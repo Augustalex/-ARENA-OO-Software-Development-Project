@@ -2,6 +2,8 @@ package arena.tournament;
 
 
 
+import arena.games.game.IGame;
+import arena.games.gameInformation.GameInformation;
 import arena.metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import arena.tournament.match.IMatch;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
@@ -17,9 +19,15 @@ public class Tournament implements ITournament, Serializable {
 
     AppliedPlayersList appliedPlayers = new AppliedPlayersList();
     private ITournamentConfiguration configuration;
+    private IGame game;
 
     public Tournament(ITournamentConfiguration configuration){
         this.configuration = configuration;
+    }
+
+    public Tournament(ITournamentConfiguration configuration, IGame game){
+        this.configuration = configuration;
+        setGame(game);
     }
 
 
@@ -41,6 +49,18 @@ public class Tournament implements ITournament, Serializable {
     @Override
     public List<IMatch> getMatches() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ITournament setGame(IGame game) {
+        this.game = game;
+        return this;
+    }
+
+    @Override
+    public GameInformation getGameInfomation() {
+
+        return null;
     }
 
     @Override

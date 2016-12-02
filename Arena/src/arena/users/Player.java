@@ -1,5 +1,6 @@
 package arena.users;
 
+import arena.games.game.IGame;
 import arena.league.ILeague;
 import arena.league.League;
 import arena.tournament.ITournament;
@@ -27,8 +28,9 @@ public class Player implements IPlayer{
         ILeague league = new League("mock arena.league", 1);
 
         league.addTournamentToLeague(TournamentFactory.newTournamentMock("Coca Cola Tournament"));
-        league.addTournamentToLeague(TournamentFactory.newTournamentMock());
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("HB tournament"));
         league.addTournamentToLeague(TournamentFactory.newTournamentMock("Ostbågar Tournament"));
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Redbull Sugarfree"));
         player.getLeagues().add(league);
         return player;
     }

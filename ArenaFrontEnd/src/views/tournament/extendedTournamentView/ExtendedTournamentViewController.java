@@ -1,5 +1,7 @@
 package views.tournament.extendedTournamentView;
 
+import arena.games.gameInformation.GameInformation;
+import arena.tournament.ITournament;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +21,9 @@ import java.util.ResourceBundle;
  */
 public class ExtendedTournamentViewController extends FXMLViewController {
 
+    private GameInformation gameInformation;
+    private ITournament tournament;
+
     @FXML
     private Label TournamentName;
 
@@ -28,8 +33,15 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     @FXML
     private VBox MatchList;
 
+    public ExtendedTournamentViewController(ITournament tournament){
+        this.tournament = tournament;
+        this.gameInformation = tournament.getGameInfomation();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        TournamentName.setText(tournament.getTournamentMetaInformation().getName());
 
     }
 
