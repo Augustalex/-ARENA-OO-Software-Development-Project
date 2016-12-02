@@ -1,6 +1,8 @@
 package views.spectateMatch.spectateLobby;
 
-import arena.league.League;
+import arena.league.ILeague;
+import arena.tournament.ITournament;
+import com.sun.org.apache.bcel.internal.generic.RET;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,14 +16,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import views.FXMLViewController;
-import views.GameInformationView.GameInformationViewController;
+import spectate.SpectateTable;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -39,17 +39,10 @@ public class HandleSpectateLobbyController implements Initializable {
     private TableColumn leagueCol;
     @FXML
     private TableColumn tourNameCol;
-    @FXML
-    private TableColumn nrMatchesCol;
 
     @FXML
     private TableView tournamentMatchTable;
-    @FXML
-    private TableColumn tournamentNameCol;
-    @FXML
-    private TableColumn matchCol;
-    @FXML
-    private TableColumn curScoreCol;
+
     @FXML
     private Button othello;
     @FXML
@@ -66,21 +59,15 @@ public class HandleSpectateLobbyController implements Initializable {
         othello.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
-            ObservableList data = FXCollections.observableArrayList(
-                    new LeagueSettings("ProLeague", "UltimateShowdown", "7 Matches"),
-                    new LeagueSettings("ProLeague", "UltimateLosers", "4 Matches")
-            );
-            setTableView(data);
+            setTableView(SpectateTable.get().getLeagues());
         });
+
         ticTacToe.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
-            ObservableList data = FXCollections.observableArrayList(
-                    new LeagueSettings("ProLeague", "Dancing", "2 Matches"),
-                    new LeagueSettings("JediMaster", "JediTour", "4 Matches")
-            );
-            setTableView(data);
+            setTableView(SpectateTable.get().getLeagues());
         });
+
         tableTournaments.setOnMousePressed(new EventHandler<MouseEvent>() {
             /**
              * Handles the mouseclick onto a row in the tableTournamentView.
@@ -108,118 +95,47 @@ public class HandleSpectateLobbyController implements Initializable {
                 }
             }
         });
-
-        tournamentMatchTable.setOnMousePressed(new EventHandler<MouseEvent>() {
-            /**
-             * Handles the mouseclick onto a row in the tableTournamentLobbyView.
-             * The clicking on a row will trigger another event.
-             * @param event
-             */
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.isPrimaryButtonDown() && event.getClickCount() == 1) {
-                    Node node = ((Node) event.getTarget()).getParent();
-                    TableRow row;
-                    if (node instanceof TableRow) {
-                        row = (TableRow) node;
-                    } else {
-                        // clicking on text part
-                        row = (TableRow) node.getParent();
-                    }
-
-                    LeagueSettings league = (LeagueSettings) row.getItem();
-                    try {
-                        newView();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        //setListView();
     }
 
     private void newView() throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
         Parent parent = loader.load();
-        stage.setScene(new Scene(parent, 1600, 600));
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(parent, 1600, 1000));
         stage.show();
     }
 
-    private void setTableView(ObservableList hardCode) {
+    private void setTableView(List<ILeague> allLeagues) {
+        ObservableList<LeagueSettings> tournamentsList = FXCollections.observableArrayList();
+
+        for(ILeague league : allLeagues)
+            for(ITournament tournament : league.getTournaments())
+                tournamentsList.add(new LeagueSettings(league, tournament));
+
         tableTournaments.setVisible(true);
-        leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
-        tourNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
-        nrMatchesCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
-        tableTournaments.setItems(hardCode);
+        leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ILeague>("league"));
+        tourNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ITournament>("tournament"));
+        tableTournaments.setItems(tournamentsList);
         tableTournaments.getColumns().clear();
-        tableTournaments.getColumns().addAll(leagueCol, tourNameCol, nrMatchesCol);
+        tableTournaments.getColumns().addAll(leagueCol, tourNameCol);
     }
 
-    private void tableViewMatch(LeagueSettings league, TableRow row) {
-        if (row.getIndex() % 2 == 0) {
-            ObservableList match = FXCollections.observableArrayList(
-                    new LeagueSettings(league.getLeagueName(), "Timon vs Pumba", "300"),
-                    new LeagueSettings(league.getLeagueName(), "Luke vs Leia", "4")
-            );
-            setTableViewMatch(match);
-        } else {
-            ObservableList match = FXCollections.observableArrayList(
-                    new LeagueSettings(league.getLeagueName(), "Tarzan vs Jane", "25"),
-                    new LeagueSettings(league.getLeagueName(), "USA Vs Russia", "1")
-            );
-            setTableViewMatch(match);
-        }
-    }
-
-    private void setTableViewMatch(ObservableList match) {
-        tournamentMatchTable.setVisible(true);
-        tournamentNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("leagueName"));
-        matchCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentName"));
-        curScoreCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, String>("tournamentMatches"));
-        tournamentMatchTable.setItems(match);
-        tournamentMatchTable.getColumns().clear();
-        tournamentMatchTable.getColumns().addAll(tournamentNameCol, matchCol, curScoreCol);
-    }
-
-    // Nedan är ifrån Oracle Doc skall bort /Björn
     public static class LeagueSettings {
 
-        private SimpleStringProperty leagueName;
-        private SimpleStringProperty tournamentName;
-        private SimpleStringProperty tournamentMatches;
+        private ITournament tournament;
+        private ILeague league;
 
-        private LeagueSettings(String fName, String lName, String tournamentMatches) {
-            this.leagueName = new SimpleStringProperty(fName);
-            this.tournamentName = new SimpleStringProperty(lName);
-            this.tournamentMatches = new SimpleStringProperty(tournamentMatches);
+        public LeagueSettings(ILeague league, ITournament tournament){
+            this.tournament = tournament;
+            this.league = league;
         }
 
-        public String getLeagueName() {
-            return leagueName.get();
+        public ILeague getLeague(){
+            return this.league;
         }
 
-        public void setLeagueName(String fName) {
-            leagueName.set(fName);
+        public ITournament getTournament() {
+            return this.tournament;
         }
-
-        public String getTournamentName() {
-            return tournamentName.get();
-        }
-
-        public void setTournamentName(String fName) {
-            tournamentName.set(fName);
-        }
-
-        public String getTournamentMatches() {
-            return tournamentMatches.get();
-        }
-
-        public void setTournamentMatches(String fName) {
-            tournamentMatches.set(fName);
-        }
-
     }
 }

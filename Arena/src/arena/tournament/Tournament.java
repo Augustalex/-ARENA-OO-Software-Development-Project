@@ -43,4 +43,9 @@ public class Tournament implements ITournament, Serializable {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public String toString(){
+        return this.getTournamentMetaInformation().getName();
+    }
+
 }

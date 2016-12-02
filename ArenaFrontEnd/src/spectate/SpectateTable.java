@@ -14,14 +14,19 @@ import java.util.stream.Collectors;
  * Created by Simon on 24/11/2016.
  */
 public class SpectateTable implements Serializable{
+
+    private static class SpectateTableHolder{
+        public static final SpectateTable instance = new SpectateTable();
+    }
+
     private Session session = Session.getSession();
 
     List<IMatch> availibleMatches = new ArrayList<>();
     List<ITournament> availibleTournaments = new ArrayList<>();
     List<ILeague> availibleLeagues = new ArrayList<>();
 
-    public SpectateTable(){
-
+    public static SpectateTable get(){
+        return SpectateTableHolder.instance;
     }
 
     public List<IMatch> returnAllPossibleMatches(){

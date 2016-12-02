@@ -32,7 +32,6 @@ public class League implements ILeague{
 
     @Override
     public List<ITournament> getTournaments() {
-        printTournamentNames();
         return tournamentsInLeague;
     }
 
@@ -64,5 +63,10 @@ public class League implements ILeague{
     @Override
     public List<IPlayer> getPlayersInLeague() {
         return playersInLeague;
+    }
+
+    @Override
+    public String toString(){
+        return this.getLeagueName();
     }
 }
