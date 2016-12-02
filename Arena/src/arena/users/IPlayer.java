@@ -22,12 +22,6 @@ public interface IPlayer extends IUser {
      * availile to the player.
      * @return List
      */
-    List<ITournament> getAvailibleTournaments();
-
-    /**
-     * Method for setting a name to the player.
-     * @param name
-     */
-    void setName(String name);
+    List<ITournament> getAvailableTournaments();
 
 }

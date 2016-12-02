@@ -1,7 +1,9 @@
 package arena.league;
 
+import arena.games.game.GameFactory;
 import arena.games.game.IGame;
 import arena.tournament.ITournament;
+import arena.tournament.TournamentFactory;
 import arena.users.IPlayer;
 
 import java.util.List;
@@ -10,6 +12,18 @@ import java.util.List;
  * Interface for League
  */
 public interface ILeague {
+
+    public static ILeague createMockLeague(String name){
+        ILeague league = new League(name, -1);
+        league.setGame(GameFactory.newMockOthelloGame());
+
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Coca Cola Tournament"));
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("HB tournament"));
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Ostbågar Tournament"));
+        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Redbull Sugarfree"));
+
+        return league;
+    }
 
     String getLeagueName();
 

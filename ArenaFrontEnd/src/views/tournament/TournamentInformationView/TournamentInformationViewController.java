@@ -41,7 +41,7 @@ public class TournamentInformationViewController extends FXMLViewController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        List<ITournament> tournaments = this.session.getPlayer().getAvailibleTournaments();
+        List<ITournament> tournaments = this.session.getPlayer().getAvailableTournaments();
         viewTournamentList(tournaments);
 
         DimensionBinder.bindWidthToPercentageOfContainer(

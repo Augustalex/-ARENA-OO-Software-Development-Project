@@ -46,6 +46,10 @@ public class User implements IUser {
         return delivery;
     }
 
+    public static IUser createMockUser(String name){
+        return new User(-1, name);
+    }
+
     private static IUser createUser(String json){
         Type listType = new TypeToken<HashMap<String,String>>(){}.getType();
         Map<String, String> values = new Gson().fromJson(json, listType);

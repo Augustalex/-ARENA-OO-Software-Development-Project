@@ -13,29 +13,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Implements interface IPlayer
+ * Implements interface IPlayer that extends the IUser interface.
+ *
+ * It acts as an IUser by delegation as opposed to inheritance. This is
+ * as the IUser has no public constructor, preventing the client from instantiating
+ * fake user objects. The only public method for creating a new user is either through
+ * the static mock factory method or the static method for creating a new user
+ * via getting user details from a UsersService (given that the correct user login
+ * credentials are provided to the method parameters).
  */
 public class Player implements IPlayer{
 
-    private ArrayList<ILeague> leagues = new ArrayList<>();
-    private String playerName;
+    private final IUser user;
 
-    private Player() {
+    private ArrayList<ILeague> leagues = new ArrayList<>();
+
+    private Player(IUser user) {
+        this.user = user;
     }
 
     public static IPlayer newMockPlayer(){
-
-        IGame mockGame = new Game();
-        mockGame.setGameInformation(new OthelloGameInformation());
-        IPlayer player = new Player().createMockPlayerAugust();
-        ILeague league = new League("mock arena.league", 1);
-        league.setGame(mockGame);
-
-        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Coca Cola Tournament"));
-        league.addTournamentToLeague(TournamentFactory.newTournamentMock("HB tournament"));
-        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Ostbågar Tournament"));
-        league.addTournamentToLeague(TournamentFactory.newTournamentMock("Redbull Sugarfree"));
-        player.getLeagues().add(league);
+        IPlayer player = new Player(User.createMockUser("August"));
+        player.getLeagues().add(ILeague.createMockLeague("Mock League AF"));
         return player;
     }
 
@@ -44,15 +43,8 @@ public class Player implements IPlayer{
         return leagues;
     }
 
-    public IPlayer createMockPlayerAugust(){
-        IPlayer player = new Player();
-        player.setName("August");
-        return player;
-    }
-
-
     @Override
-    public List<ITournament> getAvailibleTournaments(){
+    public List<ITournament> getAvailableTournaments(){
         return leagues.stream()
                 .flatMap(l -> l.getTournaments().stream())
                 .collect(Collectors.toList());
@@ -60,22 +52,17 @@ public class Player implements IPlayer{
 
     @Override
     public void notify(String message) {
-        System.out.println("Notifiaction");
+        System.out.println("Notification");
     }
 
     @Override
     public String getName() {
-        return playerName;
+        return user.getName();
     }
 
     @Override
     public int getId() {
-        return -1;
-    }
-
-    @Override
-    public void setName(String name){
-        this.playerName = name;
+        return user.getId();
     }
 
 
