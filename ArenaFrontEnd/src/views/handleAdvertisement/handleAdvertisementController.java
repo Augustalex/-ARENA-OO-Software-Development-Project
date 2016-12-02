@@ -75,10 +75,12 @@ public class handleAdvertisementController implements Initializable {
         AdSchemeMetaInformation[] helpInformation = new AdSchemeMetaInformation[2];
         helpInformation[0] = new AdSchemeMetaInformation("Play View Scheme",
                 "Your ad will be shown in the Play view in the Arena.\n It will be shown for "
-                        + "max 5 seconds and for\n every display your account will be debited $0.25");
+                        + "max 5 seconds and for\n every display your account will be debited $0.25"
+                        + "\nAd will be closeable.");
         helpInformation[1] = new AdSchemeMetaInformation("Main View Scheme",
                 "Your ad will be shown in the Main view in the Arena.\n It will be shown for "
-                        + "max 10 seconds and for\n every display your account will be debited $0.5");
+                        + "max 10 seconds and for\n every display your account will be debited $0.5"
+                        + "\nAd will be closeable.");
 
 
         for (int i = 0; i < 2; i++) {
