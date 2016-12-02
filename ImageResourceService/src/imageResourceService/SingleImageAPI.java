@@ -43,7 +43,7 @@ public class SingleImageAPI extends ReST {
                 httpExchange.getResponseBody()
                         .write(
                                 imageService.fromJavaFXImageToByteArray(
-                                        imageService.getImage(getIdFromEndOfHttpURI(httpExchange))
+                                        imageService.getImage(getIdFromHttpURI(httpExchange))
                                 )
                         );
             } catch (IOException e) {
