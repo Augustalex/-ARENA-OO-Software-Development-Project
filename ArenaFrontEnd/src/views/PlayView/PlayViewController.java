@@ -1,23 +1,21 @@
 package views.PlayView;
 
-import arena.advertisement.advertisement.ad.*;
 import advertisement.adDisplay.AdDisplayFactory;
 import advertisement.adDisplay.PaneAdDisplay;
-import arena.advertisement.advertisement.adRepository.AdRepository;
-import arena.advertisement.advertisement.adRepository.AdRepositoryFactory;
-import arena.advertisement.advertisement.adPreference.AdPreferenceFactory;
-import arena.advertisement.advertisement.adSpot.AdSpot;
+import arena.advertisement.adPreference.AdPreferenceFactory;
+import arena.advertisement.adRepository.AdRepository;
+import arena.advertisement.adSpot.AdSpot;
+import arena.games.gameInformation.GameInformation;
+import arena.games.gameInformation.OthelloGameInformation;
 import arena.games.gameInformation.TicTacToeGameInformation;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
-import arena.games.gameInformation.GameInformation;
-import arena.games.gameInformation.OthelloGameInformation;
 import views.AdvertiserView;
+import views.DimensionBinder;
 import views.FXMLViewController;
 import views.GameInformationView.GameInformationViewController;
-import views.DimensionBinder;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +28,7 @@ import java.util.ResourceBundle;
  * Might also set up Ads for when the view is loaded. (This is because Ads in this view
  * is not necessarily a permanent design decision).
  */
-public class PlayViewController extends FXMLViewController implements AdvertiserView{
+public class PlayViewController extends FXMLViewController implements AdvertiserView {
 
     private PaneAdDisplay paneAdDisplay = null;
 
@@ -97,17 +95,22 @@ public class PlayViewController extends FXMLViewController implements Advertiser
 
 //        adPreferenceQueue.loopAds(2500);
 
-        AdRepository adRepository = AdRepositoryFactory.newAdRepository();
+        /*AdRepository adRepository = AdRepositoryFactory.newAdRepository();
 
         adRepository
-            .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/koolaid.gif"))
-            .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/nintendo.gif"))
-            .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/gameboy.gif"))
-            .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/caprisun.gif"))
-            .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/kawasaki.gif"))
-        ;
+            .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/koolaid.gif",
+                    AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("Koolaid", "The cooling ad")))
+            .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/nintendo.gif",
+                    AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("nintendo", "let the games begin")))
+            .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/gameboy.gif",
+                    AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("gameboy", "the portable shit")))
+            .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/caprisun.gif",
+                    AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("caprisun", "sweet drinks")))
+            .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/kawasaki.gif",
+                    AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("kawasaki", "bonebreaking")))
+        ;*/
 
-        AdSpot adSpot = adRepository.newAdSpot(AdPreferenceFactory.newPlayViewPreference());
+        AdSpot adSpot = AdRepository.get().newAdSpot(AdPreferenceFactory.newPlayViewPreference());
 
         this.paneAdDisplay = (PaneAdDisplay) AdDisplayFactory
                 .newPaneAdDisplay(adSpot, this.advertBottom)
@@ -156,7 +159,7 @@ public class PlayViewController extends FXMLViewController implements Advertiser
     private Parent loadGameInformationView(GameInformation gameInformation) throws IOException {
         return
                 this.loadFXML(
-                "/GameInformationView/GameInformationView.fxml",
+                "GameInformationView/GameInformationView.fxml",
                 c -> new GameInformationViewController(gameInformation)
         );
     }
