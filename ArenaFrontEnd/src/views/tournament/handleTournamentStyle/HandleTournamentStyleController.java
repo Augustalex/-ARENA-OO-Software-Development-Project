@@ -2,6 +2,7 @@ package views.tournament.handleTournamentStyle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -57,6 +58,7 @@ public class HandleTournamentStyleController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TournamentStyleWindow.setPadding(new Insets(15,0,0,30));
         submit.setOnAction(e->constructTournamentStyle());
 
     }

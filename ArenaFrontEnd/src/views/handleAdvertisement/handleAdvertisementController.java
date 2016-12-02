@@ -59,6 +59,7 @@ public class handleAdvertisementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        handleAdvertisementWindow.setPadding(new Insets(0, 0, 0, 30));
         inputVBox.setPadding(new Insets(25, 0, 25, 0));
         preferenceList.setPadding(new Insets(0, 0, 25, 0));
         setPreferenceList();
