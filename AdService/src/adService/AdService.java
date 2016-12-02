@@ -2,39 +2,31 @@ package adService;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by August on 2016-12-01.
+ * Stores AdPreference objects.
  */
 public class AdService{
 
-    private final AdPreferenceQueue queue = new AdQueueFactory<IPreferredAd>().newPreferenceQueue();
+    private Map<String, AdPreference> preferences = new HashMap<>();
 
-    public AdSpot newAdSpot(IAdPreference preference) {
-        return AdSpotFactory
-                .newAdSpot(this.queue.getPreferredAds(preference));
+    AdPreference getAdPreference(String preferenceId){
+        return preferences.get(preferenceId);
     }
 
-    public AdRepository addPreferredAd(IPreferredAd preferredAd) {
-        queue.addAd(preferredAd);
-
-        return this;
+    AdPreference[] getAllAdPreferences(){
+        return preferences.values().stream().toArray(AdPreference[]::new);
     }
 
-    public List<IPreferredAd> getAdsFromOwner(IAdvertiser owner) {
-        //TODO implement
-        throw new NotImplementedException();
+    void removeAdPreference(String preferenceId){
+        preferences.remove(preferenceId);
     }
 
-    public void addAdPreference(IAdPreference preference) {
-        //TODO implement
-        throw new NotImplementedException();
-    }
-
-    public List<IAdPreference> getAdPreferences() {
-        //TODO implement
-        throw new NotImplementedException();
+    void addAdPreference(AdPreference adPreference){
+        preferences.put(adPreference.getPreferenceId(), adPreference);
     }
 
 }

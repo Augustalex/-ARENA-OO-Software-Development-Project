@@ -145,7 +145,7 @@ StackPane#playViewSuperWindow{
 }
 
 #tournamentInformationContent{
-    -fx-min-height: 1000px;
+    -fx-min-height: 500px;
 }
 
 /*  Tournaments List        */

@@ -117,4 +117,11 @@ public abstract class ReST implements HttpHandler{
     protected void sendEmptyResponse(int statusCode, HttpExchange http) throws IOException {
         http.sendResponseHeaders(statusCode, 0);
     }
+
+    public String getIdFromHttpURI(HttpExchange httpExchange){
+        String path = httpExchange.getRequestURI().getRawPath();
+        String[] splitPath = path.split("/");
+
+        return splitPath[splitPath.length-1];
+    }
 }

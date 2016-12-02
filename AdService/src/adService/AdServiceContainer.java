@@ -11,5 +11,10 @@ public class AdServiceContainer extends ReSTContainer {
 
     public AdServiceContainer(int port) throws IOException {
         super(port);
+
+        AdService preferenceService = new AdService();
+        this.createContext("/", new AdServiceAPI(preferenceService));
+        this.createContext("/id/", new AdServiceSinglePreferenceAPI(preferenceService));
+
     }
 }

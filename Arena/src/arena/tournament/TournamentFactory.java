@@ -1,6 +1,6 @@
 package arena.tournament;
 
-import arena.games.game.IGame;
+import arena.games.game.GameFactory;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
 import arena.tournament.tournamentConfiguration.TournamentConfigurationFactory;
 
@@ -27,7 +27,7 @@ public class TournamentFactory {
     public static ITournament newTournamentMock(String name){
         return new Tournament(TournamentConfigurationFactory
                 .newConfigurationMock(name))
-                .setGame(newMockGame());
+                .setGame(GameFactory.newMockOthelloGame());
     }
 
 }

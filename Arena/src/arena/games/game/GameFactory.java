@@ -2,6 +2,7 @@ package arena.games.game;
 
 import arena.games.gameInformation.GameInformation;
 import arena.games.gameInformation.OthelloGameInformation;
+import arena.games.gameInformation.TicTacToeGameInformation;
 import arena.games.gameServer.GameServer;
 
 /**
@@ -10,14 +11,22 @@ import arena.games.gameServer.GameServer;
  */
 public class GameFactory {
 
-    static public IGame newMockGame(){
-        return new Game().setGameInformation(new OthelloGameInformation());
-    }
-
     public IGame newGame(String gamePackagePath){
         return new Game()
                 .setGameInformation(this.getGameInformation(gamePackagePath))
                 .setGameServer(this.getGameServer(gamePackagePath));
+    }
+
+    public static IGame newMockOthelloGame(){
+        return new Game()
+                .setGameInformation(new OthelloGameInformation())
+                .setGameServer(null);
+    }
+
+    public static IGame newMockTicTacToe(){
+        return new Game()
+                .setGameInformation(new TicTacToeGameInformation())
+                .setGameServer(null);
     }
 
     private GameServer getGameServer(String gamePackagePath){
