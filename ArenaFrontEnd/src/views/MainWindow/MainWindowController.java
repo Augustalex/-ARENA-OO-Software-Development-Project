@@ -39,6 +39,9 @@ public class MainWindowController extends FXMLViewController{
     @FXML
     private Button handleTournamentButton;
 
+    @FXML
+    private Button handleAdButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -76,7 +79,6 @@ public class MainWindowController extends FXMLViewController{
             try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("tournament/configureTournament/ConfigureTournamentView.fxml");
-
                 contentView.getChildren().setAll(parent);
             } catch (IOException e1) {
                 e1.printStackTrace();
@@ -96,6 +98,16 @@ public class MainWindowController extends FXMLViewController{
             try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("spectateMatch/spectateLobby/SpectateLobbyView.fxml");
+                contentView.getChildren().setAll(parent);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        handleAdButton.setOnAction(e->{
+            try {
+                closeCurrentContentController();
+                Parent parent = this.loadFXML("handleAdvertisement/HandleAdvertisement.fxml");
                 contentView.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -157,7 +169,7 @@ public class MainWindowController extends FXMLViewController{
      * @param tabView
      */
     private void bindButtonDimensions(Pane tabView){
-        double widthFactor = 0.25;
+        double widthFactor = 0.125;
         double heightFactor = 1;
 
         for(Button button : tabView.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new)){

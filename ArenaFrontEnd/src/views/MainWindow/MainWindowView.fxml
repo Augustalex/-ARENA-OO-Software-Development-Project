@@ -12,10 +12,11 @@
             xmlns:fx="http://javafx.com/fxml" fx:id="mainWindow" id="mainWindowContainer" stylesheets="/views/main.css">
     <top>
         <HBox fx:id="tabView" id="tabView">
-            <Button fx:id="playButton" text="PLAY" />
+            <Button fx:id="playButton" text="PLAY"/>
             <Button fx:id="watchButton" text="WATCH" />
             <Button fx:id="createTournamentButton" text="CREATE TOURNAMENT" />
-            <Button fx:id="handleTournamentButton" text="HANDLE TOURNAMENT STYLE"/>
+            <Button fx:id="handleTournamentButton" wrapText="true" text="HANDLE TOURNAMENT STYLE"/>
+            <Button fx:id="handleAdButton" text="HANDLE ADVERTISEMENT"/>
         </HBox>
     </top>
     <bottom>

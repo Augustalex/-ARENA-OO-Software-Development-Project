@@ -1,0 +1,49 @@
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<BorderPane fx:controller="views.handleAdvertisement.handleAdvertisementController" xmlns:fx="http://javafx.com/fxml"
+            fx:id="handleAdvertisementWindow" id="HandleAdvertisementContainer">
+    <top>
+        <VBox spacing="25" fx:id="inputVBox">
+            <VBox>
+                <Text text="Enter name:" fill="white"/>
+                <TextField minWidth="200" maxWidth="450" fx:id="adName"/>
+            </VBox>
+            <VBox>
+                <Text text="Enter source:" fill="white"/>
+                <TextField minWidth="450" maxWidth="450" fx:id="sourceField"/>
+            </VBox>
+            <VBox>
+                <Text text="Amount reserved for advertisement:" fill="white"/>
+                <TextField minWidth="75" maxWidth="75" fx:id="amountField"/>
+            </VBox>
+        </VBox>
+    </top>
+
+    <center>
+        <BorderPane>
+            <top>
+                <VBox spacing="20" fx:id="preferenceList"/>
+            </top>
+
+            <center>
+                <VBox>
+                    <Text text="Enter description:" fill="white"/>
+                    <VBox spacing="20">
+                        <TextArea prefHeight="200" maxWidth="200" wrapText="true" fx:id="adDescription"/>
+                        <Button text="Submit" minWidth="75" fx:id="submitAd"/>
+                    </VBox>
+                </VBox>
+            </center>
+
+        </BorderPane>
+    </center>
+
+</BorderPane>

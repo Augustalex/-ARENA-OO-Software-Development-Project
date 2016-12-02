@@ -1,6 +1,6 @@
 package advertisement.adDisplay;
 
-import arena.advertisement.advertisement.adSpot.AdSpot;
+import arena.advertisement.adSpot.AdSpot;
 
 /**
  * A view object for displaying the controller object {@link AdSpot}.
