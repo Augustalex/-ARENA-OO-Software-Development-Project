@@ -23,7 +23,13 @@
                     <Button fx:id="othello" text="Othello" textFill="aqua"></Button>
                     <Button fx:id="ticTacToe" text="TicTacToe" textFill="aqua"></Button>
                     <Button text="Pacman" textFill="forestgreen"></Button>
+                    <TableView fx:id ="tableGames" >
+                        <columns>
+                            <TableColumn prefWidth="200" text="GameName." fx:id="GameCol" />
+                        </columns>
+                    </TableView>
                 </VBox>
+                <VBox prefWidth="300"></VBox>
                 <TableView fx:id ="tableTournaments" visible="false">
                     <columns>
                         <TableColumn prefWidth="200" text="LeagueName." fx:id="leagueCol" />

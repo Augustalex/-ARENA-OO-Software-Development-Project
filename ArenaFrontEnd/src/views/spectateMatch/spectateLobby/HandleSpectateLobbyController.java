@@ -1,5 +1,7 @@
 package views.spectateMatch.spectateLobby;
 
+import arena.games.game.IGame;
+import arena.games.gameInformation.GameInformation;
 import arena.league.ILeague;
 import arena.tournament.ITournament;
 import com.sun.org.apache.bcel.internal.generic.RET;
@@ -49,17 +51,27 @@ public class HandleSpectateLobbyController implements Initializable {
     private Button ticTacToe;
     @FXML
     private Label placeHolder;
-
+    @FXML
+    private TableColumn gameCol;
+    @FXML
+    private TableView tableGames;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureView();
     }
 
     private void configureView() {
+        tableGames.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                setTableGames(SpectateTable.get().getLeagues());
+            }
+        });
         othello.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
             setTableView(SpectateTable.get().getLeagues());
+            setTableGames(SpectateTable.get().getLeagues());
         });
 
         ticTacToe.setOnAction(event -> {
@@ -67,7 +79,6 @@ public class HandleSpectateLobbyController implements Initializable {
             tournamentMatchTable.setVisible(false);
             setTableView(SpectateTable.get().getLeagues());
         });
-
         tableTournaments.setOnMousePressed(new EventHandler<MouseEvent>() {
             /**
              * Handles the mouseclick onto a row in the tableTournamentView.
@@ -86,6 +97,7 @@ public class HandleSpectateLobbyController implements Initializable {
                         row = (TableRow) node.getParent();
                     }
                     LeagueSettings league = (LeagueSettings) row.getItem(); // Typecast för att få fram objektet
+                    System.out.println(league.getTournament());
                     try {
                         newView();
                     } catch (IOException e) {
@@ -96,7 +108,17 @@ public class HandleSpectateLobbyController implements Initializable {
             }
         });
     }
+    private void setTableGames(List<ILeague> allLeagues){
+        ObservableList<LeagueSettings> tournamentsList = FXCollections.observableArrayList();
 
+        for(ILeague league : allLeagues)
+            for(ITournament tournament : league.getTournaments())
+                tournamentsList.add(new LeagueSettings(league, tournament));
+        gameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ILeague>("league"));
+        tableGames.setItems(tournamentsList);
+        tableGames.getColumns().clear();
+        tableGames.getColumns().addAll(gameCol);
+    }
     private void newView() throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
@@ -137,5 +159,13 @@ public class HandleSpectateLobbyController implements Initializable {
         public ITournament getTournament() {
             return this.tournament;
         }
+    }
+    public static class Games{
+        private IGame game;
+        private ILeague league;
+        public Games(IGame game, ILeague league){
+            this.game = game;
+        }
+
     }
 }

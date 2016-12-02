@@ -42,4 +42,5 @@ public interface ILeague {
     void printTournamentNames();
 
     void setGame(IGame game);
+    IGame getGame();
 }

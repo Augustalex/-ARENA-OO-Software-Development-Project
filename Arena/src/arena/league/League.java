@@ -50,6 +50,11 @@ public class League implements ILeague{
     }
 
     @Override
+    public IGame getGame() {
+        return this.game;
+    }
+
+    @Override
     public void printTournamentIDs(){
         for(int i = 0; i < tournamentsInLeague.size(); i++) {
             //System.out.println("ID's of tournaments: " + tournamentsInLeague.get(i).getTournamentID());
