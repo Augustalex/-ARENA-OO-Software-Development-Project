@@ -44,4 +44,9 @@ public class ArenaGameManager implements GameLibrary, GameInstaller{
     public IGame getGame(String gameName){
         return this.games.get(gameName);
     }
+
+    @Override
+    public IGame[] getAllGames() {
+        return games.values().stream().toArray(IGame[]::new);
+    }
 }
