@@ -23,6 +23,7 @@ public class TournamentLobbyInitiator {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
             loader.setControllerFactory(c -> new ExtendedTournamentViewController(tournament));
             Parent parent = loader.load();
+            stage.setTitle("Tournament Lobby");
             stage.setScene(new Scene(parent, 1600, 600));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
