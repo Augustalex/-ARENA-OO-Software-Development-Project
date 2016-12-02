@@ -37,7 +37,6 @@ public class User implements IUser {
      */
     public static Delivery<IUser> getUser(String username, String password){
         //TODO collect User details from the UsersService instead of creating a mock
-
         Delivery<IUser> delivery = new PropertyDelivery<>();
 
         new Thread(() -> {

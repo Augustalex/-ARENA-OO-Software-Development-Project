@@ -20,9 +20,7 @@ public class Player implements IPlayer{
     private ArrayList<ILeague> leagues = new ArrayList<>();
     private String playerName;
 
-
-    public Player(){
-
+    private Player() {
     }
 
     public static IPlayer newMockPlayer(){
@@ -68,6 +66,11 @@ public class Player implements IPlayer{
     @Override
     public String getName() {
         return playerName;
+    }
+
+    @Override
+    public int getId() {
+        return -1;
     }
 
     @Override
