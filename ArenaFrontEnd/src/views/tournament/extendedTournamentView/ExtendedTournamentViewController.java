@@ -7,7 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.FXMLViewController;
@@ -25,6 +28,8 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     private ITournament tournament;
 
     @FXML
+    private VBox gameInfoContainer;
+    @FXML
     private Label TournamentName;
 
     @FXML
@@ -32,6 +37,15 @@ public class ExtendedTournamentViewController extends FXMLViewController {
 
     @FXML
     private VBox MatchList;
+
+    @FXML
+    private Label GameInfoLabel;
+
+    @FXML
+    private Label GameName;
+
+    @FXML
+    private Rectangle gameImage;
 
     public ExtendedTournamentViewController(ITournament tournament){
         this.tournament = tournament;
@@ -42,6 +56,14 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     public void initialize(URL location, ResourceBundle resources) {
 
         TournamentName.setText(tournament.getTournamentMetaInformation().getName());
+        Matches.setText("Matches");
+
+        gameImage.setFill(new ImagePattern(new Image(gameInformation.getImageURL())));
+        gameImage.widthProperty().bind(gameInfoContainer.widthProperty().multiply(0.2));
+        gameImage.heightProperty().bind(gameInfoContainer.widthProperty().multiply(0.2));
+        GameName.setText(gameInformation.getGameName());
+        GameInfoLabel.setText(gameInformation.getGameDescription());
+
 
     }
 
