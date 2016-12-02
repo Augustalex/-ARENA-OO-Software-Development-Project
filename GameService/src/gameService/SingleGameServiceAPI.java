@@ -17,11 +17,6 @@ public class SingleGameServiceAPI extends GameServiceAPI {
         super(service);
     }
 
-    @Override
-    public void onGet(HttpExchange httpExchange) throws Exception {
-
-    }
-
     /**
      * Deletes the Host from the GameService Host map (hash map) by
      * its identifier.
