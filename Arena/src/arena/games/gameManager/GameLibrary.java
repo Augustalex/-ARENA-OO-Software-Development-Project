@@ -10,4 +10,6 @@ public interface GameLibrary {
     void addGame(IGame game);
 
     IGame getGame(String gameName);
+
+    IGame[] getAllGames();
 }
