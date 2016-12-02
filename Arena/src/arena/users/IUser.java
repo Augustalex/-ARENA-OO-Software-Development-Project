@@ -17,6 +17,11 @@ public interface IUser {
                 return "August";
             }
 
+            @Override
+            public int getId() {
+                return -1;
+            }
+
         };
     }
 
@@ -32,5 +37,6 @@ public interface IUser {
      */
     String getName();
 
+    int getId();
 
 }

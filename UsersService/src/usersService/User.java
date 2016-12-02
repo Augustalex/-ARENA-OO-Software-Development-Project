@@ -7,26 +7,27 @@ public class User {
 
     public final int id;
     private String name;
-    private int age;
+
+    private String password;
 
     private static int nextUserId = 0;
 
-    public User(String name, int age){
+    public User(String name, String password){
         this.id = allocateId();
         this.name = name;
-        this.age = age;
+        this.password = password;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public int getAge(){
-        return this.age;
-    }
-
     public int getId(){
         return this.id;
+    }
+
+    public boolean isAuthorized(String password){
+        return this.password.equals(password);
     }
 
     private static int allocateId(){

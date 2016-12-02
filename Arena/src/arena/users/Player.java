@@ -24,6 +24,7 @@ public class Player implements IPlayer{
     public Player(){
 
     }
+
     public static IPlayer newMockPlayer(){
 
         IGame mockGame = new Game();
