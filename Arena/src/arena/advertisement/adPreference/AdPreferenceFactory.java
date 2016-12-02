@@ -1,5 +1,7 @@
 package arena.advertisement.adPreference;
 
+import arena.metaInformation.MetaInformation;
+
 import java.util.HashMap;
 import java.util.Map;
 

@@ -5,14 +5,19 @@ import arena.advertisement.ad.ImageAd;
 import arena.advertisement.ad.PreferredAdFactory;
 import arena.advertisement.adPreference.AdPreferenceFactory;
 import arena.advertisement.adRepository.AdRepository;
+import arena.metaInformation.AdSchemeMetaInformation.AdSchemeMetaInformation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import arena.metaInformation.advertisementMetaInformation.AdvertisementMetaInformation;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -66,12 +71,27 @@ public class handleAdvertisementController implements Initializable {
         preferences[1] = "Main View";
         Label[] preferenceLabels = new Label[2];
         checkboxes = new CheckBox[2];
+        AdSchemeMetaInformation[] helpInformation = new AdSchemeMetaInformation[2];
+        helpInformation[0] = new AdSchemeMetaInformation("Play View Scheme",
+                "Your ad will be shown in the Play view in the Arena.\n It will be shown for "
+                        + "max 5 seconds and for\n every display your account will be debited $0.25");
+        helpInformation[1] = new AdSchemeMetaInformation("Main View Scheme",
+                "Your ad will be shown in the Main view in the Arena.\n It will be shown for "
+                        + "max 10 seconds and for\n every display your account will be debited $0.5");
+
 
         for(int i = 0; i < 2; i++){
+            HBox line = new HBox(20);
             checkboxes[i] = new CheckBox();
             preferenceLabels[i] = new Label(preferences[i], checkboxes[i]);
             preferenceLabels[i].setContentDisplay(ContentDisplay.LEFT);
-            preferenceList.getChildren().add(preferenceLabels[i]);
+            Text help = new Text("?");
+            help.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+            help.setFill(Color.WHITE);
+            help.setOnMouseDragOver(e->showHelp(helpInformation[0]));
+            line.getChildren().addAll(preferenceLabels[i], help);
+
+            preferenceList.getChildren().add(line);
             preferenceLabels[i].setStyle("-fx-text-fill: white");
         }
     }
@@ -91,5 +111,9 @@ public class handleAdvertisementController implements Initializable {
         AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
                 AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
         confirmationText.setText("Advertisement added and will be shown in prefered adspot");
+    }
+
+    public void showHelp(AdSchemeMetaInformation information){
+
     }
 }

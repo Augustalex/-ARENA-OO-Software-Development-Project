@@ -2,6 +2,7 @@ package arena.advertisement.adPreference;
 
 import arena.advertisement.preferences.PreferenceSet.PreferenceSet;
 import arena.advertisement.preferences.PreferenceSet.PreferenceSetFactory;
+import arena.metaInformation.AdSchemeMetaInformation.AdSchemeMetaInformation;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.HashMap;

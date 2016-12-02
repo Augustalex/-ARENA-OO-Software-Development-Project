@@ -1,6 +1,7 @@
 package arena.advertisement.adPreference;
 
 import arena.advertisement.preferences.PreferenceSet.PreferenceSet;
+import arena.metaInformation.MetaInformation;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
