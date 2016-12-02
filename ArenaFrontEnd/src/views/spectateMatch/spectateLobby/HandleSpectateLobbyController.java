@@ -78,7 +78,7 @@ public class HandleSpectateLobbyController implements Initializable {
         ticTacToe.setOnAction(event -> {
             placeHolder.setVisible(false);
             tournamentMatchTable.setVisible(false);
-            setTableView();
+            setTableView(); //hej
         });
         tableTournaments.setOnMousePressed(new EventHandler<MouseEvent>() {
             /**
