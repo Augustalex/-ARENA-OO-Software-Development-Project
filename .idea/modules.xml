@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ARENA.iml" filepath="$PROJECT_DIR$/ARENA.iml" />
       <module fileurl="file://$PROJECT_DIR$/AdService/AdService.iml" filepath="$PROJECT_DIR$/AdService/AdService.iml" />
       <module fileurl="file://$PROJECT_DIR$/Arena/Arena.iml" filepath="$PROJECT_DIR$/Arena/Arena.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArenaFrontEnd/ArenaFrontEnd.iml" filepath="$PROJECT_DIR$/ArenaFrontEnd/ArenaFrontEnd.iml" />
