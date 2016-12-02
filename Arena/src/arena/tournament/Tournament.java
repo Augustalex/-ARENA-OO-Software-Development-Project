@@ -60,7 +60,7 @@ public class Tournament implements ITournament, Serializable {
     @Override
     public GameInformation getGameInfomation() {
 
-        return null;
+        return game.getGameInformation();
     }
 
     @Override

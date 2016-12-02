@@ -4,7 +4,6 @@ import arena.games.game.GameFactory;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
 import arena.tournament.tournamentConfiguration.TournamentConfigurationFactory;
 
-
 /**
  * Creates a new Tournament given different sets of arguments.
  */

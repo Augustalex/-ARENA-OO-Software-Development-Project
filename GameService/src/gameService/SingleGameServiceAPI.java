@@ -13,18 +13,13 @@ import java.net.HttpURLConnection;
  */
 public class SingleGameServiceAPI extends GameServiceAPI {
 
-    public SingleGameServiceAPI(GameService service) {g
+    public SingleGameServiceAPI(GameService service) {
         super(service);
     }
 
-    @Override
-    public void onGet(HttpExchange httpExchange) throws Exception {
-
-    }
-
     /**
-     * Deletes the HOST from the GameService Host list with
-     * its identifier
+     * Deletes the Host from the GameService Host map (hash map) by
+     * its identifier.
      * @param httpExchange
      * @throws Exception
      */

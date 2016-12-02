@@ -12,6 +12,8 @@ public class GameServiceContainer extends ReSTContainer {
     public GameServiceContainer(int port) throws IOException {
         super(port);
 
-        this.createContext("/");
+        GameService gameService = new GameService();
+        this.createContext("/", new GameServiceAPI(gameService));
+        this.createContext("/id/", new SingleGameServiceAPI(gameService));
     }
 }

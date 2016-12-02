@@ -4,26 +4,29 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.extendedTournamentView.ExtendedTournamentViewController"
             stylesheets="/views/main.css" fx:id="extendedTournamentView" id="extendedTournamentView">
     <top>
-        <VBox>
+        <HBox spacing="30">
             <Label fx:id="TournamentName" id="TournamentName" styleClass="gameName"/>
-        </VBox>
+        </HBox>
     </top>
-    <center>
-        <FlowPane>
-            <VBox>
-                <Label fx:id="Matches" id="Matches"/>
+    <left>
+            <VBox spacing="20">
+                <Label fx:id="Matches" id="Matches" styleClass="gameName"/>
                 <VBox fx:id="MatchList" id="MatchList"/>
             </VBox>
-            <VBox>
-                <TextFlow fx:id="GameInfoText" id="GameInfoText">
-                    <Label fx:id="GameInfoLabel" id="GameInfoLabel"/>
-                </TextFlow>
-            </VBox>
-        </FlowPane>
-    </center>
+    </left>
+    <right>
+        <VBox fx:id="gameInfoContainer" id="gameInfoContainer" spacing="20">
+            <Rectangle fx:id="gameImage" styleClass="gameImage"/>
+            <Label fx:id="GameName" id="GameName" styleClass="gameName"/>
+            <TextFlow fx:id="GameInfoText" id="GameInfoText">
+                <Label fx:id="GameInfoLabel" id="GameInfoLabel" styleClass="textDescription"/>
+            </TextFlow>
+        </VBox>
+    </right>
     <bottom>
         <BorderPane>
             <left>
