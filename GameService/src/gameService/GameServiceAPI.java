@@ -25,6 +25,9 @@ public class GameServiceAPI extends ReST {
 
     /**
      * Retrieves all active game server hosts.
+     *
+     * It does not retrieve host ids.. So information provided by
+     * this API call cannot be used to later close the listed hosts.
      * @param httpExchange
      * @throws Exception
      */
@@ -50,7 +53,8 @@ public class GameServiceAPI extends ReST {
     /**
      * Creates a new game server based on provided PlayerHostInformation objects (as JSON).
      *
-     * Returns Host information about the Host that hosts the new Game Server!
+     * Returns Host Id that can be used to get information about the hosts that hosts the new Game Server!
+     *
      * @param httpExchange
      * @throws Exception
      */
@@ -59,14 +63,14 @@ public class GameServiceAPI extends ReST {
         executorService.submit(() -> {
             try {
                 Gson gson = new Gson();
-                Host gameServerHost = gameService.startNewGame(
+                String gameServerHostId = gameService.startNewGame(
                         gson.fromJson(
                                 getStringBodyFromHttpExchange(httpExchange),
                                 PlayerHostInformation[].class
                         )
                 );
 
-                sendStringContentResponse(HttpURLConnection.HTTP_OK, gson.toJson(gameServerHost), httpExchange);
+                sendStringContentResponse(HttpURLConnection.HTTP_OK, gameServerHostId, httpExchange);
             } catch (IOException e) {
                 System.out.println("Could not send response.");
                 e.printStackTrace();

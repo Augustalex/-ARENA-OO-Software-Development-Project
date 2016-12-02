@@ -134,7 +134,7 @@ public class SingleImageAPI extends ReST {
      */
     @Override
     public void onDelete(HttpExchange httpExchange) throws Exception {
-        imageService.removeImage(getIdFromEndOfHttpURI(httpExchange));
+        imageService.removeImage(getIdFromHttpURI(httpExchange));
     }
 
     @Override
