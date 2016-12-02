@@ -2,6 +2,9 @@ package views.handleAdvertisement;
 
 import arena.advertisement.ad.Ad;
 import arena.advertisement.ad.ImageAd;
+import arena.advertisement.ad.PreferredAdFactory;
+import arena.advertisement.adPreference.AdPreferenceFactory;
+import arena.advertisement.adRepository.AdRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -10,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import arena.metaInformation.advertisementMetaInformation.AdvertisementMetaInformation;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,6 +48,9 @@ public class handleAdvertisementController implements Initializable {
 
     @FXML
     private TextArea adDescription;
+
+    @FXML
+    private Text confirmationText;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,8 +88,8 @@ public class handleAdvertisementController implements Initializable {
                 selectedPreferences[i] = preferences[i];
         }
         AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description);
-        Ad<Image> image = new ImageAd(source);
-
-        System.out.println(source+"\n"+amount+"\n"+selectedPreferences[0]);
+        AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
+                AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
+        confirmationText.setText("Advertisement added and will be shown in prefered adspot");
     }
 }
