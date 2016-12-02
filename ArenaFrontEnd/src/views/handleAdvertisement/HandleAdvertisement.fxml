@@ -39,6 +39,7 @@
                     <VBox spacing="20">
                         <TextArea prefHeight="200" maxWidth="200" wrapText="true" fx:id="adDescription"/>
                         <Button text="Submit" minWidth="75" fx:id="submitAd"/>
+                        <Text text="" fill="white" fx:id="confirmationText"/>
                     </VBox>
                 </VBox>
             </center>

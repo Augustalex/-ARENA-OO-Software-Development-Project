@@ -2,8 +2,10 @@ package arena.advertisement.adRepository;
 
 import arena.advertisement.ad.IPreferredAd;
 import arena.advertisement.ad.PreferredAdFactory;
+import arena.advertisement.adPreference.AdPreferenceFactory;
 import arena.advertisement.adPreference.IAdPreference;
 import arena.advertisement.adSpot.AdSpot;
+import arena.metaInformation.advertisementMetaInformation.AdvertisementMetaInformation;
 import arena.users.advertiser.IAdvertiser;
 
 import java.util.List;
@@ -20,11 +22,16 @@ public interface AdRepository {
         static final AdRepository instance = ((Supplier<AdRepository>)(() -> {
             AdRepository repo = new QueueAdRepository();
             repo
-                .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/koolaid.gif"))
-                .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/nintendo.gif"))
-                .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/gameboy.gif"))
-                .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/caprisun.gif"))
-                .addPreferredAd(PreferredAdFactory.newPlayerViewPreferredAd("/adImages/kawasaki.gif"))
+                .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/koolaid.gif",
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("koolaid", "The cooling ad")))
+                .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/nintendo.gif",
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("nintendo", "let the game begin")))
+                .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/gameboy.gif",
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("gameboy", "let the portable game begin")))
+                .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/caprisun.gif",
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("caprisun", "Juicy!")))
+                .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/kawasaki.gif",
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("kawasaki", "Broken leg")))
             ;
             return repo;
         })).get();

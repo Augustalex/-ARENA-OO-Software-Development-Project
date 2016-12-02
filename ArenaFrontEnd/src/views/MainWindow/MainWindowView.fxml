@@ -15,8 +15,8 @@
             <Button fx:id="playButton" text="PLAY"/>
             <Button fx:id="watchButton" text="WATCH" />
             <Button fx:id="createTournamentButton" text="CREATE TOURNAMENT" />
-            <Button fx:id="handleTournamentButton" wrapText="true" text="HANDLE TOURNAMENT STYLE"/>
-            <Button fx:id="handleAdButton" text="HANDLE ADVERTISEMENT"/>
+            <Button fx:id="handleTournamentButton" wrapText="true" textAlignment="CENTER" text="HANDLE TOURNAMENT STYLE"/>
+            <Button fx:id="handleAdButton" wrapText="true" text="HANDLE ADVERTISEMENT"/>
         </HBox>
     </top>
     <bottom>
