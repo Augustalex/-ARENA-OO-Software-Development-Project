@@ -1,5 +1,6 @@
 package spectate;
 
+import arena.games.game.IGame;
 import arena.league.ILeague;
 import arena.session.Session;
 import arena.tournament.ITournament;

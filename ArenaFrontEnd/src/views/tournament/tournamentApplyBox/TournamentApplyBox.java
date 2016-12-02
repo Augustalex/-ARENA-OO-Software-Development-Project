@@ -75,32 +75,4 @@ public class TournamentApplyBox extends BorderPane implements Initializable{
         });
 
     }
-
-    /*public void setupLobbyButton(Button lobbyButton) {
-        lobbyButton.setOnAction(e -> {
-            System.out.println("New window opened!");
-            try {
-                newView();
-            } catch (IOException e1) {
-                System.out.println("---------------Error opening new window!----------------------");
-            }
-        });
-    }*/
-
-    /**
-     * Button action wont work at a certain area because of the overlapping ad that, even if removed,
-     * will not allow things below it to be clicked.
-     * @Button button
-     */
-   /* private void setupApplyButton(Button button){
-        //System.out.println(this.widthProperty().doubleValue());
-        //Set action event handler
-        button.setOnAction(e -> {
-            button.setText("Applied");
-            appliedTournaments.applyToTournament(tournament);
-            tournament.applyPlayer(Session.getSession().getPlayer());
-            button.setDisable(true);
-            button.setStyle("-fx-base: #766F70");
-        });
-    }*/
 }

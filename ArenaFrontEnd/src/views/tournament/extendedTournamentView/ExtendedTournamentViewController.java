@@ -1,19 +1,18 @@
 package views.tournament.extendedTournamentView;
 
 import arena.games.gameInformation.GameInformation;
+import arena.session.AppliedTournaments;
 import arena.tournament.ITournament;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import views.DimensionBinder;
 import views.FXMLViewController;
+import views.tournament.tournamentApplyBox.TournamentApplyBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,7 +63,29 @@ public class ExtendedTournamentViewController extends FXMLViewController {
         GameName.setText(gameInformation.getGameName());
         GameInfoLabel.setText(gameInformation.getGameDescription());
 
+        matchListHandler(tournament);
 
+
+    }
+
+    private void matchListHandler(ITournament tournament){
+        DimensionBinder.bindWidthToPercentageOfContainer(MatchList, 0.8, gameInfoContainer);
+        try {
+            Region matchListPane = loadNewMatchList(tournament);
+            DimensionBinder.bindWidthToPercentageOfContainer(matchListPane, 0.95, MatchList);
+            MatchList.getChildren().add(matchListPane);
+            System.out.println("Added " + matchListPane + " to list.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Region loadNewMatchList(ITournament tournament) throws IOException {
+        return (Region) this.loadFXML(
+                getClass().getResource(
+                        "/views/tournament/extendedTournamentView/MatchList.fxml"),
+                c -> new MatchList(tournament)
+        );
     }
 
     @Override
