@@ -29,7 +29,7 @@ public class IndexedUserServiceSingleUserAPI extends ReST {
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
         indexer
-                .getServiceConnectionDetails(getIndexFromHttpURI(httpExchange))
+                .getServiceConnectionDetails(Integer.parseInt(getIdFromHttpURI(httpExchange)))
                 .onDelivery(hostService -> {
                     try{
                         if(hostService == null)
@@ -68,6 +68,7 @@ public class IndexedUserServiceSingleUserAPI extends ReST {
 
     @Override
     public void onDelete(HttpExchange httpExchange) throws Exception {
+        //TODO use recycleObjectId method from the ServiceIndexer
         //TODO implement delete user
         sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
     }

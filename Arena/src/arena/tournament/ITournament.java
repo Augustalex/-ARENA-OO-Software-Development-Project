@@ -42,6 +42,6 @@ public interface ITournament {
 
     ITournament setGame(IGame game);
 
-    GameInformation getGameInfomation();
+    GameInformation getGameInformation();
 
 }

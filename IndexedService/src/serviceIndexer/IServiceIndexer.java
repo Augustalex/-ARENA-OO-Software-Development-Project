@@ -22,7 +22,9 @@ public interface IServiceIndexer {
 
     int getPartitionCapacity();
 
-    HostService hostNewService() throws HostConnectionFailure;
+    HostService getNewHost() throws HostConnectionFailure;
 
     int getNextObjectId();
+
+    void recycleObjectId(int id);
 }

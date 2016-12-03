@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -30,15 +32,13 @@ public class ServiceIndexer implements IServiceIndexer {
     private final int partitionCapacity;
     private int currentCapacity = 0;
 
-    private String hostProviderURL;
     private HostService hostProvider;
 
-    private Map<Integer, HostService> services = new HashMap<>();
+    private Queue<Integer> reusableObjectIds = new LinkedBlockingQueue<>();
+    private Map<Integer, HostService> serviceHosts = new HashMap<>();
 
     public ServiceIndexer(int partitionCapacity, HostService hostProviderConnectionDetails){
         this.partitionCapacity = partitionCapacity;
-
-        this.hostProviderURL = hostProviderConnectionDetails.getURL();
         this.hostProvider = hostProviderConnectionDetails;
     }
 
@@ -50,7 +50,7 @@ public class ServiceIndexer implements IServiceIndexer {
             this.scaleUp(1, wasSuccessful -> {
                 if(wasSuccessful){
                     System.out.println("Scaled successfully.");
-                    serviceDetails.deliver(services.get(getServiceIndex(lookupIndex)));
+                    serviceDetails.deliver(serviceHosts.get(getServiceIndex(lookupIndex)));
                 }
                 else{
                     System.out.println("Scale up was unsuccessful.");
@@ -58,7 +58,7 @@ public class ServiceIndexer implements IServiceIndexer {
                 }
             });
         else
-            serviceDetails.deliver(services.get(getServiceIndex(lookupIndex)));
+            serviceDetails.deliver(serviceHosts.get(getServiceIndex(lookupIndex)));
 
         return serviceDetails;
     }
@@ -70,16 +70,14 @@ public class ServiceIndexer implements IServiceIndexer {
 
         IntStream.range(0, numberOfInstances)
                 .forEach(i -> addService(status));
-
     }
 
     @Override
     public List<HostService> getAllServicesConnectionDetails() {
         System.out.println("getAllServicesConnectionDetails [ServiceIndexer]");
-        services.values().forEach(c -> System.out.print(c.getURL() + ", "));
-        return services
-                .values()
-                .stream()
+        serviceHosts.values().forEach(c -> System.out.print(c.getURL() + ", "));
+        return serviceHosts
+                .values().stream()
                 .collect(Collectors.toList());
     }
 
@@ -94,7 +92,7 @@ public class ServiceIndexer implements IServiceIndexer {
     }
 
     @Override
-    public HostService hostNewService() throws HostConnectionFailure {
+    public HostService getNewHost() throws HostConnectionFailure {
         //TODO make async, put in thread
         try{
             return gson.fromJson(Request.Get(this.hostProvider.getURL())
@@ -106,18 +104,25 @@ public class ServiceIndexer implements IServiceIndexer {
 
     @Override
     public int getNextObjectId(){
-        return this.nextObjectId++;
+        if(this.reusableObjectIds.size() > 0)
+            return this.reusableObjectIds.poll();
+        else
+            return this.nextObjectId++;
+    }
+
+    @Override
+    public void recycleObjectId(int id) {
+        this.reusableObjectIds.offer(id);
     }
 
     private void addService(Delivery<Boolean> status){
         new Thread(() -> {
             int index = serviceCount();
-            System.out.println("Hello from the new thread.");
             try {
                 System.out.println("Hosting new Service.");
-                HostService newService = hostNewService();
-                System.out.println("Got new host information.");
-                services.put(index, newService);
+                HostService newService = getNewHost();
+
+                serviceHosts.put(index, newService);
                 currentCapacity += partitionCapacity;
 
                 //TODO make the "UsersService" "magic string" an Enum or some static variable of this class (or one that can be set).

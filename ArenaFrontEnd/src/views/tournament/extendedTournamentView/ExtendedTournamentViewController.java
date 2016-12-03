@@ -1,7 +1,6 @@
 package views.tournament.extendedTournamentView;
 
 import arena.games.gameInformation.GameInformation;
-import arena.session.AppliedTournaments;
 import arena.tournament.ITournament;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +11,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import views.DimensionBinder;
 import views.FXMLViewController;
-import views.tournament.tournamentApplyBox.TournamentApplyBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,7 +46,7 @@ public class ExtendedTournamentViewController extends FXMLViewController {
 
     public ExtendedTournamentViewController(ITournament tournament){
         this.tournament = tournament;
-        this.gameInformation = tournament.getGameInfomation();
+        this.gameInformation = tournament.getGameInformation();
     }
 
     @Override

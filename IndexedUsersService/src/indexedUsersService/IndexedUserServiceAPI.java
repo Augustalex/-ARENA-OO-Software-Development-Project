@@ -33,9 +33,7 @@ public class IndexedUserServiceAPI extends ReST {
 
     private Gson gson = new Gson();
     private ServiceIndexer indexer;
-
-    private int nextAvailableIndex = 0;
-
+    
     public IndexedUserServiceAPI(ServiceIndexer serviceIndexer){
         this.indexer = serviceIndexer;
     }
@@ -89,8 +87,9 @@ public class IndexedUserServiceAPI extends ReST {
      */
     @Override
     public void onPost(HttpExchange httpExchange) throws Exception {
+        int newObjectIndex = indexer.getNextObjectId();
         indexer
-                .getServiceConnectionDetails(getNextAvailableIndex())
+                .getServiceConnectionDetails(newObjectIndex)
                 .onDelivery(connectionDetails -> {
                     try {
                         if(connectionDetails == null)
@@ -113,7 +112,6 @@ public class IndexedUserServiceAPI extends ReST {
      */
     @Override
     public void onDelete(HttpExchange httpExchange) throws Exception {
-        //TODO implement delete all arena.users.
         sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
     }
 
@@ -158,13 +156,5 @@ public class IndexedUserServiceAPI extends ReST {
         HttpPost post = new HttpPost(url);
         post.setEntity(new ByteArrayEntity(body.getBytes(StandardCharsets.UTF_8)));
         return HttpClients.createDefault().execute(post);
-    }
-
-    private int getNextAvailableIndex(){
-        synchronized (key) {
-            //TODO implement queues for what service indexes have become available, and pick from that queue before grabbing the "next available" index.
-            System.out.println("Got next available index: " + this.nextAvailableIndex);
-            return this.nextAvailableIndex++;
-        }
     }
 }

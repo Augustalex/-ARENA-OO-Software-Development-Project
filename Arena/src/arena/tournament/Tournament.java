@@ -30,7 +30,6 @@ public class Tournament implements ITournament, Serializable {
         setGame(game);
     }
 
-
     @Override
     public ITournamentMetaInformation getTournamentMetaInformation() {
         return (ITournamentMetaInformation) this.configuration.getMetaInformation();
@@ -58,8 +57,7 @@ public class Tournament implements ITournament, Serializable {
     }
 
     @Override
-    public GameInformation getGameInfomation() {
-
+    public GameInformation getGameInformation() {
         return game.getGameInformation();
     }
 
