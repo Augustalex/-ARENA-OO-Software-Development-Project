@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextArea?>
-<BorderPane fx:controller="views.handleAdvertisement.handleAdvertisementController" xmlns:fx="http://javafx.com/fxml"
+<BorderPane fx:controller="views.handleAdvertisement.handleNewAdvertisement.HandleAdvertisementController" xmlns:fx="http://javafx.com/fxml"
             fx:id="handleAdvertisementWindow" id="HandleAdvertisementContainer">
     <top>
         <VBox spacing="25" fx:id="inputVBox">

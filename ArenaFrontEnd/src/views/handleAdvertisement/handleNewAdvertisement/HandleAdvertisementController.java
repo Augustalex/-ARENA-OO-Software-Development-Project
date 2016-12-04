@@ -1,4 +1,4 @@
-package views.handleAdvertisement;
+package views.handleAdvertisement.handleNewAdvertisement;
 
 import arena.advertisement.ad.Ad;
 import arena.advertisement.ad.ImageAd;
@@ -7,8 +7,10 @@ import arena.advertisement.adPreference.AdPreferenceFactory;
 import arena.advertisement.adRepository.AdRepository;
 import arena.metaInformation.AdSchemeMetaInformation.AdSchemeMetaInformation;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -19,16 +21,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import views.MainWindow.MainWindowController;
+import views.handleAdvertisement.AdvertisementViewMocks.AdRepositoryMock;
+import views.handleAdvertisement.AdvertisementViewMocks.AdvertisementMock;
+import views.handleAdvertisement.HandleAdvertisementMainViewController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Created by Johan on 2016-11-29.
  */
-public class handleAdvertisementController implements Initializable {
+public class HandleAdvertisementController implements Initializable {
     private String[] preferences;
     private CheckBox[] checkboxes;
+    private MainWindowController mainWindowController;
 
     @FXML
     private BorderPane handleAdvertisementWindow;
@@ -66,6 +74,10 @@ public class handleAdvertisementController implements Initializable {
         submitAd.setOnAction(e -> submitHandler());
     }
 
+    public void setMainWindowController(MainWindowController mainWindowController){
+        this.mainWindowController = mainWindowController;
+    }
+
     private void setPreferenceList() {
         preferences = new String[2];
         preferences[0] = "Play View";
@@ -97,7 +109,6 @@ public class handleAdvertisementController implements Initializable {
 
             line.getChildren().addAll(preferenceLabels[i], help);
 
-
             preferenceList.getChildren().add(line);
             preferenceLabels[i].setStyle("-fx-text-fill: white");
         }
@@ -120,9 +131,38 @@ public class handleAdvertisementController implements Initializable {
             if (checkboxes[i].isSelected())
                 selectedPreferences[i] = preferences[i];
         }
-        AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description);
-        AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
-                AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
-        confirmationText.setText("Advertisement added and will be shown in prefered adspot");
+        try {
+            AdRepositoryMock.getAdRepositoryMock().addNewAd(new AdvertisementMock(name, preferences[0], Double.parseDouble(amount), 1));
+            AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description);
+            AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
+                    AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
+            setAdMainView();
+        } catch(IllegalArgumentException ex){
+            ex.printStackTrace();
+            showError();
+            confirmationText.setText("Advertisement not added");
+        }
+    }
+
+    private void setAdMainView() {
+        try {
+            mainWindowController.closeView();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/" +
+                    "HandleAdvertisementMain.fxml"));
+            Parent parent = loader.load();
+            HandleAdvertisementMainViewController controller = loader.getController();
+            controller.setMainWindowController(mainWindowController);
+            mainWindowController.getContentView().getChildren().setAll(parent);
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    private void showError() {
+        Alert error = new Alert(Alert.AlertType.ERROR);
+        error.setTitle("Input Error");
+        error.setHeaderText("Amount input invalid");
+        error.setContentText("Amount input needs to be a float number");
+        error.showAndWait();
     }
 }

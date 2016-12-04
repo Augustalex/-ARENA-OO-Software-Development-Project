@@ -1,0 +1,23 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox fx:controller="views.systemLogin.SystemLoginViewController" xmlns:fx="http://javafx.com/fxml"
+      fx:id="loginWindow" spacing="20">
+    <Text text="User authorization" fill="white">
+        <font>
+            <Font name="Arial" size="18"/>
+        </font>
+    </Text>
+    <TextField fx:id="usernameField" promptText="Username" maxWidth="250"/>
+    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
+    <Text fx:id="newPassword" text="Forgot my password" fill="white"/>
+    <HBox spacing="10">
+        <Button fx:id="guestButton" text="Login as Guest"/>
+        <Button fx:id="loginButton" text="Login"/>
+        <Button fx:id="cancelButton" text="Cancel"/>
+    </HBox>
+</VBox>

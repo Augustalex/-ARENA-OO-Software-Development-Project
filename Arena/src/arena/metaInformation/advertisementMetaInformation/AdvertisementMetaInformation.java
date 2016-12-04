@@ -7,7 +7,6 @@ import arena.metaInformation.MetaInformation;
  */
 public class AdvertisementMetaInformation extends MetaInformation {
 
-
     public AdvertisementMetaInformation(String name, String desc){
         super.setName(name);
         super.setDescription(desc);

@@ -1,17 +1,23 @@
 package views.MainWindow;
 
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
 import views.FXMLViewController;
 import views.DimensionBinder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import views.handleAdvertisement.HandleAdvertisementMainViewController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainWindowController extends FXMLViewController{
@@ -42,6 +48,9 @@ public class MainWindowController extends FXMLViewController{
     @FXML
     private Button handleAdButton;
 
+    @FXML
+    private Button loginButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -54,6 +63,10 @@ public class MainWindowController extends FXMLViewController{
     @Override
     public void closeView() {
         closeCurrentContentController();
+    }
+
+    public Pane getContentView(){
+        return this.contentView;
     }
 
     /**
@@ -107,7 +120,20 @@ public class MainWindowController extends FXMLViewController{
         handleAdButton.setOnAction(e->{
             try {
                 closeCurrentContentController();
-                Parent parent = this.loadFXML("handleAdvertisement/HandleAdvertisement.fxml");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/HandleAdvertisementMain.fxml"));
+                Parent parent = loader.load();
+                HandleAdvertisementMainViewController controller = loader.getController();
+                controller.setMainWindowController(this);
+                contentView.getChildren().setAll(parent);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        loginButton.setOnAction(e->{
+            try {
+                closeCurrentContentController();
+                Parent parent = this.loadFXML("systemLogin/SystemLogin.fxml");
                 contentView.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -187,5 +213,4 @@ public class MainWindowController extends FXMLViewController{
         if(this.currentContentController != null)
             this.currentContentController.closeView();
     }
-
 }

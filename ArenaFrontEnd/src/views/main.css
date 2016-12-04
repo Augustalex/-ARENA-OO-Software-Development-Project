@@ -5,7 +5,16 @@
     -fx-faint-focus-color: -fx-control-inner-background ;
 }
 
+#loginContainer{
+    -fx-focus-color: -fx-control-inner-background ;
+    -fx-faint-focus-color: -fx-control-inner-background ;
+}
+
 #contentView{
+    -fx-background-color: linear-gradient(#0f171e, #0b031a);
+}
+
+#loginContentView{
     -fx-background-color: linear-gradient(#0f171e, #0b031a);
 }
 
