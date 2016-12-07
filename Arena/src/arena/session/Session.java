@@ -29,6 +29,7 @@ public class Session implements Serializable, ISession{
 
     public void setPlayer(IPlayer player){
         this.player = player;
+        System.out.println("New player for Session is " + player.getName());
     }
 
     @Override

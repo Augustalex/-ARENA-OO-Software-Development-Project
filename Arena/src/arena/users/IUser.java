@@ -5,26 +5,6 @@ package arena.users;
  */
 public interface IUser {
 
-    static IUser newMockUser(){
-        return new IUser() {
-            @Override
-            public void notify(String message) {
-                System.out.println("NOTIFY! " + message);
-            }
-
-            @Override
-            public String getName() {
-                return "August";
-            }
-
-            @Override
-            public int getId() {
-                return -1;
-            }
-
-        };
-    }
-
     /**
      * Method for notifying the user.
      * @param message

@@ -19,6 +19,14 @@ import java.util.Map;
  */
 public class User implements IUser {
 
+    private static Map<String, String> loginMock = new HashMap<>();
+
+    static{
+        User.loginMock.put("august", "fuckoff1");
+        User.loginMock.put("johan", "twatcunt2");
+        User.loginMock.put("carlos", "whatthehell3");
+    }
+
     public final int id;
     private String name;
 
@@ -40,7 +48,16 @@ public class User implements IUser {
         Delivery<IUser> delivery = new PropertyDelivery<>();
 
         new Thread(() -> {
-            delivery.deliver(createUser("{name:August,id:0}"));
+            if(User.loginMock.containsKey(username.toLowerCase())
+                && User.loginMock.get(username.toLowerCase()).equals(password))
+                    delivery.deliver(
+                            new Gson()
+                                    .fromJson(
+                                            "{name:"+username.toLowerCase()+",id:-1}",
+                                            User.class
+                                    ));
+            else
+                delivery.cancel();
         }).start();
 
         return delivery;

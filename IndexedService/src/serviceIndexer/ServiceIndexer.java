@@ -114,7 +114,7 @@ public class ServiceIndexer implements IServiceIndexer {
     public void recycleObjectId(int id) {
         this.reusableObjectIds.offer(id);
     }
-
+s
     private void addService(Delivery<Boolean> status){
         new Thread(() -> {
             int index = serviceCount();

@@ -19,5 +19,6 @@
     </orderEntry>
     <orderEntry type="module" module-name="Othello" />
     <orderEntry type="module" module-name="Arena" />
+    <orderEntry type="module" module-name="ReST" />
   </component>
 </module>

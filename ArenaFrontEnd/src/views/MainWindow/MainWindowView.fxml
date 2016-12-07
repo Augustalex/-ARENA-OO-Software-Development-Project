@@ -22,7 +22,6 @@
     </top>
     <bottom>
         <StackPane fx:id="contentView" id="contentView">
-
         </StackPane>
     </bottom>
 </BorderPane>

@@ -4,6 +4,7 @@ import arena.metaInformation.tournamentMetaInformation.ITournamentMetaInformatio
 import arena.reviewServices.Reviewer;
 import arena.tournament.tournamentStyle.ITournamentStyle;
 import arena.users.IUser;
+import arena.users.User;
 
 /**
  * Implements the Tournament Configuration Interface.
@@ -41,7 +42,7 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     @Override
     public void submit() {
         Reviewer.tournamentConfigurationReviewer
-                .submitForReview(this, IUser.newMockUser());
+                .submitForReview(this, User.createMockUser("Simon"));
     }
 
     @Override

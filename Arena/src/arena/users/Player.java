@@ -38,6 +38,12 @@ public class Player implements IPlayer{
         return player;
     }
 
+    public static IPlayer newMockPlayerFromUser(IUser user){
+        IPlayer player = new Player(user);
+        player.getLeagues().add(ILeague.createMockLeague("Mock AF"));
+        return player;
+    }
+
     @Override
     public ArrayList<ILeague> getLeagues() {
         return leagues;
