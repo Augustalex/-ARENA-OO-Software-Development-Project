@@ -38,8 +38,10 @@ public class GameLauncher {
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);
+               break;
            case "othellopro":
                new Othello().start(stage);
+               break;
            default:
                System.out.println("No game by that name.");
                break;
