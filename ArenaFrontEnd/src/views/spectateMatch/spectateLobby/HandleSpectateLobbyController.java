@@ -5,7 +5,6 @@ import arena.games.gameInformation.GameInformation;
 import arena.games.gameManager.ArenaGameManager;
 import arena.league.ILeague;
 import arena.tournament.ITournament;
-import com.sun.org.apache.bcel.internal.generic.RET;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,8 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import spectate.SpectateTable;
+import views.tournament.extendedTournamentView.ExtendedTournamentViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -100,7 +101,7 @@ public class HandleSpectateLobbyController implements Initializable {
                     LeagueSettings league = (LeagueSettings) row.getItem(); // Typecast för att få fram objektet
                     System.out.println(league.getTournament());
                     try {
-                        newView();
+                        newView(league.getTournament());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -110,23 +111,31 @@ public class HandleSpectateLobbyController implements Initializable {
         });
     }
     private void setTableGames(){
+        //Hämta spel från Arena GameManager istället för från ligorna
+
+
         tableGames.refresh();
-        ObservableList<IGame> gameList = FXCollections.observableArrayList();
+        ObservableList<GameSettings> gameList = FXCollections.observableArrayList();
 
-        for(ILeague league : SpectateTable.get().getLeagues())
-            if(!gameList.contains(league.getGame()))
-                gameList.add(league.getGame());
+        for(IGame game : ArenaGameManager.get().getAllGames()){
+            gameList.add(new GameSettings(game));
+            System.out.println(game.getGameInformation().getGameName());
+        }
 
-        gameCol.setCellValueFactory(new PropertyValueFactory<IGame, String>("gameInformation"));
+
+        gameCol.setCellValueFactory(new PropertyValueFactory<GameSettings, String>("gameName"));
         tableGames.setItems(gameList);
         tableGames.getColumns().clear();
         tableGames.getColumns().addAll(gameCol);
     }
-    private void newView() throws IOException {
+    private void newView(ITournament tournament) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
+        loader.setControllerFactory(c -> new ExtendedTournamentViewController(tournament));
         Parent parent = loader.load();
-        stage.setScene(new Scene(parent, 1600, 1000));
+        stage.setTitle("Tournament Lobby");
+        stage.setScene(new Scene(parent, 1600, 600));
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 
@@ -163,6 +172,19 @@ public class HandleSpectateLobbyController implements Initializable {
 
         public ITournament getTournament() {
             return this.tournament;
+        }
+    }
+    public static class GameSettings{
+        private IGame gameInfo;
+        private final SimpleStringProperty gameName = new SimpleStringProperty("");
+
+        public GameSettings(IGame game){
+            this.gameInfo = game;
+            this.gameName.set(game.getGameInformation().getGameName());
+        }
+
+        public String getGameName(){
+            return this.gameName.get();
         }
     }
 }
