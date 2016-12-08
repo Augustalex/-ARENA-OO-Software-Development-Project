@@ -9,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -21,6 +23,7 @@ import views.handleAdvertisement.handleNewAdvertisement.HandleAdvertisementContr
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -104,11 +107,23 @@ public class HandleAdvertisementMainViewController implements Initializable {
     private Button createDeleteButton(){
         Button delete = new Button("Delete");
         delete.setOnAction(e->{
-            int index = GridPane.getRowIndex(delete);
-            AdRepository.get().removeAd(advertisements.get(index-1));
-            //AdRepositoryMock.getAdRepositoryMock().removeAd(index-1);
-            listAdvertisements();
+            Optional<ButtonType> result = showConfirmation();
+            if(result.get() == ButtonType.OK) {
+                int index = GridPane.getRowIndex(delete);
+                AdRepository.get().removeAd(advertisements.get(index - 1));
+                //AdRepositoryMock.getAdRepositoryMock().removeAd(index-1);
+                listAdvertisements();
+            }
         });
         return delete;
+    }
+
+    private Optional<ButtonType> showConfirmation() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.setTitle("Delete confirmation");
+        confirmation.setHeaderText("Your about to delete the advertisement");
+        confirmation.setContentText("The advertisement will be removed from\nselected preference queue." +
+                "\nPress OK to proceed.");
+        return confirmation.showAndWait();
     }
 }
