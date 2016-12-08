@@ -18,6 +18,7 @@ public class ArenaGameManager implements GameLibrary, GameInstaller{
             ArenaGameManager instance = new ArenaGameManager();
             instance.addGame(GameFactory.newMockOthelloGame());
             instance.addGame(GameFactory.newMockTicTacToe());
+            instance.addGame(GameFactory.newMockOthelloPro());
             return instance;
         }).get();
     }
