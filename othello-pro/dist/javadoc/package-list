@@ -1,0 +1,7 @@
+othello
+othello.controller
+othello.model.gamestate
+othello.model.player
+othello.util
+othello.view
+othello.view.dialogs
