@@ -2,6 +2,7 @@ package arena.advertisement.ad;
 
 import arena.advertisement.adPreference.IAdPreference;
 import arena.metaInformation.MetaInformation;
+import arena.metaInformation.advertisementMetaInformation.AdvertisementMetaInformation;
 import arena.users.advertiser.IAdvertiser;
 
 /**
@@ -12,7 +13,7 @@ public interface IPreferredAd extends Ad {
 
     IAdPreference getAdPreference();
 
-    MetaInformation getMetaInformation();
+    AdvertisementMetaInformation getMetaInformation();
 
     IAdvertiser getOwner();
 

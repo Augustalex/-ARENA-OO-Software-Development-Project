@@ -40,7 +40,7 @@ public class AdPreferenceSet implements IAdPreference {
 
     @Override
     public String getPreferenceId() {
-        throw new NotImplementedException();
+        return "Play View";
     }
 
     @Override

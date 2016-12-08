@@ -1,5 +1,8 @@
 package views.handleAdvertisement;
 
+import arena.advertisement.ad.IPreferredAd;
+import arena.advertisement.adRepository.AdRepository;
+import arena.users.advertiser.Advertiser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,8 +27,9 @@ import java.util.ResourceBundle;
  * Created by Johan on 2016-12-03.
  */
 public class HandleAdvertisementMainViewController implements Initializable {
-    private List<AdvertisementMock> identifiedAds;
+    //private List<AdvertisementMock> identifiedAds;
     private MainWindowController mainWindowController;
+    private List<IPreferredAd> advertisements;
     int row = 0;
     @FXML
     private VBox mainAdvertisementView;
@@ -63,18 +67,19 @@ public class HandleAdvertisementMainViewController implements Initializable {
     }
 
     private void listAdvertisements() {
-        identifiedAds = AdRepositoryMock.getAdRepositoryMock().getAds(1);
+        //identifiedAds = AdRepositoryMock.getAdRepositoryMock().getAds(1);
+        advertisements = AdRepository.get().getAdsFromOwner(new Advertiser(1));
         currentAdvertisements.getChildren().clear();
         row = 0;
         init();
-        if(identifiedAds.size() == 0){
+        if(advertisements.size() == 0){
             currentAdvertisements.add(createNewCell("No active Ads"),0,row);
             return;
         }
-        for(AdvertisementMock ad: identifiedAds){
-            currentAdvertisements.add(createNewCell(ad.getName()),0,row);
-            currentAdvertisements.add(createNewCell(ad.getPreference()),1,row);
-            currentAdvertisements.add(createNewCell(String.valueOf(ad.getAmount())),2,row);
+        for(IPreferredAd ad: advertisements){
+            currentAdvertisements.add(createNewCell(ad.getMetaInformation().getName()),0,row);
+            currentAdvertisements.add(createNewCell(ad.getAdPreference().getPreferenceId()),1,row);
+            currentAdvertisements.add(createNewCell(String.valueOf(ad.getMetaInformation().getAmount())),2,row);
             currentAdvertisements.add(createDeleteButton(),3,row++);
         }
     }
@@ -100,7 +105,8 @@ public class HandleAdvertisementMainViewController implements Initializable {
         Button delete = new Button("Delete");
         delete.setOnAction(e->{
             int index = GridPane.getRowIndex(delete);
-            AdRepositoryMock.getAdRepositoryMock().removeAd(index-1);
+            AdRepository.get().removeAd(advertisements.get(index-1));
+            //AdRepositoryMock.getAdRepositoryMock().removeAd(index-1);
             listAdvertisements();
         });
         return delete;

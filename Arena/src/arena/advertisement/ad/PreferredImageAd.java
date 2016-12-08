@@ -2,6 +2,7 @@ package arena.advertisement.ad;
 
 import arena.advertisement.adPreference.IAdPreference;
 import arena.metaInformation.MetaInformation;
+import arena.metaInformation.advertisementMetaInformation.AdvertisementMetaInformation;
 import arena.users.advertiser.IAdvertiser;
 import javafx.scene.image.Image;
 import org.omg.CORBA.NO_IMPLEMENT;
@@ -15,9 +16,9 @@ public class PreferredImageAd implements IPreferredAd {
 
     private final IAdPreference adPreference;
     private final Image image;
-    private final MetaInformation metaInformation;
+    private final AdvertisementMetaInformation metaInformation;
 
-    public PreferredImageAd(Ad<Image> ad, IAdPreference adPreference, MetaInformation adMetaInformation){
+    public PreferredImageAd(Ad<Image> ad, IAdPreference adPreference, AdvertisementMetaInformation adMetaInformation){
         this.adPreference = adPreference;
         this.image = ad.getContent();
         this.metaInformation = adMetaInformation;
@@ -33,7 +34,7 @@ public class PreferredImageAd implements IPreferredAd {
     }
 
     @Override
-    public MetaInformation getMetaInformation() {
+    public AdvertisementMetaInformation getMetaInformation() {
         return this.metaInformation;
     }
 

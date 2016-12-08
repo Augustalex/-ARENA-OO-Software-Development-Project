@@ -23,15 +23,15 @@ public interface AdRepository {
             AdRepository repo = new QueueAdRepository();
             repo
                 .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/koolaid.gif",
-                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("koolaid", "The cooling ad")))
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("koolaid", "The cooling ad", 2, 2.25)))
                 .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/nintendo.gif",
-                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("nintendo", "let the game begin")))
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("nintendo", "let the game begin",1,3.75)))
                 .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/gameboy.gif",
-                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("gameboy", "let the portable game begin")))
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("gameboy", "let the portable game begin", 1, 6.75)))
                 .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/caprisun.gif",
-                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("caprisun", "Juicy!")))
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("caprisun", "Juicy!",2,8.75)))
                 .addPreferredAd(PreferredAdFactory.newPreferredAd("/adImages/kawasaki.gif",
-                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("kawasaki", "Broken leg")))
+                        AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("kawasaki", "Broken leg", 3, 10.25)))
             ;
             return repo;
         })).get();
@@ -60,4 +60,6 @@ public interface AdRepository {
     void addAdPreference(IAdPreference preference);
 
     List<IAdPreference> getAdPreferences();
+
+    AdRepository removeAd(IPreferredAd preferredAd);
 }

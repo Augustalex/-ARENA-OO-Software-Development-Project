@@ -132,8 +132,8 @@ public class HandleAdvertisementController implements Initializable {
                 selectedPreferences[i] = preferences[i];
         }
         try {
-            AdRepositoryMock.getAdRepositoryMock().addNewAd(new AdvertisementMock(name, preferences[0], Double.parseDouble(amount), 1));
-            AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description);
+            //AdRepositoryMock.getAdRepositoryMock().addNewAd(new AdvertisementMock(name, preferences[0], Double.parseDouble(amount), 1));
+            AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description, 1, Double.parseDouble(amount));
             AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
                     AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
             setAdMainView();
@@ -161,8 +161,8 @@ public class HandleAdvertisementController implements Initializable {
     private void showError() {
         Alert error = new Alert(Alert.AlertType.ERROR);
         error.setTitle("Input Error");
-        error.setHeaderText("Amount input invalid");
-        error.setContentText("Amount input needs to be a float number");
+        error.setHeaderText("Input invalid");
+        error.setContentText("Some input was not valid.\nCorrect your input and try again");
         error.showAndWait();
     }
 }

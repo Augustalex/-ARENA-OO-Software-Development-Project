@@ -13,14 +13,14 @@ import java.lang.reflect.ParameterizedType;
  */
 public class PreferredAdFactory {
 
-    public static IPreferredAd newPreferredAd(Ad ad, IAdPreference adPreference, MetaInformation adMetaInformation){
+    public static IPreferredAd newPreferredAd(Ad ad, IAdPreference adPreference, AdvertisementMetaInformation adMetaInformation){
         if(PreferredAdFactory.isImageAd(ad))
             return new PreferredImageAd((Ad<Image>)ad, adPreference, adMetaInformation);
         else
             throw new IllegalArgumentException();
     }
 
-    public static IPreferredAd newPreferredAd(String imageURL, IAdPreference adPreference, MetaInformation adMetaInformation){
+    public static IPreferredAd newPreferredAd(String imageURL, IAdPreference adPreference, AdvertisementMetaInformation adMetaInformation){
         return new PreferredImageAd(new ImageAd(imageURL), adPreference, adMetaInformation);
     }
 
@@ -35,7 +35,7 @@ public class PreferredAdFactory {
     public static IPreferredAd newPlayerViewPreferredAd(String imageURL){
         return new PreferredImageAd(
                 new ImageAd(imageURL),
-                AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("lars", "owns this shit")
+                AdPreferenceFactory.newPlayViewPreference(), new AdvertisementMetaInformation("lars", "owns this shit", 2,5.5)
         );
     }
 
@@ -50,7 +50,7 @@ public class PreferredAdFactory {
     public static IPreferredAd newMainWindowPreferredAd(String imageURL){
         return new PreferredImageAd(
                 new ImageAd(imageURL),
-                AdPreferenceFactory.newMainWindowPreference(), new AdvertisementMetaInformation("lars", "owns this shit"));
+                AdPreferenceFactory.newMainWindowPreference(), new AdvertisementMetaInformation("lars", "owns this shit", 2,5.5));
 
     }
 
