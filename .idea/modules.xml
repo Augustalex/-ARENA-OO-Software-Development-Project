@@ -16,12 +16,12 @@
       <module fileurl="file://$PROJECT_DIR$/IndexedUsersService/IndexedUsersService.iml" filepath="$PROJECT_DIR$/IndexedUsersService/IndexedUsersService.iml" />
       <module fileurl="file://$PROJECT_DIR$/LiveStreamer/LiveStreamer.iml" filepath="$PROJECT_DIR$/LiveStreamer/LiveStreamer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Othello/Othello.iml" filepath="$PROJECT_DIR$/Othello/Othello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OthelloPro/othello-pro.iml" filepath="$PROJECT_DIR$/OthelloPro/othello-pro.iml" />
       <module fileurl="file://$PROJECT_DIR$/ReST/ReST.iml" filepath="$PROJECT_DIR$/ReST/ReST.iml" />
       <module fileurl="file://$PROJECT_DIR$/ServiceInstantiatorService/ServiceInstantiatorService.iml" filepath="$PROJECT_DIR$/ServiceInstantiatorService/ServiceInstantiatorService.iml" />
       <module fileurl="file://$PROJECT_DIR$/StreamWatcher/StreamWatcher.iml" filepath="$PROJECT_DIR$/StreamWatcher/StreamWatcher.iml" />
       <module fileurl="file://$PROJECT_DIR$/System/System.iml" filepath="$PROJECT_DIR$/System/System.iml" />
       <module fileurl="file://$PROJECT_DIR$/UsersService/UsersService.iml" filepath="$PROJECT_DIR$/UsersService/UsersService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OthelloPro/othello-pro.iml" filepath="$PROJECT_DIR$/OthelloPro/othello-pro.iml" />
     </modules>
   </component>
 </project>
