@@ -36,6 +36,8 @@ public class GameLauncher {
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);
+           case "othello-pro":
+
            default:
 
                break;
