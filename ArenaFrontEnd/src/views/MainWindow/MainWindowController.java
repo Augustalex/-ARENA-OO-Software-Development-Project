@@ -1,5 +1,8 @@
 package views.MainWindow;
 
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import views.FXMLViewController;
 import views.DimensionBinder;
@@ -9,15 +12,18 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import views.handleAdvertisement.handleExistingAdvertisements.HandleAdvertisementMainViewController;
+import views.tabView.TabViewController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MainWindowController extends FXMLViewController{
+public class MainWindowController extends FXMLViewController implements Initializable{
 
-    private FXMLViewController currentContentController = null;
+    private FXMLViewController tabViewController = null;
+
+    private Pane tabView = null;
 
     @FXML
     private BorderPane mainWindow;
@@ -25,114 +31,27 @@ public class MainWindowController extends FXMLViewController{
     @FXML
     private Pane contentView;
 
-    @FXML
-    private HBox tabView;
-
-    @FXML
-    private Button playButton;
-
-    @FXML
-    private Button watchButton;
-
-    @FXML
-    private Button createTournamentButton;
-
-    @FXML
-    private Button handleTournamentButton;
-
-    @FXML
-    private Button handleAdButton;
-
-    @FXML
-    private Button loginButton;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tabView/TabView.fxml"));
+            loader.setControllerFactory(c -> new TabViewController(contentView));
+            this.tabView = loader.load();
+            this.tabViewController = loader.getController();
+
+            mainWindow.setTop(this.tabView);
+        } catch (IOException e) {
+            System.out.println("Could not load tab view.");
+            e.printStackTrace();
+        }
 
         setupContentView();
         setupTabView();
-
-        setupTabViewRouting();
     }
 
     @Override
     public void closeView() {
         closeCurrentContentController();
-    }
-
-    public Pane getContentView(){
-        return this.contentView;
-    }
-
-    /**
-     * Setups loading of content by the buttons of the TabView.
-     */
-    private void setupTabViewRouting() {
-
-        playButton.setOnAction(e -> {
-            try {
-                closeCurrentContentController();
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PlayView/PlayView.fxml"));
-                Parent parent = loader.load();
-                this.currentContentController = loader.getController();
-
-                contentView.getChildren().setAll(parent);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        createTournamentButton.setOnAction(e -> {
-            try {
-                closeCurrentContentController();
-                Parent parent = this.loadFXML("tournament/configureTournament/ConfigureTournamentView.fxml");
-                contentView.getChildren().setAll(parent);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
-
-        handleTournamentButton.setOnAction(e -> {
-            try {
-                closeCurrentContentController();
-                Parent parent = this.loadFXML("tournament/handleTournamentStyle/HandleTournamentStyle.fxml");
-                contentView.getChildren().setAll(parent);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-        watchButton.setOnAction(e -> {
-            try {
-                closeCurrentContentController();
-                Parent parent = this.loadFXML("spectateMatch/spectateLobby/SpectateLobbyView.fxml");
-                contentView.getChildren().setAll(parent);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        handleAdButton.setOnAction(e->{
-            try {
-                closeCurrentContentController();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/handleExistingAdvertisements/HandleAdvertisementMain.fxml"));
-                Parent parent = loader.load();
-                HandleAdvertisementMainViewController controller = loader.getController();
-                contentView.getChildren().setAll(parent);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        loginButton.setOnAction(e->{
-            try {
-                closeCurrentContentController();
-                Parent parent = this.loadFXML("systemLogin/SystemLogin.fxml");
-                contentView.getChildren().setAll(parent);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
     }
 
     /**
@@ -159,7 +78,6 @@ public class MainWindowController extends FXMLViewController{
      */
     private void setupTabView(){
         bindTabViewDimensions(tabView, mainWindow);
-        bindButtonDimensions(tabView);
     }
 
     /**
@@ -179,23 +97,8 @@ public class MainWindowController extends FXMLViewController{
                                 tabViewWidthFactor,
                                 tabViewHeightFactor
                         ),
-                        mainWindow
+                        container
                 );
-    }
-
-    /**
-     *  Bind dimensions of the buttons to its containing tabView.
-     *  Dimension factors are defines in variables in the method.
-     * @param tabView
-     */
-    private void bindButtonDimensions(Pane tabView){
-        double widthFactor = 0.125;
-        double heightFactor = 1;
-
-        for(Button button : tabView.getChildren().stream().filter(node -> node instanceof Button).toArray(Button[]::new)){
-            DimensionBinder.bindHeightToPercentageOfContainer(button, heightFactor, tabView);
-            DimensionBinder.bindWidthToPercentageOfContainer(button, widthFactor, tabView);
-        }
     }
 
     /**
@@ -204,7 +107,6 @@ public class MainWindowController extends FXMLViewController{
      * loaded into the pane responsible for holding the main content.
      */
     private void closeCurrentContentController(){
-        if(this.currentContentController != null)
-            this.currentContentController.closeView();
+        this.tabViewController.closeView();
     }
 }

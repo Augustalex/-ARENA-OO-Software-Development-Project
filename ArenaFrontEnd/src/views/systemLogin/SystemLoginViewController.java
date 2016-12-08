@@ -74,5 +74,10 @@ public class SystemLoginViewController implements Initializable {
                     })
                     .onCancel(() -> System.out.println("Wrong password or username."));
         });
+
+        guestButton.setOnMouseClicked(e -> {
+            Session.getSession().setPlayer(Player.newMockPlayerFromUser(User.getGuestUser()));
+            System.out.println("Logged in as guest user.");
+        });
     }
 }

@@ -10,6 +10,6 @@ public class MatchList {
     SpectateTable matchList = new SpectateTable();
 
     public MatchList(ITournament tournament){
-        matchList.getAvailibleMatches(tournament);
+        matchList.getAvailableMatches(tournament);
     }
 }

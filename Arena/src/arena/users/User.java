@@ -63,6 +63,10 @@ public class User implements IUser {
         return delivery;
     }
 
+    public static IUser getGuestUser(){
+        return new User(-1, "Guest");
+    }
+
     public static IUser createMockUser(String name){
         return new User(-1, name);
     }

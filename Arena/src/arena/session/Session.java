@@ -1,6 +1,8 @@
 package arena.session;
 
+import arena.session.exceptions.NotLoggedInException;
 import arena.users.IPlayer;
+import arena.users.IUser;
 
 import java.io.Serializable;
 
@@ -16,7 +18,8 @@ public class Session implements Serializable, ISession{
 
     private static final Session session = new Session();
 
-    private IPlayer player;
+    private IPlayer player = null;
+    private IUser user = null;
     private AppliedTournaments appliedTournaments;
 
     private Session(){
@@ -33,8 +36,24 @@ public class Session implements Serializable, ISession{
     }
 
     @Override
+    public void setUser(IUser user){
+        this.user = user;
+    }
+
+    @Override
     public IPlayer getPlayer(){
-        return player;
+        if(player == null)
+            throw new NotLoggedInException();
+        else
+            return player;
+    }
+
+    @Override
+    public IUser getUser(){
+        if(user == null)
+            throw new NotLoggedInException();
+        else
+            return user;
     }
 
     @Override

@@ -35,7 +35,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Session.getSession().setPlayer(Player.newMockPlayer());
+
+        //Session.getSession().setPlayer(Player.newMockPlayer());
         launch(args);
     }
 }
