@@ -11,6 +11,7 @@
             <VBox fx:id="gameList" id="gameList">
                 <Button styleClass="gameButton" text="Othello" fx:id="othelloGameButton" />
                 <Button styleClass="gameButton" text="TicTacToe" fx:id="ticTacToeButton" />
+                <Button styleClass="gameButton" text="Othello Pro" fx:id="othelloProGameButton" />
                 <Button styleClass="gameButton" text="4 in row" fx:id="fourInRowGameButton" />
                 <Button styleClass="gameButton" text="Chess" fx:id="chessGameButton" />
                 <Button styleClass="gameButton" text="Checkers" fx:id="checkersGameButton" />

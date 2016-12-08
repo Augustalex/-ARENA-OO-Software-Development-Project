@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="othello1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/OthelloPro/dist/othello.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

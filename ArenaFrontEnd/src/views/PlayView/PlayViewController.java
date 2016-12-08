@@ -7,6 +7,7 @@ import arena.advertisement.adRepository.AdRepository;
 import arena.advertisement.adSpot.AdSpot;
 import arena.games.gameInformation.GameInformation;
 import arena.games.gameInformation.OthelloGameInformation;
+import arena.games.gameInformation.OthelloProGameInformation;
 import arena.games.gameInformation.TicTacToeGameInformation;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.scene.layout.*;
 import views.AdvertiserView;
 import views.DimensionBinder;
 import views.FXMLViewController;
-import views.GameInformationView.GameInformationViewController;
+import views.gameInformationView.GameInformationViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +45,9 @@ public class PlayViewController extends FXMLViewController implements Advertiser
 
     @FXML
     private Button ticTacToeButton;
+
+    @FXML
+    private Button othelloProGameButton;
 
     @FXML
     private VBox gameList;
@@ -146,6 +150,19 @@ public class PlayViewController extends FXMLViewController implements Advertiser
                 );
             }
             catch(IOException ex){
+                ex.printStackTrace();
+            }
+        });
+
+        othelloProGameButton.setOnAction(e -> {
+            try{
+                setGameInformationView(
+                        (Region) loadGameInformationView(new OthelloProGameInformation()),
+                        gameInformationContainer
+                );
+            }
+            catch(IOException ex){
+                System.out.println("Could not load Othello Pro GameInformationView.");
                 ex.printStackTrace();
             }
         });

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sqljdbc422">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/OthelloPro/dist/lib/sqljdbc42.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

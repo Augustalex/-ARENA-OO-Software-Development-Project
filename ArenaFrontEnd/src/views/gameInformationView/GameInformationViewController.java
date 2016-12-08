@@ -1,10 +1,8 @@
-package views.GameInformationView;
+package views.gameInformationView;
 
 import arena.games.gameLauncher.GameLauncher;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -14,13 +12,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import arena.games.gameInformation.GameInformation;
 import views.FXMLViewController;
 import views.DimensionBinder;
-
-import arena.*;
 
 import java.io.IOException;
 import java.net.URL;

@@ -6,6 +6,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import arena.games.gameInformation.GameInformation;
 import javafx.stage.StageStyle;
+import othello.Othello;
 import tests.RunMatch;
 
 /**
@@ -37,9 +38,8 @@ public class GameLauncher {
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);
-           case "othello-pro":
-               Stage newStage = new Stage(StageStyle.DECORATED);
-               new othello.Othello().start(newStage);
+           case "othellopro":
+               new Othello().start(stage);
            default:
                System.out.println("No game by that name.");
                break;
