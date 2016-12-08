@@ -4,7 +4,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.GridPane?>
-<VBox fx:controller="views.handleAdvertisement.HandleAdvertisementMainViewController" xmlns:fx="http://javafx.com/fxml"
+<VBox fx:controller="views.handleAdvertisement.handleExistingAdvertisements.HandleAdvertisementMainViewController" xmlns:fx="http://javafx.com/fxml"
       fx:id="mainAdvertisementView" spacing="20">
     <Text fx:id="topicText" text="Current advertisements" fill="white">
         <font>

@@ -1,10 +1,6 @@
 package views.MainWindow;
 
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.util.Pair;
 import views.FXMLViewController;
 import views.DimensionBinder;
 import javafx.fxml.FXML;
@@ -13,11 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import views.handleAdvertisement.HandleAdvertisementMainViewController;
+import views.handleAdvertisement.handleExistingAdvertisements.HandleAdvertisementMainViewController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainWindowController extends FXMLViewController{
@@ -120,10 +115,9 @@ public class MainWindowController extends FXMLViewController{
         handleAdButton.setOnAction(e->{
             try {
                 closeCurrentContentController();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/HandleAdvertisementMain.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/handleExistingAdvertisements/HandleAdvertisementMain.fxml"));
                 Parent parent = loader.load();
                 HandleAdvertisementMainViewController controller = loader.getController();
-                controller.setMainWindowController(this);
                 contentView.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();

@@ -18,6 +18,5 @@
     <HBox spacing="10">
         <Button fx:id="guestButton" text="Login as Guest"/>
         <Button fx:id="loginButton" text="Login"/>
-        <Button fx:id="cancelButton" text="Cancel"/>
     </HBox>
 </VBox>

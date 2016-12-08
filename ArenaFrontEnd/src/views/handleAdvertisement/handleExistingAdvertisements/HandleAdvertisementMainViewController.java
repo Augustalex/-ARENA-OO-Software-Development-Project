@@ -1,4 +1,4 @@
-package views.handleAdvertisement;
+package views.handleAdvertisement.handleExistingAdvertisements;
 
 import arena.advertisement.ad.IPreferredAd;
 import arena.advertisement.adRepository.AdRepository;
@@ -31,7 +31,6 @@ import java.util.ResourceBundle;
  */
 public class HandleAdvertisementMainViewController implements Initializable {
     //private List<AdvertisementMock> identifiedAds;
-    private MainWindowController mainWindowController;
     private List<IPreferredAd> advertisements;
     int row = 0;
     @FXML
@@ -52,21 +51,16 @@ public class HandleAdvertisementMainViewController implements Initializable {
         listAdvertisements();
         addNewButton.setOnAction(e->{
             try {
-                mainWindowController.closeView();
+                //mainWindowController.closeView();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/" +
                         "handleNewAdvertisement/HandleAdvertisement.fxml"));
                 Parent parent = loader.load();
                 HandleAdvertisementController controller = loader.getController();
-                controller.setMainWindowController(mainWindowController);
-                mainWindowController.getContentView().getChildren().setAll(parent);
+                mainAdvertisementView.getChildren().setAll(parent);
             }catch(IOException ex){
                 ex.printStackTrace();
             }
         });
-    }
-
-    public void setMainWindowController(MainWindowController mainWindowController){
-        this.mainWindowController = mainWindowController;
     }
 
     private void listAdvertisements() {

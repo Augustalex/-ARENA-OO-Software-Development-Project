@@ -1,7 +1,5 @@
 package views.handleAdvertisement.handleNewAdvertisement;
 
-import arena.advertisement.ad.Ad;
-import arena.advertisement.ad.ImageAd;
 import arena.advertisement.ad.PreferredAdFactory;
 import arena.advertisement.adPreference.AdPreferenceFactory;
 import arena.advertisement.adRepository.AdRepository;
@@ -12,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,10 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import views.MainWindow.MainWindowController;
-import views.handleAdvertisement.AdvertisementViewMocks.AdRepositoryMock;
-import views.handleAdvertisement.AdvertisementViewMocks.AdvertisementMock;
-import views.handleAdvertisement.HandleAdvertisementMainViewController;
+import views.handleAdvertisement.handleExistingAdvertisements.HandleAdvertisementMainViewController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +30,6 @@ import java.util.ResourceBundle;
 public class HandleAdvertisementController implements Initializable {
     private String[] preferences;
     private CheckBox[] checkboxes;
-    private MainWindowController mainWindowController;
 
     @FXML
     private BorderPane handleAdvertisementWindow;
@@ -72,10 +65,6 @@ public class HandleAdvertisementController implements Initializable {
         preferenceList.setPadding(new Insets(0, 0, 25, 0));
         setPreferenceList();
         submitAd.setOnAction(e -> submitHandler());
-    }
-
-    public void setMainWindowController(MainWindowController mainWindowController){
-        this.mainWindowController = mainWindowController;
     }
 
     private void setPreferenceList() {
@@ -146,13 +135,12 @@ public class HandleAdvertisementController implements Initializable {
 
     private void setAdMainView() {
         try {
-            mainWindowController.closeView();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/" +
                     "HandleAdvertisementMain.fxml"));
             Parent parent = loader.load();
             HandleAdvertisementMainViewController controller = loader.getController();
-            controller.setMainWindowController(mainWindowController);
-            mainWindowController.getContentView().getChildren().setAll(parent);
+            handleAdvertisementWindow.getChildren().setAll(parent);
         }catch(IOException ex){
             ex.printStackTrace();
         }

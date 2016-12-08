@@ -41,9 +41,6 @@ public class SystemLoginViewController implements Initializable {
     @FXML
     private Button loginButton;
 
-    @FXML
-    private Button cancelButton; //Why a cancel button..?
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginWindow.setPadding(new Insets(20,500,0,15));
