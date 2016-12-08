@@ -15,7 +15,7 @@
     <TextField fx:id="usernameField" promptText="Username" maxWidth="250"/>
     <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
     <Text fx:id="forgotPasswordText" text="Forgot my password" fill="white"/>
-    <HBox spacing="10">
+    <HBox spacing="10">s
         <Button fx:id="guestButton" text="Login as Guest"/>
         <Button fx:id="loginButton" text="Login"/>
         <Button fx:id="cancelButton" text="Cancel"/>

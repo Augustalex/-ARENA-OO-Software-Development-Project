@@ -21,6 +21,7 @@
       <module fileurl="file://$PROJECT_DIR$/StreamWatcher/StreamWatcher.iml" filepath="$PROJECT_DIR$/StreamWatcher/StreamWatcher.iml" />
       <module fileurl="file://$PROJECT_DIR$/System/System.iml" filepath="$PROJECT_DIR$/System/System.iml" />
       <module fileurl="file://$PROJECT_DIR$/UsersService/UsersService.iml" filepath="$PROJECT_DIR$/UsersService/UsersService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/othello-pro/othello-pro.iml" filepath="$PROJECT_DIR$/othello-pro/othello-pro.iml" />
     </modules>
   </component>
 </project>
