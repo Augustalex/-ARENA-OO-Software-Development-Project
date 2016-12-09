@@ -43,9 +43,6 @@ public class HandleSpectateLobbyController implements Initializable {
     private TableColumn tourNameCol;
 
     @FXML
-    private TableView tournamentMatchTable;
-
-    @FXML
     private TableColumn gameCol;
     @FXML
     private TableView tableGames;
