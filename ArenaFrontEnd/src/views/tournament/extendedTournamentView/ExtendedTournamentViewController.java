@@ -44,6 +44,7 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     @FXML
     private Rectangle gameImage;
 
+
     public ExtendedTournamentViewController(ITournament tournament){
         this.tournament = tournament;
         this.gameInformation = tournament.getGameInformation();
@@ -53,7 +54,6 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     public void initialize(URL location, ResourceBundle resources) {
 
         TournamentName.setText(tournament.getTournamentMetaInformation().getName());
-        Matches.setText("Matches");
 
         gameImage.setFill(new ImagePattern(new Image(gameInformation.getImageURL())));
         gameImage.widthProperty().bind(gameInfoContainer.widthProperty().multiply(0.2));

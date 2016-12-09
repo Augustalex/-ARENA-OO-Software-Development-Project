@@ -12,4 +12,6 @@ public interface IResult {
     ResultType getResultType();
 
     List<IPlayer> getResultPlayers();
+
+    void setResultType(ResultType type);
 }

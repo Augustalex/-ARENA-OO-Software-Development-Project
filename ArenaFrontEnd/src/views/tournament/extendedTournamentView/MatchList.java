@@ -1,15 +1,41 @@
 package views.tournament.extendedTournamentView;
 
 import arena.tournament.ITournament;
+import arena.tournament.match.IMatch;
+import com.sun.xml.internal.bind.v2.TODO;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import spectate.SpectateTable;
+
+import java.io.Serializable;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by Simon on 02/12/2016.
  */
-public class MatchList {
-    SpectateTable matchList = new SpectateTable();
+
+public class MatchList extends BorderPane implements Initializable{
+
+    private ITournament tournament;
+    @FXML
+    private Label matchLabel;
 
     public MatchList(ITournament tournament){
-        matchList.getAvailableMatches(tournament);
+        this.tournament = tournament;
+    }
+
+    public List<IMatch> getMatchlist(ITournament tournament){
+        return SpectateTable.get().getAvailableMatches(tournament);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //TODO lägg in så man ser alla matcher.
+        getMatchlist(tournament);
+        //matchLabel.setText();
     }
 }

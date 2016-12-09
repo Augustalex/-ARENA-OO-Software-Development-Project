@@ -25,4 +25,9 @@ public class Result implements IResult{
     public List<IPlayer> getResultPlayers() {
         return resultPlayer;
     }
+
+    @Override
+    public void setResultType(ResultType type) {
+        this.type = type;
+    }
 }

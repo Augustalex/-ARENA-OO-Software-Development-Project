@@ -28,6 +28,8 @@ public class SpectateTable implements Serializable{
         return SpectateTableHolder.instance;
     }
 
+    private SpectateTable(){}
+
     public List<IMatch> returnAllPossibleMatches(){
         availibleLeagues = getLeagues();
         for (int i = 0; i < availibleLeagues.size(); i++){
@@ -51,11 +53,6 @@ public class SpectateTable implements Serializable{
     }
 
     public List<IMatch> getAvailableMatches(ITournament tournament){
-         List<IMatch> matches = new ArrayList<>();
-            for(int j = 0; j < tournament.getMatches().size(); j++){
-                IMatch tempMatch = tournament.getMatches().get(j);
-                availibleMatches.add(tempMatch);
-            }
-        return matches;
+        return tournament.getMatches();
     }
 }

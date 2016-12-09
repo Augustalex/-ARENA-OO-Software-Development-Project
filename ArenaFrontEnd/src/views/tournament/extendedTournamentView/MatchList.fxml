@@ -4,11 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.extendedTournamentView.ExtendedTournamentViewController"
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.extendedTournamentView.MatchList"
             stylesheets="/views/main.css" id="matchListContainer">
     <left>
         <FlowPane>
             <Label text="Match" fx:id="matchLabel" id="matchLabel" styleClass="tournamentApplyLabel"/>
         </FlowPane>
     </left>
+    <right>
+        <FlowPane>
+            <Button text="WATCH" fx:id="applyButton" id="tournamentApplyButton" styleClass="applyButtons"/>
+        </FlowPane>
+    </right>
 </BorderPane>

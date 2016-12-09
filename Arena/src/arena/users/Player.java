@@ -32,9 +32,8 @@ public class Player implements IPlayer{
         this.user = user;
     }
 
-    public static IPlayer newMockPlayer(){
-        IPlayer player = new Player(User.createMockUser("August"));
-        player.getLeagues().add(ILeague.createMockLeague("Mock League AF"));
+    public static IPlayer newMockPlayer(String name){
+        IPlayer player = Player.newMockPlayerFromUser(User.createMockUser(name));
         return player;
     }
 

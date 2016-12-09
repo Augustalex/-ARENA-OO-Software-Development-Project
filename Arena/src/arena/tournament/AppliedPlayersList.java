@@ -32,4 +32,12 @@ public class AppliedPlayersList {
             System.out.println(appliedPlayersList.get(i).getName());
         }
     }
+
+    public IPlayer getPlayerFromList(int index){
+        return appliedPlayersList.get(index);
+    }
+
+    public int lenght(){
+        return appliedPlayersList.size();
+    }
 }
