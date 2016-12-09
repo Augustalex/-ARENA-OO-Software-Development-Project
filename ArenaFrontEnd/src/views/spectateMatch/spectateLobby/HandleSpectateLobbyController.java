@@ -1,7 +1,6 @@
 package views.spectateMatch.spectateLobby;
 
 import arena.games.game.IGame;
-import arena.games.gameInformation.GameInformation;
 import arena.games.gameManager.ArenaGameManager;
 import arena.league.ILeague;
 import arena.tournament.ITournament;
@@ -25,7 +24,6 @@ import views.tournament.extendedTournamentView.ExtendedTournamentViewController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -48,12 +46,6 @@ public class HandleSpectateLobbyController implements Initializable {
     private TableView tournamentMatchTable;
 
     @FXML
-    private Button othello;
-    @FXML
-    private Button ticTacToe;
-    @FXML
-    private Label placeHolder;
-    @FXML
     private TableColumn gameCol;
     @FXML
     private TableView tableGames;
@@ -62,25 +54,38 @@ public class HandleSpectateLobbyController implements Initializable {
         configureView();
     }
 
+    /**
+     *  Handles the events and startup config for the the view.
+     */
     private void configureView() {
         setTableGames();
         tableGames.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            /**  Handles the events for a mouseclick on the tableGame
+             *   If a user clicks a valid row the user will be shown a new table with more information
+             *   About the league and tournaments that belongs to that game.
+             * @param event
+             */
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("HEJ HEJ");
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 1) {
+                    Node node = ((Node) event.getTarget()).getParent();
+                    TableRow row;
+                    if (node instanceof TableRow) {
+                        row = (TableRow) node;
+                    } else {
+                        // clicking on text part
+                        row = (TableRow) node.getParent();
+                    }
+                    System.out.println(row.getItem());
+                    GameSettings gameSettings = (GameSettings) row.getItem();
+                    System.out.println(gameSettings.getGameInfo());
+                    tournamentMatchTable.setVisible(false);
+                    setTableView(gameSettings.getGameInfo());
+                }
             }
         });
-        othello.setOnAction(event -> {
-            placeHolder.setVisible(false);
-            tournamentMatchTable.setVisible(false);
-            setTableView();
-        });
 
-        ticTacToe.setOnAction(event -> {
-            placeHolder.setVisible(false);
-            tournamentMatchTable.setVisible(false);
-            setTableView(); //hej
-        });
         tableTournaments.setOnMousePressed(new EventHandler<MouseEvent>() {
             /**
              * Handles the mouseclick onto a row in the tableTournamentView.
@@ -98,21 +103,22 @@ public class HandleSpectateLobbyController implements Initializable {
                         // clicking on text part
                         row = (TableRow) node.getParent();
                     }
-                    LeagueSettings league = (LeagueSettings) row.getItem(); // Typecast för att få fram objektet
+                    LeagueSettings league = (LeagueSettings) row.getItem();
                     System.out.println(league.getTournament());
                     try {
                         newView(league.getTournament());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //tableViewMatch(league, row);
                 }
             }
         });
     }
-    private void setTableGames(){
-        //Hämta spel från Arena GameManager istället för från ligorna
 
+    /**
+     * Adds all the games availables in the arena to the tableGames
+     */
+    private void setTableGames(){
 
         tableGames.refresh();
         ObservableList<GameSettings> gameList = FXCollections.observableArrayList();
@@ -122,12 +128,17 @@ public class HandleSpectateLobbyController implements Initializable {
             System.out.println(game.getGameInformation().getGameName());
         }
 
-
         gameCol.setCellValueFactory(new PropertyValueFactory<GameSettings, String>("gameName"));
         tableGames.setItems(gameList);
         tableGames.getColumns().clear();
         tableGames.getColumns().addAll(gameCol);
     }
+
+    /**
+     * Launches a pop up that will show the TournamentLobby for Spectator
+     * @param tournament
+     * @throws IOException
+     */
     private void newView(ITournament tournament) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/tournament/extendedTournamentView/ExtendedTournamentView.fxml"));
@@ -139,13 +150,19 @@ public class HandleSpectateLobbyController implements Initializable {
         stage.show();
     }
 
-    private void setTableView() {
+    /**
+     * setTableView initates the table that shows the tournaments and leagues for a certain game.
+     * @param game
+     */
+    private void setTableView(IGame game) {
         ObservableList<LeagueSettings> tournamentsList = FXCollections.observableArrayList();
 
         for(ILeague league : SpectateTable.get().getLeagues())
-            for(ITournament tournament : league.getTournaments())
-                tournamentsList.add(new LeagueSettings(league, tournament, league.getGame()));
-
+            if(game.getGameInformation().getGameName() == league.getGame().getGameInformation().getGameName()){
+                for (ITournament tournament : league.getTournaments()) {
+                    tournamentsList.add(new LeagueSettings(league, tournament, league.getGame()));
+                }
+        }
         tableTournaments.setVisible(true);
         leagueCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ILeague>("league"));
         tourNameCol.setCellValueFactory(new PropertyValueFactory<LeagueSettings, ITournament>("tournament"));
@@ -154,6 +171,10 @@ public class HandleSpectateLobbyController implements Initializable {
         tableTournaments.getColumns().addAll(leagueCol, tourNameCol);
     }
 
+    /**
+     *  Inner class that holds the information about a league, tournament and what game it belongs to
+     *  The class is used within the view tableTournaments
+     */
     public static class LeagueSettings {
 
         private ITournament tournament;
@@ -174,6 +195,11 @@ public class HandleSpectateLobbyController implements Initializable {
             return this.tournament;
         }
     }
+
+    /**
+     * A inner class that holds the information about a game.
+     * The class is being used for the table viewGames.
+     */
     public static class GameSettings{
         private IGame gameInfo;
         private final SimpleStringProperty gameName = new SimpleStringProperty("");
@@ -186,5 +212,6 @@ public class HandleSpectateLobbyController implements Initializable {
         public String getGameName(){
             return this.gameName.get();
         }
+        public IGame getGameInfo(){return this.gameInfo;}
     }
 }
