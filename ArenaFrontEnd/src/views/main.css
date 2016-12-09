@@ -262,10 +262,10 @@ StackPane#playViewSuperWindow{
 .loginButton {
     -fx-background-color: #FF09C1;
     -fx-font-family: "Helvetica";
-
 }
 
 .loginButton:hover{
     -fx-background-color: #ff79df;
     -fx-font-family: "Helvetica";
 }
+

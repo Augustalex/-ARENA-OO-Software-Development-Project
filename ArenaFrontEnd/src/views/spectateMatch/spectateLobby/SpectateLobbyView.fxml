@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <VBox fx:controller="views.spectateMatch.spectateLobby.HandleSpectateLobbyController" xmlns:fx="http://javafx.com/fxml"
-      fx:id="TournamentStyleWindow" id="TournamentStyleContainer" >
+      fx:id="TournamentStyleWindow" id="spectateStyleContainer" >
             <HBox maxHeight="50">
                 <HBox prefWidth="200"></HBox>
                 <Text fx:id="spectatorText" text="Spectator view" fill="white" textAlignment="CENTER"/>
@@ -13,7 +13,7 @@
 
             <HBox>
                 <VBox prefWidth="300">
-                    <TableView fx:id ="tableGames" >
+                    <TableView fx:id ="tableGames" styleClass="spectateTable">
                         <columns>
                             <TableColumn prefWidth="200" text="GameName." fx:id="gameCol" />
                         </columns>
@@ -21,7 +21,7 @@
 
                 </VBox>
                 <VBox prefWidth="300"></VBox>
-                <TableView fx:id ="tableTournaments" visible="false">
+                <TableView fx:id ="tableTournaments" visible="false" styleClass="spectateTable">
                     <columns>
                         <TableColumn prefWidth="200" text="LeagueName." fx:id="leagueCol" />
                         <TableColumn prefWidth="200" text="TournamentName." fx:id="tourNameCol" />
