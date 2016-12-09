@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import arena.tournament.tournamentStyle.ITournamentStyle;
 import arena.tournament.tournamentStyle.TournamentStyleFactory;
+import views.FXMLViewController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
  *
  * Extended ERROR handling for invalid input data needs to be fixed.
  */
-public class HandleTournamentStyleController implements Initializable{
+public class HandleTournamentStyleController extends FXMLViewController implements Initializable{
     ITournamentStyle tournamentStyle;
     @FXML
     private VBox TournamentStyleWindow;
@@ -184,4 +185,8 @@ public class HandleTournamentStyleController implements Initializable{
         alert.showAndWait();
     }
 
+    @Override
+    public void closeView() {
+
+    }
 }

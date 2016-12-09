@@ -76,7 +76,16 @@ public class RouterButtonController {
         if(this.controllerCallback != null)
             loader.setControllerFactory(this.controllerCallback);
 
-        Pane pane = loader.load();
+        Pane pane;
+        try {
+            pane = loader.load();
+        }
+        catch (Exception ex){
+            System.out.println("Error");
+            System.out.println(fxmlPath);
+            ex.printStackTrace();
+            throw new IOException();
+        }
         this.currentController.set(loader.getController());
         return pane;
     }

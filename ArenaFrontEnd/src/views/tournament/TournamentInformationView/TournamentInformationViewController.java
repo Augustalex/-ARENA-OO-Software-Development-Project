@@ -1,5 +1,6 @@
 package views.tournament.TournamentInformationView;
 
+import arena.users.IPlayer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -41,7 +42,7 @@ public class TournamentInformationViewController extends FXMLViewController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        List<ITournament> tournaments = this.session.getPlayer().getAvailableTournaments();
+        List<ITournament> tournaments = ((IPlayer) this.session.getUser()).getAvailableTournaments();
         viewTournamentList(tournaments);
 
         DimensionBinder.bindWidthToPercentageOfContainer(

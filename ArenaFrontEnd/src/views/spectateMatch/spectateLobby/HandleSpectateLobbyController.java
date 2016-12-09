@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import spectate.SpectateTable;
+import views.FXMLViewController;
 import views.tournament.extendedTournamentView.ExtendedTournamentViewController;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ import java.util.ResourceBundle;
  *
  * Extended ERROR handling for invalid input data needs to be fixed.
  */
-public class HandleSpectateLobbyController implements Initializable {
+public class HandleSpectateLobbyController extends FXMLViewController implements Initializable {
 
     @FXML
     private TableView tableTournaments;
@@ -163,6 +164,11 @@ public class HandleSpectateLobbyController implements Initializable {
         tableTournaments.setItems(tournamentsList);
         tableTournaments.getColumns().clear();
         tableTournaments.getColumns().addAll(leagueCol, tourNameCol);
+    }
+
+    @Override
+    public void closeView() {
+
     }
 
     /**

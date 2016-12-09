@@ -288,10 +288,11 @@ StackPane#playViewSuperWindow{
     -fx-text-fill: white;
     -fx-font-size: 2em;
     -fx-pref-width: 200px;
-    -fx-background-color: #0b031a;
+    -fx-background-color: #8a5f90;
+    -fx-background-insets: 2px 0;
 }
 
-.testToolsLoginButton: hover{
+.testToolsLoginButton:hover{
     -fx-text-fill: #888;
     -fx-font-size: 2em;
     -fx-pref-width: 200px;

@@ -1,9 +1,11 @@
 package spectate;
 
 import arena.league.ILeague;
+import arena.league.League;
 import arena.session.Session;
 import arena.tournament.ITournament;
 import arena.tournament.match.IMatch;
+import arena.users.IPlayer;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,12 +42,14 @@ public class SpectateTable implements Serializable{
             ITournament tempTour = availibleTournaments.get(j);
             availibleMatches = getAvailableMatches(tempTour);
         }
-        return availibleMatches;
 
+        return availibleMatches;
     }
 
     public List<ILeague> getLeagues(){
-        return session.getPlayer().getLeagues();
+        List<ILeague> leagues = new ArrayList<>();
+        leagues.add(ILeague.createMockLeague("League AF"));
+        return leagues;
     }
 
     public List<ITournament> getTournaments(ILeague league){

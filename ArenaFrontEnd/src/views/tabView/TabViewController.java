@@ -86,10 +86,10 @@ public class TabViewController extends FXMLViewController implements Initializab
     private RouterButton getSpectatorButton(){
         return
                 new RouterButtonBuilder()
-                    .buttonText("WATCH")
-                    .fxmlPath("spectateMatch/spectateLobby/SpectateLobbyView.fxml")
-                    .contentView(contentView)
-                    .currentControllerProperty(currentController)
+                        .buttonText("WATCH")
+                        .fxmlPath("spectateMatch/spectateLobby/SpectateLobbyView.fxml")
+                        .contentView(contentView)
+                        .currentControllerProperty(currentController)
                     .build();
     }
 
@@ -111,7 +111,7 @@ public class TabViewController extends FXMLViewController implements Initializab
                         .fxmlPath("tournament/handleTournamentStyle/HandleTournamentStyle.fxml")
                         .contentView(contentView)
                         .currentControllerProperty(currentController)
-                        .build();
+                    .build();
     }
 
     private RouterButton getLeagueOwnerButtons(){
@@ -121,17 +121,27 @@ public class TabViewController extends FXMLViewController implements Initializab
                         .fxmlPath("tournament/configureTournament/ConfigureTournamentView.fxml")
                         .contentView(contentView)
                         .currentControllerProperty(currentController)
-                        .build();
+                    .build();
     }
 
     private RouterButton getAdvertiserButtons(){
         return
                 new RouterButtonBuilder()
                         .buttonText("Handle Advertisement")
-                        .fxmlPath("handleAdvertisement/HandleAdvertisementMain.fxml")
+                        .fxmlPath("handleAdvertisement/HandleAdvertisementsContainer.fxml")
                         .contentView(contentView)
                         .currentControllerProperty(currentController)
-                        .build();
+                    .build();
+    }
+
+    private RouterButton getLoginButton(){
+        return
+                new RouterButtonBuilder()
+                        .buttonText("Profile")
+                        .fxmlPath("systemLogin/SystemLogin.fxml")
+                        .contentView(contentView)
+                        .currentControllerProperty(currentController)
+                    .build();
     }
 
     private List<RouterButton> getButtonsForUser(IUser user){
@@ -163,7 +173,9 @@ public class TabViewController extends FXMLViewController implements Initializab
     private void addButtonsToTabView(List<RouterButton> buttons){
         Platform.runLater(() -> {
             tabView.getChildren().clear();
+            contentView.getChildren().clear();
             buttons.forEach(button -> tabView.getChildren().add(button));
+            tabView.getChildren().add(getLoginButton());
             bindButtonDimensions(tabView);
         });
     }

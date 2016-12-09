@@ -19,7 +19,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();
         Platform.setImplicitExit(false);
-
+        
         //Loading controller to enable closing it on exit of application.
         FXMLViewController controller = loader.getController();
 
@@ -29,13 +29,17 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(parent, 1600, 1000));
         primaryStage.show();
 
+        Stage testTools = startTestToolsView();
+
         primaryStage.setOnCloseRequest(e -> {
             controller.closeView();
             primaryStage.close();
+
+            if(testTools != null)
+                testTools.close();
+
             Platform.exit();
         });
-
-        startTestToolsView();
     }
 
     public static void main(String[] args) {
@@ -46,7 +50,7 @@ public class Main extends Application {
 
     }
 
-    private void startTestToolsView(){
+    private Stage startTestToolsView(){
         try {
             Stage stage = new Stage(StageStyle.DECORATED);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/testTools/TestView.fxml"));
@@ -56,9 +60,11 @@ public class Main extends Application {
             stage.setX(10);
             stage.setY(10);
             stage.show();
+            return stage;
         } catch (IOException e) {
             System.out.println("Could not start Test Tools View.");
             e.printStackTrace();
+            return null;
         }
 
     }

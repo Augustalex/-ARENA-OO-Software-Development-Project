@@ -17,6 +17,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import views.FXMLViewController;
 
 import java.net.URL;
 import java.util.Optional;
@@ -25,7 +26,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Johan on 2016-12-02.
  */
-public class SystemLoginViewController implements Initializable {
+public class SystemLoginViewController extends FXMLViewController implements Initializable {
 
     @FXML
     private VBox loginWindow;
@@ -84,5 +85,10 @@ public class SystemLoginViewController implements Initializable {
             Session.getSession().setPlayer(Player.newMockPlayerFromUser(User.getGuestUser()));
             System.out.println("Logged in as guest user.");
         });
+    }
+
+    @Override
+    public void closeView() {
+
     }
 }

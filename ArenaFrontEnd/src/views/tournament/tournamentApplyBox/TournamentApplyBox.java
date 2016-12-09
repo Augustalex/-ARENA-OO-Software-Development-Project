@@ -1,5 +1,6 @@
 package views.tournament.tournamentApplyBox;
 
+import arena.users.IPlayer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -63,7 +64,7 @@ public class TournamentApplyBox extends BorderPane implements Initializable{
         applyButton.setOnAction(e -> {
             applyButton.setText("Applied");
             appliedTournaments.applyToTournament(tournament);
-            tournament.applyPlayer(Session.getSession().getPlayer());
+            tournament.applyPlayer((IPlayer)Session.getSession().getUser());
             applyButton.setDisable(true);
             applyButton.setStyle("-fx-base: #766F70");
             tourLobbyButton.setDisable(false);

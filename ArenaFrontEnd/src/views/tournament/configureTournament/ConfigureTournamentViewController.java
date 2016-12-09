@@ -19,6 +19,7 @@ import arena.tournament.tournamentStyle.ITournamentStyle;
 import arena.tournament.tournamentStyle.TournamentStyleFactory;
 import arena.timeDate.TimeDate;
 import views.DimensionBinder;
+import views.FXMLViewController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +30,7 @@ import java.util.ResourceBundle;
  * Validates form data and submits a new ITournamentConfiguration for review on action.
  *
  */
-public class ConfigureTournamentViewController implements Initializable {
+public class ConfigureTournamentViewController extends FXMLViewController implements Initializable {
 
     @FXML
     private StackPane createTournamentContainer;
@@ -94,5 +95,10 @@ public class ConfigureTournamentViewController implements Initializable {
                         .setTournamentStyle(tournamentComboBox.getValue())
                         .setMetaInformation((ITournamentMetaInformation) metaInformation)
         );
+    }
+
+    @Override
+    public void closeView() {
+
     }
 }
