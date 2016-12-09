@@ -1,0 +1,5 @@
+<?import javafx.scene.layout.VBox?>
+<VBox fx:controller="views.handleAdvertisement.HandleAdvertisementContainerController" xmlns:fx="http://javafx.com/fxml"
+      fx:id="mainAdvertisementContainer">
+
+</VBox>

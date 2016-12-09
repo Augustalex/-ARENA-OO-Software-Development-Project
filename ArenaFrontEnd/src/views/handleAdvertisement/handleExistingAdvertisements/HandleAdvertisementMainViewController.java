@@ -3,6 +3,10 @@ package views.handleAdvertisement.handleExistingAdvertisements;
 import arena.advertisement.ad.IPreferredAd;
 import arena.advertisement.adRepository.AdRepository;
 import arena.users.advertiser.Advertiser;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,11 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import views.MainWindow.MainWindowController;
-import views.handleAdvertisement.AdvertisementViewMocks.AdRepositoryMock;
-import views.handleAdvertisement.AdvertisementViewMocks.AdvertisementMock;
 import views.handleAdvertisement.handleNewAdvertisement.HandleAdvertisementController;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -33,6 +33,7 @@ public class HandleAdvertisementMainViewController implements Initializable {
     //private List<AdvertisementMock> identifiedAds;
     private List<IPreferredAd> advertisements;
     int row = 0;
+
     @FXML
     private VBox mainAdvertisementView;
 
@@ -49,18 +50,10 @@ public class HandleAdvertisementMainViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mainAdvertisementView.setPadding(new Insets(20,500,0,15));
         listAdvertisements();
-        addNewButton.setOnAction(e->{
-            try {
-                //mainWindowController.closeView();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/" +
-                        "handleNewAdvertisement/HandleAdvertisement.fxml"));
-                Parent parent = loader.load();
-                HandleAdvertisementController controller = loader.getController();
-                mainAdvertisementView.getChildren().setAll(parent);
-            }catch(IOException ex){
-                ex.printStackTrace();
-            }
-        });
+    }
+
+    public Button getButton(){
+        return addNewButton;
     }
 
     private void listAdvertisements() {

@@ -1,14 +1,15 @@
 package views.handleAdvertisement.handleNewAdvertisement;
 
+import arena.advertisement.ad.IPreferredAd;
 import arena.advertisement.ad.PreferredAdFactory;
 import arena.advertisement.adPreference.AdPreferenceFactory;
 import arena.advertisement.adRepository.AdRepository;
 import arena.metaInformation.AdSchemeMetaInformation.AdSchemeMetaInformation;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -18,9 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import views.handleAdvertisement.handleExistingAdvertisements.HandleAdvertisementMainViewController;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,6 +29,8 @@ import java.util.ResourceBundle;
 public class HandleAdvertisementController implements Initializable {
     private String[] preferences;
     private CheckBox[] checkboxes;
+
+    private ObjectProperty<IPreferredAd> adProperty = new SimpleObjectProperty<>();
 
     @FXML
     private BorderPane handleAdvertisementWindow;
@@ -64,7 +65,7 @@ public class HandleAdvertisementController implements Initializable {
         inputVBox.setPadding(new Insets(25, 0, 25, 0));
         preferenceList.setPadding(new Insets(0, 0, 25, 0));
         setPreferenceList();
-        submitAd.setOnAction(e -> submitHandler());
+        submitAd.setOnAction(e->{submitHandler();});
     }
 
     private void setPreferenceList() {
@@ -75,11 +76,11 @@ public class HandleAdvertisementController implements Initializable {
         checkboxes = new CheckBox[2];
         AdSchemeMetaInformation[] helpInformation = new AdSchemeMetaInformation[2];
         helpInformation[0] = new AdSchemeMetaInformation("Play View Scheme",
-                "Your ad will be shown in the Play view in the Arena.\n It will be shown for "
+                "Your adProperty will be shown in the Play view in the Arena.\n It will be shown for "
                         + "max 5 seconds and for\n every display your account will be debited $0.25"
                         + "\nAd will be closeable.");
         helpInformation[1] = new AdSchemeMetaInformation("Main View Scheme",
-                "Your ad will be shown in the Main view in the Arena.\n It will be shown for "
+                "Your adProperty will be shown in the Main view in the Arena.\n It will be shown for "
                         + "max 10 seconds and for\n every display your account will be debited $0.5"
                         + "\nAd will be closeable.");
 
@@ -110,6 +111,7 @@ public class HandleAdvertisementController implements Initializable {
     }
 
     private void submitHandler() {
+
         String source = sourceField.getText();
         String amount = amountField.getText();
         String[] selectedPreferences = new String[2];
@@ -123,27 +125,24 @@ public class HandleAdvertisementController implements Initializable {
         try {
             //AdRepositoryMock.getAdRepositoryMock().addNewAd(new AdvertisementMock(name, preferences[0], Double.parseDouble(amount), 1));
             AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description, 1, Double.parseDouble(amount));
-            AdRepository.get().addPreferredAd(PreferredAdFactory.newPreferredAd(source,
-                    AdPreferenceFactory.newPlayViewPreference(), adMetaInformation));
-            setAdMainView();
-        } catch(IllegalArgumentException ex){
+            IPreferredAd ad = PreferredAdFactory.newPreferredAd(
+                    source,
+                    AdPreferenceFactory.newPlayViewPreference(),
+                    adMetaInformation);
+
+            AdRepository.get().addPreferredAd(ad);
+            adProperty.set(ad);
+
+        } catch (IllegalArgumentException ex) {
             ex.printStackTrace();
             showError();
             confirmationText.setText("Advertisement not added");
         }
+
     }
 
-    private void setAdMainView() {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/" +
-                    "HandleAdvertisementMain.fxml"));
-            Parent parent = loader.load();
-            HandleAdvertisementMainViewController controller = loader.getController();
-            handleAdvertisementWindow.getChildren().setAll(parent);
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
+    public ObjectProperty<IPreferredAd> preferredAdProperty(){
+        return this.adProperty;
     }
 
     private void showError() {
