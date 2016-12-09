@@ -20,9 +20,9 @@ public class SpectateTable implements Serializable{
 
     private Session session = Session.getSession();
 
-    List<IMatch> availibleMatches = new ArrayList<>();
-    List<ITournament> availibleTournaments = new ArrayList<>();
-    List<ILeague> availibleLeagues = new ArrayList<>();
+    private List<IMatch> availibleMatches = new ArrayList<>();
+    private List<ITournament> availibleTournaments = new ArrayList<>();
+    private List<ILeague> availibleLeagues = new ArrayList<>();
 
     public static SpectateTable get(){
         return SpectateTableHolder.instance;
