@@ -21,7 +21,7 @@
     </VBox>
 
     <VBox>
-            <Text text="SizeOfTournament" fill='white'></Text>
+            <Text text="Size of Tournament" fill='white'></Text>
             <TextField fx:id="size" minWidth="30" maxWidth="130"/>
     </VBox>
 
@@ -31,7 +31,7 @@
     </VBox>
 
     <VBox>
-            <Text text="Amount of groupps" fill='white'></Text>
+            <Text text="Amount of groups" fill='white'></Text>
             <TextField fx:id="noOfGroups" minWidth="30" maxWidth="130"/>
     </VBox>
 
@@ -51,7 +51,7 @@
     </VBox>
 
     <VBox >
-            <Text text="Best of arena.games" fill='white'></Text>
+            <Text text="Best of arena games" fill='white'></Text>
             <TextField fx:id="bestOfGames" minWidth="30" maxWidth="130"/>
     </VBox>
 
