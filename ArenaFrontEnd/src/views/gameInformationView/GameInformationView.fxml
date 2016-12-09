@@ -14,7 +14,7 @@
             <VBox fx:id="gameInformationLeft" id="gameInformationLeft">
                 <Rectangle fx:id="gameImage" styleClass="gameImage"/>
                 <TextFlow id="gameInformationDescriptionFlow">
-                    <Label fx:id="gameDescription" styleClass="textDescription"/>
+                    <Label fx:id="gameDescription" styleClass="textDescription" textAlignment="CENTER" wrapText="true"/>
                 </TextFlow>
             </VBox>
         </left>

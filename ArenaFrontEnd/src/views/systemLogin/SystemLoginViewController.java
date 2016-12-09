@@ -7,12 +7,14 @@ import arena.users.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Optional;
@@ -43,7 +45,7 @@ public class SystemLoginViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loginWindow.setPadding(new Insets(20,500,0,15));
+        loginWindow.setPadding(new Insets(10,15,0,15));
         forgotPasswordText.setUnderline(true);
         setForgotPasswordEvents();
         setLoginEvents();

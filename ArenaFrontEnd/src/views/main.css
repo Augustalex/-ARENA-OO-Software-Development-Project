@@ -247,3 +247,25 @@ StackPane#playViewSuperWindow{
     -fx-background-color: #152029;
 
 }
+
+#login{
+    -fx-background-color: black;
+}
+
+#loginBox{
+    -fx-background-color: black;
+    -fx-font-family: "Helvetica";
+    -fx-alignment: center;
+    -fx-max-width: 400;
+}
+
+.loginButton {
+    -fx-background-color: #FF09C1;
+    -fx-font-family: "Helvetica";
+
+}
+
+.loginButton:hover{
+    -fx-background-color: #ff79df;
+    -fx-font-family: "Helvetica";
+}
