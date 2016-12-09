@@ -196,16 +196,17 @@ public class HandleSpectateLobbyController implements Initializable {
      */
     public static class GameSettings{
         private IGame gameInfo;
-        private final SimpleStringProperty gameName = new SimpleStringProperty("");
+        private String gameName;
 
         public GameSettings(IGame game){
             this.gameInfo = game;
-            this.gameName.set(game.getGameInformation().getGameName());
+            this.gameName = game.getGameInformation().getGameName();
         }
 
         public String getGameName(){
-            return this.gameName.get();
+            return this.gameName;
         }
-        public IGame getGameInfo(){return this.gameInfo;}
-    }
+        public IGame getGameInfo(){
+            return this.gameInfo;}
+        }
 }
