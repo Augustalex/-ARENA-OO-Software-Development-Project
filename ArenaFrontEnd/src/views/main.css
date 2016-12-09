@@ -24,15 +24,18 @@ HBox#tabView{
     -fx-border-width: 0 0 3px 0;
 }
 
-HBox#tabView Button{
+HBox#tabView RouterButton{
     -fx-background-color: #152029;
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
     -fx-background-radius: 0 0 0 0;
     -fx-background-insets: 0 0 2px 0;
+    -fx-font-size: 1.5em;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
 }
 
-HBox#tabView Button:hover{
+HBox#tabView RouterButton:hover{
     -fx-background-color: #354e5d;
     -fx-font-family: "Century Gothic";
     -fx-text-fill: white;
@@ -259,7 +262,7 @@ StackPane#playViewSuperWindow{
     -fx-max-width: 400;
 }
 
-.loginButton {
+.loginButton{
     -fx-background-color: #FF09C1;
     -fx-font-family: "Helvetica";
 }
@@ -269,3 +272,28 @@ StackPane#playViewSuperWindow{
     -fx-font-family: "Helvetica";
 }
 
+/*          TEST TOOLS      */
+
+#testToolsLoginContainer{
+    -fx-background-color: #000;
+}
+
+.testToolsLoginLabel{
+    -fx-font-size: 3em;
+    -fx-text-fill: white;
+    -fx-pref-height: 100px;
+}
+
+.testToolsLoginButton{
+    -fx-text-fill: white;
+    -fx-font-size: 2em;
+    -fx-pref-width: 200px;
+    -fx-background-color: #0b031a;
+}
+
+.testToolsLoginButton: hover{
+    -fx-text-fill: #888;
+    -fx-font-size: 2em;
+    -fx-pref-width: 200px;
+    -fx-background-color: #FFF;
+}

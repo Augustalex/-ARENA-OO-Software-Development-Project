@@ -1,22 +1,15 @@
 package views.MainWindow;
 
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.control.*;
 import views.FXMLViewController;
 import views.DimensionBinder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import views.tabView.TabViewController;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainWindowController extends FXMLViewController implements Initializable{

@@ -9,9 +9,7 @@ import arena.tournament.match.IMatch;
 import arena.tournament.match.Match;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
 import arena.users.IPlayer;
-import arena.users.IUser;
 import arena.users.Player;
-import arena.users.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -77,7 +75,7 @@ public class Tournament implements ITournament, Serializable {
 
         Arrays.stream(players)
                 .forEach(name ->
-                        appliedPlayers.applyPlayerToList(Player.newMockPlayer(name)));
+                        appliedPlayers.applyPlayerToList(Player.create(name)));
 
         for (int i = 1; i < appliedPlayers.lenght(); i+=2){
             IMatch match = new Match();

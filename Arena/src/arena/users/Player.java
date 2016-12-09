@@ -28,11 +28,11 @@ public class Player implements IPlayer{
 
     private ArrayList<ILeague> leagues = new ArrayList<>();
 
-    private Player(IUser user) {
+    public Player(IUser user) {
         this.user = user;
     }
 
-    public static IPlayer newMockPlayer(String name){
+    public static IPlayer create(String name){
         IPlayer player = Player.newMockPlayerFromUser(User.createMockUser(name));
         return player;
     }

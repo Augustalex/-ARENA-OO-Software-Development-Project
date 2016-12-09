@@ -9,6 +9,8 @@ import arena.session.Session;
 import arena.users.Player;
 import views.FXMLViewController;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
     @Override
@@ -32,11 +34,32 @@ public class Main extends Application {
             primaryStage.close();
             Platform.exit();
         });
+
+        startTestToolsView();
     }
 
     public static void main(String[] args) {
 
-        //Session.getSession().setPlayer(Player.newMockPlayer());
+        //Session.getSession().setPlayer(Player.create());
+
         launch(args);
+
+    }
+
+    private void startTestToolsView(){
+        try {
+            Stage stage = new Stage(StageStyle.DECORATED);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/testTools/TestView.fxml"));
+            Parent parent = loader.load();
+            stage.setTitle("Test Tools");
+            stage.setScene(new Scene(parent, 200, 650));
+            stage.setX(10);
+            stage.setY(10);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Could not start Test Tools View.");
+            e.printStackTrace();
+        }
+
     }
 }

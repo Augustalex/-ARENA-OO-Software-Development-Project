@@ -58,7 +58,7 @@ public class HandleAdvertisementMainViewController implements Initializable {
 
     private void listAdvertisements() {
         //identifiedAds = AdRepositoryMock.getAdRepositoryMock().getAds(1);
-        advertisements = AdRepository.get().getAdsFromOwner(new Advertiser(1));
+        advertisements = AdRepository.get().getAdsFromOwner(Advertiser.create("SuperJohan"));
         currentAdvertisements.getChildren().clear();
         row = 0;
         init();

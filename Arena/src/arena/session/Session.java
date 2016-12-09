@@ -3,6 +3,8 @@ package arena.session;
 import arena.session.exceptions.NotLoggedInException;
 import arena.users.IPlayer;
 import arena.users.IUser;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 import java.io.Serializable;
 
@@ -19,7 +21,9 @@ public class Session implements Serializable, ISession{
     private static final Session session = new Session();
 
     private IPlayer player = null;
-    private IUser user = null;
+
+    private ObjectProperty<IUser> userProperty = new SimpleObjectProperty<>(null);
+
     private AppliedTournaments appliedTournaments;
 
     private Session(){
@@ -37,7 +41,7 @@ public class Session implements Serializable, ISession{
 
     @Override
     public void setUser(IUser user){
-        this.user = user;
+        this.userProperty.set(user);
     }
 
     @Override
@@ -50,10 +54,10 @@ public class Session implements Serializable, ISession{
 
     @Override
     public IUser getUser(){
-        if(user == null)
+        if(userProperty.get() == null)
             throw new NotLoggedInException();
         else
-            return user;
+            return userProperty.get();
     }
 
     @Override
@@ -61,4 +65,7 @@ public class Session implements Serializable, ISession{
         return appliedTournaments;
     }
 
+    public ObjectProperty<IUser> userProperty(){
+        return this.userProperty;
+    }
 }

@@ -20,11 +20,15 @@ import java.util.Map;
 public class User implements IUser {
 
     private static Map<String, String> loginMock = new HashMap<>();
+    private static Map<String, Class> userType = new HashMap<>();
 
     static{
         User.loginMock.put("august", "fuckoff1");
+        User.userType.put("august", Player.class);
+
         User.loginMock.put("johan", "twatcunt2");
         User.loginMock.put("carlos", "whatthehell3");
+
     }
 
     public final int id;
@@ -49,13 +53,19 @@ public class User implements IUser {
 
         new Thread(() -> {
             if(User.loginMock.containsKey(username.toLowerCase())
-                && User.loginMock.get(username.toLowerCase()).equals(password))
-                    delivery.deliver(
-                            new Gson()
-                                    .fromJson(
-                                            "{name:"+username.toLowerCase()+",id:-1}",
-                                            User.class
-                                    ));
+                && User.loginMock.get(username.toLowerCase()).equals(password)){
+                    IUser user = new Gson()
+                            .fromJson(
+                                "{name:"+username.toLowerCase()+",id:-1}",
+                                User.class
+                            );
+
+                    if(User.userType.containsKey(user.getName())
+                            && User.userType.get(user.getName()).equals(Player.class))
+                        delivery.deliver(Player.newMockPlayerFromUser(user));
+                    else
+                        delivery.deliver(user);
+            }
             else
                 delivery.cancel();
         }).start();

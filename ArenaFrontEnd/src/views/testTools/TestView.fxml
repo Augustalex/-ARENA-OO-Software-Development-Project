@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.testTools.TestViewController"
+            stylesheets="/views/main.css" id="testToolsContainer">
+    <center>
+        <VBox alignment="CENTER" id="testToolsLoginContainer">
+            <Label styleClass="testToolsLoginLabel" text="Logins" />
+            <Button styleClass="testToolsLoginButton" fx:id="spectatorButton" text="Spectator"/>
+            <Button styleClass="testToolsLoginButton" fx:id="playerButton" text="Player" />
+            <Button styleClass="testToolsLoginButton" fx:id="operatorButton" text="Operator"/>
+            <Button styleClass="testToolsLoginButton" fx:id="leagueOwnerButton" text="LeagueOwner"/>
+            <Button styleClass="testToolsLoginButton" fx:id="advertiserButton" text="Advertiser" />
+        </VBox>
+    </center>
+</BorderPane>

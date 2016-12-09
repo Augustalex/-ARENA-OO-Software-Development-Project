@@ -4,6 +4,8 @@ import arena.session.Session;
 import arena.users.IUser;
 import arena.users.Player;
 import arena.users.User;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -72,6 +74,7 @@ public class SystemLoginViewController implements Initializable {
             User.getUser(usernameField.getText(), passwordField.getText())
                     .onDelivery(user -> {
                         System.out.println("Logged in as " + user.getName());
+                        Session.getSession().setUser(user);
                         Session.getSession().setPlayer(Player.newMockPlayerFromUser(user));
                     })
                     .onCancel(() -> System.out.println("Wrong password or username."));
