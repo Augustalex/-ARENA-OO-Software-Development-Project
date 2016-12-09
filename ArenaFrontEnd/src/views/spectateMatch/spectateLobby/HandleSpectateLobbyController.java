@@ -77,10 +77,7 @@ public class HandleSpectateLobbyController implements Initializable {
                         // clicking on text part
                         row = (TableRow) node.getParent();
                     }
-                    System.out.println(row.getItem());
                     GameSettings gameSettings = (GameSettings) row.getItem();
-                    System.out.println(gameSettings.getGameInfo());
-                    tournamentMatchTable.setVisible(false);
                     setTableView(gameSettings.getGameInfo());
                 }
             }
