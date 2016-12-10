@@ -24,8 +24,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static com.apple.eio.FileManager.getResource;
-
 /**
  * Created by Johan on 2016-12-02.
  */

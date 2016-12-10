@@ -18,27 +18,6 @@
     -fx-background-color: linear-gradient(#0f171e, #0b031a);
 }
 
-HBox#tabView{
-    -fx-background-color: #112;
-    -fx-border-color: linear-gradient(#152029, #0e3d5e);
-    -fx-border-width: 0 0 3px 0;
-}
-
-HBox#tabView Button{
-    -fx-background-color: #152029;
-    -fx-font-family: "Century Gothic";
-    -fx-text-fill: white;
-    -fx-background-radius: 0 0 0 0;
-    -fx-background-insets: 0 0 2px 0;
-}
-
-HBox#tabView Button:hover{
-    -fx-background-color: #354e5d;
-    -fx-font-family: "Century Gothic";
-    -fx-text-fill: white;
-    -fx-background-radius: 0 0 0 0;
-
-}
 
 #gameList{
     -fx-background-color: #152029;
@@ -281,4 +260,57 @@ StackPane#playViewSuperWindow{
     -fx-background-color: black;
     -fx-text-fill: whitesmoke;
     -fx-border-color: white;
+}
+
+/*      TAB VIEW        */
+
+HBox#tabView{
+    -fx-background-color: #112;
+    -fx-border-color: linear-gradient(#152029, #0e3d5e);
+    -fx-border-width: 0 0 3px 0;
+}
+
+HBox#tabView RouterButton{
+    -fx-background-color: #152029;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-insets: 0 0 2px 0;
+}
+
+HBox#tabView RouterButton:hover{
+    -fx-background-color: #354e5d;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 0 0;
+}
+
+VBox#testToolsLoginContainer{
+    -fx-background-color: #0b031a;
+}
+
+Label.testToolsLoginLabel{
+    -fx-font-size: 4em;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-insets: 0 0 2px 0;
+}
+
+Button.testToolsLoginButton{
+    -fx-font-size: 2.5em;
+    -fx-pref-height: 100px;
+    -fx-background-color: #152029;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: white;
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-insets: 5px 0 5px 0;
+    -fx-pref-width: 200px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+Button.testToolsLoginButton:hover{
+    -fx-background-color: #FFF;
+    -fx-text-fill: #888;
 }

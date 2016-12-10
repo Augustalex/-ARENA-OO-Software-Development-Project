@@ -12,7 +12,7 @@
             <Button styleClass="testToolsLoginButton" fx:id="spectatorButton" text="Spectator"/>
             <Button styleClass="testToolsLoginButton" fx:id="playerButton" text="Player" />
             <Button styleClass="testToolsLoginButton" fx:id="operatorButton" text="Operator"/>
-            <Button styleClass="testToolsLoginButton" fx:id="leagueOwnerButton" text="LeagueOwner"/>
+            <Button styleClass="testToolsLoginButton" fx:id="leagueOwnerButton" text="League Owner"/>
             <Button styleClass="testToolsLoginButton" fx:id="advertiserButton" text="Advertiser" />
         </VBox>
     </center>

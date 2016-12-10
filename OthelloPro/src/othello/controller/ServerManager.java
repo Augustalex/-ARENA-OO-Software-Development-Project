@@ -89,7 +89,7 @@ public class ServerManager {
 
     /**
      * Method for sending message to server.
-     * @param moves Arralist of possible moves
+     * @param moves ArrayList of possible moves
      */
     public void sendMessage(ArrayList<Point> moves){
         try {

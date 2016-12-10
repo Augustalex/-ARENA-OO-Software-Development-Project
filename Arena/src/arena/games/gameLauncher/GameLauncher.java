@@ -1,5 +1,6 @@
 package arena.games.gameLauncher;
 
+import arena.IPInformation.IPInformation;
 import arena.games.preInstalledGames.ticTacToe.TicTacToe;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -47,6 +48,10 @@ public class GameLauncher {
                break;
        }
 
+   }
+
+   public static void launchMultiplayerGame(GameInformation gameInformation, IPInformation... ipInformation){
+       System.out.println("a a a amazing");
    }
 
 }

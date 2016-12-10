@@ -1,17 +1,25 @@
 package arena.IPInformation;
 
+import java.io.Serializable;
+
 /**
  * Contains IP information for connecting to a server o client.
  */
-public class IPInformation {
+public class IPInformation implements Serializable{
 
-    private String ipv4Address;
+    private final String ipv4Address;
+    private final int port;
 
-    public IPInformation(String ipv4Address){
+    public IPInformation(String ipv4Address, int port){
         this.ipv4Address = ipv4Address;
+        this.port = port;
     }
 
     public String getIpv4Address(){
         return this.ipv4Address;
+    }
+
+    public int getPort(){
+        return port;
     }
 }
