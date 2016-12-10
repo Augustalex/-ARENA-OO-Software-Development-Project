@@ -1,9 +1,11 @@
 package boardGameLibrary.eventWrappers;
 
+import java.io.Serializable;
+
 /**
  * Created by August on 2016-10-15.
  */
-public class BoardMoveEvent {
+public class BoardMoveEvent implements Serializable{
 
     private boolean madeLegalMove;
     private boolean noMoreMoves;

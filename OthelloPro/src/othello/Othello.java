@@ -24,7 +24,7 @@ public class Othello extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(GameFrame.getGrameFrame().returnGameFrame(), 700, 600);
+        Scene scene = new Scene(GameFrame.getGameFrame().returnGameFrame(), 700, 600);
 
         primaryStage.setTitle("Othello");
         primaryStage.setScene(scene);

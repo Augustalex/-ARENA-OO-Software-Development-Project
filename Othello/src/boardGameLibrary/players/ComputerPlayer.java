@@ -32,6 +32,8 @@ public abstract class ComputerPlayer extends Player{
 
         new Thread(() -> {
             try {
+                //Sets an empty array for the legal moves property
+                //as the computer needs no visual aid for what moves are available.
                 Platform.runLater(() -> moveProperties.legalMovesProperty().set(new ArrayList<>()));
 
                 if(boardMoveMaker.getAvailableMoves(this).size() == 0) {

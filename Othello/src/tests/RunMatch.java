@@ -3,12 +3,24 @@ package tests;
 import boardGameLibrary.boardGame.match.MatchSetup;
 import boardGameLibrary.players.LocalPlayer;
 import boardGameLibrary.players.Player;
+import boardGameLibrary.players.RemotePlayer;
+import boardGameLibrary.viewModel.ViewDimensionBinder;
+import com.google.gson.Gson;
+import hostProviderService.Host;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import utilities.DimensionBinder;
+import utilities.router.Router;
 import utilities.router.paneRouter.PaneRouter;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by August on 2016-11-02.
@@ -33,4 +45,58 @@ public class RunMatch {
         map.put("MatchSetup", setup);
         router.route("GameView", map);
     }
+
+    public static void runOnlineMatchTest(Pane container, Map<Host, LocalPlayer> players, LocalPlayer localPlayer){
+
+        Router router = new PaneRouter(container);
+
+        //Remote listening information
+        int gamePort = 3000;
+
+        setupGame(
+            router,
+            newMatchSetup(players, localPlayer, gamePort)
+        );
+    }
+
+    public static Player newRemotePlayer(Player player, int port){
+        return new RemotePlayer(
+                player.getName(),
+                player.getColor()
+        ).setPort(port);
+    }
+
+    public static Player newLocalOnlinePlayer(LocalPlayer player, List<Host> hosts, Host localHost){
+        List<Host> finalHosts = new ArrayList<>();
+        finalHosts.addAll(hosts);
+        finalHosts.remove(localHost);
+        return player.setToOnlinePlayer(finalHosts.stream().toArray(Host[]::new));
+    }
+
+    public static MatchSetup newMatchSetup(Map<Host, LocalPlayer> players, Player localPlayer, int gamePort){
+        return new MatchSetup(
+                "Othello",
+                players.entrySet().stream()
+                    .filter(entry -> !entry.getValue().getName().equals(localPlayer.getName()))
+                    .map(entry -> {
+                        if(entry.getValue().equals(localPlayer))
+                            return newLocalOnlinePlayer(
+                                    entry.getValue(),
+                                    players.keySet().stream().collect(Collectors.toList()),
+                                    entry.getKey()
+                            );
+                        else
+                            return newRemotePlayer(entry.getValue(), gamePort);
+                    })
+                    .toArray(Player[]::new)
+        );
+    }
+
+    public static void setupGame(Router router, MatchSetup setup){
+        Map<String, Object> map = new HashMap<>();
+        map.put("MatchSetup", setup);
+        router.route("GameView", map);
+    }
+
+
 }

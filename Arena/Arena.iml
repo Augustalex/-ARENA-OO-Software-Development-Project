@@ -19,5 +19,6 @@
     </orderEntry>
     <orderEntry type="module" module-name="ReST" />
     <orderEntry type="module" module-name="OthelloPro" />
+    <orderEntry type="module" module-name="HostProviderService" />
   </component>
 </module>

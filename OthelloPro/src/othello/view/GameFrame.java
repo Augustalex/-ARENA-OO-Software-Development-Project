@@ -48,7 +48,7 @@ public class GameFrame {
     /**
      * @return the singleton-instance
      */
-    public static GameFrame getGrameFrame(){
+    public static GameFrame getGameFrame(){
         return GameFrameHolder.INSTANCE;
     }
     

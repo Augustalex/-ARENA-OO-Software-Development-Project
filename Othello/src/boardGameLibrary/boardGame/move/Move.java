@@ -1,11 +1,13 @@
 package boardGameLibrary.boardGame.move;
 
+import java.io.Serializable;
+
 /**
  * Move class is a wrapper, or holder, class for a number of {@link PlayerAction}s. A board game
  * might include one single action as a more, or it may hold several. This class is independent on
  * which ever number of actions are required for a legal move.
  */
-public class Move {
+public class Move implements Serializable{
 
     private PlayerAction[] actions;
 

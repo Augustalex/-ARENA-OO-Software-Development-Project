@@ -6,15 +6,21 @@ import boardGameLibrary.eventWrappers.CellClickEvent;
 import boardGameLibrary.eventWrappers.PlayerMadeMoveEvent;
 import boardGameLibrary.players.changeListeners.CellClickListener;
 import boardGameLibrary.players.changeListeners.MadeMoveListener;
+import boardGameLibrary.players.changeListeners.OnlineMadeMoveListener;
+import hostProviderService.Host;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.paint.Color;
 
 /**
  * Created by August on 2016-09-30.
  */
 public class LocalPlayer extends Player {
+
+    private boolean isOnline = false;
+    private Host[] remotes = new Host[]{};
 
     public LocalPlayer(String name, Color color) {
         super(name, color);
@@ -30,7 +36,10 @@ public class LocalPlayer extends Player {
     public void makeMove(BoardMoveMaker boardMoveMaker, MoveProperties moveProperties) {
         ObjectProperty<PlayerMadeMoveEvent> madeMoveProperty = new SimpleObjectProperty<>();
 
-        madeMoveProperty.addListener(new MadeMoveListener(boardMoveMaker));
+        if(isOnline)
+            madeMoveProperty.addListener(new OnlineMadeMoveListener(boardMoveMaker, remotes));
+        else
+            madeMoveProperty.addListener(new MadeMoveListener(boardMoveMaker));
 
         //Establishing the Thread that will collect a Move from e CellClickEvent.
         new Thread(() -> {
@@ -40,6 +49,13 @@ public class LocalPlayer extends Player {
             moveProperties.cellClickProperty().addListener(new CellClickListener(madeMoveProperty, this));
 
         }).start();
+    }
+
+    public LocalPlayer setToOnlinePlayer(Host[] remotes){
+        this.remotes = remotes;
+        this.isOnline = true;
+
+        return this;
     }
 
 }

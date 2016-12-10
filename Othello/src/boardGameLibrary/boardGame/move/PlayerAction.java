@@ -1,6 +1,7 @@
 package boardGameLibrary.boardGame.move;
 
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * A player action denotes a player interaction to a given element.
@@ -9,7 +10,7 @@ import java.awt.*;
  *
  * This class may also represent an action in form of a mouse click.
  */
-public class PlayerAction {
+public class PlayerAction implements Serializable {
     private int x;
     private int y;
 

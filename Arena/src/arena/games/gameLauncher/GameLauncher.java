@@ -2,13 +2,20 @@ package arena.games.gameLauncher;
 
 import arena.IPInformation.IPInformation;
 import arena.games.preInstalledGames.ticTacToe.TicTacToe;
+import boardGameLibrary.players.LocalPlayer;
+import boardGameLibrary.players.Player;
+import hostProviderService.Host;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import arena.games.gameInformation.GameInformation;
 import javafx.stage.StageStyle;
 import othello.Othello;
 import tests.RunMatch;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Launches a certain game given information about the
@@ -35,7 +42,17 @@ public class GameLauncher {
 
        switch(gameInformation.getGameName().toLowerCase()){
            case "othello":
-               RunMatch.runMatch(newGamePane);
+               //RunMatch.runMatch(newGamePane);
+               Map<Host, LocalPlayer> players = new HashMap<>();
+
+               LocalPlayer johan = new LocalPlayer("Johan", Color.BLUE);
+               LocalPlayer august = new LocalPlayer("August", Color.TOMATO);
+
+               players.put(new Host("192.168.1.3", 3000), johan);
+
+               players.put(new Host("192.168.1.4", 3000), august);
+
+               RunMatch.runOnlineMatchTest(newGamePane, players, august);
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);

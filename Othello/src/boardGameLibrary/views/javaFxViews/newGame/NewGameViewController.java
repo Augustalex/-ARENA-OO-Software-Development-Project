@@ -71,7 +71,8 @@ public class NewGameViewController extends FXMLViewController{
             map.put("MatchSetup", setup);
 
             //Route to GameView with the new GameMatch object.
-            Router.getApplicationRouter().route("GameView", map);
+            getRouter().route("GameView", map);
+            //Router.getApplicationRouter().route("GameView", map);
         };
 
         //Sets up what happens when the number of players are selected.

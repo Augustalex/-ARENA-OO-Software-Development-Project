@@ -3,10 +3,12 @@ package boardGameLibrary.eventWrappers;
 import boardGameLibrary.boardGame.move.Move;
 import boardGameLibrary.players.Player;
 
+import java.io.Serializable;
+
 /**
  * Created by August on 2016-10-15.
  */
-public class PlayerMadeMoveEvent {
+public class PlayerMadeMoveEvent implements Serializable{
 
     private Move move;
     private Player player;

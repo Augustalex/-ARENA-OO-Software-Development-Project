@@ -38,7 +38,7 @@ public class GameManager implements Observer{
      */
     private Player player1;
     private Player player2;
-    private static Player whosturn;
+    private static Player currentPlayer;
     private static GameGrid gameGrid;
     private GameBoard gameBoard;
     private StatusBar statusBar;
@@ -52,24 +52,24 @@ public class GameManager implements Observer{
      */
     public GameManager(){
         setPlayers();
-        whosturn = getStartPlayer();
+        currentPlayer = getStartPlayer();
         
         //Construct newGame-gameBoard and assign it to GameFrame
         gameBoard = new GameBoard();
-        GameFrame.getGrameFrame().setGameBoard(gameBoard);
+        GameFrame.getGameFrame().setGameBoard(gameBoard);
         gameBoard.initNewBoard();
         gameGrid = new GameGrid(gameBoard.getBoardSize(), this);
         updateBoard(); 
         
         //collect information about the game and set statusbar
-        statusBar = GameFrame.getGrameFrame().getStatusBar();
+        statusBar = GameFrame.getGameFrame().getStatusBar();
         countScore();
         statusBar.setStatusBarLayout
             (new StatusBarUpdater(player1, player2, player1Score, player2Score),
-                    whosturn.getMarker().getColour());
+                    currentPlayer.getMarker().getColour());
         
         //Initiate the start of the game;
-        whosturn.nextMove(gameGrid);
+        currentPlayer.nextMove(gameGrid);
     }
     
     /**
@@ -90,13 +90,13 @@ public class GameManager implements Observer{
         changeTurn();
         statusBar.setStatusBarLayout
                 (new StatusBarUpdater(player1, player2, player1Score, player2Score), 
-                        whosturn.getMarker().getColour());
+                        currentPlayer.getMarker().getColour());
         //If end of game present result, otherwise ask next player for a move.
         if(isEndOfGame()){
             presentResult();
             return;
         }
-        whosturn.nextMove(gameGrid);
+        currentPlayer.nextMove(gameGrid);
         
     }
     
@@ -134,16 +134,16 @@ public class GameManager implements Observer{
      */
     private boolean isEndOfGame(){
         if(gameGrid.isFull()) return true;
-        if(gameGrid.calculatePlayerMoves(whosturn.getMarker()).isEmpty()){
-            Player player = whosturn;
+        if(gameGrid.calculatePlayerMoves(currentPlayer.getMarker()).isEmpty()){
+            Player player = currentPlayer;
             changeTurn();
             statusBar.setStatusBarLayout
                 (new StatusBarUpdater(player1, player2, player1Score, player2Score), 
-                        whosturn.getMarker().getColour());
+                        currentPlayer.getMarker().getColour());
             statusBar.showWarning("No moves available for " + 
                 player.getMarker().getColour() + ". Turn passed over.");
         }
-        if(gameGrid.calculatePlayerMoves(whosturn.getMarker()).isEmpty())
+        if(gameGrid.calculatePlayerMoves(currentPlayer.getMarker()).isEmpty())
             return true;
         return false;
     }
@@ -152,10 +152,10 @@ public class GameManager implements Observer{
      * Changes player turn
      */
     private void changeTurn(){
-        if(whosturn == player1)
-            whosturn = player2;
+        if(currentPlayer == player1)
+            currentPlayer = player2;
         else 
-            whosturn = player1;
+            currentPlayer = player1;
     }
     /**
      * Collects information about the two players about to play a new game of 
@@ -233,8 +233,8 @@ public class GameManager implements Observer{
             Object actionCell = event.getSource();
             i = ((Cell)actionCell).getI();
             j = ((Cell)actionCell).getJ();
-            if(!(message = whosturn.processMove(gameGrid, i, j)).equals(""))
-                GameFrame.getGrameFrame().getStatusBar().showWarning(message);                   
+            if(!(message = currentPlayer.processMove(gameGrid, i, j)).equals(""))
+                GameFrame.getGameFrame().getStatusBar().showWarning(message);
         }
     }
 }
