@@ -15,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import views.FXMLViewController;
@@ -22,6 +23,8 @@ import views.FXMLViewController;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import static com.apple.eio.FileManager.getResource;
 
 /**
  * Created by Johan on 2016-12-02.

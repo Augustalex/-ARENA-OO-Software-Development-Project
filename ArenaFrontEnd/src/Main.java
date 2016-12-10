@@ -3,10 +3,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import arena.session.Session;
-import arena.users.Player;
 import views.FXMLViewController;
 
 import java.io.IOException;
@@ -15,6 +14,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        //Loading custom font
+        Font font = Font.loadFont(Main.class.getResourceAsStream("/views/dotty.ttf"), 10);
+        System.out.println(font);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();

@@ -3,23 +3,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.FlowPane?>
+
+<?import javafx.scene.control.Label?>
 <StackPane fx:controller="views.systemLogin.SystemLoginViewController" xmlns:fx="http://javafx.com/fxml" id="login">
     <VBox fx:id="loginWindow" spacing="20" id="loginBox">
-        <Text text="USER AUTHORIZATION" fill="white">
-            <font>
-                <Font name="Arial" size="18"/>
-            </font>
-        </Text>
-        <TextField fx:id="usernameField" promptText="Username" maxWidth="250"/>
-        <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
+        <Label text="Arena" id="logInID"></Label>
+        <Text text="Please log in.." fill="white"/>
+        <TextField fx:id="usernameField" promptText="Username" maxWidth="250" styleClass="logIn"/>
+        <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250" styleClass="logIn"/>
+        <VBox spacing="10" alignment="CENTER">
+            <Button fx:id="loginButton" text="LOGIN" styleClass="loginButton"/>
+            <Label text= "Or.." textFill="whitesmoke"/>
+            <Button fx:id="guestButton" text="LOGIN AS GUEST" styleClass="loginButton"/>
+        </VBox>
         <Text fx:id="forgotPasswordText" text="Forgot my password" fill="white"/>
-        <HBox spacing="10" alignment="CENTER">
-            <Button fx:id="guestButton" text="Login as Guest" styleClass="loginButton"/>
-            <Button fx:id="loginButton" text="Login" styleClass="loginButton"/>
-        </HBox>
     </VBox>
 </StackPane>
