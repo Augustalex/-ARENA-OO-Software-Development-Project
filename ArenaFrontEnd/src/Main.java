@@ -17,7 +17,6 @@ public class Main extends Application {
 
         //Loading custom font
         Font font = Font.loadFont(Main.class.getResourceAsStream("/views/dotty.ttf"), 10);
-        System.out.println(font);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainWindow/MainWindowView.fxml"));
         Parent parent = loader.load();

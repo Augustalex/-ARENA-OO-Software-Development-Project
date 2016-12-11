@@ -9,7 +9,7 @@
     <VBox fx:id="createTournamentContent" id="createTournamentContent">
         <Label text="Create Tournament" styleClass="tournamentLabel" id="header"/>
         <HBox fx:id="tournamentHBox" id="tournamentHBox">
-            <Label text="Name " styleClass="tournamentLabel"/>
+            <Label text="Tournament Name " styleClass="tournamentLabel"/>
             <TextField styleClass="tournamentName, tournamentTextBoxes" fx:id="tournamentName"/>
         </HBox>
         <HBox>
@@ -25,6 +25,6 @@
             <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
             </ComboBox>
         </HBox>
-        <Button text="Submit" styleClass="pinkButton, tournamentConfigurationSubmitButton" fx:id="buttonTournamentSubmit"/>
+        <Button text="Submit" styleClass="loginButton, tournamentConfigurationSubmitButton" fx:id="buttonTournamentSubmit"/>
     </VBox>
 </StackPane>
