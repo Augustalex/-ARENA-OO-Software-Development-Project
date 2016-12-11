@@ -77,7 +77,6 @@ public class RunMatch {
         return new MatchSetup(
                 "Othello",
                 players.entrySet().stream()
-                    .filter(entry -> !entry.getValue().getName().equals(localPlayer.getName()))
                     .map(entry -> {
                         if(entry.getValue().equals(localPlayer))
                             return newLocalOnlinePlayer(
