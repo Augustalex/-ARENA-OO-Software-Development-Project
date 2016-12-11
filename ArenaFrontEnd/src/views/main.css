@@ -217,6 +217,11 @@ StackPane#playViewSuperWindow{
     -fx-alignment: center;
 }
 
+.tournamentComboBox{
+    -fx-background-color: linear-gradient(#0f171e, #0b031a);
+    -fx-border-color: white;
+}
+
 .tournamentConfigurationSubmitButton{
 
 }
