@@ -45,6 +45,15 @@ public class Player implements IPlayer{
         IPlayer player = Player.newMockPlayerFromUser(User.createMockUser(name));
         return player;
     }
+    public static IPlayer createWOTournament(String name){
+        IPlayer player = Player.newMockPlayerWOTournament(User.createMockUser(name));
+        return player;
+    }
+
+    private static IPlayer newMockPlayerWOTournament(IUser mockUser) {
+        IPlayer player = new Player(mockUser);
+        return player;
+    }
 
     public static IPlayer newMockPlayerFromUser(IUser user){
         IPlayer player = new Player(user);

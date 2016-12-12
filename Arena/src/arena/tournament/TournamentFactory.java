@@ -25,7 +25,8 @@ public class TournamentFactory {
     public static ITournament newTournamentMock(String name){
         return new Tournament(TournamentConfigurationFactory
                 .newConfigurationMock(name))
-                .setGame(GameFactory.newMockOthelloGame());
+                .setGame(GameFactory.newMockOthelloGame())
+                .addMatchToTournament();
     }
 
 }

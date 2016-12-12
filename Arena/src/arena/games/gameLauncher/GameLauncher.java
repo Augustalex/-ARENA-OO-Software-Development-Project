@@ -49,11 +49,11 @@ public class GameLauncher {
                LocalPlayer johan = new LocalPlayer("Johan", Color.BLUE);
                LocalPlayer august = new LocalPlayer("August", Color.TOMATO);
 
-               players.put(new Host("192.168.1.3", 3000), johan);
+               players.put(new Host("10.10.201.96", 3000), johan);
 
-               players.put(new Host("192.168.1.4", 3000), august);
+               players.put(new Host("10.10.107.76", 3000), august);
 
-               RunMatch.runOnlineMatchTest(newGamePane, players, august);
+               RunMatch.runOnlineMatchTest(newGamePane, players, johan);
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);

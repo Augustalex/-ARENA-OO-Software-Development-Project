@@ -40,6 +40,8 @@ public interface ITournament {
      */
     List<IMatch> getMatches();
 
+    ITournament addMatchToTournament();
+
     ITournament setGame(IGame game);
 
     GameInformation getGameInformation();
