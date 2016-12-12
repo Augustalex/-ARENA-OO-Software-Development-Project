@@ -10,11 +10,10 @@ import arena.tournament.match.Match;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
 import arena.users.IPlayer;
 import arena.users.Player;
+import javafx.scene.paint.Color;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Implements the Tournament interface.
@@ -53,36 +52,44 @@ public class Tournament implements ITournament, Serializable {
 
     @Override
     public List<IMatch> getMatches() {
-        mockMatches();
-        //throw new UnsupportedOperationException();
         return matchesInTournament;
     }
 
-    private void mockMatches(){
-        String[] players = new String[]{
-                "August",
-                "Simon",
-                "Carlos",
-                "Johan",
-                "Patric",
-                "Bjorn",
-                "Robin",
-                "MössJohan",
-                "Viktor",
-                "Nick",
-                "Röset"
-        };
+    @Override
+    public ITournament addMatchToTournament() {
+        mockMatches();
+        return this;
+    }
 
-        Arrays.stream(players)
-                .forEach(name ->
-                        appliedPlayers.applyPlayerToList(Player.create(name)));
+    /**
+     * Method for crating a mock tournament with matchmaking and a bunch of mock-users.
+     */
+    private void mockMatches(){
+        Map<String, Color> players = new HashMap<>();
+        players.put("August_cool", Color.TOMATO);
+        players.put("Simon", Color.AZURE);
+        players.put("Carlos", Color.PERU);
+        players.put("Johan", Color.ALICEBLUE);
+        players.put("Patric_42", Color.AQUA);
+        players.put("Bjorn", Color.BEIGE);
+        players.put("Robin", Color.CORAL);
+        players.put("MössJohan", Color.FUCHSIA);
+        players.put("Viktor", Color.GREEN);
+        players.put("Nick", Color.BLACK);
+        players.put("Röset", Color.ORANGE);
+
+        players.entrySet()
+                .forEach(entry ->
+                        appliedPlayers.applyPlayerToList(
+                                Player.createWOTournament(entry.getKey())
+                                    .setColor(entry.getValue())
+                        ));
 
         for (int i = 1; i < appliedPlayers.lenght(); i+=2){
             IMatch match = new Match();
             match.setUpMatch(appliedPlayers.getPlayerFromList(i - 1), appliedPlayers.getPlayerFromList(i));
             matchesInTournament.add(match);
         }
-
     }
 
     @Override
