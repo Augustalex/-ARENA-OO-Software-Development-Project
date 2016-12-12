@@ -22,8 +22,7 @@
         <TextField fx:id="tournamentDate" styleClass="tournamentTextBoxes"/>
         <HBox id="tournamentSelectStyle">
             <Label text="Tournament style: " styleClass="tournamentLabel"/>
-            <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox">
-            </ComboBox>
+            <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox"></ComboBox>
         </HBox>
         <Button text="Submit" styleClass="loginButton, tournamentConfigurationSubmitButton" fx:id="buttonTournamentSubmit"/>
     </VBox>

@@ -14,12 +14,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import views.FXMLViewController;
 
+import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
