@@ -57,7 +57,7 @@ public class Player implements IPlayer{
 
     public static IPlayer newMockPlayerFromUser(IUser user){
         IPlayer player = new Player(user);
-        player.getLeagues().add(ILeague.createMockLeague("Mock AF"));
+        player.getLeagues().add(ILeague.globalLeague);
         return player;
     }
 

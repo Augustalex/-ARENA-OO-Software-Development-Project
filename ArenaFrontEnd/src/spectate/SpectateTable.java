@@ -47,9 +47,7 @@ public class SpectateTable implements Serializable{
     }
 
     public List<ILeague> getLeagues(){
-        List<ILeague> leagues = new ArrayList<>();
-        leagues.add(ILeague.createMockLeague("League AF"));
-        return leagues;
+        return new ArrayList<ILeague>(){{add(ILeague.globalLeague);}};
     }
 
     public List<ITournament> getTournaments(ILeague league){

@@ -22,7 +22,7 @@ public class LeagueOwner extends Player implements ILeagueOwner{
 
     public static ILeagueOwner create(IUser user){
         return new LeagueOwner(user)
-                .setOwnedLeague(ILeague.createMockLeague("Mock League AF"));
+                .setOwnedLeague(ILeague.globalLeague);
     }
 
     @Override

@@ -6,6 +6,7 @@ import arena.tournament.ITournament;
 import arena.tournament.TournamentFactory;
 import arena.users.IPlayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,9 @@ import java.util.List;
  */
 public interface ILeague {
 
-    public static ILeague createMockLeague(String name){
+    final ILeague globalLeague = ILeague.createMockLeague("Mock League AF");
+
+    static ILeague createMockLeague(String name){
         ILeague league = new League(name, -1);
         league.setGame(GameFactory.newMockOthelloGame());
 
