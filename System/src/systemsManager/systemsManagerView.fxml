@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="systemsManager.SystemsManagerViewController"
+            stylesheets="/systemsManager/main.css">
+    <HBox alignment="CENTER">
+        <Label text="Machine IP: " styleClass="infoLabel" />
+        <Label fx:id="machineIPLabel" styleClass="infoLabel" />
+    </HBox>
+    <Label styleClass="header" text="SERVICES" />
+    <VBox fx:id="runningServicesList" styleClass="servicesList" id="runningServicesList">
+    </VBox>
+    <Label styleClass="header" text="Start New Service" />
+    <HBox alignment="CENTER">
+        <Label text="Port" styleClass="inputLabel" />
+        <TextField styleClass="inputField" fx:id="portNumberInput" />
+    </HBox>
+    <VBox fx:id="predefinedServicesList" id="predefinedServicesList" styleClass="servicesList">
+    </VBox>
+</VBox>
