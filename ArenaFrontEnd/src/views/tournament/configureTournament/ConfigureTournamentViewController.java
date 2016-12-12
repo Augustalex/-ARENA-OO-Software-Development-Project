@@ -61,6 +61,7 @@ public class ConfigureTournamentViewController extends FXMLViewController implem
 
         ObservableList<ITournamentStyle> styles = FXCollections.observableArrayList(TournamentStyleFactory.getTournamentStyles());
         tournamentComboBox.getItems().setAll(styles);
+        tournamentComboBox.setPromptText("Choose tournament style");
 
         DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 0.6, createTournamentContainer);
 
