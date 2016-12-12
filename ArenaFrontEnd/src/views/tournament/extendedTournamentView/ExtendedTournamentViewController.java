@@ -67,15 +67,15 @@ public class ExtendedTournamentViewController extends FXMLViewController {
 
         System.out.println("No of matches: " + listOfMatches.size());
         for(IMatch match : tournament.getMatches()) {
-            matchListHandler(tournament);
+            matchListHandler(match);
         }
 
     }
 
-    private void matchListHandler(ITournament tournament){
+    private void matchListHandler(IMatch match){
         DimensionBinder.bindWidthToPercentageOfContainer(MatchList, 0.8, gameInfoContainer);
         try {
-            Region matchListPane = loadNewMatchList(tournament);
+            Region matchListPane = loadNewMatchList(match);
             DimensionBinder.bindWidthToPercentageOfContainer(matchListPane, 0.95, MatchList);
             MatchList.getChildren().add(matchListPane);
             System.out.println("Added " + matchListPane + " to list.");
@@ -84,11 +84,11 @@ public class ExtendedTournamentViewController extends FXMLViewController {
         }
     }
 
-    private Region loadNewMatchList(ITournament tournament) throws IOException {
+    private Region loadNewMatchList(IMatch match) throws IOException {
         return (Region) this.loadFXML(
                 getClass().getResource(
                         "/views/tournament/extendedTournamentView/MatchList.fxml"),
-                c -> new MatchList(tournament)
+                c -> new MatchList(match)
         );
     }
 

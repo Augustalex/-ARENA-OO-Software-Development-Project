@@ -67,4 +67,9 @@ public class Match implements IMatch {
             lock.unlock();
         }
     }
+
+    @Override
+    public ArrayList<IPlayer> getPlayersInMatch() {
+        return playersInMatch;
+    }
 }

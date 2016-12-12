@@ -20,22 +20,21 @@ import java.util.ResourceBundle;
 
 public class MatchList extends BorderPane implements Initializable{
 
-    private ITournament tournament;
+    private IMatch match;
     @FXML
     private Label matchLabel;
 
-    public MatchList(ITournament tournament){
-        this.tournament = tournament;
+    public MatchList(IMatch match){
+        this.match = match;
     }
 
-    public List<IMatch> getMatchlist(ITournament tournament){
-        return SpectateTable.get().getAvailableMatches(tournament);
-    }
+   // public IMatch getMatch(){
+     //   return SpectateTable.get().getAvailableMatches(tournament);
+    //}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //TODO lägg in så man ser alla matcher.
-        getMatchlist(tournament);
-        //matchLabel.setText();
+        matchLabel.setText(match.getPlayersInMatch().get(0).getName() + " vs " + match.getPlayersInMatch().get(1).getName());
+        matchLabel.setStyle("-fx-prompt-text: white");
     }
 }
