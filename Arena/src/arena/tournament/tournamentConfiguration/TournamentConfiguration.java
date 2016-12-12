@@ -2,6 +2,7 @@ package arena.tournament.tournamentConfiguration;
 
 import arena.metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
 import arena.reviewServices.Reviewer;
+import arena.session.Session;
 import arena.tournament.tournamentStyle.ITournamentStyle;
 import arena.users.IUser;
 import arena.users.User;
@@ -42,7 +43,7 @@ public class TournamentConfiguration implements ITournamentConfiguration {
     @Override
     public void submit() {
         Reviewer.tournamentConfigurationReviewer
-                .submitForReview(this, User.createMockUser("Simon"));
+                .submitForReview(this, Session.getSession().getUser());
     }
 
     @Override
