@@ -7,9 +7,12 @@ import arena.league.ILeague;
 import arena.league.League;
 import arena.tournament.ITournament;
 import arena.tournament.TournamentFactory;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +30,12 @@ public class Player implements IPlayer{
     private final IUser user;
 
     private ArrayList<ILeague> leagues = new ArrayList<>();
+    private Color color = ((Supplier<Color>)() -> {
+        Random random = new Random(System.currentTimeMillis());
+        return Color.rgb(
+            random.nextInt(255), random.nextInt(255), random.nextInt(255)
+        );
+    }).get();
 
     public Player(IUser user) {
         this.user = user;
@@ -53,6 +62,17 @@ public class Player implements IPlayer{
         return leagues.stream()
                 .flatMap(l -> l.getTournaments().stream())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Color getColor() {
+        return this.color;
+    }
+
+    @Override
+    public IPlayer setColor(Color color) {
+        this.color = color;
+        return this;
     }
 
     @Override

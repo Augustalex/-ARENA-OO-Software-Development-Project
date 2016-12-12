@@ -2,6 +2,7 @@ package arena.games.gameLauncher;
 
 import arena.IPInformation.IPInformation;
 import arena.games.preInstalledGames.ticTacToe.TicTacToe;
+import arena.session.Session;
 import boardGameLibrary.players.LocalPlayer;
 import boardGameLibrary.players.Player;
 import hostProviderService.Host;
@@ -64,7 +65,6 @@ public class GameLauncher {
                System.out.println("No game by that name.");
                break;
        }
-
    }
 
    public static void launchMultiplayerGame(GameInformation gameInformation, IPInformation... ipInformation){

@@ -80,7 +80,6 @@ public class TabViewController extends FXMLViewController implements Initializab
 
     //TODO fix create tournament, make a default choice for tournament style so that the box is not empty
 
-
     private RouterButton getSpectatorButton(){
         return
                 new RouterButtonBuilder()

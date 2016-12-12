@@ -2,6 +2,7 @@ package arena.users;
 
 import arena.league.ILeague;
 import arena.tournament.ITournament;
+import javafx.scene.paint.Color;
 
 import java.util.List;
 
@@ -23,5 +24,9 @@ public interface IPlayer extends IUser {
      * @return List
      */
     List<ITournament> getAvailableTournaments();
+
+    Color getColor();
+
+    IPlayer setColor(Color color);
 
 }

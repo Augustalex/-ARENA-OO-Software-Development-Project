@@ -4,14 +4,9 @@ import boardGameLibrary.boardGame.match.MatchSetup;
 import boardGameLibrary.players.LocalPlayer;
 import boardGameLibrary.players.Player;
 import boardGameLibrary.players.RemotePlayer;
-import boardGameLibrary.viewModel.ViewDimensionBinder;
-import com.google.gson.Gson;
 import hostProviderService.Host;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import utilities.DimensionBinder;
 import utilities.router.Router;
 import utilities.router.paneRouter.PaneRouter;
 

@@ -3,7 +3,6 @@ package system;
 import hostProviderService.*;
 import indexedUsersService.IndexedUserServiceContainer;
 import serviceInitiatorService.ServiceInitiatorContainer;
-import serviceInitiatorService.ServiceInitiatorService;
 
 import java.io.IOException;
 import java.net.Inet4Address;
@@ -11,13 +10,13 @@ import java.net.Inet4Address;
 /**
  * Created by August on 2016-11-29.
  */
-public class SystemManager {
+public class SystemManagerTest {
 
     private hostProviderContainer hostProviderContainer;
     private HostProvider hostProvider;
 
     public static void main(String[] args) {
-        SystemManager system = new SystemManager();
+        SystemManagerTest system = new SystemManagerTest();
         system.initSystem();
     }
 
