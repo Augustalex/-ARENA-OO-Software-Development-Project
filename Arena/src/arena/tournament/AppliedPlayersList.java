@@ -37,7 +37,7 @@ public class AppliedPlayersList {
         return appliedPlayersList.get(index);
     }
 
-    public int lenght(){
+    public int length(){
         return appliedPlayersList.size();
     }
 }

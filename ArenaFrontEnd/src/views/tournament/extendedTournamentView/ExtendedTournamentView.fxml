@@ -32,6 +32,7 @@
             <left>
                 <FlowPane>
                     <Label text="Leaderboards" fx:id="leaderboardLabel" id="leaderboardLabel"/>
+                    <VBox id="leaderboard" fx:id="leaderboard" styleClass="leaderboardStyle"></VBox>
                 </FlowPane>
             </left>
             <right>

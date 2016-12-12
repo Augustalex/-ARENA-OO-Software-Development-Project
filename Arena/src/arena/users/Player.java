@@ -29,9 +29,8 @@ public class Player implements IPlayer{
 
     private final IUser user;
 
-    private ArrayList<ILeague> leagues = new ArrayList<ILeague>(){{
-        add(ILeague.globalLeague);
-    }};
+    private ArrayList<ILeague> leagues = new ArrayList<>();
+
     private Color color = ((Supplier<Color>)() -> {
         Random random = new Random(System.currentTimeMillis());
         return Color.rgb(

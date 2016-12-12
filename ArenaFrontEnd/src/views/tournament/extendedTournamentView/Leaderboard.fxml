@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.extendedTournamentView.LeaderBoard"
+            stylesheets="/views/main.css" id="leaderboard">
+    <left>
+        <FlowPane>
+            <Label fx:id="playerPosition" id="playerPosition" styleClass="tournamentTextBoxes"/>
+        </FlowPane>
+    </left>
+    <right>
+        <FlowPane>
+            <Label fx:id="playerName" id="playerName" styleClass="tournamentTextBoxes"/>
+        </FlowPane>
+    </right>
+</BorderPane>

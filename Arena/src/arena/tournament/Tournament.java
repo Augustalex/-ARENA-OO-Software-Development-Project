@@ -81,11 +81,11 @@ public class Tournament implements ITournament, Serializable {
         players.entrySet()
                 .forEach(entry ->
                         appliedPlayers.applyPlayerToList(
-                                Player.createWOTournament(entry.getKey())
+                                Player.create(entry.getKey())
                                     .setColor(entry.getValue())
                         ));
 
-        for (int i = 1; i < appliedPlayers.lenght(); i+=2){
+        for (int i = 1; i < appliedPlayers.length(); i+=2){
             IMatch match = new Match();
             match.setUpMatch(appliedPlayers.getPlayerFromList(i - 1), appliedPlayers.getPlayerFromList(i));
             matchesInTournament.add(match);
