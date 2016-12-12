@@ -1,7 +1,6 @@
 package arena.users;
 
 import arena.league.ILeague;
-import arena.league.League;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public class LeagueOwner extends Player implements ILeagueOwner{
 
-    private List<ILeague> leagues = new ArrayList<>();
+    private ILeague league = null;
 
     private LeagueOwner(IUser user){
         super(user);
@@ -23,17 +22,17 @@ public class LeagueOwner extends Player implements ILeagueOwner{
 
     public static ILeagueOwner create(IUser user){
         return new LeagueOwner(user)
-                .addLeague(ILeague.createMockLeague("Mock League AF"));
+                .setOwnedLeague(ILeague.createMockLeague("Mock League AF"));
     }
 
     @Override
-    public List<ILeague> getOwnedLeagues() {
-        return leagues;
+    public ILeague getOwnedLeague() {
+        return league;
     }
 
     @Override
-    public ILeagueOwner addLeague(ILeague league) {
-        leagues.add(league);
+    public ILeagueOwner setOwnedLeague(ILeague league) {
+        this.league = league;
         return this;
     }
 }

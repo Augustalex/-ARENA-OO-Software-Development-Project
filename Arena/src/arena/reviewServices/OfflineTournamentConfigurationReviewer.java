@@ -19,7 +19,7 @@ public class OfflineTournamentConfigurationReviewer implements Reviewer<ITournam
         this.reviewQueue.submit(configuration, user);
         ReviewObject reviewObject = this.reviewQueue.retrieve();
         System.out.println("APPROVED: " + reviewObject);
-        ((LeagueOwner)user).getLeagues().get(0).addTournamentToLeague(TournamentFactory.newTournament(configuration));
+        ((LeagueOwner)user).getOwnedLeague().addTournamentToLeague(TournamentFactory.newTournament(configuration));
     }
 
 }
