@@ -1,15 +1,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.StackPane?>
-
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+
 <StackPane fx:controller="views.systemLogin.SystemLoginViewController" xmlns:fx="http://javafx.com/fxml" id="login">
     <VBox fx:id="loginWindow" spacing="20" id="loginBox">
+
+        <!--<Region id="pictureLogo"></Region>-->
         <Label text="Arena" id="logInID"></Label>
+
         <Text text="Please log in.." fill="white"/>
         <TextField fx:id="usernameField" promptText="Username" maxWidth="250" styleClass="logIn"/>
         <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250" styleClass="logIn"/>

@@ -8,7 +8,7 @@
             stylesheets="/views/main.css" id="matchListContainer">
     <left>
         <FlowPane>
-            <Label text="Match" fx:id="matchLabel" id="matchLabel" styleClass="tournamentApplyLabel"/>
+            <Label fx:id="matchLabel" id="matchLabel" styleClass="tournamentTextBoxes"/>
         </FlowPane>
     </left>
     <right>

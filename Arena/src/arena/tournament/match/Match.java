@@ -9,25 +9,24 @@ import arena.users.IPlayer;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Simon on 25/11/2016.
  */
 public class Match implements IMatch {
 
-    static AtomicInteger nextID = new AtomicInteger();
-    private Integer matchID;
+    static Integer matchID = 0;
+    private Lock lock = new ReentrantLock();
     ArrayList<IPlayer> playersInMatch = new MatchMembers().getMatchMembersList();
-    //ObjectProperty<IResult> result = new SimpleObjectProperty<>();
     private ResultType type;
     private IResult result = new Result(type, playersInMatch);
 
 
     public Match(){
-        System.out.println("New match with ID" + getMatchID() + " started.");
-        matchID = nextID.incrementAndGet();
+        System.out.println("New match with ID " + getMatchID() + " started.");
     }
-
 
     @Override
     public Integer getMatchID() {
@@ -36,6 +35,7 @@ public class Match implements IMatch {
 
     @Override
     public void setUpMatch(IPlayer player1, IPlayer player2) {
+        incrementMatchID();
         addPlayerToMatch(player1);
         addPlayerToMatch(player2);
 
@@ -55,5 +55,21 @@ public class Match implements IMatch {
     @Override
     public IResult getMatchResult() {
         return this.result;
+    }
+
+    @Override
+    public void incrementMatchID() {
+        lock.lock();
+        try{
+            matchID++;
+        }
+        finally{
+            lock.unlock();
+        }
+    }
+
+    @Override
+    public ArrayList<IPlayer> getPlayersInMatch() {
+        return playersInMatch;
     }
 }

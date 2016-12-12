@@ -5,6 +5,8 @@ import javafx.beans.property.ObjectProperty;
 import arena.tournament.match.result.IResult;
 import arena.users.IPlayer;
 
+import java.util.ArrayList;
+
 /**
  * Created by Simon on 24/11/2016.
  */
@@ -21,5 +23,9 @@ public interface IMatch {
     void setResult(ResultType type);
 
     IResult getMatchResult();
+
+    void incrementMatchID();
+
+    ArrayList<IPlayer> getPlayersInMatch();
 
 }

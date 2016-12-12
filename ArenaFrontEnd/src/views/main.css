@@ -234,6 +234,16 @@ StackPane#playViewSuperWindow{
 
 /*          LOGIN VIEW      */
 
+#pictureLogo{
+    -fx-background-image: url("tournament/tomato.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% auto;
+    -fx-pref-width: 100;
+    -fx-max-width: 100;
+    -fx-pref-height: 100;
+}
+
 #login{
     -fx-background-color: black;
 }
@@ -242,18 +252,22 @@ StackPane#playViewSuperWindow{
     -fx-background-color: black;
     -fx-font-family: "Helvetica";
     -fx-alignment: center;
-    -fx-max-width: 400;
+    -fx-max-width: 500;
+
+    -fx-background-image: url("tournament/tomato.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
 }
 
 .loginButton {
-    -fx-background-color: hotpink;
+    -fx-background-color: tomato;
     -fx-font-family: "Helvetica";
     -fx-pref-width: 250;
     -fx-pref-height: 50;
 }
 
 .loginButton:hover{
-    -fx-background-color: hotpink;
+    -fx-background-color: red;
     -fx-font-family: "Helvetica";
 }
 
@@ -264,7 +278,7 @@ StackPane#playViewSuperWindow{
 }
 
 .logIn{
-    -fx-background-color: black;
+    -fx-background-color: transparent;
     -fx-text-fill: whitesmoke;
     -fx-border-color: white;
 }

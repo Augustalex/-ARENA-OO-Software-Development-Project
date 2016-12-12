@@ -53,7 +53,7 @@ public class GameLauncher {
 
                players.put(new Host("10.10.107.76", 3000), august);
 
-               RunMatch.runOnlineMatchTest(newGamePane, players, august);
+               RunMatch.runOnlineMatchTest(newGamePane, players, johan);
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);
