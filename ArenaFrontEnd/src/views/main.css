@@ -222,6 +222,10 @@ StackPane#playViewSuperWindow{
     -fx-border-color: white;
 }
 
+#tournamentVBox{
+    -fx-alignment: center;
+}
+
 .tournamentConfigurationSubmitButton{
 
 }
@@ -230,6 +234,12 @@ StackPane#playViewSuperWindow{
 
     -fx-background-color: #152029;
 
+}
+
+.TournamentStyle {
+    -fx-background-color: linear-gradient(#0f171e, #0b031a);
+    -fx-text-fill: white;
+    -fx-border-color: white;
 }
 
 /*          LOGIN VIEW      */

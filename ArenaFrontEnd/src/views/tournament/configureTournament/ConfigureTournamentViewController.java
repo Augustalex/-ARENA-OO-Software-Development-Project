@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -51,10 +48,16 @@ public class ConfigureTournamentViewController extends FXMLViewController implem
     private TextArea tournamentDesc;
 
     @FXML
-    private TextField tournamentDate;
+    private DatePicker tournamentDate;
 
     @FXML
     private Button buttonTournamentSubmit;
+
+    @FXML
+    private TextField hour;
+
+    @FXML
+    private TextField minutes;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -82,7 +85,8 @@ public class ConfigureTournamentViewController extends FXMLViewController implem
      */
     private ITournamentConfiguration newConfigurationFromFormData(){
 
-        TimeDate time = new TimeDate(tournamentDate.getText());
+        String timeString = " " + hour.getText() + ":" + minutes.getText();
+        TimeDate time = new TimeDate(tournamentDate.getValue().toString() + timeString);
 
         TournamentMetaInformation metaInformation =
                 (TournamentMetaInformation) new TournamentMetaInformation()

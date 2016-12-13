@@ -1,0 +1,55 @@
+/*      DATEPIcKER        */
+
+.day-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.date-picker .month-year-pane{
+    -fx-background-color: transparent;
+    -fx-padding: 5 5 5 5;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > * > .week-number-cell{
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > * > .day-name-cell,
+.date-picker-popup > * > .week-number-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > .calendar-grid {
+    -fx-background-color: transparent;
+
+    -fx-padding: 0;
+}
+
+.date-picker .text-field {
+    -fx-control-inner-background: transparent ;
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: white;
+}
+
+#calendar {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-pref-width: 400;
+}
+
+.date-picker-popup{
+    -fx-background-color: black;
+    -fx-opacity: 80%;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup > * > .previous-month:hover,
+.date-picker-popup > * > .next-month:hover {
+    -fx-background: none;
+}
+
+.date-picker > .arrow-button{
+    -fx-background-color: transparent;
+}

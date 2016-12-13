@@ -10,19 +10,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <VBox fx:controller="views.tournament.handleTournamentStyle.HandleTournamentStyleController" xmlns:fx="http://javafx.com/fxml"
       fx:id="TournamentStyleWindow" id="TournamentStyleContainer">
 
-    <Text text="Tournament Style" fill="white"/>
+    <Text text="Tournament Style" fill="white">
+        <font>
+            <Font name="dotty" size="70"/>
+        </font>
+    </Text>
 
     <VBox>
             <Text text="Name of Tournament" fill='white'></Text>
-            <TextField fx:id="name" minWidth="75" maxWidth="130"/>
+            <TextField styleClass="TournamentStyle" fx:id="name" minWidth="75" maxWidth="130"/>
     </VBox>
 
     <VBox>
             <Text text="Size of Tournament" fill='white'></Text>
-            <TextField fx:id="size" minWidth="30" maxWidth="130"/>
+            <TextField styleClass="TournamentStyle" fx:id="size" minWidth="30" maxWidth="130"/>
     </VBox>
 
     <VBox>
@@ -32,17 +37,17 @@
 
     <VBox>
             <Text text="Amount of groups" fill='white'></Text>
-            <TextField fx:id="noOfGroups" minWidth="30" maxWidth="130"/>
+            <TextField styleClass="TournamentStyle" fx:id="noOfGroups" minWidth="30" maxWidth="130"/>
     </VBox>
 
     <VBox>
             <Text text="Amount of rounds" fill='white'></Text>
-            <TextField fx:id="rounds" minWidth="30" maxWidth="130"/>
+            <TextField styleClass="TournamentStyle" fx:id="rounds" minWidth="30" maxWidth="130"/>
     </VBox>
 
     <VBox>
             <Text text="Amount of winners in a group" fill='white'></Text>
-            <TextField fx:id="groupWinners" minWidth="30" maxWidth="130"/>
+            <TextField styleClass="TournamentStyle" fx:id="groupWinners" minWidth="30" maxWidth="130"/>
     </VBox>
 
     <VBox>
@@ -52,17 +57,19 @@
 
     <VBox >
             <Text text="Best of arena games" fill='white'></Text>
-            <TextField fx:id="bestOfGames" minWidth="30" maxWidth="130"/>
+            <TextField styleClass="TournamentStyle" fx:id="bestOfGames" minWidth="30" maxWidth="130"/>
     </VBox>
 
     <VBox>
 
             <Text text="Description" fill='white'></Text>
-            <TextArea fx:id="description" minWidth="100" maxHeight="250" maxWidth="500" wrapText="true"/>
+            <TextArea styleClass="tournamentTextBoxes" fx:id="description" minWidth="100" maxHeight="250" maxWidth="500" wrapText="true"/>
 
     </VBox>
 
-    <Button text="Submit" textFill="black" fx:id="submit" />
+    <Text text=" "/>
+
+    <Button text="Submit" styleClass="loginButton" fx:id="submit" />
 
     <Text text="" fill="white" fx:id="confirmationText" />
 </VBox>

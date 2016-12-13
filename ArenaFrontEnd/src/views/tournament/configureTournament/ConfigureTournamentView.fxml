@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.configureTournament.ConfigureTournamentViewController"
-            stylesheets="/views/main.css" fx:id="createTournamentContainer" id="createTournamentContainer">
+            stylesheets="/views/main.css, /views/datePicker.css" fx:id="createTournamentContainer" id="createTournamentContainer">
     <VBox fx:id="createTournamentContent" id="createTournamentContent">
         <Label text="Create Tournament" styleClass="tournamentLabel" id="header"/>
         <HBox fx:id="tournamentHBox" id="tournamentHBox">
@@ -16,10 +16,22 @@
             <Label text="Description" styleClass="tournamentLabel"/>
         </HBox>
         <TextArea styleClass="tournamentDesc, tournamentTextBoxes" fx:id="tournamentDesc" id="tournamentDesc" />
-        <HBox>
-            <Label text="Date" styleClass="tournamentLabel"/>
+
+        <HBox alignment="CENTER" spacing="20">
+            <VBox id="tournamentVBox">
+                <Label text="Date" styleClass="tournamentLabel" prefWidth="400" alignment="CENTER_LEFT"/>
+                <DatePicker fx:id="tournamentDate" id="calendar" showWeekNumbers="false" promptText="Choose date"></DatePicker>
+            </VBox>
+            <VBox id="tournamentVBox" maxWidth="80">
+                <Label text="Time" styleClass="tournamentLabel" prefWidth="80" alignment="CENTER_LEFT"/>
+                <HBox spacing="5">
+                    <TextField fx:id="hour" minWidth="35" promptText="H"/>
+                    <Label text=":" textFill="white"/>
+                    <TextField fx:id="minutes" minWidth="35" promptText="M"/>
+                </HBox>
+            </VBox>
         </HBox>
-        <TextField fx:id="tournamentDate" styleClass="tournamentTextBoxes"/>
+
         <HBox id="tournamentSelectStyle">
             <Label text="Tournament style: " styleClass="tournamentLabel"/>
             <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox"></ComboBox>
