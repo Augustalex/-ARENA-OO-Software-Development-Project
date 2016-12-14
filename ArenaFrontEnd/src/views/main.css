@@ -176,12 +176,13 @@ StackPane#playViewSuperWindow{
 /*          CREATE TOURNAMENT VIEW      */
 
 #createTournamentContainer{
-
+    -fx-max-width: 1000;
 }
 
 #createTournamentContent{
     -fx-alignment: center;
     -fx-font-family: "Century Gothic";
+    -fx-spacing: 10;
 }
 
 #createTournamentContent .tournamentLabel{
@@ -213,17 +214,25 @@ StackPane#playViewSuperWindow{
 }
 
 #tournamentSelectStyle{
-    -fx-padding: 2em;
+    -fx-padding: 10,0,0,0;
     -fx-alignment: center;
 }
 
 .tournamentComboBox{
     -fx-background-color: linear-gradient(#0f171e, #0b031a);
     -fx-border-color: white;
+    -fx-pref-width: 250;
 }
 
 #tournamentVBox{
     -fx-alignment: center;
+}
+
+#hourMinute .text-field{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-min-width: 35;
 }
 
 .tournamentConfigurationSubmitButton{
@@ -344,4 +353,42 @@ Button.testToolsLoginButton{
 Button.testToolsLoginButton:hover{
     -fx-background-color: #FFF;
     -fx-text-fill: #888;
+}
+
+/*       Advertisment         */
+
+#topicText{
+    -fx-fill: white;
+    -fx-font-family: dotty;
+    -fx-font-size: 60;
+}
+
+#currentAdvertisements{
+    -fx-font-family: "Helvetica";
+    -fx-hgap: 15;
+    -fx-vgap: 15;
+}
+
+#currentAdvertisements HBox{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+#currentAdvertisements .button{
+    -fx-background-color: tomato;
+    -fx-font-family: "Helvetica";
+    -fx-pref-width: 100;
+    -fx-pref-height: 40;
+}
+
+.newAdvertBox{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+}
+
+.check-box *.box{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+
 }

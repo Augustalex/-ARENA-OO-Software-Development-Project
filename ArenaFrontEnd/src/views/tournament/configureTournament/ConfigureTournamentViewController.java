@@ -36,7 +36,7 @@ public class ConfigureTournamentViewController extends FXMLViewController implem
     private VBox createTournamentContent;
 
     @FXML
-    private HBox tournamentHBox;
+    private VBox tournamentHBox;
 
     @FXML
     private ComboBox<ITournamentStyle> tournamentComboBox;
@@ -64,7 +64,6 @@ public class ConfigureTournamentViewController extends FXMLViewController implem
 
         ObservableList<ITournamentStyle> styles = FXCollections.observableArrayList(TournamentStyleFactory.getTournamentStyles());
         tournamentComboBox.getItems().setAll(styles);
-        tournamentComboBox.setPromptText("Choose tournament style");
 
         DimensionBinder.bindWidthToPercentageOfContainer(createTournamentContent, 0.6, createTournamentContainer);
 

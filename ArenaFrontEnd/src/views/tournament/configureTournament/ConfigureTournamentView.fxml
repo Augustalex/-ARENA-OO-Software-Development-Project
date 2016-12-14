@@ -8,14 +8,14 @@
             stylesheets="/views/main.css, /views/datePicker.css" fx:id="createTournamentContainer" id="createTournamentContainer">
     <VBox fx:id="createTournamentContent" id="createTournamentContent">
         <Label text="Create Tournament" styleClass="tournamentLabel" id="header"/>
-        <HBox fx:id="tournamentHBox" id="tournamentHBox">
-            <Label text="Tournament Name " styleClass="tournamentLabel"/>
+        <VBox fx:id="tournamentHBox" id="tournamentHBox">
+            <Label text="Tournament Name " styleClass="tournamentLabel" prefWidth="600" alignment="CENTER_LEFT"/>
             <TextField styleClass="tournamentName, tournamentTextBoxes" fx:id="tournamentName"/>
-        </HBox>
-        <HBox>
-            <Label text="Description" styleClass="tournamentLabel"/>
-        </HBox>
-        <TextArea styleClass="tournamentDesc, tournamentTextBoxes" fx:id="tournamentDesc" id="tournamentDesc" />
+        </VBox>
+        <VBox>
+            <Label text="Description" styleClass="tournamentLabel" prefWidth="400" alignment="CENTER_LEFT"/>
+            <TextArea styleClass="tournamentDesc, tournamentTextBoxes" fx:id="tournamentDesc" id="tournamentDesc" />
+        </VBox>
 
         <HBox alignment="CENTER" spacing="20">
             <VBox id="tournamentVBox">
@@ -24,18 +24,18 @@
             </VBox>
             <VBox id="tournamentVBox" maxWidth="80">
                 <Label text="Time" styleClass="tournamentLabel" prefWidth="80" alignment="CENTER_LEFT"/>
-                <HBox spacing="5">
-                    <TextField fx:id="hour" minWidth="35" promptText="H"/>
+                <HBox id="hourMinute" spacing="5">
+                    <TextField fx:id="hour" promptText="H"/>
                     <Label text=":" textFill="white"/>
-                    <TextField fx:id="minutes" minWidth="35" promptText="M"/>
+                    <TextField fx:id="minutes" promptText="M"/>
                 </HBox>
             </VBox>
         </HBox>
 
-        <HBox id="tournamentSelectStyle">
-            <Label text="Tournament style: " styleClass="tournamentLabel"/>
-            <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox"></ComboBox>
-        </HBox>
+        <VBox id="tournamentSelectStyle">
+            <Label text="Tournament style" styleClass="tournamentLabel" prefWidth="250" alignment="CENTER_LEFT"/>
+            <ComboBox styleClass="tournamentComboBox" fx:id="tournamentComboBox" promptText="Choose tournament style"></ComboBox>
+        </VBox>
         <Button text="Submit" styleClass="loginButton, tournamentConfigurationSubmitButton" fx:id="buttonTournamentSubmit"/>
     </VBox>
 </StackPane>

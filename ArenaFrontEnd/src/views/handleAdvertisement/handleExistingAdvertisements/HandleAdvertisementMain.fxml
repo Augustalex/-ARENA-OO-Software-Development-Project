@@ -6,14 +6,11 @@
 <?import javafx.scene.layout.GridPane?>
 <VBox fx:controller="views.handleAdvertisement.handleExistingAdvertisements.HandleAdvertisementMainViewController" xmlns:fx="http://javafx.com/fxml"
       fx:id="mainAdvertisementView" spacing="20">
-    <Text fx:id="topicText" text="Current advertisements" fill="white">
-        <font>
-            <Font name="Arial" size="18"/>
-        </font>
-    </Text>
-    <GridPane fx:id="currentAdvertisements">
+    <Text fx:id="topicText" id="topicText" text="Current advertisements"></Text>
+
+    <GridPane fx:id="currentAdvertisements" id="currentAdvertisements">
 
     </GridPane>
 
-    <Button fx:id="addNewButton" text="Add new advertisement"/>
+    <Button fx:id="addNewButton" styleClass="loginButton" text="Add new advertisement"/>
 </VBox>

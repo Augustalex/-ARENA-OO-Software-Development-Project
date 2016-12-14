@@ -24,7 +24,7 @@ public class HandleAdvertisementContainerController extends FXMLViewController i
 
     @Override
     public void closeView() {
-        //If threads are started, do cleanup here
+        //TODO If threads are started, do cleanup here
     }
 
     @Override

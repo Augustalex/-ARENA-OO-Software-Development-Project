@@ -14,15 +14,15 @@
         <VBox spacing="25" fx:id="inputVBox">
             <VBox>
                 <Text text="Enter name:" fill="white"/>
-                <TextField minWidth="200" maxWidth="450" fx:id="adName"/>
+                <TextField styleClass="newAdvertBox" minWidth="200" maxWidth="450" fx:id="adName"/>
             </VBox>
             <VBox>
                 <Text text="Enter source:" fill="white"/>
-                <TextField minWidth="450" maxWidth="450" fx:id="sourceField"/>
+                <TextField styleClass="newAdvertBox" minWidth="450" maxWidth="450" fx:id="sourceField"/>
             </VBox>
             <VBox>
                 <Text text="Amount reserved for advertisement:" fill="white"/>
-                <TextField minWidth="75" maxWidth="75" fx:id="amountField"/>
+                <TextField styleClass="newAdvertBox" minWidth="75" maxWidth="75" fx:id="amountField"/>
             </VBox>
         </VBox>
     </top>
@@ -30,15 +30,15 @@
     <center>
         <BorderPane>
             <top>
-                <VBox spacing="20" fx:id="preferenceList"/>
+                <VBox spacing="20" fx:id="preferenceList" id="preferenceList"/>
             </top>
 
             <center>
                 <VBox>
                     <Text text="Enter description:" fill="white"/>
                     <VBox spacing="20">
-                        <TextArea prefHeight="200" maxWidth="200" wrapText="true" fx:id="adDescription"/>
-                        <Button text="Submit" minWidth="75" fx:id="submitAd"/>
+                        <TextArea styleClass="tournamentTextBoxes" prefHeight="200" maxWidth="200" wrapText="true" fx:id="adDescription"/>
+                        <Button styleClass="loginButton" text="Submit" minWidth="75" fx:id="submitAd"/>
                         <Text text="" fill="white" fx:id="confirmationText"/>
                     </VBox>
                 </VBox>
