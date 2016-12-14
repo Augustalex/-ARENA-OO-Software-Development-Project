@@ -29,14 +29,22 @@ public class HostProviderAPI extends ReST {
      */
     @Override
     public void onGet(HttpExchange httpExchange) throws IOException {
-        //TODO Asyn! Implement with promises/future (Delivery perhaps)
+        //TODO Async! Implement with promises/future (Delivery perhaps)
         try{
             HostService host = hostProvider.getNextAvailableHost();
             sendStringContentResponse(HttpURLConnection.HTTP_OK, gson.toJson(host), httpExchange);
             System.out.println("Sent new host information [hostProvider]");
         } catch (NoAvailableHosts noAvailableHosts) {
-            sendEmptyResponse(HttpURLConnection.HTTP_NO_CONTENT, httpExchange);
+            try {
+                sendStringContentResponse(HttpURLConnection.HTTP_NO_CONTENT, "", httpExchange);
+            }
+            catch(Exception ex){
+                System.out.println("Other error occured: " + ex.getMessage() + "\nCause: " + ex.getCause());
+            }
             System.out.println("Could not find any new host.");
+        }
+        catch(Exception ex){
+            System.out.println("Other error occured: " + ex.getMessage() + "\nCause: " + ex.getCause());
         }
     }
 
@@ -51,15 +59,16 @@ public class HostProviderAPI extends ReST {
      */
     @Override
     public void onPost(HttpExchange httpExchange) throws Exception {
+        System.out.println("Post for new host!");
         String body = getStringBodyFromHttpExchange(httpExchange);
-        hostProvider.addHost(gson.fromJson(body, HostService.class));
+        String id = hostProvider.addHost(gson.fromJson(body, HostService.class));
 
-        sendEmptyResponse(HttpURLConnection.HTTP_OK, httpExchange);
+        sendStringContentResponse(HttpURLConnection.HTTP_OK, id, httpExchange);
+        //sendEmptyResponse(HttpURLConnection.HTTP_OK, httpExchange);
     }
 
     @Override
     public void onDelete(HttpExchange httpExchange) throws Exception {
-        //TODO implement shutdown host
         sendEmptyResponse(HttpURLConnection.HTTP_BAD_METHOD, httpExchange);
     }
 

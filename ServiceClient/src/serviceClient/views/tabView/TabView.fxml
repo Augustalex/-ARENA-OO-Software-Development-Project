@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.tabView.TabViewController"
+      stylesheets="/serviceClient/views/main.css" fx:id="tabView" id="tabView">
+    <!--
+    <Button fx:id="loginButton" text="LOGIN"/>
+    <Button fx:id="playButton" text="PLAY"/>
+    <Button fx:id="watchButton" text="WATCH" />
+    <Button fx:id="createTournamentButton" text="CREATE TOURNAMENT" />
+    <Button fx:id="handleTournamentButton" wrapText="true" textAlignment="CENTER" text="HANDLE TOURNAMENT STYLE"/>
+    <Button fx:id="handleAdButton" wrapText="true" textAlignment="CENTER" text="HANDLE ADVERTISEMENT"/>
+    -->
+</HBox>

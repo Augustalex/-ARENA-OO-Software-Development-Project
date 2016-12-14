@@ -1,0 +1,44 @@
+VBox{
+    -fx-alignment: top-center;
+}
+
+HBox{
+    -fx-alignment: center;
+}
+
+RouterButton{
+    -fx-background-color: tomato;
+    -fx-font-size: 2em;
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+
+RouterButton:hover{
+    -fx-background-color: ivory;
+    -fx-text-fill: #888;
+}
+
+#tabView{
+    -fx-background-color: tomato;
+    -fx-pref-height: 80px;
+}
+
+/*      Public      */
+
+.header{
+    -fx-font-size: 3.2em;
+    -fx-font-weight: bolder;
+}
+
+/*      SETUP VIEW      */
+
+.inputRow{
+    -fx-pref-width: 300px;
+    -fx-background-color: tomato;
+}
+
+/*      Manage Service      */
+
+.leftMarginBox{
+    -fx-alignment: top-left;
+}

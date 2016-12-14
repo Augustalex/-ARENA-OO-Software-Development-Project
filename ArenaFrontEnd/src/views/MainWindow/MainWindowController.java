@@ -1,6 +1,7 @@
 package views.MainWindow;
 
 import javafx.fxml.Initializable;
+import javafx.scene.layout.StackPane;
 import views.FXMLViewController;
 import views.DimensionBinder;
 import javafx.fxml.FXML;
@@ -19,7 +20,7 @@ public class MainWindowController extends FXMLViewController implements Initiali
     private Pane tabView = null;
 
     @FXML
-    private BorderPane mainWindow;
+    private  BorderPane mainWindowContainer;
 
     @FXML
     private Pane contentView;
@@ -32,7 +33,7 @@ public class MainWindowController extends FXMLViewController implements Initiali
             this.tabView = loader.load();
             this.tabViewController = loader.getController();
 
-            mainWindow.setTop(this.tabView);
+            mainWindowContainer.setTop(this.tabView);
         } catch (IOException e) {
             System.out.println("Could not load tab view.");
             e.printStackTrace();
@@ -62,7 +63,7 @@ public class MainWindowController extends FXMLViewController implements Initiali
                                 widthFactor,
                                 heightFactor
                         ),
-                        mainWindow
+                        mainWindowContainer
                 );
     }
 
@@ -70,7 +71,7 @@ public class MainWindowController extends FXMLViewController implements Initiali
      * Setups the dimension bindings of the TabView and its buttons.
      */
     private void setupTabView(){
-        bindTabViewDimensions(tabView, mainWindow);
+        bindTabViewDimensions(tabView, mainWindowContainer);
     }
 
     /**

@@ -32,14 +32,16 @@ public class ServiceIndexer implements IServiceIndexer {
     private final int partitionCapacity;
     private int currentCapacity = 0;
 
-    private HostService hostProvider;
+    private Host hostProvider;
+    private String serviceClassName;
 
     private Queue<Integer> reusableObjectIds = new LinkedBlockingQueue<>();
     private Map<Integer, HostService> serviceHosts = new HashMap<>();
 
-    public ServiceIndexer(int partitionCapacity, HostService hostProviderConnectionDetails){
+    public ServiceIndexer(int partitionCapacity, Host hostProviderConnectionDetails, String serviceClassName){
         this.partitionCapacity = partitionCapacity;
         this.hostProvider = hostProviderConnectionDetails;
+        this.serviceClassName = serviceClassName;
     }
 
     @Override
@@ -68,6 +70,7 @@ public class ServiceIndexer implements IServiceIndexer {
         Delivery<Boolean> status = new PropertyDelivery<>();
         status.onDelivery(callback);
 
+        //TODO bug! The status callback should only execute when ALL instances are created. Some kind of "countdown" promise need to be created.
         IntStream.range(0, numberOfInstances)
                 .forEach(i -> addService(status));
     }
@@ -114,7 +117,7 @@ public class ServiceIndexer implements IServiceIndexer {
     public void recycleObjectId(int id) {
         this.reusableObjectIds.offer(id);
     }
-s
+
     private void addService(Delivery<Boolean> status){
         new Thread(() -> {
             int index = serviceCount();
@@ -129,7 +132,7 @@ s
                 //Alert the new host about what service they should host
                 System.out.println("Sending post request to Hosts ServiceInitiatorService");
                     Request.Post(newService.getServiceInitiatorHostInformation().getURL())
-                            .bodyString(gson.toJson(new HostService("UsersService", new Host(newService.address, newService.port), newService.getServiceInitiatorHostInformation())), ContentType.APPLICATION_JSON)
+                            .bodyString(gson.toJson(new HostService(serviceClassName, new Host(newService.address, newService.port), newService.getServiceInitiatorHostInformation())), ContentType.APPLICATION_JSON)
                             .execute();
 
                 System.out.println("New hosted service is set up.");

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.addServiceWindow.AddServiceViewController"
+            stylesheets="/serviceClient/views/main.css">
+    <HBox>
+        <Label text="Port: "/>
+        <TextField fx:id="portInput"/>
+    </HBox>
+    <Label text="Port Status" fx:id="statusLabel" />
+    <VBox fx:id="servicesList" styleClass="servicesList">
+    </VBox>
+</VBox>

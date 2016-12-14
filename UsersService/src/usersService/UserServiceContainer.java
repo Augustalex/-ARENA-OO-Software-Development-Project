@@ -10,10 +10,9 @@ import java.io.IOException;
  */
 public class UserServiceContainer extends ReSTContainer {
 
-    public UserServiceContainer(int port) throws IOException {
+    public UserServiceContainer(UsersService service, int port) {
         super(port);
 
-        UsersService service = new UsersService();
         this.createContext("/", new UsersServiceAPI(service));
         this.createContext("/id/", new UsersServiceSingleUserAPI(service));
     }

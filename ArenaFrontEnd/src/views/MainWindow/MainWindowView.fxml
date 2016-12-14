@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.Pane?>
 <BorderPane fx:controller="views.MainWindow.MainWindowController"
-            xmlns:fx="http://javafx.com/fxml" fx:id="mainWindow" id="mainWindowContainer" stylesheets="/views/main.css">
+            xmlns:fx="http://javafx.com/fxml" fx:id="mainWindowContainer" id="mainWindowContainer" stylesheets="/views/main.css">
     <top>
         <!--<HBox fx:id="tabView" id="tabView">
             <Button fx:id="loginButton" text="LOGIN"/>

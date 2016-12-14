@@ -1,11 +1,9 @@
-package systemsManager;
+package serviceClient;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -14,14 +12,20 @@ import javafx.stage.Stage;
 public class SystemsManager extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        VBox container = new VBox();
-
-        setupStage(primaryStage, container);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/serviceClient/views/mainWindow/MainWindow.fxml"));
+            Pane main = loader.load();
+            setupStage(primaryStage, main);
+        }
+        catch(Exception ex){
+            System.out.println("Could not load main window!");
+            ex.printStackTrace();
+        }
     }
 
     private void setupStage(Stage primaryStage, Pane container){
         primaryStage.setTitle("Systems Manager");
-        primaryStage.setScene(new Scene(container, 400,1000));
+        primaryStage.setScene(new Scene(container, 500,800));
         primaryStage.show();
     }
 

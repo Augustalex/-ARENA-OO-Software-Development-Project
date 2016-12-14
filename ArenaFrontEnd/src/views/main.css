@@ -10,7 +10,7 @@
     -fx-faint-focus-color: -fx-control-inner-background ;
 }
 
-#contentView{
+#mainWindow {
     -fx-background-color: linear-gradient(#0f171e, #0b031a);
 }
 

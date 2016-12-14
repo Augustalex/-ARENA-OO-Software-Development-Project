@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.machineView.MachineViewController"
+            stylesheets="/serviceClient/views/main.css">
+    <HBox>
+        <Label text="Machine-IP: " id="machineIPLabel" />
+        <Label fx:id="machineIP" id="machineIP" />
+    </HBox>
+    <Label text="Utility Services" styleClass="header" />
+    <VBox fx:id="servicesList" styleClass="servicesList">
+    </VBox>
+</VBox>

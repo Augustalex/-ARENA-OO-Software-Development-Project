@@ -192,7 +192,7 @@ public class TabViewController extends FXMLViewController implements Initializab
                 Parent parent = loader.load();
                 this.currentContentController = loader.getController();
 
-                contentView.getChildren().setAll(parent);
+                mainWindow.getChildren().setAll(parent);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -202,7 +202,7 @@ public class TabViewController extends FXMLViewController implements Initializab
             try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("tournament/configureTournament/ConfigureTournamentView.fxml");
-                contentView.getChildren().setAll(parent);
+                mainWindow.getChildren().setAll(parent);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -212,7 +212,7 @@ public class TabViewController extends FXMLViewController implements Initializab
             try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("tournament/handleTournamentStyle/HandleTournamentStyle.fxml");
-                contentView.getChildren().setAll(parent);
+                mainWindow.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -221,7 +221,7 @@ public class TabViewController extends FXMLViewController implements Initializab
             try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("spectateMatch/spectateLobby/SpectateLobbyView.fxml");
-                contentView.getChildren().setAll(parent);
+                mainWindow.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -232,7 +232,7 @@ public class TabViewController extends FXMLViewController implements Initializab
                 closeCurrentContentController();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/handleAdvertisement/HandleAdvertisementMain.fxml"));
                 Parent parent = loader.load();
-                contentView.getChildren().setAll(parent);
+                mainWindow.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -242,7 +242,7 @@ public class TabViewController extends FXMLViewController implements Initializab
             try {
                 closeCurrentContentController();
                 Parent parent = this.loadFXML("systemLogin/SystemLogin.fxml");
-                contentView.getChildren().setAll(parent);
+                mainWindow.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

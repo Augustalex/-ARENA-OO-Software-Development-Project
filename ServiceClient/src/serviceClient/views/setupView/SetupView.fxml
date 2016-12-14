@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.setupView.SetupViewController"
+            stylesheets="/serviceClient/views/main.css">
+    <Label styleClass="header" text="Set new Host Provider" />
+    <HBox styleClass="inputRow">
+        <Label styleClass="inputLabel" text="port: " />
+        <TextField fx:id="providerPortInput" styleClass="inputField" />
+    </HBox>
+    <HBox styleClass="inputRow">
+        <Label styleClass="inputLabel" text="ip: " />
+        <TextField fx:id="providerIpInput" styleClass="inputField" />
+    </HBox>
+    <HBox styleClass="buttonRow">
+        <Button text="Submit" fx:id="submitProvider" styleClass="submit" />
+    </HBox>
+    <Label styleClass="header" text="Set new Service Initiator" />
+    <HBox styleClass="inputRow">
+        <Label styleClass="inputLabel" text="port: " />
+        <TextField fx:id="initiatorPortInput" styleClass="inputField" />
+    </HBox>
+    <HBox styleClass="buttonRow">
+        <Button text="Check if Port is Available" fx:id="checkInitiatorPort" styleClass="submit" />
+        <Button text="Submit" fx:id="submitInitiator" styleClass="submit" />
+    </HBox>
+</VBox>

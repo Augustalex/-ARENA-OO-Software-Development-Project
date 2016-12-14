@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.manageServiceWindow.ManageServiceViewController"
+            stylesheets="/serviceClient/views/main.css">
+    <Label text="Manage Service" styleClass="header" />
+    <VBox styleClass="leftMarginBox">
+        <HBox>
+            <Label text="Name: "/>
+            <Label fx:id="nameLabel" />
+        </HBox>
+        <HBox>
+            <Label text="Port: "/>
+            <Label fx:id="portLabel"/>
+        </HBox>
+    </VBox>
+    <Button text="Stop" fx:id="stopButton" />
+    <Button text="Show Log" fx:id="showLogButton" />
+    <Button text="Hosts List" fx:id="hostsListButton" />
+</VBox>

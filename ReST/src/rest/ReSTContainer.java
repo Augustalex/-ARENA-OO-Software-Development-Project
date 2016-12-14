@@ -11,15 +11,25 @@ import java.util.concurrent.Executor;
 /**
  * Created by August on 2016-11-26.
  */
-public class ReSTContainer extends HttpServer {
+public abstract class ReSTContainer extends HttpServer {
 
     private HttpServer server;
 
-    public ReSTContainer(int port) throws IOException {
-        this.server = HttpServer.create(new InetSocketAddress("0.0.0.0", port), 0);
-        System.out.println(server.getAddress());
-        server.setExecutor(null);
+    public ReSTContainer(int port) {
+        try {
+            this.server = HttpServer.create(new InetSocketAddress("0.0.0.0", port), 0);
+            System.out.println(server.getAddress());
+            server.setExecutor(null);
+        }
+        catch(IOException ex){
+            System.out.println("Could not start Service Container at " + port);
+            ex.printStackTrace();
+        }
 
+    }
+
+    public int getPort(){
+        return this.getAddress().getPort();
     }
 
     @Override
@@ -28,7 +38,6 @@ public class ReSTContainer extends HttpServer {
     }
 
     public void start()  {
-        //server.createContext("/arena.users", api);
         server.start();
     }
 

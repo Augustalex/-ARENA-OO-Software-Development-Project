@@ -5,14 +5,16 @@ import rest.ReSTContainer;
 import java.io.IOException;
 
 /**
- * Created by August on 2016-11-29.
+ * A HTTP Server and HostProvider service container.
  */
-public class hostProviderContainer extends ReSTContainer {
+public class HostProviderContainer extends ReSTContainer {
 
-    public hostProviderContainer(HostProvider hostProvider, int port) throws IOException {
+    public HostProviderContainer(HostProvider hostProvider, int port) {
         super(port);
 
+        System.out.println("New host provider container! on port " + port);
         this.createContext("/", new HostProviderAPI(hostProvider));
+        this.createContext("/id/", new HostProviderSingleAPI(hostProvider));
     }
 
 }

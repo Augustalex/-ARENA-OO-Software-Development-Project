@@ -15,8 +15,9 @@ import java.util.function.Consumer;
 public class PropertyDelivery<T> implements Delivery<T> {
 
     private Runnable onCancel = () -> System.out.println("No callback on Cancel set.");
-    private ObjectProperty<T> payload = new SimpleObjectProperty<>(null);
+    private boolean canceled = false;
 
+    private ObjectProperty<T> payload = new SimpleObjectProperty<>(null);
     private Consumer<T> onDelivery = null;
 
     @Override
@@ -30,7 +31,10 @@ public class PropertyDelivery<T> implements Delivery<T> {
      */
     @Override
     public void cancel() {
-        this.onCancel.run();
+        if(this.onCancel == null)
+            this.canceled = true;
+        else
+            this.onCancel.run();
     }
 
     @Override

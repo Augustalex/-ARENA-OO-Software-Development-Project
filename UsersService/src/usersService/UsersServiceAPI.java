@@ -29,7 +29,7 @@ public class UsersServiceAPI extends ReST {
 
         System.out.println("GET REQUEST!");
         for(User user : usersService.getAllUsersAsArray()) {
-            output += "Name: " + user.getName() + "\tAge: " + user.getAge() + "\tID: " + user.getId() + "\r\n";
+            output += "Name: " + user.getName() + "\tID: " + user.getId() + "\r\n";
         }
 
         System.out.println("Found arena.users: ");
@@ -51,7 +51,7 @@ public class UsersServiceAPI extends ReST {
 
         usersService.getUserStorage().add(user.getId(), user);
 
-        String content = "Created new user: [Name: " + user.getName() + ", Age: " + user.getAge() + "]";
+        String content = "Created new user: [Name: " + user.getName() + "]";
         System.out.println("Response message: \"" + content + "\"");
         sendStringContentResponse(200, content, httpExchange);
     }

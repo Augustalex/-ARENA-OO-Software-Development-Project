@@ -1,5 +1,7 @@
 package hostProviderService;
 
+import hostProviderService.idService.IdService;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,18 +12,42 @@ import java.util.Map;
  */
 public class HostProvider {
 
+    private IdService nextId = new IdService(0);
+
+    private Map<String, HostService> hosts = new HashMap<>();
+
     private List<HostService> availableHosts = new ArrayList<>();
 
     public HostService getNextAvailableHost() throws NoAvailableHosts {
-        System.out.println("Getting next available host at index: " + (availableHosts.size()-1));
-        if(availableHosts.size() <= 0)
+        if(hosts.size() <= 0)
             throw new NoAvailableHosts();
-        else
-            return availableHosts.remove(0);
+        else {
+            Map.Entry<String, HostService> firstEntry = hosts.entrySet().stream().findFirst().get();
+            hosts.remove(firstEntry.getKey());
+            return firstEntry.getValue();
+        }
     }
 
-    public void addHost(HostService host){
+    public String addHost(HostService host){
         System.out.println("Adding host: " + host.getURL());
-        availableHosts.add(host);
+        String id = String.valueOf(nextId.getNextId());
+        hosts.put(id, host);
+
+        printHosts();
+        return id;
+    }
+
+    public void removeHost(String id){
+        hosts.remove(id);
+        printHosts();
+    }
+
+    public void printHosts(){
+        System.out.println("\nAll Hosts");
+        hosts.entrySet().forEach(entry -> {
+            System.out.println("id:" + entry.getKey() + "\thost:\"" + entry.getValue().getURL() + "\"");
+        });
+        System.out.println("\n");
     }
 }
+

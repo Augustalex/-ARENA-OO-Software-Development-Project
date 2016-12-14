@@ -9,9 +9,9 @@ import java.io.IOException;
  */
 public class ServiceInitiatorContainer extends ReSTContainer {
 
-    public ServiceInitiatorContainer(int port) throws IOException {
+    public ServiceInitiatorContainer(IServiceInitiator initiator, int port) {
         super(port);
 
-        this.createContext("/", new ServiceInitiatorAPI(new ServiceInitiatorService(), this));
+        this.createContext("/", new ServiceInitiatorAPI(initiator, this));
     }
 }

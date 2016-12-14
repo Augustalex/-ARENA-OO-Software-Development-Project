@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.servicesView.ServicesViewController"
+            stylesheets="/serviceClient/views/main.css">
+    <Button fx:id="addNewServiceButton" styleClass="bigButton" text="Add new Service" />
+    <Label text="Running Services" styleClass="header" />
+    <VBox fx:id="runningServicesList" styleClass="servicesList">
+    </VBox>
+</VBox>

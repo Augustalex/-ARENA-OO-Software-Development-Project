@@ -2,7 +2,6 @@ package serviceInitiatorService;
 
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import hostProviderService.Host;
 import hostProviderService.HostService;
 import rest.ReST;
 
@@ -16,9 +15,9 @@ public class ServiceInitiatorAPI extends ReST {
     private final ServiceInitiatorContainer container;
     private Gson gson = new Gson();
 
-    private final ServiceInitiatorService initiator;
+    private final IServiceInitiator initiator;
 
-    public ServiceInitiatorAPI(ServiceInitiatorService initiatorService, ServiceInitiatorContainer container){
+    public ServiceInitiatorAPI(IServiceInitiator initiatorService, ServiceInitiatorContainer container){
         this.initiator = initiatorService;
         this.container = container;
     }

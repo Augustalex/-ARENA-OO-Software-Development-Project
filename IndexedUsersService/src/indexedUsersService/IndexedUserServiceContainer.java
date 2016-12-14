@@ -14,10 +14,10 @@ public class IndexedUserServiceContainer extends ReSTContainer {
 
     private final ServiceIndexer indexer;
 
-    public IndexedUserServiceContainer(HostService hostProviderConnectionDetails, int port) throws IOException {
+    public IndexedUserServiceContainer(HostService hostProviderConnectionDetails, int port) {
         super(port);
 
-        indexer = new ServiceIndexer(2, hostProviderConnectionDetails);
+        indexer = new ServiceIndexer(2, hostProviderConnectionDetails, hostProviderConnectionDetails.getServiceClassName());
 
         this.createContext("/", new IndexedUserServiceAPI(indexer));
         this.createContext("/id/", new IndexedUserServiceSingleUserAPI(indexer));

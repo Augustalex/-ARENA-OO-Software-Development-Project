@@ -15,10 +15,9 @@ public class UsersService {
 
     public User createUserFromStringPairs(Map<String, String> pairs){
         String name = pairs.containsKey("name") ? pairs.get("name") : "unnamed";
-        int age = Integer.parseInt(pairs.containsKey("age") ? pairs.get("age") : "0");
+        String password = pairs.containsKey("password") ? pairs.get("password") : "password";
 
-        System.out.println("name: " + name + ", age: " + age);
-        User user = new User(name, age);
+        User user = new User(name, password);
         System.out.println(user.toString());
         return user;
     }
