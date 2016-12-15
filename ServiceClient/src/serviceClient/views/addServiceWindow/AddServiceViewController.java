@@ -14,6 +14,7 @@ import serviceClient.views.serviceListElement.ServiceCreationController;
 import serviceClient.views.serviceListElement.ServiceListElement;
 import serviceDirectory.ServiceDirectory;
 import serviceDirectory.ServiceDirectoryContainer;
+import usersService.IUsersService;
 import usersService.UserServiceContainer;
 import usersService.UsersService;
 
@@ -70,7 +71,7 @@ public class AddServiceViewController implements Initializable {
                         new ServiceCreationController<UsersService>(portInput, statusLabel)
                                 .setServiceDirectory(serviceDirectory)
                                 .setServiceFactory(UsersService::new)
-                                .setContainerFactory((port, service) -> new UserServiceContainer((UsersService)service, (int)port))
+                                .setContainerFactory((port, service) -> new UserServiceContainer((IUsersService)service, (int)port))
                 )
         );
 

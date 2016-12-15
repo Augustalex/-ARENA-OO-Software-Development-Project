@@ -1,10 +1,13 @@
 package arena.users;
 
+import arena.session.Session;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import hostProviderService.Host;
 import rest.Delivery;
 import rest.PropertyDelivery;
 
+import javax.management.ServiceNotFoundException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +36,7 @@ public class User implements IUser {
 
     public final int id;
     private String name;
+    private String password;
 
     /**
      * Will retrieve a User from the UsersService. If the password don't match
@@ -68,6 +72,28 @@ public class User implements IUser {
             }
             else
                 delivery.cancel();
+        }).start();
+
+        return delivery;
+    }
+
+    public static Delivery<IUser> getUserOnline(String username, String password){
+        Delivery<IUser> delivery = new PropertyDelivery<>();
+
+        new Thread(() -> {
+            try{
+                Session.getSession().getUsersService()
+                        .getUser(username, password)
+                            .onCancel(() -> {
+                                System.out.println("Not authorized. Bad username or password.");
+                            })
+                            .onDelivery(user -> {
+                                System.out.println("Now logged in as " + user.getName());
+                                delivery.deliver(user);
+                            });
+            } catch (ServiceNotFoundException e) {
+                e.printStackTrace();
+            }
         }).start();
 
         return delivery;

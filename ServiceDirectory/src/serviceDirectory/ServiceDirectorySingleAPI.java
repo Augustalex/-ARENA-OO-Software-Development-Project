@@ -23,9 +23,11 @@ public class ServiceDirectorySingleAPI extends ReST {
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
         String uri = httpExchange.getRequestURI().getRawPath();
-
+        System.out.println("New get request (single service). URI: " + uri);
         if(identifiesUniqueService(uri)){
+            System.out.println("Unique service.");
             String[] ids = getIdParametersFromURI(uri);
+
             directory.get(ids[0], ids[1])
                     .onCancel(() -> {
                         try {
@@ -47,9 +49,11 @@ public class ServiceDirectorySingleAPI extends ReST {
                     });
         }
         else if(identifiesServiceType(uri)){
+            System.out.println("Unique service type!");
             directory.grab(getServiceTypeFromURI(uri))
                     .onCancel(() -> {
                         try {
+                            System.out.println("Canceled.");
                             sendStringContentResponse(HttpURLConnection.HTTP_BAD_REQUEST, "", httpExchange);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -57,6 +61,8 @@ public class ServiceDirectorySingleAPI extends ReST {
                     })
                     .onDelivery(host -> {
                         try {
+                            System.out.println("Delivering!");
+                            System.out.println("Host: " + host.getURL());
                             sendStringContentResponse(
                                     HttpURLConnection.HTTP_OK,
                                     new Gson().toJson(host),
@@ -65,7 +71,8 @@ public class ServiceDirectorySingleAPI extends ReST {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    });        }
+                    });
+        }
         else
             sendStringContentResponse(HttpURLConnection.HTTP_BAD_REQUEST, "", httpExchange);
     }
@@ -99,7 +106,7 @@ public class ServiceDirectorySingleAPI extends ReST {
      * @return
      */
     private boolean identifiesUniqueService(String path){
-        if(path.split("/").length < 2)
+        if(path.split("/").length < 4)
             return false;
         else
             return true;
@@ -112,7 +119,7 @@ public class ServiceDirectorySingleAPI extends ReST {
      * @return
      */
     private boolean identifiesServiceType(String path){
-        if(path.split("/").length < 1 || path.split("/").length > 2)
+        if(path.split("/").length < 3 || path.split("/").length > 3)
             return false;
         else
             return true;
@@ -120,8 +127,9 @@ public class ServiceDirectorySingleAPI extends ReST {
 
     private String getServiceTypeFromURI(String path){
         String[] splitPath = path.split("/");
+        System.out.println(splitPath.toString());
 
-        if(splitPath.length < 2)
+        if(splitPath.length < 4)
             return splitPath[splitPath.length-1];
         else
             return splitPath[splitPath.length-2];
@@ -130,7 +138,7 @@ public class ServiceDirectorySingleAPI extends ReST {
     private String[] getIdParametersFromURI(String path) throws IOException {
         String[] splitPath = path.split("/");
 
-        if(splitPath.length < 2)
+        if(splitPath.length < 3)
             throw new RuntimeException("URI not correct. Is not uniquely identifying.");
 
         return new String[]{

@@ -1,11 +1,15 @@
 package arena.session;
 
 import arena.session.exceptions.NotLoggedInException;
-import arena.users.IPlayer;
 import arena.users.IUser;
+import arena.users.UsersServiceProxy;
+import hostProviderService.Host;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import rest.Delivery;
+import usersService.IUsersService;
 
+import javax.management.ServiceNotFoundException;
 import java.io.Serializable;
 
 /**
@@ -19,37 +23,36 @@ import java.io.Serializable;
 public class Session implements Serializable, ISession{
 
     private static final Session session = new Session();
-
-    private IPlayer player = null;
-
     private ObjectProperty<IUser> userProperty = new SimpleObjectProperty<>(null);
-
     private AppliedTournaments appliedTournaments;
+
+    private ServiceDirectoryProxy serviceDirectoryProxy = new ServiceDirectoryProxy(new Host(
+            "10.10.107.76",
+            2010
+    ));
+
+    private UsersServiceProxy usersServiceProxy;
 
     private Session(){
         this.appliedTournaments = new AppliedTournaments();
+
+        serviceDirectoryProxy.getUsersService()
+                .onCancel(() -> {
+                    System.out.println("Could not get User Service Connection Details.");
+                })
+                .onDelivery(host -> {
+                    System.out.println("Found service.");
+                    usersServiceProxy = new UsersServiceProxy(host);
+                });
     }
 
     public static Session getSession(){
         return Session.session;
     }
 
-    public void setPlayer(IPlayer player){
-        this.player = player;
-        System.out.println("New player for Session is " + player.getName());
-    }
-
     @Override
     public void setUser(IUser user){
         this.userProperty.set(user);
-    }
-
-    @Override
-    public IPlayer getPlayer(){
-        if(player == null)
-            throw new NotLoggedInException();
-        else
-            return player;
     }
 
     @Override
@@ -63,6 +66,14 @@ public class Session implements Serializable, ISession{
     @Override
     public AppliedTournaments getAppliedTournaments() {
         return appliedTournaments;
+    }
+
+    @Override
+    public UsersServiceProxy getUsersService() throws ServiceNotFoundException {
+        if(usersServiceProxy != null)
+            return usersServiceProxy;
+        else
+            throw new ServiceNotFoundException();
     }
 
     public ObjectProperty<IUser> userProperty(){

@@ -1,13 +1,10 @@
 package usersService;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.sun.net.httpserver.HttpExchange;
 import rest.ReST;
 
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
-import java.util.Map;
 
 /**
  * Created by August on 2016-11-26.
@@ -16,19 +13,19 @@ public class UsersServiceAPI extends ReST {
 
     private Gson gson = new Gson();
 
-    private UsersService usersService;
+    private IUsersService IUsersService;
 
-    public UsersServiceAPI(UsersService usersService){
-        this.usersService = usersService;
+    public UsersServiceAPI(IUsersService IUsersService){
+        this.IUsersService = IUsersService;
     }
 
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        String response = gson.toJson(this.usersService.getAllUsersAsArray());
+        String response = gson.toJson(this.IUsersService.getAllUsersAsArray());
         String output = "";
 
         System.out.println("GET REQUEST!");
-        for(User user : usersService.getAllUsersAsArray()) {
+        for(User user : IUsersService.getAllUsersAsArray()) {
             output += "Name: " + user.getName() + "\tID: " + user.getId() + "\r\n";
         }
 
@@ -45,11 +42,11 @@ public class UsersServiceAPI extends ReST {
 
         String body = getStringBodyFromHttpExchange(httpExchange);
 
-        User user = usersService.createUserFromStringPairs(
+        User user = IUsersService.createUserFromStringPairs(
                 getStringPairsFromJson(body)
         );
 
-        usersService.getUserStorage().add(user.getId(), user);
+        IUsersService.getUserStorage().add(user.getId(), user);
 
         String content = "Created new user: [Name: " + user.getName() + "]";
         System.out.println("Response message: \"" + content + "\"");
@@ -58,10 +55,10 @@ public class UsersServiceAPI extends ReST {
 
     @Override
     public void onDelete(HttpExchange httpExchange) throws Exception {
-        User[] allUsers = this.usersService.getAllUsersAsArray();
+        User[] allUsers = this.IUsersService.getAllUsersAsArray();
 
         for(User user : allUsers)
-            usersService.getUserStorage().remove(user.getId());
+            IUsersService.getUserStorage().remove(user.getId());
 
         sendEmptyResponse(HttpURLConnection.HTTP_OK, httpExchange);
     }

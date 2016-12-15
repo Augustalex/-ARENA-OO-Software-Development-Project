@@ -75,17 +75,17 @@ public class SystemLoginViewController extends FXMLViewController implements Ini
 
     private void setLoginEvents(){
         loginButton.setOnMouseClicked(e -> {
-            User.getUser(usernameField.getText(), passwordField.getText())
+            User.getUserOnline(usernameField.getText(), passwordField.getText())
                     .onDelivery(user -> {
                         System.out.println("Logged in as " + user.getName());
                         Session.getSession().setUser(user);
-                        Session.getSession().setPlayer(Player.newMockPlayerFromUser(user));
                     })
                     .onCancel(() -> System.out.println("Wrong password or username."));
         });
 
         guestButton.setOnMouseClicked(e -> {
-            Session.getSession().setPlayer(Player.newMockPlayerFromUser(User.getGuestUser()));
+            //Session.getSession().setPlayer(Player.newMockPlayerFromUser(User.getGuestUser()));
+            Session.getSession().setUser(User.getGuestUser());
             System.out.println("Logged in as guest user.");
         });
     }

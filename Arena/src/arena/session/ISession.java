@@ -1,7 +1,10 @@
 package arena.session;
 
-import arena.users.IPlayer;
 import arena.users.IUser;
+import arena.users.UsersServiceProxy;
+import usersService.IUsersService;
+
+import javax.management.ServiceNotFoundException;
 
 /**
  * Session interface contains objects for a current local arena.session.
@@ -13,12 +16,6 @@ public interface ISession {
 
     void setUser(IUser user);
 
-    /**
-     * Method for getting the player object linked to the current arena.session.
-     * @return IPlayer player
-     */
-    IPlayer getPlayer();
-
     IUser getUser();
 
     /**
@@ -27,5 +24,7 @@ public interface ISession {
      * @return AppliedTournaments
      */
     AppliedTournaments getAppliedTournaments();
+
+    UsersServiceProxy getUsersService() throws ServiceNotFoundException;
 
 }

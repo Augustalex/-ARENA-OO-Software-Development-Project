@@ -47,8 +47,13 @@ public class ServiceDirectory {
 
         new Thread(() -> {
             if(directory.containsKey(serviceClassName)){
+                System.out.println(directory.get(serviceClassName));
+                directory.get(serviceClassName).values().forEach(host -> {
+                    System.out.println(host.getURL());
+                });
+
                 if(directory.get(serviceClassName).size() > 0)
-                    result.deliver(directory.get(serviceClassName).get(0));
+                    result.deliver(directory.get(serviceClassName).values().stream().findAny().get());
                 else
                     result.cancel();
             }
