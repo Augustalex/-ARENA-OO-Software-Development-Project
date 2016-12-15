@@ -7,9 +7,13 @@ import javafx.util.Pair;
 import rest.ReST;
 
 import java.net.HttpURLConnection;
+import java.util.List;
 
 /**
- * Created by August on 2016-12-15.
+ * A overall api for grabbing all active services and
+ * posting new services.
+ *
+ * Deleting services requires a SingleAPI.
  */
 public class ServiceDirectoryAPI extends ReST {
 
@@ -21,12 +25,17 @@ public class ServiceDirectoryAPI extends ReST {
 
     @Override
     public void onGet(HttpExchange httpExchange) throws Exception {
-        //TODO return all elements
-       /* sendStringContentResponse(
+        List<Pair<String, Host>> pairs = directory.getAll();
+
+        String[] jsonPairs = pairs.stream()
+                .map(pair -> new Gson().toJson(pair))
+                .toArray(String[]::new);
+
+        sendStringContentResponse(
                 HttpURLConnection.HTTP_OK,
-                directory.getAll().stream();
+                new Gson().toJson(jsonPairs),
                 httpExchange
-        );*/
+        );
     }
 
     @Override
