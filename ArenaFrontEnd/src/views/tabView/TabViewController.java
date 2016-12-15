@@ -84,7 +84,7 @@ public class TabViewController extends FXMLViewController implements Initializab
         return
                 new RouterButtonBuilder()
                         .buttonText("WATCH")
-                        .fxmlPath("spectateMatch/spectateLobby/SpectateLobbyView.fxml")
+                        .fxmlPath("spectateMatch/spectate/SpectateView.fxml")
                         .contentView(contentView)
                         .currentControllerProperty(currentController)
                     .build();
@@ -220,7 +220,7 @@ public class TabViewController extends FXMLViewController implements Initializab
         watchButton.setOnAction(e -> {
             try {
                 closeCurrentContentController();
-                Parent parent = this.loadFXML("spectateMatch/spectateLobby/SpectateLobbyView.fxml");
+                Parent parent = this.loadFXML("spectateMatch/spectate/SpectateView.fxml");
                 mainWindow.getChildren().setAll(parent);
             } catch (IOException ex) {
                 ex.printStackTrace();

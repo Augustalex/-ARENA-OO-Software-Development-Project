@@ -1,10 +1,9 @@
-package views.spectateMatch.spectateLobby;
+package views.spectateMatch.spectate;
 
 import arena.games.game.IGame;
 import arena.games.gameManager.ArenaGameManager;
 import arena.league.ILeague;
 import arena.tournament.ITournament;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -34,7 +33,7 @@ import java.util.ResourceBundle;
  *
  * Extended ERROR handling for invalid input data needs to be fixed.
  */
-public class HandleSpectateLobbyController extends FXMLViewController implements Initializable {
+public class HandleSpectateController extends FXMLViewController implements Initializable {
 
     @FXML
     private TableView tableTournaments;

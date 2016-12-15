@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<VBox fx:controller="views.spectateMatch.spectateLobby.HandleSpectateLobbyController" xmlns:fx="http://javafx.com/fxml"
+<VBox fx:controller="views.spectateMatch.spectate.HandleSpectateController" xmlns:fx="http://javafx.com/fxml"
       fx:id="TournamentStyleWindow" id="spectateStyleContainer" >
             <HBox maxHeight="50">
                 <HBox prefWidth="200"></HBox>
