@@ -27,6 +27,9 @@ public class AppliedPlayersList {
         appliedPlayersList.add(player);
     }
 
+    /**
+     * Help-method for viewing the players applied to this tournament.
+     */
     public void viewAppliedPlayers(){
         for(int i = 0; i < appliedPlayersList.size(); i++){
             System.out.println(appliedPlayersList.get(i).getName());

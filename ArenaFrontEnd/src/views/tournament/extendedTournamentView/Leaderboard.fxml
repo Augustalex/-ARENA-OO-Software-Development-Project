@@ -7,13 +7,13 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.tournament.extendedTournamentView.LeaderBoard"
             stylesheets="/views/main.css" id="leaderboard">
     <left>
-        <FlowPane>
+        <VBox spacing="5">
             <Label fx:id="playerPosition" id="playerPosition" styleClass="tournamentTextBoxes"/>
-        </FlowPane>
+        </VBox>
     </left>
     <right>
-        <FlowPane>
+        <VBox>
             <Label fx:id="playerName" id="playerName" styleClass="tournamentTextBoxes"/>
-        </FlowPane>
+        </VBox>
     </right>
 </BorderPane>

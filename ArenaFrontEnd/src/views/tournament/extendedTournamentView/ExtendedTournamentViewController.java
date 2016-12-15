@@ -2,6 +2,7 @@ package views.tournament.extendedTournamentView;
 
 import arena.games.gameInformation.GameInformation;
 import arena.tournament.ITournament;
+import arena.tournament.leaderboard.ILeaderboard;
 import arena.tournament.match.IMatch;
 import arena.users.IPlayer;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import views.FXMLViewController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.ResourceBundle;
 
 /**
@@ -29,6 +31,7 @@ public class ExtendedTournamentViewController extends FXMLViewController {
     private GameInformation gameInformation;
     private ITournament tournament;
     private List<IMatch> listOfMatches;
+    private ILeaderboard leaderboardList;
 
     @FXML
     private VBox gameInfoContainer;
@@ -58,6 +61,7 @@ public class ExtendedTournamentViewController extends FXMLViewController {
         this.tournament = tournament;
         this.gameInformation = tournament.getGameInformation();
         this.listOfMatches = tournament.getMatches();
+        this.leaderboardList = tournament.getLeaderboard();
     }
 
     @Override
@@ -72,6 +76,7 @@ public class ExtendedTournamentViewController extends FXMLViewController {
         GameInfoLabel.setText(gameInformation.getGameDescription());
 
         System.out.println("No of matches: " + listOfMatches.size());
+        System.out.println("No of players: " + tournament.getAppliedPlayerList().length());
         for(IMatch match : tournament.getMatches()) {
             matchListHandler(match);
         }

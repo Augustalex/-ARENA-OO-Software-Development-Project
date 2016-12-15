@@ -5,6 +5,8 @@ package arena.tournament;
 import arena.games.game.IGame;
 import arena.games.gameInformation.GameInformation;
 import arena.metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
+import arena.tournament.leaderboard.ILeaderboard;
+import arena.tournament.leaderboard.Leaderboard;
 import arena.tournament.match.IMatch;
 import arena.tournament.match.Match;
 import arena.tournament.tournamentConfiguration.ITournamentConfiguration;
@@ -24,6 +26,8 @@ public class Tournament implements ITournament, Serializable {
     private ITournamentConfiguration configuration;
     private IGame game;
     private List<IMatch> matchesInTournament = new ArrayList<>();
+    private ILeaderboard leaderboard = new Leaderboard(this);
+
 
 
     public Tournament(ITournamentConfiguration configuration){
@@ -101,6 +105,11 @@ public class Tournament implements ITournament, Serializable {
     @Override
     public GameInformation getGameInformation() {
         return game.getGameInformation();
+    }
+
+    @Override
+    public ILeaderboard getLeaderboard() {
+        return leaderboard;
     }
 
     @Override

@@ -3,10 +3,12 @@ package arena.tournament;
 import arena.games.game.IGame;
 import arena.games.gameInformation.GameInformation;
 import arena.metaInformation.tournamentMetaInformation.ITournamentMetaInformation;
+import arena.tournament.leaderboard.ILeaderboard;
 import arena.tournament.match.IMatch;
 import arena.users.IPlayer;
 
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Interface for a Tournament
@@ -40,10 +42,29 @@ public interface ITournament {
      */
     List<IMatch> getMatches();
 
+    /**
+     * Method for adding a match to the tournament.
+     * @return
+     */
     ITournament addMatchToTournament();
 
+    /**
+     * Method for setting the game of the tournament
+     * @param game
+     * @return
+     */
     ITournament setGame(IGame game);
 
+    /**
+     * Method for gettign the gameInformation of the game of the tournament.
+     * @return
+     */
     GameInformation getGameInformation();
+
+    /**
+     * Method for getting the leaderboard of the tournament.
+     * @return leaderboard
+     */
+    ILeaderboard getLeaderboard();
 
 }
