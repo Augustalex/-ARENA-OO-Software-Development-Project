@@ -6,6 +6,7 @@ import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.Executor;
 
 /**
@@ -79,5 +80,9 @@ public abstract class ReSTContainer extends HttpServer {
     @Override
     public InetSocketAddress getAddress() {
         return server.getAddress();
+    }
+
+    public String getLocalAddress() throws UnknownHostException {
+        return getAddress().getAddress().getLocalHost().getHostAddress();
     }
 }

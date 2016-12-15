@@ -13,6 +13,8 @@ import serviceClient.idService.IdService;
 import serviceClient.utilityServices.ContainerServicePair;
 
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +89,7 @@ public class LocalServiceDirectory {
                 Pair<String, Host> data = new Pair<>(
                         containerServicePair.getService().getClass().getSimpleName(),
                         new Host(
-                                containerServicePair.getContainer().getAddress().getHostName(),
+                                containerServicePair.getContainer().getLocalAddress(),
                                 containerServicePair.getContainer().getPort()
                         )
                 );
@@ -114,7 +116,7 @@ public class LocalServiceDirectory {
             ContainerServicePair containerServicePair = getService(localServiceId);
 
             String baseURL = new Host(
-                    containerServicePair.getContainer().getAddress().getHostName(),
+                    containerServicePair.getContainer().getLocalAddress(),
                     containerServicePair.getContainer().getPort()
             ).getURL();
 

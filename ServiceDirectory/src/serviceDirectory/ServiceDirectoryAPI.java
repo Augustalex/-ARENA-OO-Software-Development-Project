@@ -10,7 +10,6 @@ import rest.ReST;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.util.List;
-import java.util.Map;
 
 /**
  * A overall api for grabbing all active services and
