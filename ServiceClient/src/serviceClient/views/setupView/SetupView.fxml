@@ -6,6 +6,19 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.setupView.SetupViewController"
             stylesheets="/serviceClient/views/main.css">
+    <Label styleClass="header" text="Set new Service Directory" />
+    <HBox styleClass="inputRow">
+        <Label styleClass="inputLabel" text="port: " />
+        <TextField fx:id="directoryPortInput" styleClass="inputField" />
+    </HBox>
+    <HBox styleClass="inputRow">
+        <Label styleClass="inputLabel" text="ip: " />
+        <TextField fx:id="directoryIpInput" styleClass="inputField" />
+    </HBox>
+    <HBox styleClass="buttonRow">
+        <Button text="Submit" fx:id="submitDirectory" styleClass="submit" />
+    </HBox>
+
     <Label styleClass="header" text="Set new Host Provider" />
     <HBox styleClass="inputRow">
         <Label styleClass="inputLabel" text="port: " />
@@ -18,6 +31,7 @@
     <HBox styleClass="buttonRow">
         <Button text="Submit" fx:id="submitProvider" styleClass="submit" />
     </HBox>
+
     <Label styleClass="header" text="Set new Service Initiator" />
     <HBox styleClass="inputRow">
         <Label styleClass="inputLabel" text="port: " />

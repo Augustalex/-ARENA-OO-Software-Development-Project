@@ -7,10 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import rest.Delivery;
 import rest.PropertyDelivery;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
+import serviceClient.portAvailibilityChecker.PortAvailabilityChecker;
 import serviceClient.utilityServices.UtilityServiceFactory;
 import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,15 +23,22 @@ import java.util.ResourceBundle;
 public class SetupViewController implements Initializable{
 
     private final UtilityServicesDirectoryProxy utilityServices;
-    private ServiceDirectory directory;
+    private LocalServiceDirectory directory;
+
+    @FXML
+    private TextField directoryPortInput;
+
+    @FXML
+    private TextField directoryIpInput;
+
+    @FXML
+    private Button submitDirectory;
+
     @FXML
     private TextField providerPortInput;
 
     @FXML
     private TextField providerIpInput;
-
-    @FXML
-    private Button checkProviderPort;
 
     @FXML
     private Button submitProvider;
@@ -43,15 +52,25 @@ public class SetupViewController implements Initializable{
     @FXML
     private Button submitInitiator;
 
-    public SetupViewController(UtilityServicesDirectoryProxy utilityServices, ServiceDirectory directory){
+    public SetupViewController(UtilityServicesDirectoryProxy utilityServices, LocalServiceDirectory directory){
         this.utilityServices = utilityServices;
         this.directory = directory;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        captureDirectorySubmit();
         captureProviderSubmit();
         captureInitiatorSubmit();
+    }
+
+    private void captureDirectorySubmit() {
+        submitDirectory.setOnMouseClicked(e -> {
+            int port = Integer.parseInt(directoryPortInput.getText());
+            String ip = directoryIpInput.getText();
+
+            directory.setOnlineDirectoryDetails(new Host(ip, port));
+        });
     }
 
     private void captureProviderSubmit(){

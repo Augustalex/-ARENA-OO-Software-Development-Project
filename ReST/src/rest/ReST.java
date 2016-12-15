@@ -1,13 +1,16 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.apache.http.HttpEntity;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.util.Map;
 
 /**
  * Methods for completely handling every rest.ReST API Use Case.
@@ -123,5 +126,10 @@ public abstract class ReST implements HttpHandler{
         String[] splitPath = path.split("/");
 
         return splitPath[splitPath.length-1];
+    }
+
+    public Map<String, String> getStringPairsFromJson(String json){
+        Type type = new TypeToken<Map<String, String>>(){}.getType();
+        return new Gson().fromJson(json, type);
     }
 }

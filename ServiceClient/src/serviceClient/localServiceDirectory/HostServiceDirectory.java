@@ -1,4 +1,4 @@
-package serviceClient.serviceDirectory;
+package serviceClient.localServiceDirectory;
 
 import hostProviderService.HostService;
 import serviceClient.idService.IdService;

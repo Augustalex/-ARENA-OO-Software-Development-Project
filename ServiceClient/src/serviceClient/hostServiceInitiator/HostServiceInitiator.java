@@ -3,7 +3,7 @@ package serviceClient.hostServiceInitiator;
 import hostProviderService.HostService;
 import serviceClient.openService.OpenService;
 import serviceClient.openService.OpenServiceContainer;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.utilityServices.ContainerServicePair;
 import serviceInitiatorService.IServiceInitiator;
 import usersService.UserServiceContainer;
@@ -18,11 +18,11 @@ import java.util.Map;
  */
 public class HostServiceInitiator implements IServiceInitiator{
 
-    private final ServiceDirectory directory;
+    private final LocalServiceDirectory directory;
 
     private final Map<Integer, String> openServicesIds = new HashMap<>(); // <Port number, ServiceDirectory Id for OpenServiceContainer>
 
-    public HostServiceInitiator(ServiceDirectory directory){
+    public HostServiceInitiator(LocalServiceDirectory directory){
         this.directory = directory;
     }
 

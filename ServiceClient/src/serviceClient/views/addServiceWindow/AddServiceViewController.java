@@ -7,11 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
 import serviceClient.views.serviceListElement.OpenServiceCreationController;
 import serviceClient.views.serviceListElement.ServiceCreationController;
 import serviceClient.views.serviceListElement.ServiceListElement;
+import serviceDirectory.ServiceDirectory;
+import serviceDirectory.ServiceDirectoryContainer;
 import usersService.UserServiceContainer;
 import usersService.UsersService;
 
@@ -23,7 +25,7 @@ import java.util.ResourceBundle;
  */
 public class AddServiceViewController implements Initializable {
 
-    private final ServiceDirectory serviceDirectory;
+    private final LocalServiceDirectory serviceDirectory;
     private UtilityServicesDirectoryProxy utilityServices;
 
     @FXML
@@ -36,7 +38,7 @@ public class AddServiceViewController implements Initializable {
     private VBox servicesList;
 
 
-    public AddServiceViewController(ServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
+    public AddServiceViewController(LocalServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
         this.serviceDirectory = serviceDirectory;
         this.utilityServices = utilityServices;
     }
@@ -49,6 +51,16 @@ public class AddServiceViewController implements Initializable {
                     "Open Service",
                         new OpenServiceCreationController(portInput, statusLabel)
                             .setUtilityServices(utilityServices)
+                )
+        );
+
+        servicesList.getChildren().add(
+                new ServiceListElement(
+                        "ServiceDirectory",
+                        new ServiceCreationController<ServiceDirectory>(portInput, statusLabel)
+                            .setServiceDirectory(serviceDirectory)
+                            .setServiceFactory(ServiceDirectory::new)
+                            .setContainerFactory((port, service) -> new ServiceDirectoryContainer((ServiceDirectory)service, (int)port))
                 )
         );
 

@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
 
 /**
@@ -14,15 +14,15 @@ import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
  */
 public class AddServiceWindow extends Application {
 
-    private final ServiceDirectory serviceDirectory;
+    private final LocalServiceDirectory serviceDirectory;
     private UtilityServicesDirectoryProxy utilityServices;
 
-    public AddServiceWindow(ServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
+    public AddServiceWindow(LocalServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
         this.serviceDirectory = serviceDirectory;
         this.utilityServices = utilityServices;
     }
 
-    public static void startAsNewWindow(ServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
+    public static void startAsNewWindow(LocalServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("Add new Service");
 

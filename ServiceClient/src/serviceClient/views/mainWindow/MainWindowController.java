@@ -6,10 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.views.servicesView.ServicesViewController;
 import serviceClient.views.setupView.SetupViewController;
-import serviceClient.serviceDirectory.HostServiceDirectory;
 import serviceClient.utilityServices.UtilityServiceFactory;
 import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
 import serviceClient.views.machineView.MachineViewController;
@@ -26,7 +25,7 @@ import java.util.ResourceBundle;
  */
 public class MainWindowController implements Initializable{
 
-    private final ServiceDirectory serviceDirectory;
+    private final LocalServiceDirectory serviceDirectory;
     private final UtilityServicesDirectoryProxy utilityProxy;
     @FXML
     private BorderPane mainWindow;
@@ -36,7 +35,7 @@ public class MainWindowController implements Initializable{
 
     public MainWindowController() throws IOException {
 
-        this.serviceDirectory = new ServiceDirectory();
+        this.serviceDirectory = new LocalServiceDirectory();
         serviceDirectory.addService(UtilityServiceFactory.newHostProvider(2000).start());
         this.utilityProxy = new UtilityServicesDirectoryProxy()
                                     .setHostProviderDetails(UtilityServiceFactory.newHostProviderDetails(2000))

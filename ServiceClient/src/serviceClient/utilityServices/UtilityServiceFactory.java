@@ -4,9 +4,7 @@ import hostProviderService.Host;
 import hostProviderService.HostProvider;
 import hostProviderService.HostProviderContainer;
 import serviceClient.hostServiceInitiator.HostServiceInitiator;
-import serviceClient.serviceDirectory.ServiceDirectory;
-import serviceInitiatorService.IServiceInitiator;
-import serviceInitiatorService.ServiceInitiator;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceInitiatorService.ServiceInitiatorContainer;
 
 import java.io.IOException;
@@ -28,7 +26,7 @@ public class UtilityServiceFactory {
 
     }
 
-    public static ContainerServicePair<HostServiceInitiator> newServiceInitiator(int port, ServiceDirectory directory) throws IOException {
+    public static ContainerServicePair<HostServiceInitiator> newServiceInitiator(int port, LocalServiceDirectory directory) throws IOException {
         return new ContainerServicePair<HostServiceInitiator>(port, new HostServiceInitiator(directory), (nPort, nService) -> new ServiceInitiatorContainer(nService, nPort));
     }
 }

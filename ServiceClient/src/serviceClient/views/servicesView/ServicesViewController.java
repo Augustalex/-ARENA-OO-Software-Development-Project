@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
 import serviceClient.views.addServiceWindow.AddServiceWindow;
 import serviceClient.views.serviceListElement.ServiceListElement;
@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  */
 public class ServicesViewController implements Initializable{
 
-    private final ServiceDirectory directory;
+    private final LocalServiceDirectory directory;
     private final UtilityServicesDirectoryProxy utilityServices;
 
     @FXML
@@ -28,7 +28,7 @@ public class ServicesViewController implements Initializable{
     @FXML
     private VBox runningServicesList;
 
-    public ServicesViewController(ServiceDirectory directory, UtilityServicesDirectoryProxy utilityServices){
+    public ServicesViewController(LocalServiceDirectory directory, UtilityServicesDirectoryProxy utilityServices){
         this.utilityServices = utilityServices;
         this.directory = directory;
     }
@@ -50,7 +50,7 @@ public class ServicesViewController implements Initializable{
         displayAllServices(runningServicesList, directory);
     }
 
-    private void displayAllServices(VBox runningServicesList, ServiceDirectory directory) {
+    private void displayAllServices(VBox runningServicesList, LocalServiceDirectory directory) {
         directory.getAllServices().stream()
                 .map(pair -> new ServiceListElement(directory.getId(pair), new ServiceManagerController(pair)))
                 .forEach(listElement -> runningServicesList.getChildren().add(listElement));

@@ -1,13 +1,16 @@
 package serviceDirectory;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sun.net.httpserver.HttpExchange;
 import hostProviderService.Host;
 import javafx.util.Pair;
 import rest.ReST;
 
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A overall api for grabbing all active services and
@@ -41,8 +44,10 @@ public class ServiceDirectoryAPI extends ReST {
     @Override
     public void onPost(HttpExchange httpExchange) throws Exception {
         String body = getStringBodyFromHttpExchange(httpExchange);
+        System.out.println("New service in service directory!" + body);
 
-        Pair<String, Host> info = new Gson().fromJson(body, Pair.class);
+        Type type = new TypeToken<Pair<String, Host>>(){}.getType();
+        Pair<String, Host> info = new Gson().fromJson(body, type);
 
         String id = directory.publish(
             info.getKey(),

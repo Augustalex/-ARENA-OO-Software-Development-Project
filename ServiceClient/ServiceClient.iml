@@ -22,5 +22,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="IndexedUsersService" />
+    <orderEntry type="module" module-name="ServiceDirectory" />
   </component>
 </module>

@@ -71,11 +71,6 @@ public class UsersServiceAPI extends ReST {
 
     }
 
-    private Map<String, String> getStringPairsFromJson(String json){
-        Type type = new TypeToken<Map<String, String>>(){}.getType();
-        return gson.fromJson(json, type);
-    }
-
     private String userToJson(User user){
         return gson.toJson(user);
     }

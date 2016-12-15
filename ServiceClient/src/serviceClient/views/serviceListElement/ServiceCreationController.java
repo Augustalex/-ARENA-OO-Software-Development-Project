@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import rest.ReSTContainer;
-import serviceClient.serviceDirectory.ServiceDirectory;
+import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.utilityServices.ContainerServicePair;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class ServiceCreationController<T> implements EventHandler<MouseEvent> {
     private final Label statusLabel;
 
     private BiFunction<Integer, T, ReSTContainer> containerFactory = null;
-    private ServiceDirectory directory = null;
+    private LocalServiceDirectory directory = null;
     private Supplier<T> serviceFactory = null;
 
     public ServiceCreationController(TextField portInput, Label statusLabel){
@@ -31,7 +31,7 @@ public class ServiceCreationController<T> implements EventHandler<MouseEvent> {
 
     }
 
-    public ServiceCreationController setServiceDirectory(ServiceDirectory directory){
+    public ServiceCreationController setServiceDirectory(LocalServiceDirectory directory){
         this.directory = directory;
         return this;
     }
