@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 
 /**
- * Created by August on 2016-12-15.
+ * API for grabbing single service types or a specific running Service.
+ *
+ * Also supports deleting actions of unique services.
  */
 public class ServiceDirectorySingleAPI extends ReST {
 
