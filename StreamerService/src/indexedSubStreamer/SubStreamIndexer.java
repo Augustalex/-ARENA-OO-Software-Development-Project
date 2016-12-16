@@ -83,8 +83,21 @@ public class SubStreamIndexer implements IServiceIndexer{
                     serviceDetails.deliver(null);
                 }
             });
-        else
-            serviceDetails.deliver(serviceHosts.get(getServiceIndex(lookupIndex)));
+        else {
+            try {
+                HostService service = serviceHosts.get(getServiceIndex(lookupIndex));
+
+                Response response = Request.Get(service.getURL()).execute();
+
+                HttpResponse responseContent = response.returnResponse();
+                String body = EntityUtils.toString(responseContent.getEntity());
+                Host liveStreamConnectionDetails = new Gson().fromJson(body, Host.class);
+                serviceDetails.deliver(new HostService("SubStream", liveStreamConnectionDetails, service.getServiceInitiatorHostInformation()));
+            } catch (IOException e) {
+                System.out.println("Could not send request to sub stream.");
+                e.printStackTrace();
+            }
+        }
 
         return serviceDetails;
     }
