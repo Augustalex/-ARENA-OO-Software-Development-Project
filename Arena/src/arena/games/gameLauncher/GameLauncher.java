@@ -51,16 +51,21 @@ public class GameLauncher {
 
                LocalPlayer johan = new LocalPlayer("Simon", Color.BLUE);
                LocalPlayer august = new LocalPlayer("August", Color.TOMATO);
+               LocalPlayer carlos = new LocalPlayer("Carlos", Color.PINK);
 
                players.put(new Host("10.10.201.96", 3000), johan);
-
                players.put(new Host("10.10.107.76", 3000), august);
+               players.put(new Host("10.10.118.6", 3000), carlos);
+
 
                RunMatch.runOnlineMatchTest(newGamePane, players, august);
 
                int liveStreamPort = 1995;
-               LiveStream liveStream = new LiveStream(newGamePane, liveStreamPort);
-               liveStream.smartStream();
+
+               new Thread(() -> {
+                   LiveStream liveStream = new LiveStream(newGamePane, liveStreamPort);
+                   liveStream.smartStream();
+               }).start();
 
                try {
                    Session.getSession().getStreamService().sendLiveStream(new Host(

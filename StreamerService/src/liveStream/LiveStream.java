@@ -63,7 +63,7 @@ public class LiveStream {
     }
 
     public void smartStream(){
-        startSnapshotInterval(streamNode, 40);
+        startSnapshotInterval(streamNode, 1000);
 
         new Thread(() -> {
             try {
