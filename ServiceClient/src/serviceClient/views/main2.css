@@ -1,0 +1,120 @@
+VBox{
+    -fx-alignment: top-center;
+    -fx-background-color: linear-gradient(#0f171e, #0b031a);
+    -fx-padding: 10,0,0,0;
+}
+
+HBox{
+    -fx-alignment: center;
+}
+
+RouterButton{
+    -fx-background-color: tomato;
+    -fx-font-size: 2em;
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-insets: 0 0 0 0;
+}
+
+RouterButton:hover{
+    -fx-background-color: ivory;
+    -fx-text-fill: #888;
+}
+
+#tabView{
+    -fx-background-color: tomato;
+    -fx-pref-height: 80px;
+}
+
+/*      Public      */
+
+.header{
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+}
+
+/*      SETUP VIEW      */
+
+.inputRow{
+    -fx-pref-width: 300px;
+    -fx-background-color: transparent;
+}
+
+/*      Manage Service      */
+
+.leftMarginBox{
+    -fx-alignment: top-left;
+}
+
+.submit{
+    -fx-background-color: tomato;
+    -fx-pref-width: 100;
+    -fx-pref-height: 20;
+}
+
+.submit:hover{
+    -fx-background-color: #FFF;
+    -fx-text-fill: #777;
+}
+
+.inputLabel{
+    -fx-text-fill: white;
+}
+
+.inputField{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-insets: 10,10,10,10;
+}
+
+.buttonRow{
+    -fx-padding: 10,0,10,0;
+}
+
+#machineIPLabel{
+    -fx-text-fill: white;
+}
+
+#machineIP{
+    -fx-text-fill: white;
+}
+
+#statusLabel{
+    -fx-text-fill: white;
+}
+
+#servicesList Label{
+    -fx-text-fill: white;
+}
+
+#servicesList{
+    -fx-spacing: 10;
+    -fx-background-color: transparent;
+}
+
+ServiceListElement, .bigButton{
+    -fx-background-color: tomato;
+    -fx-pref-width: 200;
+    -fx-pref-height: 40;
+    -fx-background-insets: 0,0,10,0;
+    -fx-border-insets: 0,0,10,0;
+}
+
+ServiceListElement:hover{
+    -fx-background-color: #FFF;
+    -fx-text-fill: #777;
+}
+
+.bigButton:hover{
+    -fx-background-color: #FFF;
+    -fx-text-fill: #777;
+}
+
+.backis{
+    -fx-background-color: darkslategray;
+}
+
+.leftMarginBox{
+    -fx-background-color: transparent;
+}

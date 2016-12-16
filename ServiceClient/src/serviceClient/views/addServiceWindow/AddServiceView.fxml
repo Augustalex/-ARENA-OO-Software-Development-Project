@@ -5,12 +5,12 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.addServiceWindow.AddServiceViewController"
-            stylesheets="/serviceClient/views/main.css">
+            stylesheets="/serviceClient/views/main2.css" styleClass="backis">
     <HBox>
-        <Label text="Port: "/>
-        <TextField fx:id="portInput"/>
+        <Label text="Port: " styleClass="inputLabel"/>
+        <TextField fx:id="portInput" styleClass="inputField"/>
     </HBox>
-    <Label text="Port Status" fx:id="statusLabel" />
+    <Label text="Port Status" fx:id="statusLabel" id="statusLabel" />
     <VBox fx:id="servicesList" styleClass="servicesList">
     </VBox>
 </VBox>

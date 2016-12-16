@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.servicesView.ServicesViewController"
-            stylesheets="/serviceClient/views/main.css">
+            stylesheets="/serviceClient/views/main2.css">
     <Button fx:id="addNewServiceButton" styleClass="bigButton" text="Add new Service" />
     <Label text="Running Services" styleClass="header" />
     <VBox fx:id="runningServicesList" styleClass="servicesList">

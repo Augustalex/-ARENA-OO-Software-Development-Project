@@ -5,19 +5,21 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.manageServiceWindow.ManageServiceViewController"
-            stylesheets="/serviceClient/views/main.css">
+            stylesheets="/serviceClient/views/main2.css" styleClass="backis">
     <Label text="Manage Service" styleClass="header" />
     <VBox styleClass="leftMarginBox">
         <HBox>
-            <Label text="Name: "/>
-            <Label fx:id="nameLabel" />
+            <Label text="Name: " styleClass="inputLabel"/>
+            <Label fx:id="nameLabel" styleClass="inputLabel"/>
         </HBox>
         <HBox>
-            <Label text="Port: "/>
-            <Label fx:id="portLabel"/>
+            <Label text="Port: " styleClass="inputLabel"/>
+            <Label fx:id="portLabel" styleClass="inputLabel"/>
         </HBox>
     </VBox>
-    <Button text="Stop" fx:id="stopButton" />
-    <Button text="Show Log" fx:id="showLogButton" />
-    <Button text="Hosts List" fx:id="hostsListButton" />
+    <VBox spacing="10">
+        <Button text="Stop" fx:id="stopButton" styleClass="bigButton"/>
+        <Button text="Show Log" fx:id="showLogButton" styleClass="bigButton"/>
+        <Button text="Hosts List" fx:id="hostsListButton" styleClass="bigButton"/>
+    </VBox>
 </VBox>

@@ -5,14 +5,14 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.setupView.SetupViewController"
-            stylesheets="/serviceClient/views/main.css">
+            stylesheets="/serviceClient/views/main2.css">
     <Label styleClass="header" text="Set new Service Directory" />
     <HBox styleClass="inputRow">
         <Label styleClass="inputLabel" text="port: " />
         <TextField fx:id="directoryPortInput" styleClass="inputField" />
     </HBox>
     <HBox styleClass="inputRow">
-        <Label styleClass="inputLabel" text="ip: " />
+        <Label styleClass="inputLabel" text="    ip: " />
         <TextField fx:id="directoryIpInput" styleClass="inputField" />
     </HBox>
     <HBox styleClass="buttonRow">
@@ -25,7 +25,7 @@
         <TextField fx:id="providerPortInput" styleClass="inputField" />
     </HBox>
     <HBox styleClass="inputRow">
-        <Label styleClass="inputLabel" text="ip: " />
+        <Label styleClass="inputLabel" text="    ip: " />
         <TextField fx:id="providerIpInput" styleClass="inputField" />
     </HBox>
     <HBox styleClass="buttonRow">
@@ -37,7 +37,7 @@
         <Label styleClass="inputLabel" text="port: " />
         <TextField fx:id="initiatorPortInput" styleClass="inputField" />
     </HBox>
-    <HBox styleClass="buttonRow">
+    <HBox styleClass="buttonRow" spacing="10">
         <Button text="Check if Port is Available" fx:id="checkInitiatorPort" styleClass="submit" />
         <Button text="Submit" fx:id="submitInitiator" styleClass="submit" />
     </HBox>

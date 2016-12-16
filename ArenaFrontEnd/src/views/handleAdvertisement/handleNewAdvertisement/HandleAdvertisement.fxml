@@ -20,10 +20,10 @@
                 <Text text="Enter source:" fill="white"/>
                 <TextField styleClass="newAdvertBox" minWidth="450" maxWidth="450" fx:id="sourceField"/>
             </VBox>
-            <VBox>
+            <HBox>
                 <Text text="Amount reserved for advertisement:" fill="white"/>
                 <TextField styleClass="newAdvertBox" minWidth="75" maxWidth="75" fx:id="amountField"/>
-            </VBox>
+            </HBox>
         </VBox>
     </top>
 
@@ -37,7 +37,7 @@
                 <VBox>
                     <Text text="Enter description:" fill="white"/>
                     <VBox spacing="20">
-                        <TextArea styleClass="tournamentTextBoxes" prefHeight="200" maxWidth="200" wrapText="true" fx:id="adDescription"/>
+                        <TextArea styleClass="tournamentTextBoxes" prefHeight="200" maxWidth="450" wrapText="true" fx:id="adDescription"/>
                         <Button styleClass="loginButton" text="Submit" minWidth="75" fx:id="submitAd"/>
                         <Text text="" fill="white" fx:id="confirmationText"/>
                     </VBox>

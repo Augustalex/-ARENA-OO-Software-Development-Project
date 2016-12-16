@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="serviceClient.views.machineView.MachineViewController"
-            stylesheets="/serviceClient/views/main.css">
+            stylesheets="/serviceClient/views/main2.css">
     <HBox>
         <Label text="Machine-IP: " id="machineIPLabel" />
         <Label fx:id="machineIP" id="machineIP" />
