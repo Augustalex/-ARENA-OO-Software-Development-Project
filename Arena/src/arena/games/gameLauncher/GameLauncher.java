@@ -55,13 +55,13 @@ public class GameLauncher {
 
                players.put(new Host("10.10.201.96", 3000), johan);
                players.put(new Host("10.10.107.76", 3000), august);
-               players.put(new Host("10.10.118.6", 3000), carlos);
+               //players.put(new Host("10.10.71.135", 3000), carlos);
 
 
                RunMatch.runOnlineMatchTest(newGamePane, players, august);
 
                int liveStreamPort = 1995;
-
+/*
                new Thread(() -> {
                    LiveStream liveStream = new LiveStream(newGamePane, liveStreamPort);
                    liveStream.smartStream();
@@ -76,7 +76,7 @@ public class GameLauncher {
                } catch (UnknownHostException e) {
                    System.out.println("Could not retrieve IP address of local host, for starting a live stream.");
                    e.printStackTrace();
-               }
+               }*/
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);
