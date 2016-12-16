@@ -141,7 +141,8 @@ public class LiveStream {
     }
 
     private void streamToClient(Node node, Socket socket){
-        intervalSnapshots(node, snapshot -> compressAndSendImage(snapshot, socket), 100);
+        //interval
+        intervalSnapshots(node, snapshot -> compressAndSendImage(snapshot, socket), 1000);
     }
 
     private void intervalSnapshots(Node node, Consumer<WritableImage> snapshotHandler, int interval){
