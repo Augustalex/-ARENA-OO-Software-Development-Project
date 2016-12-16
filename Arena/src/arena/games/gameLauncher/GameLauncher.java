@@ -4,7 +4,9 @@ import arena.IPInformation.IPInformation;
 import arena.games.preInstalledGames.ticTacToe.TicTacToe;
 import arena.session.Session;
 import arena.streamService.StreamServiceProxy;
+import boardGameLibrary.players.LocalPlayer;
 import hostProviderService.Host;
+import javafx.scene.paint.Color;
 import liveStream.LiveStream;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -15,6 +17,8 @@ import tests.RunMatch;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Launches a certain game given information about the
@@ -41,7 +45,19 @@ public class GameLauncher {
 
        switch(gameInformation.getGameName().toLowerCase()){
            case "othello":
-               RunMatch.runMatch(newGamePane);
+               //RunMatch.runMatch(newGamePane);
+
+               Map<Host, LocalPlayer> players = new HashMap<>();
+
+               LocalPlayer johan = new LocalPlayer("Simon", Color.BLUE);
+               LocalPlayer august = new LocalPlayer("August", Color.TOMATO);
+
+               players.put(new Host("10.10.201.96", 3000), johan);
+
+               players.put(new Host("10.10.107.76", 3000), august);
+
+               RunMatch.runOnlineMatchTest(newGamePane, players, august);
+
                int liveStreamPort = 1995;
                LiveStream liveStream = new LiveStream(newGamePane, liveStreamPort);
                liveStream.smartStream();
@@ -56,16 +72,6 @@ public class GameLauncher {
                    System.out.println("Could not retrieve IP address of local host, for starting a live stream.");
                    e.printStackTrace();
                }
-               /*Map<Host, LocalPlayer> players = new HashMap<>();
-
-               LocalPlayer johan = new LocalPlayer("Johan", Color.BLUE);
-               LocalPlayer august = new LocalPlayer("August", Color.TOMATO);
-
-               players.put(new Host("10.10.201.96", 3000), johan);
-
-               players.put(new Host("10.10.107.76", 3000), august);
-
-               RunMatch.runOnlineMatchTest(newGamePane, players, johan);*/
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);

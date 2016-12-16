@@ -26,6 +26,7 @@ public class RunMatch {
         PaneRouter router = new PaneRouter(container);
         router.setApplicationRouter(router);
 
+
         Player player1 = new LocalPlayer("August", Color.WHITE);
         Player player2 = new LocalPlayer("Johan", Color.BLACK);
 
