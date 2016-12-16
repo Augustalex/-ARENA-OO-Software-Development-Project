@@ -14,6 +14,7 @@ import serviceClient.portAvailibilityChecker.PortAvailabilityChecker;
 import serviceClient.utilityServices.UtilityServicesDirectoryProxy;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * Created by August on 2016-12-14.
@@ -50,11 +51,17 @@ public class OpenServiceCreationController implements EventHandler<MouseEvent> {
 
         new Thread(() -> {
 
-            HostService hostService = new HostService(
-                    "",
-                    new Host(utilityServices.getServiceInitiator().getContainer().getAddress().getHostName(), port),
-                    new Host(utilityServices.getServiceInitiator().getContainer().getAddress().getHostName(), utilityServices.getServiceInitiator().getContainer().getPort())
-            );
+            HostService hostService = null;
+            try {
+                hostService = new HostService(
+                        "",
+                        new Host(utilityServices.getServiceInitiator().getContainer().getLocalAddress(), port),
+                        new Host(utilityServices.getServiceInitiator().getContainer().getLocalAddress(), utilityServices.getServiceInitiator().getContainer().getPort())
+                );
+            } catch (UnknownHostException e) {
+                System.out.println("Could not retrieve localhost address in OpenServiceCreationController.");
+                e.printStackTrace();
+            }
 
             System.out.println(hostService.getURL());
             System.out.println(utilityServices.getHostProvider().getURL());

@@ -1,12 +1,14 @@
 package arena.session;
 
 import arena.session.exceptions.NotLoggedInException;
+import arena.streamService.StreamServiceProxy;
 import arena.users.IUser;
 import arena.users.UsersServiceProxy;
 import hostProviderService.Host;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import rest.Delivery;
+import rest.PropertyDelivery;
 import usersService.IUsersService;
 
 import javax.management.ServiceNotFoundException;
@@ -74,6 +76,11 @@ public class Session implements Serializable, ISession{
             return usersServiceProxy;
         else
             throw new ServiceNotFoundException();
+    }
+
+    @Override
+    public StreamServiceProxy getStreamService(){
+        return new StreamServiceProxy(serviceDirectoryProxy);
     }
 
     public ObjectProperty<IUser> userProperty(){

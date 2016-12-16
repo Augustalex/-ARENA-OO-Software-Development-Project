@@ -23,7 +23,7 @@ public class ServiceCreationController<T> implements EventHandler<MouseEvent> {
 
     private BiFunction<Integer, T, ReSTContainer> containerFactory = null;
     private LocalServiceDirectory directory = null;
-    private Supplier<T> serviceFactory = null;
+    private Supplier<T> serviceFactory = (Supplier<T>)(() -> null);
 
     public ServiceCreationController(TextField portInput, Label statusLabel){
         this.portInput = portInput;
@@ -67,7 +67,6 @@ public class ServiceCreationController<T> implements EventHandler<MouseEvent> {
                 statusLabel.setText("Port " + port + " not available.");
                 statusLabel.getStyleClass().add("unavailable");
             }
-
         }
         catch(NumberFormatException ex){
             System.out.println("Port has to be only integers.");

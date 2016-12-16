@@ -53,7 +53,7 @@ public class ServiceDirectorySingleAPI extends ReST {
             directory.grab(getServiceTypeFromURI(uri))
                     .onCancel(() -> {
                         try {
-                            System.out.println("Canceled.");
+                            System.out.println("Canceled. For service " + getServiceTypeFromURI(uri));
                             sendStringContentResponse(HttpURLConnection.HTTP_BAD_REQUEST, "", httpExchange);
                         } catch (IOException e) {
                             e.printStackTrace();

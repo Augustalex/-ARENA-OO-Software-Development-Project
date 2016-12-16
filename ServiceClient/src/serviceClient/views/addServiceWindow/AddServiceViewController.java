@@ -1,6 +1,8 @@
 package serviceClient.views.addServiceWindow;
 
+import hostProviderService.Host;
 import hostProviderService.HostService;
+import indexedSubStreamer.IndexedSubStreamContainer;
 import indexedUsersService.IndexedUserServiceContainer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +16,7 @@ import serviceClient.views.serviceListElement.ServiceCreationController;
 import serviceClient.views.serviceListElement.ServiceListElement;
 import serviceDirectory.ServiceDirectory;
 import serviceDirectory.ServiceDirectoryContainer;
+import subStream.SubStream;
 import usersService.IUsersService;
 import usersService.UserServiceContainer;
 import usersService.UsersService;
@@ -37,7 +40,6 @@ public class AddServiceViewController implements Initializable {
 
     @FXML
     private VBox servicesList;
-
 
     public AddServiceViewController(LocalServiceDirectory serviceDirectory, UtilityServicesDirectoryProxy utilityServices){
         this.serviceDirectory = serviceDirectory;
@@ -88,6 +90,16 @@ public class AddServiceViewController implements Initializable {
                                                     null),
                                             (int)port)
                                 )
+                )
+        );
+
+        servicesList.getChildren().add(
+                new ServiceListElement(
+                        "SubStream",
+                        new ServiceCreationController<Host>(portInput, statusLabel)
+                                .setServiceDirectory(serviceDirectory)
+                                .setServiceFactory(() -> new SubStream(3001))
+                                .setContainerFactory((port, service) -> new IndexedSubStreamContainer(utilityServices.getHostProvider(), (int)port))
                 )
         );
     }

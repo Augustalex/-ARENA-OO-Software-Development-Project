@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="mainWindow" xmlns:fx="http://javafx.com/fxml" fx:controller="liveStreamer.TestViewController">
+    <Label fx:id="clock" />
+</StackPane>

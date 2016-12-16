@@ -7,20 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Othello" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../libs/gson-2.8.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module" module-name="ReST" />
-    <orderEntry type="module" module-name="OthelloPro" />
-    <orderEntry type="module" module-name="HostProviderService" />
-    <orderEntry type="module" module-name="UsersService" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -31,7 +17,26 @@
         <jarDirectory url="file://$MODULE_DIR$/../libs" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../libs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../CompressionUtils/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="CompressionUtils" />
     <orderEntry type="module" module-name="LiveStreamer" />
-    <orderEntry type="module" module-name="StreamerService" />
   </component>
 </module>

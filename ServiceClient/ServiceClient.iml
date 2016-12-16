@@ -23,5 +23,6 @@
     </orderEntry>
     <orderEntry type="module" module-name="IndexedUsersService" />
     <orderEntry type="module" module-name="ServiceDirectory" />
+    <orderEntry type="module" module-name="StreamerService" />
   </component>
 </module>

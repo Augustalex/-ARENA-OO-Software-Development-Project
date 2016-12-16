@@ -6,6 +6,8 @@ import serviceClient.openService.OpenServiceContainer;
 import serviceClient.localServiceDirectory.LocalServiceDirectory;
 import serviceClient.utilityServices.ContainerServicePair;
 import serviceInitiatorService.IServiceInitiator;
+import subStream.SubStream;
+import subStream.SubStreamContainer;
 import usersService.UserServiceContainer;
 import usersService.UsersService;
 
@@ -28,6 +30,8 @@ public class HostServiceInitiator implements IServiceInitiator{
 
     @Override
     public void initiateServiceContainer(HostService hostServiceInfo) throws IOException {
+        System.out.println("Initiating service on Service Initiator.");
+
         int port = hostServiceInfo.port;
 
         switch(hostServiceInfo.getServiceClassName()){
@@ -38,8 +42,20 @@ public class HostServiceInitiator implements IServiceInitiator{
                                 port,
                                 new UsersService(),
                                 (nPort, nService) -> new UserServiceContainer(nService, nPort)
-                        )
+                        ).start()
                 );
+                break;
+            case "SubStream":
+                closeOpenService(port);
+                directory.addService(
+                        new ContainerServicePair<SubStream>(
+                                port,
+                                new SubStream(hostServiceInfo.port+1),
+                                (nPort, subStream) -> new SubStreamContainer((SubStream)subStream, (int)nPort)
+                        ).start()
+                );
+
+                System.out.println("Added SubStream service at port " + port + " and " + port+1);
                 break;
             default:
                 System.out.println("No such service is available: " + hostServiceInfo.getServiceClassName());
@@ -51,6 +67,8 @@ public class HostServiceInitiator implements IServiceInitiator{
         ContainerServicePair openService = new ContainerServicePair<Object>(
                 port,
                 new OpenService(),
+
+
                 (nPort, nService) -> new OpenServiceContainer((int)nPort)
         ).start();
 
@@ -62,6 +80,7 @@ public class HostServiceInitiator implements IServiceInitiator{
     }
 
     public void closeOpenService(int port){
+        System.out.println("Deleting open service at port " + port);
         directory.removeService(openServicesIds.get(port))
                 .getContainer()
                 .stop(0);

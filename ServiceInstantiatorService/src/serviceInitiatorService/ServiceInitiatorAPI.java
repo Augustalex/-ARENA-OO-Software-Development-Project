@@ -29,13 +29,14 @@ public class ServiceInitiatorAPI extends ReST {
 
     @Override
     public void onPost(HttpExchange httpExchange) throws Exception {
+        System.out.println("\nPOST REQUEST IN SERVICE INITIATOR ");
         String body = getStringBodyFromHttpExchange(httpExchange);
         //HostService hostService = getObjectFromJsonInHttpExchange(httpExchange, HostService.class);
 
         initiator.initiateServiceContainer(gson.fromJson(body, HostService.class));
         System.out.println("Service initiated.");
         try{
-            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+            sendStringContentResponse(HttpURLConnection.HTTP_OK, "", httpExchange);
             System.out.println("Sent response.");
         }
         catch(Exception e){

@@ -1,6 +1,8 @@
 package serviceInitiatorService;
 
 import hostProviderService.HostService;
+import subStream.SubStream;
+import subStream.SubStreamContainer;
 import usersService.UserServiceContainer;
 import usersService.UsersService;
 
@@ -17,6 +19,10 @@ public class ServiceInitiator implements IServiceInitiator{
         switch(hostServiceInfo.getServiceClassName()){
             case "UsersService":
                 new UserServiceContainer(new UsersService(), hostServiceInfo.port).start();
+                break;
+            //TODO might break here....
+            case "SubStream":
+                new SubStreamContainer(new SubStream(hostServiceInfo.port+1), hostServiceInfo.port).start();
                 break;
             default:
                 System.out.println("No such service: " + hostServiceInfo.getServiceClassName());

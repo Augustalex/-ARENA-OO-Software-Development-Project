@@ -1,5 +1,6 @@
 package arena.session;
 
+import arena.streamService.StreamServiceProxy;
 import arena.users.IUser;
 import arena.users.UsersServiceProxy;
 import usersService.IUsersService;
@@ -27,4 +28,5 @@ public interface ISession {
 
     UsersServiceProxy getUsersService() throws ServiceNotFoundException;
 
+    StreamServiceProxy getStreamService();
 }

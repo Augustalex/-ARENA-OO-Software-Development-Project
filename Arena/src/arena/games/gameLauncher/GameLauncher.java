@@ -3,20 +3,18 @@ package arena.games.gameLauncher;
 import arena.IPInformation.IPInformation;
 import arena.games.preInstalledGames.ticTacToe.TicTacToe;
 import arena.session.Session;
-import boardGameLibrary.players.LocalPlayer;
-import boardGameLibrary.players.Player;
+import arena.streamService.StreamServiceProxy;
 import hostProviderService.Host;
+import liveStream.LiveStream;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import arena.games.gameInformation.GameInformation;
-import javafx.stage.StageStyle;
 import othello.Othello;
 import tests.RunMatch;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 
 /**
  * Launches a certain game given information about the
@@ -36,15 +34,29 @@ public class GameLauncher {
    public static void launchGame(GameInformation gameInformation){
        StackPane newGamePane = new StackPane();
        Stage stage = new Stage();
-       stage.setFullScreen(true);
-       stage.setScene(new Scene(newGamePane));
+       //stage.setFullScreen(true);
+       stage.setScene(new Scene(newGamePane, 600, 600));
        stage.setTitle(gameInformation.getGameName());
        stage.show();
 
        switch(gameInformation.getGameName().toLowerCase()){
            case "othello":
-               //RunMatch.runMatch(newGamePane);
-               Map<Host, LocalPlayer> players = new HashMap<>();
+               RunMatch.runMatch(newGamePane);
+               int liveStreamPort = 1995;
+               LiveStream liveStream = new LiveStream(newGamePane, liveStreamPort);
+               liveStream.smartStream();
+
+               try {
+                   Session.getSession().getStreamService().sendLiveStream(new Host(
+                           Inet4Address.getLocalHost().getHostAddress(),
+                           liveStreamPort
+                   ));
+
+               } catch (UnknownHostException e) {
+                   System.out.println("Could not retrieve IP address of local host, for starting a live stream.");
+                   e.printStackTrace();
+               }
+               /*Map<Host, LocalPlayer> players = new HashMap<>();
 
                LocalPlayer johan = new LocalPlayer("Johan", Color.BLUE);
                LocalPlayer august = new LocalPlayer("August", Color.TOMATO);
@@ -53,7 +65,7 @@ public class GameLauncher {
 
                players.put(new Host("10.10.107.76", 3000), august);
 
-               RunMatch.runOnlineMatchTest(newGamePane, players, johan);
+               RunMatch.runOnlineMatchTest(newGamePane, players, johan);*/
                break;
            case "tic tac toe":case "tictactoe":
                new TicTacToe().start(newGamePane);

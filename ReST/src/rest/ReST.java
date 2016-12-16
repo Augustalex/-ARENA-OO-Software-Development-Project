@@ -8,6 +8,7 @@ import org.apache.http.HttpEntity;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.Map;
@@ -46,6 +47,7 @@ public abstract class ReST implements HttpHandler{
         }
         catch(Exception e){
             System.out.println("Error in http handler for context: " + httpExchange.getHttpContext().getPath());
+            sendStringContentResponse(HttpURLConnection.HTTP_INTERNAL_ERROR, "", httpExchange);
             e.printStackTrace();
         }
     }

@@ -40,6 +40,7 @@ public class LocalServiceDirectory {
     public String addService(ContainerServicePair containerServicePair){
         String id = containerServicePair.service.getClass().getSimpleName() + "#" + nextId.getNextId();
         services.put(id, containerServicePair);
+
         addOnline(containerServicePair);
 
         directoryUpdateAvailableProperty().set(getAllServices());
@@ -58,8 +59,9 @@ public class LocalServiceDirectory {
     }
 
     public ContainerServicePair removeService(String id){
-        ContainerServicePair servicePair = services.remove(id);
         removeOnline(id);
+        ContainerServicePair servicePair = services.remove(id);
+
         directoryUpdateAvailableProperty().set(getAllServices());
 
         return servicePair;
@@ -115,6 +117,7 @@ public class LocalServiceDirectory {
         try{
             ContainerServicePair containerServicePair = getService(localServiceId);
 
+            System.out.println("Should remove: " + containerServicePair.getService().getClass().getSimpleName() + ", " + containerServicePair.getContainer());
             String baseURL = new Host(
                     containerServicePair.getContainer().getLocalAddress(),
                     containerServicePair.getContainer().getPort()

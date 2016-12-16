@@ -124,7 +124,7 @@ public class HandleAdvertisementController implements Initializable {
         }
         try {
             //AdRepositoryMock.getAdRepositoryMock().addNewAd(new AdvertisementMock(name, preferences[0], Double.parseDouble(amount), 1));
-            AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description, 1, Double.parseDouble(amount));
+            AdvertisementMetaInformation adMetaInformation = new AdvertisementMetaInformation(name, description, -1, Double.parseDouble(amount));
             IPreferredAd ad = PreferredAdFactory.newPreferredAd(
                     source,
                     AdPreferenceFactory.newPlayViewPreference(),
