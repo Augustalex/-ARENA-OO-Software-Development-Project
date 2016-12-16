@@ -29,7 +29,7 @@ public class Session implements Serializable, ISession{
     private AppliedTournaments appliedTournaments;
 
     private ServiceDirectoryProxy serviceDirectoryProxy = new ServiceDirectoryProxy(new Host(
-            "10.10.107.76",
+            "172.20.10.3",
             2010
     ));
 

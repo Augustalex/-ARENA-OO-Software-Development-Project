@@ -17,7 +17,7 @@ public class UtilityServiceFactory {
 
     public static Host newHostProviderDetails(int port) throws IOException {
 
-        Host connectionDetails = new Host("10.10.107.76", port);
+        Host connectionDetails = new Host("172.20.10.3", port);
         return connectionDetails;
     }
 

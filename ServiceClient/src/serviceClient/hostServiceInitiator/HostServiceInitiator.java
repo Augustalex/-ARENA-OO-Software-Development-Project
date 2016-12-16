@@ -55,7 +55,7 @@ public class HostServiceInitiator implements IServiceInitiator{
                         ).start()
                 );
 
-                System.out.println("Added SubStream service at port " + port + " and " + port+1);
+                System.out.println("Added SubStream service at port " + port + " and " + (port+1));
                 break;
             default:
                 System.out.println("No such service is available: " + hostServiceInfo.getServiceClassName());

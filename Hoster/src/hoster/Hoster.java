@@ -46,7 +46,7 @@ public class Hoster {
 
     private void addHost(HostService hostService) throws IOException {
         System.out.println(
-                Request.Post("http://10.10.107.76:2000/")
+                Request.Post("http://172.20.10.3:2000/")
                 .bodyString(new Gson().toJson(hostService), ContentType.APPLICATION_JSON)
                 .execute()
                 .returnResponse().toString()

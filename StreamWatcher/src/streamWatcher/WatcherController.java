@@ -58,7 +58,7 @@ public class WatcherController implements Initializable{
 
         Host liveStream = null;
         try {
-            liveStream = new Gson().fromJson(Request.Get("http://10.10.107.76:2016")
+            liveStream = new Gson().fromJson(Request.Get("http://172.20.10.3:2016")
                     .execute().returnContent().asString(), Host.class);
         } catch (IOException e) {
             System.out.println("Could not send request.");
@@ -80,6 +80,7 @@ public class WatcherController implements Initializable{
     private void watchOnCanvas(Canvas canvas, String host, int port) {
         new Thread(() -> {
             try {
+
                 Socket socket = new Socket(host, port);
                 System.out.println("Got connection.");
                 GraphicsContext context = canvas.getGraphicsContext2D();

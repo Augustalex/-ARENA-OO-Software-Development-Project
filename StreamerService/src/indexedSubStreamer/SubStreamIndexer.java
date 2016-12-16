@@ -192,6 +192,7 @@ public class SubStreamIndexer implements IServiceIndexer{
                 status.deliver(true);
             }
             catch(Exception e){
+                System.out.println(e);
                 status.deliver(false);
             }
         }).start();
